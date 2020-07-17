@@ -4,6 +4,7 @@ import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -20,6 +21,7 @@ import wageTrak.documents.User;
 import wageTrak.services.UserService;
 
 @RequestMapping("/wageTrak/{id}/{jobName}/{dateName}")
+@CrossOrigin(origins = "http://localhost:3000")
 @RestController
 public class ShiftController {
 
@@ -33,9 +35,13 @@ public class ShiftController {
 			@RequestBody Shift shift) {
 		User user = usRepo.findById(id);
 		Job job = user.getJobs().stream().filter(j -> j.getName().equalsIgnoreCase(jobName)).findAny().get();
-		Week week = job.getWeeks().stream().filter(w -> w.getDateName().equalsIgnoreCase(dateName)).findAny().get();
+
+		Week week = job.getWeeks().stream().filter(w -> w.getDateName().equals(dateName)).findAny().get();
 		if (week.shiftExists(shift)) {
+			// must add taxRate to user
+			shift.calcPay(job.getRate(), 0.18);
 			week.addShift(shift);
+			week.updatePay();
 			job.updateWeeks(week);
 			user.updateJob(job);
 			usRepo.update(user);

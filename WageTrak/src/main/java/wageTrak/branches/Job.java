@@ -13,6 +13,13 @@ public class Job {
 //	private double weekendDifferential;
 	private List<Week> weeks;
 
+	public Job(String name, double rate, List<Week> weeks) {
+		super();
+		this.name = name;
+		this.rate = rate;
+		this.weeks = weeks;
+	}
+
 	public Job(String name, double rate) {
 		super();
 		this.name = name;
@@ -36,7 +43,7 @@ public class Job {
 		this.name = name;
 	}
 
-	void setRate(double rate) {
+	public void setRate(double rate) {
 		this.rate = rate;
 	}
 

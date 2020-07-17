@@ -38,6 +38,12 @@ public class Shift {
 
 	}
 
+	public void calcPay(double rate, double taxRate) {
+		this.grossPay = Math.round((rate * this.hours) * 100.0) / 100.0;
+		this.netPay = Math.round(((this.grossPay * (1 - taxRate)) * 100.0)) / 100.0;
+		this.taxes = Math.round((this.grossPay * taxRate) * 100.0) / 100.0;
+	}
+
 	public double getHours() {
 		return hours;
 	}

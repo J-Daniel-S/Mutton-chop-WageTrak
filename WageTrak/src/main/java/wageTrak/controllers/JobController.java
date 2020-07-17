@@ -6,6 +6,7 @@ import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -20,6 +21,7 @@ import wageTrak.documents.User;
 import wageTrak.services.UserService;
 
 @RestController
+@CrossOrigin(origins = "http://localhost:3000")
 @RequestMapping("/wageTrak/{id}")
 public class JobController {
 
@@ -79,15 +81,16 @@ public class JobController {
 	}
 
 	// works
-	@PutMapping
+	@PutMapping("/{jobName}")
 	@ResponseBody
-	public HttpStatus editJob(@PathVariable("id") String userId, @RequestBody Job update) {
+	public HttpStatus editJob(@PathVariable("id") String userId, @PathVariable String jobName,
+			@RequestBody Job update) {
 		User user = usRepo.findById(userId);
-		Optional<Job> maybeJob = user.getJobs().stream().filter(j -> j.getName().equalsIgnoreCase(update.getName()))
-				.findAny();
+		Optional<Job> maybeJob = user.getJobs().stream().filter(j -> j.getName().equalsIgnoreCase(jobName)).findAny();
 		if (maybeJob.isPresent()) {
 			Job job = maybeJob.get();
 			job.setName(update.getName());
+			job.setRate(update.getRate());
 			user.updateJob(job);
 			usRepo.update(user);
 			return HttpStatus.ACCEPTED;

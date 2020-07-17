@@ -1,0 +1,24 @@
+.jobs {
+	display: flex;
+	flex-direction: row;
+	justify-content: flex-start;
+	width: inherit;
+}
+
+.jobs-list {
+	list-style-type: none;
+}
+
+.job-thumbnail {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+}
+
+.job-name {
+	flex-grow: 3;
+}
+
+.delete-button {
+	align-self: flex-end;
+}

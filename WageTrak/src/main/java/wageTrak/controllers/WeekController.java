@@ -1,7 +1,12 @@
 package wageTrak.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
+/*
+ * The data stored in weeks is represented as pay periods on the front end.
+ * 
+ */
 import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -17,6 +22,7 @@ import wageTrak.documents.User;
 import wageTrak.services.UserService;
 
 @RestController
+@CrossOrigin(origins = "http://localhost:3000")
 @RequestMapping("/wageTrak/{id}/{jobName}")
 public class WeekController {
 

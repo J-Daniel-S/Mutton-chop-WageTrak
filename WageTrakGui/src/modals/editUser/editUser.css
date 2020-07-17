@@ -1,0 +1,11 @@
+.modal {
+	z-index: 50;
+}
+
+.capitalize {
+	text-transform: capitalize;
+}
+
+.margin {
+	margin: 1vh 2vw;
+}

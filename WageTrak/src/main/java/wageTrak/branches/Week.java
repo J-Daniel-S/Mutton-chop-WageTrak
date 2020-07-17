@@ -25,7 +25,6 @@ public class Week {
 
 	public Week() {
 		shifts = new ArrayList<>();
-
 	}
 
 	public List<Shift> getShifts() {
@@ -49,7 +48,7 @@ public class Week {
 
 	public boolean shiftExists(Shift shift) {
 		List<String> dates = shifts.stream().map(s -> s.getDate()).collect(Collectors.toList());
-		return dates.stream().noneMatch(str -> str.equalsIgnoreCase(shift.getDate()));
+		return dates.stream().noneMatch(str -> str.equals(shift.getDate()));
 	}
 
 	public void deleteShift(String date) {
@@ -80,6 +79,12 @@ public class Week {
 
 	public void setTaxes(double taxes) {
 		this.taxes = taxes;
+	}
+
+	public void updatePay() {
+		this.grossPay = this.shifts.stream().mapToDouble(s -> s.getGrossPay()).sum();
+		this.netPay = this.shifts.stream().mapToDouble(s -> s.getNetPay()).sum();
+		this.taxes = this.shifts.stream().mapToDouble(s -> s.getTaxes()).sum();
 	}
 
 	public String getDateName() {
