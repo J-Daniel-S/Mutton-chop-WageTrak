@@ -24,7 +24,7 @@ const addPeriod = (props) => {
 					dateName: dateName,
 				}))
 		fetch(
-			"http://localhost:8080/wageTrak/" + props.userData.id + "/" + props.jobData.name,
+			"http://localhost:8080/wageTrak/" + props.currentUser.id + "/" + props.currentData.name,
 			{
 				method: 'POST',
 				headers: {

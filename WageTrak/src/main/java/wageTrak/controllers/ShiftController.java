@@ -84,6 +84,8 @@ public class ShiftController {
 				.findAny();
 		if (maybeWeek.isPresent()) {
 			Week week = maybeWeek.get();
+			// must add taxrate here
+			shift.updatePay(job.getRate(), 0.18);
 			week.editShift(shift, oldDate);
 			job.updateWeeks(week);
 			user.updateJob(job);

@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { withRouter } from 'react-router-dom';
 
 import EditPeriod from '../../../modals/editPeriod/editPeriod';
-import './Week.css';
+import './Period.css';
 
 const payPeriod = (props) => {
 	const [showModal, setModal] = useState(false);
@@ -47,10 +47,10 @@ const payPeriod = (props) => {
 
 	return (
 		<React.Fragment>
-			<article className="week">
+			<article className="period">
 				<header className="flexDiv" onClick={() => titleClicked()}>
 					<div className="nameDiv">
-						<p className="margin">Pay period: {props.currentWeek.dateName}</p>
+						<p className="margin">Pay period: {props.currentPeriod.dateName}</p>
 					</div>
 					{(window.location.pathname === "/wagetrak/job/weeks/week" ||
 						window.location.pathname === "/wagetrak/job/weeks/viewWeek") &&
@@ -62,10 +62,9 @@ const payPeriod = (props) => {
 					<section>
 						<p className="margin">Pay this period</p>
 						<div className="margin">
-							<p>Gross pay: ${props.currentWeek.grossPay}</p>
-							<p>Net pay: ${props.currentWeek.netPay}</p>
-							<p>Taxes taken: ${props.currentWeek.taxes}</p>
-							<p>Night differential</p>
+							<p>Gross pay: ${props.currentPeriod.grossPay.toFixed(2)}</p>
+							<p>Net pay: ${props.currentPeriod.netPay.toFixed(2)}</p>
+							<p>Taxes taken: ${props.currentPeriod.taxes.toFixed(2)}</p>
 						</div>
 					</section>
 					<section onClick={() => addShiftHandler()} className="buttonDiv">
@@ -76,7 +75,7 @@ const payPeriod = (props) => {
 							<p>Shifts:</p>
 						</header>
 						<ul className="shift-list">
-							{props.currentWeek && props.currentWeek.shifts.map(s => (
+							{props.currentPeriod && props.currentPeriod.shifts.map(s => (
 								<li key={s.date} className="margin" onClick={() => shiftClicked(s)}>
 									<div>
 										{s.date}: ${s.netPay} {s.hours} hours
@@ -87,11 +86,11 @@ const payPeriod = (props) => {
 					</section>
 				</div>}
 				{showModal === true && <EditPeriod 
-											userChange={props.updateUser} 
-											user={props.user} 
-											job={props.currentJob} 
+											updateUser={props.updateUser} 
+											currentUser={props.currentUser} 
+											currentJob={props.currentJob} 
 											closeModal={() => toggleModal()}
-											week={props.currentWeek} 
+											currentPeriod={props.currentPeriod} 
 										/>}
 			</article>
 		</React.Fragment>

@@ -65,6 +65,14 @@
 	order: 1;
 }
 
+.diffList {
+	width: 100vw;
+	height: 4vh;
+	margin: 1px 0;
+	order: 1;
+	list-style: none;
+}
+
 .add-button {
 	right: 0;
 	position: absolute;
@@ -84,5 +92,4 @@
 
 .diffInput {
 	width: 30vw;
-	
 }

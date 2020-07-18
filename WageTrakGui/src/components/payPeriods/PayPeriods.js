@@ -1,7 +1,7 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
 
-import './Weeks.css';
+import './PayPeriods.css';
 
 const payPeriods = (props) => {
 
@@ -13,12 +13,12 @@ const payPeriods = (props) => {
 		props.history.push("/wagetrak/job/weeks/week");
 	}
 
-	const periodClicked = (week) => {
-		props.setWeek(week);
+	const periodClicked = (period) => {
+		props.setPeriod(period);
 		props.history.push("/wagetrak/job/weeks/viewWeek");
 	}
 
-	let weeks = [...props.currentJob.weeks];
+	let periods = [...props.currentJob.weeks];
 
 	// weeks = weeks.sort((a, b) => Date.parse(a.dateName) - Date.parse(b.datename));
 	// console.log(Date.parse(weeks[0].dateName));
@@ -30,10 +30,10 @@ const payPeriods = (props) => {
 				<p>Pay periods:</p>
 			</header>
 			<section className="margin" onClick={() => thisPeriodClicked()} >
-				<p>Current period: {props.currentWeek.dateName}</p>
+				<p>Current period: {props.currentPeriod.dateName}</p>
 			</section>
 			<section className="weeksDiv" >
-				{weeks.map(w => (
+				{periods.map(w => (
 					<p key={w.dateName} onClick={() => periodClicked(w)} className="margin">{w.dateName}</p>
 				))}
 			</section>

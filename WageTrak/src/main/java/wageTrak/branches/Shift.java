@@ -9,16 +9,16 @@ public class Shift {
 	private double grossPay;
 	private double netPay;
 	private double taxes;
-	private boolean night;
+	private double overtime;
 
-	public Shift(String date, double hoursWorked, double grossPay, double netPay, double taxes, boolean night) {
+	public Shift(String date, double hoursWorked, double grossPay, double netPay, double taxes, double overtime) {
 		super();
 		this.date = date;
 		this.hours = hoursWorked;
 		this.grossPay = grossPay;
 		this.netPay = netPay;
 		this.taxes = taxes;
-		this.night = night;
+		this.overtime = overtime;
 	}
 
 	public Shift(Job job, double hoursWorked, String date) {
@@ -40,6 +40,7 @@ public class Shift {
 
 	public void calcPay(double rate, double taxRate) {
 		this.grossPay = Math.round((rate * this.hours) * 100.0) / 100.0;
+		this.grossPay += Math.round((this.overtime * (rate * 0.5)) * 100.0) / 100.0;
 		this.netPay = Math.round(((this.grossPay * (1 - taxRate)) * 100.0)) / 100.0;
 		this.taxes = Math.round((this.grossPay * taxRate) * 100.0) / 100.0;
 	}
@@ -76,12 +77,20 @@ public class Shift {
 		this.taxes = taxes;
 	}
 
-	public boolean isNight() {
-		return night;
+	// must implement taxRate here
+	public void updatePay(double rate, double taxRate) {
+		this.grossPay = Math.round((this.hours * rate) * 100.0) / 100.0;
+		this.grossPay += Math.round((this.overtime * (rate * 0.5)) * 100.0) / 100.0;
+		this.netPay = Math.round((this.grossPay * (1 - taxRate)) * 100.0) / 100.0;
+		this.taxes = Math.round((this.grossPay * taxRate) * 100.0) / 100.0;
 	}
 
-	public void setNight(boolean night) {
-		this.night = night;
+	public double getOvertime() {
+		return overtime;
+	}
+
+	public void setOvertime(double overtime) {
+		this.overtime = overtime;
 	}
 
 	public String getDate() {
@@ -99,7 +108,7 @@ public class Shift {
 	@Override
 	public String toString() {
 		return "Shift [date=" + date + ", hours=" + hours + ", grossPay=" + grossPay + ", netPay=" + netPay + ", taxes="
-				+ taxes + ", night=" + night + "]";
+				+ taxes + ", overtime=" + overtime + "]";
 	}
 
 }

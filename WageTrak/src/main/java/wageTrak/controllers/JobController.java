@@ -43,25 +43,6 @@ public class JobController {
 
 	}
 
-//	// works
-//	// I don't think I need this
-//	@GetMapping("/get-job")
-//	@ResponseBody
-//	public String getJobs(@PathVariable("id") String userId) {
-//		User user = usRepo.findById(userId);
-//		List<Job> jobs = user.getJobs();
-//		return jobs.toString();
-//	}
-//
-//	// works
-//	@GetMapping("/get-job/{jobName}")
-//	@ResponseBody
-//	public String getJob(@PathVariable("id") String userId, @PathVariable String jobName) {
-//		User user = usRepo.findById(userId);
-//		Job job = user.getJobs().stream().filter(j -> j.getName().equalsIgnoreCase(jobName)).findAny().get();
-//		return job.toString();
-//	}
-
 	// works
 	@DeleteMapping("/{jobName}")
 	@ResponseBody

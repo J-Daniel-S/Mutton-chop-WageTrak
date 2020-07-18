@@ -2,8 +2,8 @@ import React, { useState } from 'react';
 import { withRouter } from 'react-router-dom';
 import { Button } from 'react-bootstrap';
 
-import ConfirmDeleteJob from './confirmDeleteJob/ConfirmDeleteJob';
-import ConfirmEditJob from './confirmEditJob/ConfirmEditJob';
+import ConfirmDelete from '../confirm/ConfirmDelete';
+import ConfirmEdit from '../confirm/ConfirmEdit';
 import './editJob.css';
 
 const editJob = (props) => {
@@ -19,9 +19,9 @@ const editJob = (props) => {
 	}
 
 	const deleteJob = () => {
-		// console.log("http://localhost:8080/wageTrak/" + props.user.id + "/" + props.job.name)
+		// console.log("http://localhost:8080/wageTrak/" + props.currentUser.id + "/" + props.currentJob.name)
 		fetch(
-			"http://localhost:8080/wageTrak/" + props.user.id + "/" + props.job.name,
+			"http://localhost:8080/wageTrak/" + props.currentUser.id + "/" + props.currentJob.name,
 			{
 				method: 'DELETE',
 				headers: {
@@ -32,7 +32,7 @@ const editJob = (props) => {
 			}
 		).then(res => {
 			console.log(res);
-			setTimeout(props.userChange(), 800);
+			setTimeout(props.currentUser(), 800);
 			setTimeout(props.history.push("/wagetrak"), 1100);
 		});
 	}
@@ -51,18 +51,18 @@ const editJob = (props) => {
 		
 		rate = rate.value;
 
-		if (name === props.job.name || name === "" || name === " ") {
-			name = props.job.name
+		if (name === props.currentJob.name || name === "" || name === " ") {
+			name = props.currentJob.name
 		}
 
-		if (rate === props.job.rate || rate === "0" || rate === "" || !rate) {
-			rate = props.job.rate;
+		if (rate === props.currentJob.rate || rate === "0" || rate === "" || !rate) {
+			rate = props.currentJob.rate;
 		}
 
 		console.log(name + ":" +  rate);
-		// console.log(	"http://localhost:8080/wageTrak/" + props.user.id);
+		// console.log(	"http://localhost:8080/wageTrak/" + props.currentUser.id);
 		fetch(
-			"http://localhost:8080/wageTrak/" + props.user.id + "/" + props.job.name,
+			"http://localhost:8080/wageTrak/" + props.currentUser.id + "/" + props.currentJob.name,
 			{
 				method: 'PUT',
 				headers: {
@@ -77,7 +77,7 @@ const editJob = (props) => {
 			}
 		).then(res => {
 			console.log(res);
-			setTimeout(props.userChange(), 800);
+			setTimeout(props.currentUser(), 800);
 			setTimeout(props.history.push("/wagetrak"), 1100);
 		});
 
@@ -92,12 +92,12 @@ const editJob = (props) => {
 					<div>
 						<form>
 							<Button onClick={() => editJob()} className="margin" htmlFor="nameEdit">Edit job</Button>
-							<input type="text" id="nameEdit" className="form-control anInput" placeholder={props.job.name} />
-							<input type="number" id="rateEdit" className="form-control anInput" placeholder={"$"+props.job.rate} />
+							<input type="text" id="nameEdit" className="form-control anInput" defaultValue={props.currentJob.name} />
+							<input type="number" id="rateEdit" className="form-control anInput" defaultValue={props.currentJob.rate} />
 						</form>
 					</div>
-				{confirmDeleteState === true && <ConfirmDeleteJob deleteJob={() => deleteJob()} closeModal={() => toggleDeleteJob()} />}
-				{confirmEditState === true && <ConfirmEditJob submitChange={() => submitChange(document.getElementById('nameEdit'),
+				{confirmDeleteState === true && <ConfirmDelete delete={() => deleteJob()} closeModal={() => toggleDeleteJob()} />}
+				{confirmEditState === true && <ConfirmEdit submitChange={() => submitChange(document.getElementById('nameEdit'),
 																						document.getElementById('rateEdit')
 																					)} closeModal={() => editJob()} />} 
 			</article>

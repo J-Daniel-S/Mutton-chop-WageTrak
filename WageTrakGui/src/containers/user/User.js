@@ -29,7 +29,7 @@ const user = (props) => {
 		<React.Fragment>
 			<main className="user">
 				<header className="margin flexDiv" onClick={() => clickedNameHandler()}>
-					<div className="userName capitalize">{props.user.name}</div>
+					<div className="userName capitalize">{props.currentUser.name}</div>
 					{window.location.pathname === "/wagetrak" && 
 						<div className="editDiv" onClick={() => toggleModal()}><i className="fa fa-pencil-square-o" aria-hidden="true"></i></div>}
 				</header>
@@ -39,10 +39,10 @@ const user = (props) => {
   					</div>
 				</section>
 				<section>
-					<Jobs userJobs={props.user.jobs} setJob={props.setJob} user={props.user} jobChange={props.updateUser} />
+					<Jobs userJobs={props.currentUser.jobs} setJob={props.setJob} currentUser={props.currentUser} jobChange={props.updateUser} />
 				</section>
 			</main>
-			{showModal === true && <EditUser userChange={props.updateUser} user={props.user} closeModal={() => toggleModal()}/>}
+			{showModal === true && <EditUser userChange={props.updateUser} user={props.currentUser} closeModal={() => toggleModal()}/>}
 		</React.Fragment>
 	);
 }

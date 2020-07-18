@@ -1,24 +1,22 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { withRouter } from 'react-router-dom';
 
-import DiffSection from './diffSection/diffSection';
 import './addJob.css';
 
-//still in the works.  have to add modal to incorporate shift differentials
-
 const addJob = (props) => {
-	const [counter, setCounter] = useState({});
 
 	const nameClicked = () => {
 		props.history.push("/wagetrak");
 	}
 
-	const jobAdded = (name, hourly, diff1, diff2) => {
-		jobAddedHandler(name.value, hourly.value);
-		console.log(diff1);
-		console.log(diff2);
-		setTimeout(props.jobChange(), 800);
-		setTimeout(props.history.push("/wagetrak"), 1100);
+	const jobAdded = (name, hourly) => {
+		if (name.value === "" || name.value === null || !name.value) {
+			props.history.push("/wagetrak");
+		} else {
+			jobAddedHandler(name.value, hourly.value);
+			setTimeout(props.updateUser(), 800);
+			setTimeout(props.history.push("/wagetrak"), 1100);
+		}
 	}
 
 	//Post request to job controller of api
@@ -29,7 +27,7 @@ const addJob = (props) => {
 			rate: Number.parseFloat(hourly).toFixed(2)
 		}))
 		fetch(
-			"http://localhost:8080/wageTrak/" + props.userData.id,
+			"http://localhost:8080/wageTrak/" + props.currentUser.id,
 			{
 				method: 'POST',
 				headers: {
@@ -46,26 +44,6 @@ const addJob = (props) => {
 
 	}
 
-	//I don't know how to fix this
-	let differentials = 0;
-
-	const diffAdded = () => {
-		if (differentials < 2) {
-			differentials++;
-			setCounter(differentials);
-		}
-	}
-
-	const diff1Removed = () => {
-		differentials = 0;
-		setCounter(differentials);
-	}
-
-	const diff2Removed = () => {
-		differentials = 1;
-		setCounter(differentials);
-	}
-
 	return (
 		<React.Fragment>
 			<article className="addJob">
@@ -80,20 +58,9 @@ const addJob = (props) => {
 							<label className="margin" htmlFor="hourly">Hourly rate</label>
 							<input type="number" id="hourly" className="form-control anInput" placeholder="$##.##" required />
 						</section>
-						<section>
-							<label className="margin">Shift/night differential?</label>
-							<i className="fa fa-plus add-button margin" aria-hidden="true" onClick={() => diffAdded()}></i>
-						</section>
-						<section>
-							{/* I may just have to add differentials using a modal */}
-							{counter > 0 && <DiffSection id="diff1" diffRemoved={() => diff1Removed()} />}
-							{counter > 1 && <DiffSection id="diff2" diffRemoved={() => diff2Removed()} />}
-						</section>
 						<section className="submit-button" onClick={() => jobAdded(
 							document.getElementById('name'),
-							document.getElementById('hourly'),
-							document.getElementById('diff1'),
-							document.getElementById('diff2')
+							document.getElementById('hourly')
 						)
 						}>
 							<p>Submit</p>
@@ -101,10 +68,10 @@ const addJob = (props) => {
 					</form>
 				</main>
 				<section className="footer" onClick={() => nameClicked()}>
-					<span className="user-name">{props.userData.name}</span>
+					<span className="user-name">{props.currentUser.name}</span>
 				</section>
 			</article>
-			<div onClick={() => nameClicked()}className="background"></div>
+			<div onClick={() => nameClicked()} className="background"></div>
 		</React.Fragment>
 	);
 }

@@ -4,29 +4,40 @@ import { BrowserRouter, Route, Redirect } from 'react-router-dom';
 import User from './user/User';
 import Job from '../components/jobs/job/Job';
 import Navbar from '../navigation/Navbar';
-import PayPeriods from '../components/weeks/Weeks';
-import PayPeriod from '../components/weeks/week/Week';
+import PayPeriods from '../components/payPeriods/PayPeriods';
+import PayPeriod from '../components/payPeriods/payPeriod/PayPeriod';
 import Shift from '../components/shifts/shift/Shift';
 import AddJob from './addjob/addJob';
-import AddPeriod from './addWeek/addWeek';
+import AddPeriod from './addPeriod/addPeriod';
 import AddShift from './addShift/addShift';
 
 import './WageTrak.css';
 
 //I must needs ask regarding why the updates aren't working how I want them to
-//currently working on delete and edit for shifts
-
-//differentials after that. Use the modal strategy that you used for the editing modals
-
-//After that check to find errors when clicking on null areas
 
 //authcontext next with auth on the back end
+
+//Must add taxrate after auth and add user are implemented from the front end
+
+//change week on the back end
+
+//add a blocker that stops the adding of a shift before the beginning of a period
+
+//prevent empty values on the front end and add checks on the back end to make sure they aren't able to edit old entries
+//standardize variable names in props drills
+//change all placeholders to default values
+
+//must add logging on the back end
+
+//useContext to undo props drilling?
+
+//eliminate bugs that aren't due to reloading
 
 const wageTrak = (props) => {
 	const [ userState, setUserState ] = useState({});
 	const [ jobState, setJobState ] = useState({});
-	const [ weekState, setWeekState ] = useState({});
-	const [ viewWeekState, setViewWeekState ] = useState({});
+	const [ periodState, setPeriodState ] = useState({});
+	const [ viewPeriodState, setViewPeriodNow ] = useState({});
 	const [ shiftState, setShiftState ] = useState({});
 	// eslint-disable-next-line
 	const [ jobsState, setJobsState ] = useState({});
@@ -63,44 +74,13 @@ const wageTrak = (props) => {
 		setUserState(userState);
 	}
 
-	const editUser = () => {
-		console.log('edit user clicked');
-	}
-
-	const postPeriodHandler = (dateName) => {
-		console.log('post period clicked');
-		console.log(dateName);
-	}
-
-	const postShiftHandler = (date, hours) => {
-		console.log('post shift clicked');
-		// console.log(dateName);
-	}
-
-	const editPeriodHandler = () => {
-		console.log("edit period clicked");
-	}
-
-	const updateJobHandler = () => {
-		console.log("update job clicked");
-	}
-
-	const editShiftHandler = () => {
-		console.log("edit shift clicked");
-	}
-
-	const addShiftHandler = () => {
-		console.log("add shift handler");
-	}
-
 	let userData = "Loading...";
 
 	if (userState) {
 		userData = <User 
-						user={userState} 
+						currentUser={userState} 
 						setJob={setJobState} 
 						updateUser={() => updateUser()} 
-						editUser={() => editUser()}
 					/>
 	}
 
@@ -117,10 +97,9 @@ const wageTrak = (props) => {
 					path="/wagetrak/job"
 					render={() => <Job 
 									currentJob={jobState} 
-									currentWeek={weekState} 
-									setWeek={setWeekState} 
-									updateJob={() => updateJobHandler()}
-									user={userState}
+									currentPeriod={periodState} 
+									setPeriod={setPeriodState} 
+									currentUser={userState}
 									updateUser={() => updateUser()}
 					/> }
 				/>
@@ -128,81 +107,77 @@ const wageTrak = (props) => {
 					path="/wagetrak/job/weeks"
 					render={() => <PayPeriods 
 									currentJob={jobState} 
-									currentWeek={weekState} 
-									setWeek={setViewWeekState} 
-									viewWeek={viewWeekState}/> }
+									setPeriod={setViewPeriodNow} 
+									currentPeriod={periodState}/> }
 				/>
 				<Route
 					path="/wagetrak/job/weeks/week"
 					render={() => <PayPeriod 
-									currentWeek={weekState} 
-									addShift={() => addShiftHandler()} 
+									currentPeriod={periodState} 
 									setShift={setShiftState} 
-									editPeriod={() => editPeriodHandler()}
 									updateUser={() =>updateUser()}
-									user={userState}
+									currentUser={userState}
 									currentJob={jobState} 
 								/> }
 				/>
 				<Route
 					path="/wagetrak/job/weeks/viewWeek"
 					render={() => <PayPeriod 
-									currentWeek={viewWeekState} 
-									addShift={() => addShiftHandler()} 
+									currentPeriod={viewPeriodState} 
 									setShift={setShiftState} 
-									editPeriod={() => editPeriodHandler()}
 									updateUser={() =>updateUser()}
-									user={userState}
+									currentUser={userState}
 									currentJob={jobState} 
 								/> }
 				/>
 				<Route
 					path="/wagetrak/job/weeks/week/shift"
-					render={() => <Shift 
+					render={() => <Shift
+									currentUser={userState} 
 									currentJob={jobState} 
-									currentShift={shiftState} 
-									editShift={() => editShiftHandler()} /> }
+									currentShift={shiftState}
+									currentPeriod={periodState} 
+									updateUser={() => updateUser()} /> }
 				/>
 				<Route
 					path="/wagetrak/job/weeks/viewWeek/shift"
 					render={() => <Shift 
+									currentUser={userState}
 									currentJob={jobState} 
-									currentShift={shiftState} 
-									editShift={() => editShiftHandler()} />}
+									currentShift={shiftState}
+									currentPeriod={viewPeriodState}  
+									updateUser={() => updateUser()} />}
 				/>
 				<Route
 					path="/wagetrak/add-job"
 					render={() => <AddJob 
-									userData={userState} 
-									jobChange={() => updateUser()}/> }
+									currentUser={userState} 
+									updateUser={() => updateUser()}/> }
 				/>
 				<Route
 					path="/wagetrak/add-period"
 					render={() => <AddPeriod 
 									jobData={jobState} 
 									updateUser={() => updateUser()} 
-									addPeriod={() => postPeriodHandler() }
-									userData={userState}
+									currentUser={userState}
 								/> }
 				/>
 				<Route
 					path="/wagetrak/add-shift"
 					render={() => <AddShift 
 									jobData={jobState} 
-									periodData={weekState}
+									periodData={periodState}
 									updateUser={() => updateUser()} 
-									addShift={() => postShiftHandler() }
-									userData={userState}
+									currentUser={userState}
 								/> }
 				/>
 				<Route
 					path="/wagetrak/view-week/add-shift"
 					render={() => <AddShift
 									jobData={jobState} 
-									periodData={viewWeekState}
+									periodData={viewPeriodState}
 									updateUser={() => updateUser()} 
-									addShift={() => postShiftHandler() }
-									userData={userState}
+									currentUser={userState}
 								/> }
 				/>
 			</BrowserRouter>

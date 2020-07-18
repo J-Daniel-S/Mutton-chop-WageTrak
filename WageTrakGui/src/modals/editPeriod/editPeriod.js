@@ -2,8 +2,8 @@ import React, { useState } from 'react';
 import { withRouter } from 'react-router-dom';
 import { Button } from 'react-bootstrap';
 
-import ConfirmDeletePeriod from './confirmDeletePeriod/ConfirmDeletePeriod';
-import ConfirmEditPeriod from './confirmEditPeriod/ConfirmEditPeriod';
+import ConfirmDelete from '../confirm/ConfirmDelete';
+import ConfirmEdit from '../confirm/ConfirmEdit';
 import './editPeriod.css';
 
 const editPeriod = (props) => {
@@ -19,9 +19,9 @@ const editPeriod = (props) => {
 	}
 
 	const deletePeriod = () => {
-		// console.log("http://localhost:8080/wageTrak/" + props.user.id + "/" + props.job.name + "/" + props.week.dateName);
+		// console.log("http://localhost:8080/wageTrak/" + props.currentUser.id + "/" + props.currentJob.name + "/" + props.week.dateName);
 		fetch(
-			"http://localhost:8080/wageTrak/" + props.user.id + "/" + props.job.name + "/" + props.week.dateName,
+			"http://localhost:8080/wageTrak/" + props.currentUser.id + "/" + props.currentJob.name + "/" + props.currentPeriod.dateName,
 			{
 				method: 'DELETE',
 				headers: {
@@ -32,7 +32,7 @@ const editPeriod = (props) => {
 			}
 		).then(res => {
 			console.log(res);
-			setTimeout(props.userChange(), 1100);
+			setTimeout(props.updateUser(), 1100);
 			setTimeout(props.history.push("/wagetrak"), 1300);
 		});
 	}
@@ -51,17 +51,17 @@ const editPeriod = (props) => {
 		dateName = dateName.replace("/", "-");
 		
 		if (dateName === "" || dateName === " ") {
-			dateName = props.week.dateName
+			dateName = props.currentPeriod.dateName
 		}
 		
-		if (dateName === props.week.dateName) {
+		if (dateName === props.currentPeriod.dateName) {
 			props.history.push("/wagetrak");
 		} else {
 
 		console.log("dateName: " + dateName);
-		// console.log("http://localhost:8080/wageTrak/" + props.user.id + "/" + props.job.name + "/" + props.week.dateName);
+		// console.log("http://localhost:8080/wageTrak/" + props.currentUser.id + "/" + props.currentJob.name + "/" + props.currentPeriod.dateName);
 		fetch(
-			"http://localhost:8080/wageTrak/" + props.user.id + "/" + props.job.name + "/" + props.week.dateName,
+			"http://localhost:8080/wageTrak/" + props.currentUser.id + "/" + props.currentJob.name + "/" + props.currentPeriod.dateName,
 			{
 				method: 'PUT',
 				headers: {
@@ -75,7 +75,7 @@ const editPeriod = (props) => {
 			}
 		).then(res => {
 			console.log(res);
-			setTimeout(props.userChange(), 800);
+			setTimeout(props.updateUser(), 800);
 			setTimeout(props.history.push("/wagetrak"), 1100);
 		});
 		}
@@ -91,11 +91,11 @@ const editPeriod = (props) => {
 					<div>
 						<form>
 							<Button onClick={() => editPeriod()} className="margin" htmlFor="nameEdit">Edit Period</Button>
-							<input type="text" id="nameEdit" className="form-control anInput" placeholder={props.week.dateName} />
+							<input type="text" id="nameEdit" className="form-control anInput" placeholder={props.currentPeriod.dateName} />
 						</form>
 					</div>
-				{confirmDeleteState === true && <ConfirmDeletePeriod deletePeriod={() => deletePeriod()} closeModal={() => toggleDeletePeriod()} />}
-				{confirmEditState === true && <ConfirmEditPeriod submitChange={() => submitChange(document.getElementById('nameEdit')
+				{confirmDeleteState === true && <ConfirmDelete delete={() => deletePeriod()} closeModal={() => toggleDeletePeriod()} />}
+				{confirmEditState === true && <ConfirmEdit submitChange={() => submitChange(document.getElementById('nameEdit')
 																					)} closeModal={() => editPeriod()} />} 
 			</article>
 		</React.Fragment>

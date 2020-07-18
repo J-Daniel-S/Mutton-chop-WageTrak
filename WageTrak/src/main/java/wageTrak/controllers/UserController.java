@@ -29,7 +29,6 @@ public class UserController {
 	// works
 	@PostMapping
 	public HttpStatus addUser(@RequestBody User newUser) {
-		// move this logic to userService
 		User user = newUser;
 		boolean saved = usRepo.save(user);
 		if (saved) {

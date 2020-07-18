@@ -15,15 +15,15 @@ const job = (props) => {
 		props.history.push("/wagetrak/job");
 	}
 
-	const weeksClicked = () => {
+	const periodsClicked = () => {
 		props.history.push("/wagetrak/job/weeks");
 	}
 
-	const weekClicked = () => {
+	const periodClicked = () => {
 		props.history.push("/wagetrak/job/weeks/week");
 	}
 
-	const addWeekHandler = () => {
+	const addPeriodHandler = () => {
 		props.history.push("/wagetrak/add-period");
 	}
 
@@ -36,8 +36,8 @@ const job = (props) => {
 	let totalGross = 0;
 	let totalNet = 0;
 	let totalTax = 0;
-	let currentWeekNum = 0;
-	let currentWeekNet = 0;
+	let currentPeriodNum = 0;
+	let currentPeriodNet = 0;
 
 	if (props.currentJob) {
 		jobTitle = props.currentJob.name;
@@ -55,20 +55,20 @@ const job = (props) => {
 			totalTax += period.taxes;
 		}
 
-		let weeks = [];
+		let periods = [];
 
 
 		//these three blocks grab the latest pay period
 		for (let period of props.currentJob.weeks) {
-			weeks.push(Date.parse(period.dateName));
+			periods.push(Date.parse(period.dateName));
 		}
 
-		currentWeekNum = Math.max.apply(Math, weeks);
+		currentPeriodNum = Math.max.apply(Math, periods);
 
 		for (let period of props.currentJob.weeks) {
-			if (Date.parse(period.dateName) === currentWeekNum) {
-				props.setWeek(period);
-				currentWeekNet = period.netPay;
+			if (Date.parse(period.dateName) === currentPeriodNum) {
+				props.setPeriod(period);
+				currentPeriodNet = period.netPay;
 			}
 		}
 
@@ -102,26 +102,32 @@ const job = (props) => {
 							<p>Total gross pay: ${totalGross.toFixed(2)}</p>
 							<p>Net: ${totalNet.toFixed(2)}</p>
 							<p>Taxes: ${totalTax.toFixed(2)}</p>
-							<p>Net pay this period: ${currentWeekNet.toFixed(2)}</p>
+							<p>Net pay this period: ${currentPeriodNet.toFixed(2)}</p>
 							<p>Hourly pay: ${rate}</p>
 						</div>
 					</section>
 					<section className="section">
 						<header>
-							<p className="margin" onClick={() => weeksClicked()}>Pay periods section</p>
+							<p className="margin" onClick={() => periodsClicked()}>Pay periods section</p>
 						</header>
 						<div className="flexDiv">
 							<p className="margin nameDiv">
-								Current: {props.currentWeek && <span onClick={() => weekClicked()}>{props.currentWeek.dateName}</span>}
+								Current: {props.currentPeriod && <span onClick={() => periodClicked()}>{props.currentPeriod.dateName}</span>}
 							</p>
-							<p className="editDiv">add shift <i className="fa fa-plus" aria-hidden="true" onClick={() => addShiftHandler()}></i></p>
+							{props.currentPeriod.dateName && 
+								<p className="editDiv">add shift <i className="fa fa-plus" aria-hidden="true" onClick={() => addShiftHandler()}></i></p>}
 						</div>
 					</section>
-					<section onClick={() => addWeekHandler()} className="buttonDiv section">
+					<section onClick={() => addPeriodHandler()} className="buttonDiv section">
 						<p>Start new pay period</p>
 					</section>
 				</div>}
-				{showModal === true && <EditJob userChange={props.updateUser} user={props.user} job={props.currentJob} closeModal={() => toggleModal()} />}
+				{showModal === true && <EditJob 
+											updateUser={props.updateUser} 
+											currentUser={props.currentUser} 
+											currentJob={props.currentJob} 
+											closeModal={() => toggleModal()} 
+										/>}
 			</article>
 		</React.Fragment>
 	);
