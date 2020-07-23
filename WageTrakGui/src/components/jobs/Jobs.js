@@ -6,7 +6,7 @@ import './Jobs.css';
 const jobs = (props) => {
 	// const { setJob } = useUser();
 
-	const jobClickedHandler = () => {
+	const jobClickedHandler = (j) => {
 		props.history.push("wagetrak/job");
 	}
 
@@ -34,11 +34,11 @@ const jobs = (props) => {
 		<div className="jobs">
 			<ul className="jobs-list">
 				{props.userJobs && props.userJobs.map(j => (
-					<li key={j.name}>
+					<li className="capitalize" key={j.name}>
 						<div className="job-thumbnail">
 							<div className="job-name" onClick={() => {
 								props.setJob(j);
-								jobClickedHandler();
+								jobClickedHandler(j);
 							}}>{j.name}</div>
 							<div onClick={() => deleteClickedHandler(j.name)}>
 								<i className="fa fa-times delete-button" aria-hidden="true"></i>

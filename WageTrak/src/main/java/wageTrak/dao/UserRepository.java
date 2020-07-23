@@ -17,4 +17,12 @@ public interface UserRepository extends MongoRepository<User, String> {
 	@Query("{ '_id': ?0 }")
 	public Optional<User> findById(String id);
 
+	@Query("{ 'username': ?0 }")
+	public Optional<User> findByUserName(String username);
+
+	@Query("{ 'username': ?0, 'password': ? }")
+	public Optional<User> login(String username, String password);
+
+//	public Optional<User> findByToken(String token);
+
 }

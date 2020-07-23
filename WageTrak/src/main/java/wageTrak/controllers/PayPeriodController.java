@@ -1,11 +1,6 @@
 package wageTrak.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
-/*
- * The data stored in weeks is represented as pay periods on the front end.
- * 
- */
-import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -17,14 +12,14 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import wageTrak.branches.Job;
-import wageTrak.branches.Week;
+import wageTrak.branches.PayPeriod;
 import wageTrak.documents.User;
 import wageTrak.services.UserService;
 
 @RestController
 @CrossOrigin(origins = "http://localhost:3000")
 @RequestMapping("/wageTrak/{id}/{jobName}")
-public class WeekController {
+public class PayPeriodController {
 
 	@Autowired
 	private UserService usRepo;
@@ -32,16 +27,17 @@ public class WeekController {
 	// works
 	@PostMapping
 	@ResponseBody
-	public HttpStatus addWeek(@PathVariable String id, @PathVariable String jobName, @RequestBody Week week) {
+	public User addPeriod(@PathVariable String id, @PathVariable String jobName, @RequestBody PayPeriod period) {
 		User user = usRepo.findById(id);
 		Job job = user.getJobs().stream().filter(j -> j.getName().equalsIgnoreCase(jobName)).findAny().get();
-		if (!job.weekExists(week)) {
-			job.addWeek(week);
+		if (!job.payPeriodExists(period)) {
+			job.addPayPeriod(period);
 			user.updateJob(job);
 			usRepo.update(user);
-			return HttpStatus.CREATED;
+			return user;
 		} else {
-			return HttpStatus.CONFLICT;
+			// perhaps I must needs return something else here (ask about on stack overflow)
+			return usRepo.findById(user.getId());
 		}
 
 	}
@@ -49,16 +45,16 @@ public class WeekController {
 	// works
 	@DeleteMapping("/{dateName}")
 	@ResponseBody
-	public HttpStatus deleteWeek(@PathVariable String id, @PathVariable String jobName, @PathVariable String dateName) {
+	public User deletePeriod(@PathVariable String id, @PathVariable String jobName, @PathVariable String dateName) {
 		User user = usRepo.findById(id);
 		Job job = user.getJobs().stream().filter(j -> j.getName().equalsIgnoreCase(jobName)).findAny().get();
-		if (job.weekExists(dateName)) {
-			job.deleteWeek(dateName);
+		if (job.payPeriodExists(dateName)) {
+			job.deletePayPeriod(dateName);
 			user.updateJob(job);
 			usRepo.update(user);
-			return HttpStatus.ACCEPTED;
+			return user;
 		} else {
-			return HttpStatus.NO_CONTENT;
+			return usRepo.findById(user.getId());
 		}
 
 	}
@@ -66,17 +62,17 @@ public class WeekController {
 	// works
 	@PutMapping("/{oldDateName}")
 	@ResponseBody
-	public HttpStatus updateWeek(@PathVariable String id, @PathVariable String jobName, @RequestBody Week week,
+	public User updatePeriod(@PathVariable String id, @PathVariable String jobName, @RequestBody PayPeriod payPeriod,
 			@PathVariable String oldDateName) {
 		User user = usRepo.findById(id);
 		Job job = user.getJobs().stream().filter(j -> j.getName().equalsIgnoreCase(jobName)).findAny().get();
-		if (job.weekExists(oldDateName)) {
-			job.updateWeeks(week, oldDateName);
+		if (job.payPeriodExists(oldDateName)) {
+			job.updatePayPeriod(payPeriod, oldDateName);
 			user.updateJob(job);
 			usRepo.update(user);
-			return HttpStatus.ACCEPTED;
+			return user;
 		} else {
-			return HttpStatus.NO_CONTENT;
+			return usRepo.findById(user.getId());
 		}
 	}
 

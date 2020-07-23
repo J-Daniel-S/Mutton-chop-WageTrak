@@ -25,11 +25,12 @@ const editUser = (props) => {
 				method: 'DELETE',
 				headers: {
 					'Content-type': 'application/json',
-					'Access-Control-Allow-Origin': 'localhost:3000/',
+					'Origins': 'http://localhost:3000',
 					'Access-Control-Allow-Methods': 'DELETE'
 				}
 			}
 		).then(res => {
+			//return to login here
 			console.log(res);
 			setTimeout(props.userChange(), 800);
 			setTimeout(props.history.push("/wagetrak"), 1100);
@@ -52,20 +53,18 @@ const editUser = (props) => {
 			{
 				method: 'PUT',
 				headers: {
-					'Content-type': 'application/json',
-					'Access-Control-Allow-Origin': 'localhost:3000/',
-					'Access-Control-Allow-Methods': 'PUT'
+					'Content-Type': 'application/json',
+					'Access-Control-Allow-Origin': 'http://localhost:3000'
 				},
+				mode: 'cors',
 				body: JSON.stringify({
 					name: name.toLowerCase(),
 					id: props.user.id,
 					jobs: props.user.jobs
 				})
 			}
-		).then(res => {
-			console.log(res);
-			setTimeout(props.userChange(), 800);
-			setTimeout(props.history.push("/wagetrak"), 1100);
+		).then(res => res.json()).then(res => {
+			props.updateUser(res);
 			editUser(false);
 			props.closeModal();
 		});

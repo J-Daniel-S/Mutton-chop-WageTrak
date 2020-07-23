@@ -30,10 +30,9 @@ const editJob = (props) => {
 					'Access-Control-Allow-Methods': 'DELETE'
 				}
 			}
-		).then(res => {
-			console.log(res);
-			setTimeout(props.currentUser(), 800);
-			setTimeout(props.history.push("/wagetrak"), 1100);
+		).then(res => res.json()).then(res => {
+			props.updateUser(res);
+			props.history.push("/wagetrak");
 		});
 	}
 
@@ -45,61 +44,63 @@ const editJob = (props) => {
 		}
 	}
 
-	const submitChange = (name, rate) => {
+	const submitChange = () => {
 
-		name = name.value.replace("?", "");
-		
-		rate = rate.value;
+		let name = document.forms["ediJobForm"]["nameEdit"].value;
+		let rate = document.forms["editJobForm"]["rateEdit"].value;
 
-		if (name === props.currentJob.name || name === "" || name === " ") {
+		if (name === "" || name === " ") {
 			name = props.currentJob.name
 		}
 
-		if (rate === props.currentJob.rate || rate === "0" || rate === "" || !rate) {
+		if (rate === "0" || rate === "" || !rate) {
 			rate = props.currentJob.rate;
 		}
 
-		console.log(name + ":" +  rate);
-		// console.log(	"http://localhost:8080/wageTrak/" + props.currentUser.id);
-		fetch(
-			"http://localhost:8080/wageTrak/" + props.currentUser.id + "/" + props.currentJob.name,
-			{
-				method: 'PUT',
-				headers: {
-					'Content-type': 'application/json',
-					'Access-Control-Allow-Origin': 'localhost:3000/',
-					'Access-Control-Allow-Methods': 'PUT'
-				},
-				body: JSON.stringify({
-					name: name.toLowerCase(),
-					rate: rate
-				})
-			}
-		).then(res => {
-			console.log(res);
-			setTimeout(props.currentUser(), 800);
-			setTimeout(props.history.push("/wagetrak"), 1100);
-		});
+		if (rate <= 0) {
+			alert('Hourly pay must be greater than zero');
+		} else if (name.includes("?") || name.includes("/")) {
+			alert('Name can\'t include ? or /');
+		} else {
 
+			console.log(name + ":" + rate);
+			// console.log(	"http://localhost:8080/wageTrak/" + props.currentUser.id);
+			fetch(
+				"http://localhost:8080/wageTrak/" + props.currentUser.id + "/" + props.currentJob.name,
+				{
+					method: 'PUT',
+					headers: {
+						'Content-type': 'application/json',
+						'Access-Control-Allow-Origin': 'http://localhost:3000',
+						'Access-Control-Allow-Methods': 'PUT'
+					},
+					body: JSON.stringify({
+						name: name.toLowerCase(),
+						rate: rate
+					})
+				}
+			).then(res => res.json()).then(res => {
+				props.updateUser(res);
+				props.history.push("/wagetrak");
+			});
+		}
 	}
 
 	return (
 		<React.Fragment>
 			<article className="theModal">
-					<div>
-						<Button onClick={() => toggleDeleteJob()}>Delete Job</Button>
-					</div>
-					<div>
-						<form>
-							<Button onClick={() => editJob()} className="margin" htmlFor="nameEdit">Edit job</Button>
-							<input type="text" id="nameEdit" className="form-control anInput" defaultValue={props.currentJob.name} />
-							<input type="number" id="rateEdit" className="form-control anInput" defaultValue={props.currentJob.rate} />
-						</form>
-					</div>
+				<div>
+					<Button onClick={() => toggleDeleteJob()}>Delete Job</Button>
+				</div>
+				<div>
+					<form id="editJobForm" name="ediJobForm">
+						<Button onClick={() => editJob()} className="margin" htmlFor="nameEdit">Edit job</Button>
+						<input type="text" id="nameEdit" name="nameEdit" className="form-control anInput" defaultValue={props.currentJob.name} />
+						<input type="number" id="rateEdit" name="rateEdit" className="form-control anInput" defaultValue={props.currentJob.rate} />
+					</form>
+				</div>
 				{confirmDeleteState === true && <ConfirmDelete delete={() => deleteJob()} closeModal={() => toggleDeleteJob()} />}
-				{confirmEditState === true && <ConfirmEdit submitChange={() => submitChange(document.getElementById('nameEdit'),
-																						document.getElementById('rateEdit')
-																					)} closeModal={() => editJob()} />} 
+				{confirmEditState === true && <ConfirmEdit submitChange={() => submitChange()} closeModal={() => editJob()} />}
 			</article>
 		</React.Fragment>
 	);

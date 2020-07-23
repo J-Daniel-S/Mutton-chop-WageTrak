@@ -3,7 +3,6 @@ package wageTrak.controllers;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -15,8 +14,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import wageTrak.branches.Job;
+import wageTrak.branches.PayPeriod;
 import wageTrak.branches.Shift;
-import wageTrak.branches.Week;
 import wageTrak.documents.User;
 import wageTrak.services.UserService;
 
@@ -31,23 +30,23 @@ public class ShiftController {
 	// works
 	@PostMapping
 	@ResponseBody
-	public HttpStatus addShift(@PathVariable String id, @PathVariable String jobName, @PathVariable String dateName,
+	public User addShift(@PathVariable String id, @PathVariable String jobName, @PathVariable String dateName,
 			@RequestBody Shift shift) {
 		User user = usRepo.findById(id);
 		Job job = user.getJobs().stream().filter(j -> j.getName().equalsIgnoreCase(jobName)).findAny().get();
 
-		Week week = job.getWeeks().stream().filter(w -> w.getDateName().equals(dateName)).findAny().get();
-		if (week.shiftExists(shift)) {
+		PayPeriod period = job.getPayPeriods().stream().filter(w -> w.getDateName().equals(dateName)).findAny().get();
+		if (period.shiftExists(shift)) {
 			// must add taxRate to user
-			shift.calcPay(job.getRate(), 0.18);
-			week.addShift(shift);
-			week.updatePay();
-			job.updateWeeks(week);
+			shift.calcPay(job.getRate(), user.getTaxRate());
+			period.addShift(shift);
+			period.updatePay();
+			job.updatePayPeriod(period);
 			user.updateJob(job);
 			usRepo.update(user);
-			return HttpStatus.CREATED;
+			return user;
 		} else {
-			return HttpStatus.CONFLICT;
+			return usRepo.findById(user.getId());
 		}
 	}
 
@@ -55,44 +54,44 @@ public class ShiftController {
 	// look into findAny v findFirst
 	@DeleteMapping("/{date}")
 	@ResponseBody
-	public HttpStatus deleteShift(@PathVariable String id, @PathVariable String jobName, @PathVariable String dateName,
+	public User deleteShift(@PathVariable String id, @PathVariable String jobName, @PathVariable String dateName,
 			@PathVariable String date) {
 		User user = usRepo.findById(id);
 		Job job = user.getJobs().stream().filter(j -> j.getName().equalsIgnoreCase(jobName)).findAny().get();
-		Optional<Week> maybeWeek = job.getWeeks().stream().filter(w -> w.getDateName().equalsIgnoreCase(dateName))
-				.findAny();
-		if (maybeWeek.isPresent()) {
-			Week week = maybeWeek.get();
-			week.deleteShift(date);
-			job.updateWeeks(week);
+		Optional<PayPeriod> maybePeriod = job.getPayPeriods().stream()
+				.filter(w -> w.getDateName().equalsIgnoreCase(dateName)).findAny();
+		if (maybePeriod.isPresent()) {
+			PayPeriod period = maybePeriod.get();
+			period.deleteShift(date);
+			job.updatePayPeriod(period);
 			user.updateJob(job);
 			usRepo.update(user);
-			return HttpStatus.ACCEPTED;
+			return user;
 		} else {
-			return HttpStatus.NO_CONTENT;
+			return usRepo.findById(user.getId());
 		}
 	}
 
 	// works
 	@PutMapping("/{oldDate}")
 	@ResponseBody
-	public HttpStatus editShift(@PathVariable String id, @PathVariable String jobName, @PathVariable String dateName,
+	public User editShift(@PathVariable String id, @PathVariable String jobName, @PathVariable String dateName,
 			@RequestBody Shift shift, @PathVariable String oldDate) {
 		User user = usRepo.findById(id);
 		Job job = user.getJobs().stream().filter(j -> j.getName().equalsIgnoreCase(jobName)).findAny().get();
-		Optional<Week> maybeWeek = job.getWeeks().stream().filter(w -> w.getDateName().equalsIgnoreCase(dateName))
-				.findAny();
-		if (maybeWeek.isPresent()) {
-			Week week = maybeWeek.get();
+		Optional<PayPeriod> maybePeriod = job.getPayPeriods().stream()
+				.filter(p -> p.getDateName().equalsIgnoreCase(dateName)).findAny();
+		if (maybePeriod.isPresent()) {
+			PayPeriod period = maybePeriod.get();
 			// must add taxrate here
-			shift.updatePay(job.getRate(), 0.18);
-			week.editShift(shift, oldDate);
-			job.updateWeeks(week);
+			shift.updatePay(job.getRate(), user.getTaxRate());
+			period.editShift(shift, oldDate);
+			job.updatePayPeriod(period);
 			user.updateJob(job);
 			usRepo.update(user);
-			return HttpStatus.ACCEPTED;
+			return user;
 		} else {
-			return HttpStatus.NO_CONTENT;
+			return usRepo.findById(user.getId());
 		}
 	}
 

@@ -18,11 +18,7 @@ const payPeriods = (props) => {
 		props.history.push("/wagetrak/job/weeks/viewWeek");
 	}
 
-	let periods = [...props.currentJob.weeks];
-
-	// weeks = weeks.sort((a, b) => Date.parse(a.dateName) - Date.parse(b.datename));
-	// console.log(Date.parse(weeks[0].dateName));
-	// console.log(Date.parse(weeks[1].dateName));
+	let periods = [...props.currentJob.payPeriods];
 
 	return (
 		<article className="weeks">
@@ -33,8 +29,8 @@ const payPeriods = (props) => {
 				<p>Current period: {props.currentPeriod.dateName}</p>
 			</section>
 			<section className="weeksDiv" >
-				{periods.map(w => (
-					<p key={w.dateName} onClick={() => periodClicked(w)} className="margin">{w.dateName}</p>
+				{periods.map(p => (
+					<p key={p.dateName} onClick={() => periodClicked(p)} className="margin">{p.dateName}</p>
 				))}
 			</section>
 		</article>

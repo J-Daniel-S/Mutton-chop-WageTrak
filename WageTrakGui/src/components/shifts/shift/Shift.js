@@ -18,7 +18,7 @@ const shift = (props) => {
 		<article className="shift">
 			<header className="flexDiv">
 				<div className="nameDiv">
-					<p className="margin">Shift: {props.currentShift.date} - ${props.currentShift.netPay}</p>
+					<p className="margin">Shift: {props.currentShift.date} - ${props.currentShift.netPay.toFixed(2)}</p>
 				</div>
 				<div className="editDiv" onClick={() => toggleModal()} >
 					<i className="fa fa-pencil-square-o" aria-hidden="true"></i>
@@ -27,9 +27,9 @@ const shift = (props) => {
 			{showModal === false && <section className="margin">
 				<p>Hours worked: {props.currentShift.hours}</p>
 				<p>Overtime worked: {props.currentShift.overtime}</p>
-				<p>Gross pay: ${props.currentShift.grossPay}</p>
-				<p>Net pay: ${props.currentShift.netPay}</p>
-				<p>Taxes taken: ${props.currentShift.taxes}</p>
+				<p>Gross pay: ${props.currentShift.grossPay.toFixed(2)}</p>
+				<p>Net pay: ${props.currentShift.netPay.toFixed(2)}</p>
+				<p>Taxes taken: ${props.currentShift.taxes.toFixed(2)}</p>
 				<p>{props.currentShift.night && "Night Shift"}</p>
 			</section>}
 			{showModal === true && <EditShift

@@ -5,7 +5,6 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -31,14 +30,15 @@ public class JobController {
 	// works
 	@PostMapping
 	@ResponseBody
-	public HttpStatus addJob(@PathVariable("id") String userId, @RequestBody Job job) {
+	public User addJob(@PathVariable("id") String userId, @RequestBody Job job) {
 		User user = usRepo.findById(userId);
 		if (!user.jobExists(job)) {
 			user.addJob(job);
 			usRepo.update(user);
-			return HttpStatus.CREATED;
+			return user;
 		} else {
-			return HttpStatus.CONFLICT;
+			// perhaps I must needs return something else here (ask about on stack overflow)
+			return usRepo.findById(user.getId());
 		}
 
 	}
@@ -46,7 +46,7 @@ public class JobController {
 	// works
 	@DeleteMapping("/{jobName}")
 	@ResponseBody
-	public HttpStatus deleteJob(@PathVariable("id") String userId, @PathVariable String jobName) {
+	public User deleteJob(@PathVariable("id") String userId, @PathVariable String jobName) {
 		User user = usRepo.findById(userId);
 		Optional<Job> maybeJob = user.getJobs().stream().filter(j -> j.getName().equalsIgnoreCase(jobName)).findAny();
 		if (maybeJob.isPresent()) {
@@ -54,9 +54,10 @@ public class JobController {
 					.collect(Collectors.toList());
 			user.setJobs(jobs);
 			usRepo.update(user);
-			return HttpStatus.ACCEPTED;
+			return user;
 		} else {
-			return HttpStatus.NO_CONTENT;
+			// perhaps I must needs return something else here (ask about on stack overflow)
+			return usRepo.findById(user.getId());
 		}
 
 	}
@@ -64,8 +65,7 @@ public class JobController {
 	// works
 	@PutMapping("/{jobName}")
 	@ResponseBody
-	public HttpStatus editJob(@PathVariable("id") String userId, @PathVariable String jobName,
-			@RequestBody Job update) {
+	public User editJob(@PathVariable("id") String userId, @PathVariable String jobName, @RequestBody Job update) {
 		User user = usRepo.findById(userId);
 		Optional<Job> maybeJob = user.getJobs().stream().filter(j -> j.getName().equalsIgnoreCase(jobName)).findAny();
 		if (maybeJob.isPresent()) {
@@ -74,9 +74,10 @@ public class JobController {
 			job.setRate(update.getRate());
 			user.updateJob(job);
 			usRepo.update(user);
-			return HttpStatus.ACCEPTED;
+			return user;
 		} else {
-			return HttpStatus.NO_CONTENT;
+			// perhaps I must needs return something else here (ask about on stack overflow)
+			return usRepo.findById(user.getId());
 		}
 	}
 

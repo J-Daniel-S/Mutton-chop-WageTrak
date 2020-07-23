@@ -22,8 +22,6 @@ const payPeriod = (props) => {
 		} else {
 			props.history.push("/wagetrak/job/weeks/week/shift");
 		}
-
-		// console.log(s);
 	}
 
 	const addShiftHandler = () => {
@@ -31,10 +29,7 @@ const payPeriod = (props) => {
 			props.history.push("/wagetrak/view-week/add-shift");
 		} else {
 			props.history.push("/wagetrak/add-shift");
-			console.log('else block reached')
 		}
-
-		// props.addShift();
 	}
 
 	const toggleModal = () => {
@@ -78,7 +73,7 @@ const payPeriod = (props) => {
 							{props.currentPeriod && props.currentPeriod.shifts.map(s => (
 								<li key={s.date} className="margin" onClick={() => shiftClicked(s)}>
 									<div>
-										{s.date}: ${s.netPay} {s.hours} hours
+										{s.date}: ${s.netPay.toFixed(2)} {s.hours} hours
 							</div>
 								</li>))
 							}

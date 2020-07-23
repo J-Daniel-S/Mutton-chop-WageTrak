@@ -22,3 +22,7 @@
 .delete-button {
 	align-self: flex-end;
 }
+
+.capitalize {
+	text-transform: capitalize;
+}

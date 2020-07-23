@@ -15,23 +15,23 @@ import './WageTrak.css';
 
 //I must needs ask regarding why the updates aren't working how I want them to
 
-//authcontext next with auth on the back end
+//must add signup page
 
-//Must add taxrate after auth and add user are implemented from the front end
+//Proper function to front end login page after spring security is added
 
-//change week on the back end
+//create a util on the back end that does the tasks preventing the different objects from being pojos
 
-//add a blocker that stops the adding of a shift before the beginning of a period
-
-//prevent empty values on the front end and add checks on the back end to make sure they aren't able to edit old entries
 //standardize variable names in props drills
-//change all placeholders to default values
 
 //must add logging on the back end
 
 //useContext to undo props drilling?
 
+//Spring Security
+
 //eliminate bugs that aren't due to reloading
+
+//add error handling
 
 const wageTrak = (props) => {
 	const [ userState, setUserState ] = useState({});
@@ -46,10 +46,10 @@ const wageTrak = (props) => {
 
 	//initial user retrieval
 	useEffect(() => {
-		updateUser();
+		getUser();
 	}, []);
 
-	const updateUser = () => {
+	const getUser = () => {
 		fetch(
 			"http://localhost:8080/wageTrak/users/" + userId,
 			{
@@ -62,7 +62,7 @@ const wageTrak = (props) => {
 				eventually I'll have to add loading animations, possibly clear the state, then update it again
 				*/
 				if(res.name === "noSuchUser") {
-					updateUser();
+					getUser();
 				} else {
 					setUserState(res);
 					setJobsState(res.jobs);
@@ -80,7 +80,7 @@ const wageTrak = (props) => {
 		userData = <User 
 						currentUser={userState} 
 						setJob={setJobState} 
-						updateUser={() => updateUser()} 
+						updateUser={setUserState} 
 					/>
 	}
 
@@ -100,7 +100,7 @@ const wageTrak = (props) => {
 									currentPeriod={periodState} 
 									setPeriod={setPeriodState} 
 									currentUser={userState}
-									updateUser={() => updateUser()}
+									updateUser={setUserState}
 					/> }
 				/>
 				<Route
@@ -115,7 +115,7 @@ const wageTrak = (props) => {
 					render={() => <PayPeriod 
 									currentPeriod={periodState} 
 									setShift={setShiftState} 
-									updateUser={() =>updateUser()}
+									updateUser={setUserState}
 									currentUser={userState}
 									currentJob={jobState} 
 								/> }
@@ -125,7 +125,7 @@ const wageTrak = (props) => {
 					render={() => <PayPeriod 
 									currentPeriod={viewPeriodState} 
 									setShift={setShiftState} 
-									updateUser={() =>updateUser()}
+									updateUser={setUserState}
 									currentUser={userState}
 									currentJob={jobState} 
 								/> }
@@ -137,7 +137,7 @@ const wageTrak = (props) => {
 									currentJob={jobState} 
 									currentShift={shiftState}
 									currentPeriod={periodState} 
-									updateUser={() => updateUser()} /> }
+									updateUser={setUserState} /> }
 				/>
 				<Route
 					path="/wagetrak/job/weeks/viewWeek/shift"
@@ -146,19 +146,19 @@ const wageTrak = (props) => {
 									currentJob={jobState} 
 									currentShift={shiftState}
 									currentPeriod={viewPeriodState}  
-									updateUser={() => updateUser()} />}
+									updateUser={setUserState} />}
 				/>
 				<Route
 					path="/wagetrak/add-job"
 					render={() => <AddJob 
 									currentUser={userState} 
-									updateUser={() => updateUser()}/> }
+									updateUser={setUserState}/> }
 				/>
 				<Route
 					path="/wagetrak/add-period"
 					render={() => <AddPeriod 
-									jobData={jobState} 
-									updateUser={() => updateUser()} 
+									currentJob={jobState} 
+									updateUser={setUserState} 
 									currentUser={userState}
 								/> }
 				/>
@@ -167,7 +167,7 @@ const wageTrak = (props) => {
 					render={() => <AddShift 
 									jobData={jobState} 
 									periodData={periodState}
-									updateUser={() => updateUser()} 
+									updateUser={setUserState} 
 									currentUser={userState}
 								/> }
 				/>
@@ -176,7 +176,7 @@ const wageTrak = (props) => {
 					render={() => <AddShift
 									jobData={jobState} 
 									periodData={viewPeriodState}
-									updateUser={() => updateUser()} 
+									updateUser={setUserState} 
 									currentUser={userState}
 								/> }
 				/>

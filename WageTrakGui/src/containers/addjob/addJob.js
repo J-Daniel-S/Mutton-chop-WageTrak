@@ -9,17 +9,25 @@ const addJob = (props) => {
 		props.history.push("/wagetrak");
 	}
 
-	const jobAdded = (name, hourly) => {
-		if (name.value === "" || name.value === null || !name.value) {
-			props.history.push("/wagetrak");
+	const jobAdded = () => {
+
+		let fName = document.forms['addJobForm']['name'].value;
+		let fHourly = document.forms['addJobForm']['hourly'].value;
+
+		if (fName === '') {
+			alert('Name cannot be empty');
+		} else if (fHourly <= 0) {
+			alert('Hourly wage must be greater than zero');
+		} else if (fHourly === '') {
+			alert('Hourly wage cannot be empty')
+		} else if (fName.includes("?") || fName.includes("/")) {
+			alert('Please do not include "?" or "/" in the name');
 		} else {
-			jobAddedHandler(name.value, hourly.value);
-			setTimeout(props.updateUser(), 800);
-			setTimeout(props.history.push("/wagetrak"), 1100);
+			jobAddedHandler(fName, fHourly);
 		}
+		
 	}
 
-	//Post request to job controller of api
 	const jobAddedHandler = (name, hourly) => {
 		name = name.replace("?", "");
 		console.log(JSON.stringify({
@@ -40,8 +48,10 @@ const addJob = (props) => {
 					rate: Number.parseFloat(hourly).toFixed(2)
 				})
 			}
-		).then(res => console.log(res));
-
+		).then(res => res.json()).then(res => {
+			props.updateUser(res);
+			props.history.push("/wagetrak");
+		});
 	}
 
 	return (
@@ -51,18 +61,17 @@ const addJob = (props) => {
 					<p>Add new job:</p>
 				</header>
 				<main>
-					<form>
+					<form id="addJobForm" name="addJobForm" onSubmit={() => jobAdded()}>
 						<section className="form-group">
 							<label className="margin" htmlFor="name">Job name</label>
-							<input type="text" id="name" className="form-control anInput" placeholder="Enter job title" required />
+							<input type="text" id="name" name="name" className="form-control anInput" placeholder="Enter job title" />
 							<label className="margin" htmlFor="hourly">Hourly rate</label>
-							<input type="number" id="hourly" className="form-control anInput" placeholder="$##.##" required />
+							<input type="number" id="hourly" name="hourly" className="form-control anInput" placeholder="$##.##" />
 						</section>
 						<section className="submit-button" onClick={() => jobAdded(
 							document.getElementById('name'),
 							document.getElementById('hourly')
-						)
-						}>
+						) }>
 							<p>Submit</p>
 						</section>
 					</form>

@@ -29,6 +29,24 @@ public class UserService {
 
 	}
 
+	public User login(String username, String password) {
+		Optional<User> foundUser = usRepo.login(username, password);
+		if (foundUser.isPresent()) {
+			return foundUser.get();
+		} else {
+			return new User("failedLogin");
+		}
+	}
+
+	public User findByUserName(String userName) {
+		Optional<User> foundUser = usRepo.findByUserName(userName);
+		if (foundUser.isPresent()) {
+			return foundUser.get();
+		} else {
+			return new User("noSuchuser");
+		}
+	}
+
 	public boolean save(User user) {
 		Optional<User> findUser = usRepo.findById(user.getId());
 		if (findUser.isPresent()) {

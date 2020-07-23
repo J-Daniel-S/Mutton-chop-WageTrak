@@ -11,24 +11,24 @@ public class Job {
 //	private double eveningDifferential;
 //	private double nightDifferential;
 //	private double weekendDifferential;
-	private List<Week> weeks;
+	private List<PayPeriod> periods;
 
-	public Job(String name, double rate, List<Week> weeks) {
+	public Job(String name, double rate, List<PayPeriod> periods) {
 		super();
 		this.name = name;
 		this.rate = rate;
-		this.weeks = weeks;
+		this.periods = periods;
 	}
 
 	public Job(String name, double rate) {
 		super();
 		this.name = name;
 		this.rate = rate;
-		weeks = new ArrayList<Week>();
+		periods = new ArrayList<PayPeriod>();
 	}
 
 	public Job() {
-		weeks = new ArrayList<Week>();
+		periods = new ArrayList<PayPeriod>();
 	}
 
 	public double getRate() {
@@ -55,51 +55,56 @@ public class Job {
 //		this.night = night;
 //	}
 
-	public List<Week> getWeeks() {
-		return weeks;
+	public List<PayPeriod> getPayPeriods() {
+		return periods;
 	}
 
-	public void addWeek(Week week) {
-		weeks.add(week);
+	public void addPayPeriod(PayPeriod period) {
+		periods.add(period);
 	}
 
-	public void deleteWeek(String dateName) {
-		List<Week> updateWeeks = weeks.stream().filter(w -> !w.getDateName().equalsIgnoreCase(dateName))
+	public void deletePayPeriod(String dateName) {
+		List<PayPeriod> updatePeriods = periods.stream().filter(w -> !w.getDateName().equalsIgnoreCase(dateName))
 				.collect(Collectors.toList());
-		weeks = updateWeeks;
+		periods = updatePeriods;
 	}
 
-	public void updateWeeks(Week week) {
-		List<Week> updateWeeks = weeks.stream().filter(w -> !w.getDateName().equalsIgnoreCase(week.getDateName()))
+	public void updatePayPeriod(PayPeriod period) {
+		List<PayPeriod> updatePeriods = periods.stream()
+				.filter(p -> !p.getDateName().equalsIgnoreCase(period.getDateName())).collect(Collectors.toList());
+		updatePeriods.add(period);
+		periods = updatePeriods;
+	}
+
+	// this should not need a null check. It cannot be accessed unless it is visible
+	// on the front end
+	public void updatePayPeriod(PayPeriod period, String oldDateName) {
+		PayPeriod oldPeriod = periods.stream().filter(p -> p.getDateName().equalsIgnoreCase(oldDateName)).findAny()
+				.get();
+		List<PayPeriod> updatePeriods = periods.stream().filter(p -> !p.getDateName().equalsIgnoreCase(oldDateName))
 				.collect(Collectors.toList());
-		updateWeeks.add(week);
-		weeks = updateWeeks;
+		oldPeriod.setDateName(period.getDateName());
+		updatePeriods.add(oldPeriod);
+		periods = updatePeriods;
 	}
 
-	public void updateWeeks(Week week, String oldDateName) {
-		List<Week> updateWeeks = weeks.stream().filter(w -> !w.getDateName().equalsIgnoreCase(oldDateName))
-				.collect(Collectors.toList());
-		updateWeeks.add(week);
-		weeks = updateWeeks;
+	public boolean payPeriodExists(PayPeriod period) {
+		List<String> periodNames = periods.stream().map(p -> p.getDateName()).collect(Collectors.toList());
+		return periodNames.stream().anyMatch(p -> p.equalsIgnoreCase(period.getDateName()));
 	}
 
-	public boolean weekExists(Week week) {
-		List<String> weekNames = weeks.stream().map(w -> w.getDateName()).collect(Collectors.toList());
-		return weekNames.stream().anyMatch(w -> w.equalsIgnoreCase(week.getDateName()));
+	public boolean payPeriodExists(String dateName) {
+		List<String> periodNames = periods.stream().map(p -> p.getDateName()).collect(Collectors.toList());
+		return periodNames.stream().anyMatch(p -> p.equalsIgnoreCase(dateName));
 	}
 
-	public boolean weekExists(String dateName) {
-		List<String> weekNames = weeks.stream().map(w -> w.getDateName()).collect(Collectors.toList());
-		return weekNames.stream().anyMatch(w -> w.equalsIgnoreCase(dateName));
-	}
-
-	public void setWeeks(List<Week> weeks) {
-		this.weeks = weeks;
+	public void setPayPeriods(List<PayPeriod> periods) {
+		this.periods = periods;
 	}
 
 	@Override
 	public String toString() {
-		return "Job [name=" + name + ", rate=" + rate + ", weeks=" + weeks + "]";
+		return "Job [name=" + name + ", rate=" + rate + ", periods=" + periods + "]";
 	}
 
 }

@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -19,7 +20,8 @@ import wageTrak.documents.User;
 import wageTrak.services.UserService;
 
 @RestController
-@CrossOrigin(origins = { "http://localhost:3000" })
+@CrossOrigin(origins = "http://localhost:3000", allowedHeaders = "*", methods = { RequestMethod.POST, RequestMethod.GET,
+		RequestMethod.PUT, RequestMethod.DELETE, RequestMethod.OPTIONS })
 @RequestMapping("/wageTrak/users")
 public class UserController {
 
@@ -28,13 +30,14 @@ public class UserController {
 
 	// works
 	@PostMapping
-	public HttpStatus addUser(@RequestBody User newUser) {
+	public User addUser(@RequestBody User newUser) {
+		String id = newUser.getId();
 		User user = newUser;
 		boolean saved = usRepo.save(user);
 		if (saved) {
-			return HttpStatus.CREATED;
+			return user; // change to JSON
 		} else {
-			return HttpStatus.CONFLICT;
+			return usRepo.findById(id);
 		}
 
 	}
@@ -46,6 +49,12 @@ public class UserController {
 		return usRepo.findById(id);
 	}
 
+//	@GetMapping("/name/{name}")
+//	@ResponseBody
+//	public User getTheUser(@PathVariable String userName) {
+//		return usRepo.findByUserName(userName);
+//	}
+
 	// works
 	@GetMapping
 	public List<User> getUsers() {
@@ -54,12 +63,13 @@ public class UserController {
 
 	// works
 	@PutMapping
-	public HttpStatus updateUser(@RequestBody User user) {
+	public User updateUser(@RequestBody User user) {
+		String id = user.getId();
 		boolean updated = usRepo.update(user);
 		if (updated) {
-			return HttpStatus.ACCEPTED;
+			return user;
 		} else {
-			return HttpStatus.NO_CONTENT;
+			return usRepo.findById(id);
 		}
 	}
 

@@ -43,29 +43,29 @@ const job = (props) => {
 		jobTitle = props.currentJob.name;
 		rate = props.currentJob.rate.toFixed(2);
 
-		for (let period of props.currentJob.weeks) {
+		for (let period of props.currentJob.payPeriods) {
 			totalGross += period.grossPay;
 		}
 
-		for (let period of props.currentJob.weeks) {
+		for (let period of props.currentJob.payPeriods) {
 			totalNet += period.netPay;
 		}
 
-		for (let period of props.currentJob.weeks) {
+		for (let period of props.currentJob.payPeriods) {
 			totalTax += period.taxes;
 		}
 
-		let periods = [];
+		let payPeriods = [];
 
 
 		//these three blocks grab the latest pay period
-		for (let period of props.currentJob.weeks) {
-			periods.push(Date.parse(period.dateName));
+		for (let period of props.currentJob.payPeriods) {
+			payPeriods.push(Date.parse(period.dateName));
 		}
 
-		currentPeriodNum = Math.max.apply(Math, periods);
+		currentPeriodNum = Math.max.apply(Math, payPeriods);
 
-		for (let period of props.currentJob.weeks) {
+		for (let period of props.currentJob.payPeriods) {
 			if (Date.parse(period.dateName) === currentPeriodNum) {
 				props.setPeriod(period);
 				currentPeriodNet = period.netPay;

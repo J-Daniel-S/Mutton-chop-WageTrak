@@ -1,6 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-import WageTrak from './containers/WageTrak';
+import AuthContextProvider from './auth/authContext';
+import WageLogin from './App';
 
-ReactDOM.render(<WageTrak />, document.getElementById('root'));
+ReactDOM.render(
+			<AuthContextProvider>
+				<WageLogin />
+			</AuthContextProvider>
+				, document.getElementById('root'));

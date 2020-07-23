@@ -15,11 +15,24 @@ public class User {
 	@Id
 	private String id;
 	private String name;
+	private String userName;
+	private String password;
+	private double taxRate;
 	private List<Job> jobs;
 
-	public User(String name, List<Job> jobs) {
+	public User(String name, String username, String password, List<Job> jobs) {
 		super();
 		this.name = name;
+		this.userName = username;
+		this.password = password;
+		this.jobs = jobs;
+	}
+
+	public User(String name, String password, List<Job> jobs) {
+		super();
+		this.name = name;
+		this.userName = name;
+		this.password = password;
 		this.jobs = jobs;
 	}
 
@@ -57,6 +70,30 @@ public class User {
 		jobs.add(job);
 	}
 
+	public String getUserName() {
+		return userName;
+	}
+
+	public void setUserName(String userName) {
+		this.userName = userName;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+	public double getTaxRate() {
+		return taxRate;
+	}
+
+	public void setTaxRate(double taxRate) {
+		this.taxRate = taxRate;
+	}
+
 	public boolean jobExists(Job job) {
 		List<String> jobNames = jobs.stream().map(j -> j.getName()).collect(Collectors.toList());
 		return jobNames.stream().anyMatch(name -> name.equalsIgnoreCase(job.getName()));
@@ -75,7 +112,8 @@ public class User {
 
 	@Override
 	public String toString() {
-		return "User [name=" + name + ", jobs=" + jobs + "]";
+		return "User [id=" + id + ", name=" + name + ", userName=" + userName + ", password=" + password + ", taxRate="
+				+ taxRate + ", jobs=" + jobs + "]";
 	}
 
 }

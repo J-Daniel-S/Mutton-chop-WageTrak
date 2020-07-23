@@ -1,6 +1,6 @@
 package wageTrak.branches;
 
-import wageTrak.entities.TaxRate;
+import wageTrak.documents.User;
 
 public class Shift {
 
@@ -21,11 +21,11 @@ public class Shift {
 		this.overtime = overtime;
 	}
 
-	public Shift(Job job, double hoursWorked, String date) {
+	public Shift(User user, Job job, double hoursWorked, String date) {
 		super();
 		this.grossPay = job.getRate() * hoursWorked;
 		this.hours = hoursWorked;
-		this.taxes = this.grossPay * TaxRate.getTaxRate();
+		this.taxes = this.grossPay * user.getTaxRate();
 		this.netPay = grossPay - this.taxes;
 		this.date = date;
 	}

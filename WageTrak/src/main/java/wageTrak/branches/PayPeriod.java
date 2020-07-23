@@ -6,8 +6,8 @@ import java.util.stream.Collectors;
 
 import org.springframework.data.mongodb.core.mapping.Document;
 
-@Document(collection = "weeks")
-public class Week {
+@Document(collection = "payPeriods")
+public class PayPeriod {
 
 	private String dateName; // might have to be a string
 	private List<Shift> shifts;
@@ -15,7 +15,7 @@ public class Week {
 	private double grossPay;
 	private double taxes;
 
-	public Week(List<Shift> shifts, double netPay, double grossPay, double taxes) {
+	public PayPeriod(List<Shift> shifts, double netPay, double grossPay, double taxes) {
 		super();
 		this.shifts = shifts;
 		this.netPay = netPay;
@@ -23,7 +23,7 @@ public class Week {
 		this.taxes = taxes;
 	}
 
-	public Week() {
+	public PayPeriod() {
 		shifts = new ArrayList<>();
 	}
 
@@ -97,8 +97,8 @@ public class Week {
 
 	@Override
 	public String toString() {
-		return "Week [dateName=" + dateName + ", shifts=" + shifts + ", netPay=" + netPay + ", grossPay=" + grossPay
-				+ ", taxes=" + taxes + "]";
+		return "PayPeriod [dateName=" + dateName + ", shifts=" + shifts + ", netPay=" + netPay + ", grossPay="
+				+ grossPay + ", taxes=" + taxes + "]";
 	}
 
 }

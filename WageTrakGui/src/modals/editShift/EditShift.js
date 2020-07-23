@@ -30,10 +30,9 @@ const editShift = (props) => {
 					'Access-Control-Allow-Methods': 'DELETE'
 				}
 			}
-		).then(res => {
-			console.log(res);
-			setTimeout(props.updateUser(), 1100);
-			setTimeout(props.history.push("/wagetrak"), 1300);
+		).then(res => res.json()).then(res => {
+			props.updateUser(res);
+			props.history.push("/wagetrak");
 		});
 	}
 
@@ -45,47 +44,65 @@ const editShift = (props) => {
 		}
 	}
 
-	const submitChange = (date, hours, ot) => {
+	const submitChange = () => {
 
-		date = date.value.replace("?", "").replace("/", "-");
+		let date = document.forms['editShiftform']['dateEdit'].value;
+		let hours = document.forms['editShiftform']['hoursEdit'].value;
+		let ot = document.forms['editShiftform']['otEdit'].value;
+
+		date = date.replace("?", "").replace("/", "-");
 		date = date.replace("/", "-");
-		hours = Number.parseFloat(hours.value).toFixed(1);
-		let overtime = Number.parseFloat(ot.value).toFixed(1);
+		hours = Number.parseFloat(hours).toFixed(1);
+		ot = Number.parseFloat(ot).toFixed(1);
 
-		if (hours === "" || hours === " " || hours.isNaN()) {
-			hours = props.currentShift.hours;
-		}
-		
-		if (overtime === "" || overtime === " ") {
-			overtime = props.currentShift.overtime
-		}
-		
-		if (date === props.currentShift.date && hours.value === props.currentShift.hours) {
-			props.history.push("/wagetrak");
+		if (hours > 24) {
+			alert('Are you sure you worked that many hours?')
+		} else if (Date.parse(date) < Date.parse(props.currentPeriod.dateName) - 43200000) {
+			alert('Shift date cannot be before start of pay period');
+		} else if (Number.parseFloat(ot) > Number.parseFloat(hours)) {
+			alert('Overtime can\'t exceed hours worked');
+		} else if (hours.includes("-")) {
+			alert('Hours cannot be negative');
+		} else if (hours.includes("-")) {
+			alert('Overtime cannot be negative');
+		} else if (date === '') {
+			alert('Shift date cannot be empty');
+		} else if (hours === '' || ot === '' || isNaN(hours)) {
+			alert('Fields cannot be blank or negative');
+		} else if (hours <= 0) {
+			alert('Hours must be greater than 0')
+		} else if (ot < 0) {
+			alert('Overtime cannot be less than 0')
 		} else {
 
-		console.log("date: " + date + " hours: " + hours + " overtime: " + overtime);
-		// console.log("http://localhost:8080/wageTrak/" + props.currentUser.id + "/" + props.currentJob.name + "/" + props.currentPeriod.dateName + "/" + props.currentShift.date);
-		fetch(
-			"http://localhost:8080/wageTrak/" + props.currentUser.id + "/" + props.currentJob.name + "/" + props.currentPeriod.dateName + "/" + props.currentShift.date,
-			{
-				method: 'PUT',
-				headers: {
-					'Content-type': 'application/json',
-					'Access-Control-Allow-Origin': 'localhost:3000/',
-					'Access-Control-Allow-Methods': 'PUT'
-				},
-				body: JSON.stringify({
-					date: date,
-					hours: hours,
-					overtime: overtime
-				})
+			date = "0" + date.substring(6, 11);
+
+			if (date === props.currentShift.date && hours === props.currentShift.hours) {
+				props.history.push("/wagetrak");
+			} else {
+
+				console.log("date: " + date + " hours: " + hours + " overtime: " + ot);
+				// console.log("http://localhost:8080/wageTrak/" + props.currentUser.id + "/" + props.currentJob.name + "/" + props.currentPeriod.dateName + "/" + props.currentShift.date);
+				fetch(
+					"http://localhost:8080/wageTrak/" + props.currentUser.id + "/" + props.currentJob.name + "/" + props.currentPeriod.dateName + "/" + props.currentShift.date,
+					{
+						method: 'PUT',
+						headers: {
+							'Content-type': 'application/json',
+							'Access-Control-Allow-Origin': 'localhost:3000/',
+							'Access-Control-Allow-Methods': 'PUT'
+						},
+						body: JSON.stringify({
+							date: date,
+							hours: hours,
+							overtime: ot
+						})
+					}
+				).then(res => res.json()).then(res => {
+					props.updateUser(res);
+					props.history.push("/wagetrak");
+				});
 			}
-		).then(res => {
-			console.log(res);
-			setTimeout(props.updateUser(), 800);
-			setTimeout(props.history.push("/wagetrak"), 1100);
-		});
 		}
 
 	}
@@ -93,26 +110,26 @@ const editShift = (props) => {
 	return (
 		<React.Fragment>
 			<article className="theModal">
-					<div>
-						<Button onClick={() => toggleDeleteShift()}>Delete Shift</Button>
-					</div>
-					<div>
-						<form>
-							<Button onClick={() => editShift()} className="margin" htmlFor="nameEdit">Submit Changes</Button>
-							<p className="margin">date</p>
-							<input type="text" id="nameEdit" className="form-control anInput" defaultValue={props.currentShift.date} />
-							<p className="margin">hours</p>
-							<input type="number" id="hoursEdit" className="form-control anInput" defaultValue={props.currentShift.hours} />
-							<p className="margin">overtime</p>
-							<input type="number" id="otEdit" className="form-control anInput" defaultValue={props.currentShift.overtime} />
-						</form>
-					</div>
+				<div>
+					<Button onClick={() => toggleDeleteShift()}>Delete Shift</Button>
+				</div>
+				<div>
+					<form id="editShiftform" name="editShiftform">
+						<Button onClick={() => editShift()} className="margin" htmlFor="nameEdit">Submit Changes</Button>
+						<p className="margin">date</p>
+						<input type="date" id="dateEdit" name="dateEdit" className="form-control anInput" defaultValue={props.currentShift.date} />
+						<p className="margin">hours</p>
+						<input type="number" id="hoursEdit" name="hoursEdit" className="form-control anInput" defaultValue={props.currentShift.hours} />
+						<p className="margin">overtime</p>
+						<input type="number" id="otEdit" name="otEdit" className="form-control anInput" defaultValue={props.currentShift.overtime} />
+					</form>
+				</div>
 				{confirmDeleteState === true && <ConfirmDelete delete={() => deleteShift()} closeModal={() => toggleDeleteShift()} />}
 				{confirmEditState === true && <ConfirmEdit submitChange={() => submitChange(
-																						document.getElementById('nameEdit'),
-																						document.getElementById('hoursEdit'),
-																						document.getElementById('otEdit')
-																					)} closeModal={() => editShift()} />} 
+					document.getElementById('nameEdit'),
+					document.getElementById('hoursEdit'),
+					document.getElementById('otEdit')
+				)} closeModal={() => editShift()} />}
 			</article>
 		</React.Fragment>
 	);

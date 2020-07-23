@@ -33,6 +33,9 @@ const user = (props) => {
 					{window.location.pathname === "/wagetrak" && 
 						<div className="editDiv" onClick={() => toggleModal()}><i className="fa fa-pencil-square-o" aria-hidden="true"></i></div>}
 				</header>
+				<section>
+					<p className="margin">Your tax rate: {props.currentUser.taxRate * 100}%</p>
+				</section>
 				<section className="buttonDiv">
 					<div onClick={() => addJobHandler()}>
 						Add Job
@@ -42,7 +45,7 @@ const user = (props) => {
 					<Jobs userJobs={props.currentUser.jobs} setJob={props.setJob} currentUser={props.currentUser} jobChange={props.updateUser} />
 				</section>
 			</main>
-			{showModal === true && <EditUser userChange={props.updateUser} user={props.currentUser} closeModal={() => toggleModal()}/>}
+			{showModal === true && <EditUser updateUser={props.updateUser} user={props.currentUser} closeModal={() => toggleModal()}/>}
 		</React.Fragment>
 	);
 }
