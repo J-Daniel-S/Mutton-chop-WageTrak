@@ -1,14 +1,16 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { withRouter } from 'react-router-dom';
 import { Button } from 'react-bootstrap';
 
 import ConfirmDelete from '../confirm/ConfirmDelete';
 import ConfirmEdit from '../confirm/ConfirmEdit';
+import UserContext from '../../context/userContext';
 import './editPeriod.css';
 
 const editPeriod = (props) => {
 	const [confirmDeleteState, setConfirmDeleteState] = useState({});
 	const [confirmEditState, setConfirmEditState] = useState({});
+	const [userState, updateUser, jobState ] = useContext(UserContext);
 
 	const toggleDeletePeriod = () => {
 		if (confirmDeleteState === true) {
@@ -18,10 +20,11 @@ const editPeriod = (props) => {
 		}
 	}
 
+	//this does not properly rerender when a payperiod is deleted
 	const deletePeriod = () => {
-		// console.log("http://localhost:8080/wageTrak/" + props.currentUser.id + "/" + props.currentJob.name + "/" + props.week.dateName);
+		// console.log("http://localhost:8080/wageTrak/" + userState.id + "/" + jobState.name + "/" + props.currentPeriod.dateName);
 		fetch(
-			"http://localhost:8080/wageTrak/" + props.currentUser.id + "/" + props.currentJob.name + "/" + props.currentPeriod.dateName,
+			"http://localhost:8080/wageTrak/" + userState.id + "/" + jobState.name + "/" + props.currentPeriod.dateName,
 			{
 				method: 'DELETE',
 				headers: {
@@ -31,9 +34,10 @@ const editPeriod = (props) => {
 				}
 			}
 		).then(res => res.json()).then(res => {
-			props.updateUser(res);
-			props.history.push("/wagetrak");
-		}).catch(err => console.log(err));
+			window.location.reload();
+			updateUser(res);
+		}).then(props.history.push("/wagetrak")
+		).catch(err => console.log(err));
 	}
 
 	const editPeriod = () => {
@@ -60,9 +64,9 @@ const editPeriod = (props) => {
 			dateName = "0" + date2 + "-" + date1;
 
 			console.log("dateName: " + dateName);
-			// console.log("http://localhost:8080/wageTrak/" + props.currentUser.id + "/" + props.currentJob.name + "/" + props.currentPeriod.dateName);
+			// console.log("http://localhost:8080/wageTrak/" + userState.id + "/" + jobState.name + "/" + props.currentPeriod.dateName);
 			fetch(
-				"http://localhost:8080/wageTrak/" + props.currentUser.id + "/" + props.currentJob.name + "/" + props.currentPeriod.dateName,
+				"http://localhost:8080/wageTrak/" + userState.id + "/" + jobState.name + "/" + props.currentPeriod.dateName,
 				{
 					method: 'PUT',
 					headers: {
@@ -75,8 +79,7 @@ const editPeriod = (props) => {
 					})
 				}
 			).then(res => res.json()).then(res => {
-				let update = res;
-				props.updateUser(update);
+				updateUser(res);
 				props.history.push("/wagetrak");
 			});
 		}

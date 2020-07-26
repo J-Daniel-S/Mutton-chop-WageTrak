@@ -1,9 +1,11 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { withRouter } from 'react-router-dom';
 
+import UserContext from '../../context/userContext';
 import './addJob.css';
 
 const addJob = (props) => {
+	const [userState, updateUser] = useContext(UserContext);
 
 	const nameClicked = () => {
 		props.history.push("/wagetrak");
@@ -25,7 +27,7 @@ const addJob = (props) => {
 		} else {
 			jobAddedHandler(fName, fHourly);
 		}
-		
+
 	}
 
 	const jobAddedHandler = (name, hourly) => {
@@ -35,7 +37,7 @@ const addJob = (props) => {
 			rate: Number.parseFloat(hourly).toFixed(2)
 		}))
 		fetch(
-			"http://localhost:8080/wageTrak/" + props.currentUser.id,
+			"http://localhost:8080/wageTrak/" + userState.id,
 			{
 				method: 'POST',
 				headers: {
@@ -49,7 +51,7 @@ const addJob = (props) => {
 				})
 			}
 		).then(res => res.json()).then(res => {
-			props.updateUser(res);
+			updateUser(res);
 			props.history.push("/wagetrak");
 		});
 	}
@@ -71,13 +73,13 @@ const addJob = (props) => {
 						<section className="submit-button" onClick={() => jobAdded(
 							document.getElementById('name'),
 							document.getElementById('hourly')
-						) }>
+						)}>
 							<p>Submit</p>
 						</section>
 					</form>
 				</main>
 				<section className="footer" onClick={() => nameClicked()}>
-					<span className="user-name">{props.currentUser.name}</span>
+					<span className="user-name">{userState.name}</span>
 				</section>
 			</article>
 			<div onClick={() => nameClicked()} className="background"></div>

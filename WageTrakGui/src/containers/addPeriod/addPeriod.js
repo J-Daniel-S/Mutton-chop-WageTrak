@@ -1,9 +1,11 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { withRouter } from 'react-router-dom';
 
+import UserContext from '../../context/userContext';
 import './addPeriod.css';
 
 const addPeriod = (props) => {
+	const [userState, updateUser, jobState] = useContext(UserContext);
 
 	const nameClicked = () => {
 		props.history.push("/wagetrak/job");
@@ -25,11 +27,13 @@ const addPeriod = (props) => {
 	}
 
 	const postPeriod = (dateName) => {
+
+
 		console.log(JSON.stringify({
 			dateName: dateName,
-		}))
+		}));
 		fetch(
-			"http://localhost:8080/wageTrak/" + props.currentUser.id + "/" + props.currentJob.name,
+			"http://localhost:8080/wageTrak/" + userState.id + "/" + jobState.name,
 			{
 				method: 'POST',
 				headers: {
@@ -42,7 +46,7 @@ const addPeriod = (props) => {
 				})
 			}
 		).then(res => res.json()).then(res => {
-			props.updateUser(res);
+			updateUser(res);
 			props.history.push('/wagetrak');
 		});
 
@@ -69,7 +73,7 @@ const addPeriod = (props) => {
 					</form>
 				</main>
 				<section className="footer" onClick={() => nameClicked()}>
-					<span className="user-name">{props.currentJob.name}</span>
+					<span className="user-name">{jobState.name}</span>
 				</section>
 			</article>
 			<div className="background" onClick={() => nameClicked()}></div>

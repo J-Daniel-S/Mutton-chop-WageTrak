@@ -1,11 +1,14 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { withRouter } from 'react-router-dom';
 
 import EditJob from '../../../modals/editJob/editJob';
+import UserContext from '../../../context/userContext';
 import './Job.css';
 
 const job = (props) => {
 	const [showModal, setModal] = useState(false);
+	// eslint-disable-next-line
+	const [userState, setUserState, jobState, setJobState, periodState, setPeriodState] = useContext(UserContext);
 
 	const clickedUserNameHandler = () => {
 		props.history.push("/wagetrak");
@@ -39,19 +42,19 @@ const job = (props) => {
 	let currentPeriodNum = 0;
 	let currentPeriodNet = 0;
 
-	if (props.currentJob) {
-		jobTitle = props.currentJob.name;
-		rate = props.currentJob.rate.toFixed(2);
+	if (jobState) {
+		jobTitle = jobState.name;
+		rate = jobState.rate.toFixed(2);
 
-		for (let period of props.currentJob.payPeriods) {
+		for (let period of jobState.payPeriods) {
 			totalGross += period.grossPay;
 		}
 
-		for (let period of props.currentJob.payPeriods) {
+		for (let period of jobState.payPeriods) {
 			totalNet += period.netPay;
 		}
 
-		for (let period of props.currentJob.payPeriods) {
+		for (let period of jobState.payPeriods) {
 			totalTax += period.taxes;
 		}
 
@@ -59,15 +62,15 @@ const job = (props) => {
 
 
 		//these three blocks grab the latest pay period
-		for (let period of props.currentJob.payPeriods) {
+		for (let period of jobState.payPeriods) {
 			payPeriods.push(Date.parse(period.dateName));
 		}
 
 		currentPeriodNum = Math.max.apply(Math, payPeriods);
 
-		for (let period of props.currentJob.payPeriods) {
+		for (let period of jobState.payPeriods) {
 			if (Date.parse(period.dateName) === currentPeriodNum) {
-				props.setPeriod(period);
+				setPeriodState(period);
 				currentPeriodNet = period.netPay;
 			}
 		}
@@ -112,9 +115,9 @@ const job = (props) => {
 						</header>
 						<div className="flexDiv">
 							<p className="margin nameDiv">
-								Current: {props.currentPeriod && <span onClick={() => periodClicked()}>{props.currentPeriod.dateName}</span>}
+								Current: {periodState && <span onClick={() => periodClicked()}>{periodState.dateName}</span>}
 							</p>
-							{props.currentPeriod.dateName && 
+							{periodState.dateName &&
 								<p className="editDiv">add shift <i className="fa fa-plus" aria-hidden="true" onClick={() => addShiftHandler()}></i></p>}
 						</div>
 					</section>
@@ -122,12 +125,7 @@ const job = (props) => {
 						<p>Start new pay period</p>
 					</section>
 				</div>}
-				{showModal === true && <EditJob 
-											updateUser={props.updateUser} 
-											currentUser={props.currentUser} 
-											currentJob={props.currentJob} 
-											closeModal={() => toggleModal()} 
-										/>}
+				{showModal === true && <EditJob />}
 			</article>
 		</React.Fragment>
 	);

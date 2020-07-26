@@ -1,14 +1,14 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { withRouter } from 'react-router-dom';
-import { Modal, Button } from 'react-bootstrap';
+import { Modal, Button, Form } from 'react-bootstrap';
 
-import ConfirmDeleteUser from './confirmDeleteUser/confirmDeleteUser';
-import ConfirmEditUser from './confirmEditUser/confirmEditUser';
+import ConfirmDelete from '../confirm/ConfirmDelete';
+import UserContext from '../../context/userContext';
 import './editUser.css';
 
 const editUser = (props) => {
-	const [ confirmDeleteState, setConfirmDeleteState ] = useState({});
-	const [ confirmEditState, setConfirmEditState ] = useState({});
+	const [confirmDeleteState, setConfirmDeleteState] = useState({});
+	const [userState, setUserState] = useContext(UserContext);
 
 	const toggleDeleteUser = () => {
 		if (confirmDeleteState === true) {
@@ -20,7 +20,7 @@ const editUser = (props) => {
 
 	const deleteUser = () => {
 		fetch(
-			"http://localhost:8080/wageTrak/users/" + props.user.id,
+			"http://localhost:8080/wageTrak/users/" + userState.id,
 			{
 				method: 'DELETE',
 				headers: {
@@ -32,42 +32,39 @@ const editUser = (props) => {
 		).then(res => {
 			//return to login here
 			console.log(res);
-			setTimeout(props.userChange(), 800);
-			setTimeout(props.history.push("/wagetrak"), 1100);
 		});
 	}
 
-	const editUser = () => {
-		if (confirmEditState === true) {
-			setConfirmEditState(false);
+	const editUser = (event) => {
+		const form = event.currentTarget;
+		event.preventDefault();
+		event.stopPropagation();
+
+		const name = form.formBasicName.value;
+
+		if (!name) {
+			alert("Name cannot be blank!");
 		} else {
-			setConfirmEditState(true);
+			fetch(
+				"http://localhost:8080/wageTrak/users",
+				{
+					method: 'PUT',
+					headers: {
+						'Content-Type': 'application/json',
+						'Access-Control-Allow-Origin': 'http://localhost:3000'
+					},
+					mode: 'cors',
+					body: JSON.stringify({
+						name: name.toLowerCase(),
+						taxRate: userState.taxRate,
+						id: userState.id
+					})
+				}
+			).then(res => res.json()).then(res => {
+				setUserState(res);
+				props.closeModal();
+			});
 		}
-	}
-
-	const changeName = (name) => {
-
-		name = name.value.replace("?", "");
-		fetch(
-			"http://localhost:8080/wageTrak/users",
-			{
-				method: 'PUT',
-				headers: {
-					'Content-Type': 'application/json',
-					'Access-Control-Allow-Origin': 'http://localhost:3000'
-				},
-				mode: 'cors',
-				body: JSON.stringify({
-					name: name.toLowerCase(),
-					id: props.user.id,
-					jobs: props.user.jobs
-				})
-			}
-		).then(res => res.json()).then(res => {
-			props.updateUser(res);
-			editUser(false);
-			props.closeModal();
-		});
 
 	}
 
@@ -78,14 +75,15 @@ const editUser = (props) => {
 					<Button onClick={() => toggleDeleteUser()}>Delete User</Button>
 				</Modal.Header>
 				<Modal.Body>
-					<form>
-						<Button onClick={() => editUser()} className="margin" htmlFor="name">Edit name</Button>
-						<input type="text" id="nameEdit" className="form-control anInput" placeholder="e.g. Roger Lord Mortimer" required />
-					</form>
+					<Form onSubmit={editUser}>
+						<Form.Group controlId="formBasicName">
+							<Form.Control type="text" placeholder="Edit name" required />
+						</Form.Group>
+						<Button type="submit" variant="primary">Edit name</Button>
+					</Form>
 				</Modal.Body>
 			</Modal.Dialog>
-			{confirmDeleteState === true && <ConfirmDeleteUser deleteUser={() => deleteUser()} closeModal={() => toggleDeleteUser()} />}
-			{confirmEditState === true && <ConfirmEditUser changeName={() => changeName(document.getElementById('nameEdit'))} closeModal={() => editUser()} />}
+			{confirmDeleteState === true && <ConfirmDelete deleteUser={() => deleteUser()} closeModal={() => toggleDeleteUser()} />}
 		</React.Fragment>
 	);
 }

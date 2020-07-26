@@ -1,13 +1,15 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { withRouter } from 'react-router-dom';
 
 import Jobs from '../../components/jobs/Jobs';
 import EditUser from '../../modals/editUser/editUser';
+import UserContext from '../../context/userContext';
 
 import './User.css';
 
 const user = (props) => {
-	const [ showModal, setShowModal ] = useState({});
+	const [showModal, setShowModal] = useState({});
+	const [userState] = useContext(UserContext);
 
 	const clickedNameHandler = () => {
 		props.history.push("/wagetrak");
@@ -25,27 +27,29 @@ const user = (props) => {
 		}
 	}
 
+	// console.log(userState);
+
 	return (
 		<React.Fragment>
 			<main className="user">
 				<header className="margin flexDiv" onClick={() => clickedNameHandler()}>
-					<div className="userName capitalize">{props.currentUser.name}</div>
-					{window.location.pathname === "/wagetrak" && 
+					<div className="userName capitalize">{userState.name}</div>
+					{window.location.pathname === "/wagetrak" &&
 						<div className="editDiv" onClick={() => toggleModal()}><i className="fa fa-pencil-square-o" aria-hidden="true"></i></div>}
 				</header>
-				<section>
-					<p className="margin">Your tax rate: {props.currentUser.taxRate * 100}%</p>
-				</section>
+				{/* <section>
+					{!isNaN(userState.taxRate) && <p className="margin">Your tax rate: {userState.taxRate * 100}%</p>}
+				</section> */}
 				<section className="buttonDiv">
 					<div onClick={() => addJobHandler()}>
 						Add Job
   					</div>
 				</section>
 				<section>
-					<Jobs userJobs={props.currentUser.jobs} setJob={props.setJob} currentUser={props.currentUser} jobChange={props.updateUser} />
+					<Jobs />
 				</section>
 			</main>
-			{showModal === true && <EditUser updateUser={props.updateUser} user={props.currentUser} closeModal={() => toggleModal()}/>}
+			{showModal === true && <EditUser closeModal={() => toggleModal()} />}
 		</React.Fragment>
 	);
 }

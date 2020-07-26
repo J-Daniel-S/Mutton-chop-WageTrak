@@ -1,3 +1,24 @@
+.navbar {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  height: 7vh;
+}
+
+.back-button-div {
+  border: 1px solid #ccc;
+}
+
+.back-button {
+  margin: 1vh;
+}
+
+.logout-button {
+  margin: 0;
+  align-self: flex-end;
+}
+
 .nav-extra {
 	width: 100vw;
 	margin: 0;
@@ -7,14 +28,6 @@
 
 .container {
   cursor: pointer;
-  width: 80px;
+  width: 60px;
   height: inherit;
-}
-
-.bar1, .bar2, .bar3 {
-  width: inherit;
-  height: 5px;
-  background-color: #5c7373;
-  margin: 6px 0;
-  transition: 0.4s;
 }

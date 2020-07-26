@@ -1,11 +1,16 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { withRouter } from 'react-router-dom';
 
 import EditPeriod from '../../../modals/editPeriod/editPeriod';
+import UserContext from '../../../context/userContext';
 import './Period.css';
 
 const payPeriod = (props) => {
 	const [showModal, setModal] = useState(false);
+	// eslint-disable-next-line
+	const [userState, setUserState, jobState, setJobState, periodState, setPeriodState, viewPeriodState, setViewPeriodState,
+		// eslint-disable-next-line
+		shiftState, setShiftState] = useContext(UserContext);
 
 	const titleClicked = () => {
 		if (window.location.pathname === "/wagetrak/job/weeks/viewWeek/shift") {
@@ -16,7 +21,7 @@ const payPeriod = (props) => {
 	}
 
 	const shiftClicked = (s) => {
-		props.setShift(s)
+		setShiftState(s)
 		if (window.location.pathname === "/wagetrak/job/weeks/viewWeek") {
 			props.history.push("/wagetrak/job/weeks/viewWeek/shift");
 		} else {
@@ -39,6 +44,8 @@ const payPeriod = (props) => {
 			setModal(true);
 		}
 	}
+
+	let shifts = props.currentPeriod.shifts.sort((a, b) => a.date < b.date ? 1 : -1);
 
 	return (
 		<React.Fragment>
@@ -70,7 +77,7 @@ const payPeriod = (props) => {
 							<p>Shifts:</p>
 						</header>
 						<ul className="shift-list">
-							{props.currentPeriod && props.currentPeriod.shifts.map(s => (
+							{props.currentPeriod && shifts.map(s => (
 								<li key={s.date} className="margin" onClick={() => shiftClicked(s)}>
 									<div>
 										{s.date}: ${s.netPay.toFixed(2)} {s.hours} hours
@@ -80,13 +87,10 @@ const payPeriod = (props) => {
 						</ul>
 					</section>
 				</div>}
-				{showModal === true && <EditPeriod 
-											updateUser={props.updateUser} 
-											currentUser={props.currentUser} 
-											currentJob={props.currentJob} 
-											closeModal={() => toggleModal()}
-											currentPeriod={props.currentPeriod} 
-										/>}
+				{showModal === true && <EditPeriod
+					closeModal={() => toggleModal()}
+					currentPeriod={props.currentPeriod}
+				/>}
 			</article>
 		</React.Fragment>
 	);

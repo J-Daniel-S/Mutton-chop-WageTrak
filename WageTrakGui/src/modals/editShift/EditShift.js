@@ -1,14 +1,19 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { withRouter } from 'react-router-dom';
 import { Button } from 'react-bootstrap';
 
 import ConfirmDelete from '../confirm/ConfirmDelete';
 import ConfirmEdit from '../confirm/ConfirmEdit';
+import UserContext from '../../context/userContext';
 import './EditShift.css';
 
 const editShift = (props) => {
 	const [confirmDeleteState, setConfirmDeleteState] = useState({});
 	const [confirmEditState, setConfirmEditState] = useState({});
+	// eslint-disable-next-line
+	const [ userState, updateUser, jobState, setJobState, periodState, setPeriodState, viewPeriodState, setViewPeriodState,
+			// eslint-disable-next-line
+						shiftState, setShiftState, jobsState, setJobsState ] = useContext(UserContext);
 
 	const toggleDeleteShift = () => {
 		if (confirmDeleteState === true) {
@@ -19,9 +24,9 @@ const editShift = (props) => {
 	}
 
 	const deleteShift = () => {
-		// console.log("http://localhost:8080/wageTrak/" + props.currentUser.id + "/" + props.currentJob.name + "/" + props.currentPeriod.dateName + "/" + props.currentShift.date);
+		// console.log("http://localhost:8080/wageTrak/" + userState.id + "/" + jobState.name + "/" + props.currentPeriod.dateName + "/" + shiftState.date);
 		fetch(
-			"http://localhost:8080/wageTrak/" + props.currentUser.id + "/" + props.currentJob.name + "/" + props.currentPeriod.dateName + "/" + props.currentShift.date,
+			"http://localhost:8080/wageTrak/" + userState.id + "/" + jobState.name + "/" + props.currentPeriod.dateName + "/" + shiftState.date,
 			{
 				method: 'DELETE',
 				headers: {
@@ -31,7 +36,7 @@ const editShift = (props) => {
 				}
 			}
 		).then(res => res.json()).then(res => {
-			props.updateUser(res);
+			updateUser(res);
 			props.history.push("/wagetrak");
 		});
 	}
@@ -77,14 +82,14 @@ const editShift = (props) => {
 
 			date = "0" + date.substring(6, 11);
 
-			if (date === props.currentShift.date && hours === props.currentShift.hours) {
+			if (date === shiftState.date && hours === shiftState.hours) {
 				props.history.push("/wagetrak");
 			} else {
 
 				console.log("date: " + date + " hours: " + hours + " overtime: " + ot);
-				// console.log("http://localhost:8080/wageTrak/" + props.currentUser.id + "/" + props.currentJob.name + "/" + props.currentPeriod.dateName + "/" + props.currentShift.date);
+				// console.log("http://localhost:8080/wageTrak/" + userState.id + "/" + jobState.name + "/" + props.currentPeriod.dateName + "/" + shiftState.date);
 				fetch(
-					"http://localhost:8080/wageTrak/" + props.currentUser.id + "/" + props.currentJob.name + "/" + props.currentPeriod.dateName + "/" + props.currentShift.date,
+					"http://localhost:8080/wageTrak/" + userState.id + "/" + jobState.name + "/" + props.currentPeriod.dateName + "/" + shiftState.date,
 					{
 						method: 'PUT',
 						headers: {
@@ -99,7 +104,7 @@ const editShift = (props) => {
 						})
 					}
 				).then(res => res.json()).then(res => {
-					props.updateUser(res);
+					updateUser(res);
 					props.history.push("/wagetrak");
 				});
 			}
@@ -117,11 +122,11 @@ const editShift = (props) => {
 					<form id="editShiftform" name="editShiftform">
 						<Button onClick={() => editShift()} className="margin" htmlFor="nameEdit">Submit Changes</Button>
 						<p className="margin">date</p>
-						<input type="date" id="dateEdit" name="dateEdit" className="form-control anInput" defaultValue={props.currentShift.date} />
+						<input type="date" id="dateEdit" name="dateEdit" className="form-control anInput" defaultValue={shiftState.date} />
 						<p className="margin">hours</p>
-						<input type="number" id="hoursEdit" name="hoursEdit" className="form-control anInput" defaultValue={props.currentShift.hours} />
+						<input type="number" id="hoursEdit" name="hoursEdit" className="form-control anInput" defaultValue={shiftState.hours} />
 						<p className="margin">overtime</p>
-						<input type="number" id="otEdit" name="otEdit" className="form-control anInput" defaultValue={props.currentShift.overtime} />
+						<input type="number" id="otEdit" name="otEdit" className="form-control anInput" defaultValue={shiftState.overtime} />
 					</form>
 				</div>
 				{confirmDeleteState === true && <ConfirmDelete delete={() => deleteShift()} closeModal={() => toggleDeleteShift()} />}
