@@ -27,32 +27,28 @@ Test user:
                     "hours": 8,
                     "grossPay": 184.56,
                     "netPay": 151.34,
-                    "taxes": 33.22,
-                    "night": false
+                    "taxes": 33.22
                   },
                   {
                     "date": "07-07",
                     "hours": 5,
                     "grossPay": 115.35,
                     "netPay": 94.56,
-                    "taxes": 20.76,
-                    "night": false
+                    "taxes": 20.76
                   },
                   {
                     "date": "07-08",
                     "hours": 8,
                     "grossPay": 184.56,
                     "netPay": 151.34,
-                    "taxes": 33.22,
-                    "night": false
+                    "taxes": 33.22
                   },
                   {
                     "date": "07-10",
                     "hours": 8,
                     "grossPay": 184.56,
                     "netPay": 151.34,
-                    "taxes": 33.22,
-                    "night": false
+                    "taxes": 33.22
                   }
               ],
               "netPay": 548.61,
@@ -67,32 +63,28 @@ Test user:
                     "hours": 8,
                     "grossPay": 184.56,
                     "netPay": 151.34,
-                    "taxes": 33.22,
-                    "night": false
+                    "taxes": 33.22
                   },
                   {
                     "date": "07-15",
                     "hours": 5,
                     "grossPay": 115.35,
                     "netPay": 94.56,
-                    "taxes": 20.76,
-                    "night": false
+                    "taxes": 20.76
                   },
                   {
                     "date": "07-16",
                     "hours": 8,
                     "grossPay": 184.56,
                     "netPay": 151.34,
-                    "taxes": 33.22,
-                    "night": false
+                    "taxes": 33.22
                   },
                   {
                     "date": "07-17",
                     "hours": 8,
                     "grossPay": 184.56,
                     "netPay": 151.34,
-                    "taxes": 33.22,
-                    "night": false
+                    "taxes": 33.22
                   }
               ],
               "netPay": 548.61,
