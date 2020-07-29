@@ -1,19 +1,67 @@
-.weeks {
+.periods {
 	text-align: left;
-	border: 1px solid #ccc;
 	width: 100vw;
-	height: 88vh;
+	height: 76vh;
 	z-index: 55;
 	position: fixed;
-	margin: 10vh 0 0 0;
-	background-color: #e6ffff;
-	overflow-y: hidden;
+	margin: 17vh 0 0 0;
+	background-image: linear-gradient(to RIGHT, #A3B4C8, #CFD8E2);
+	overflow-y: auto;
+	overflow-x: hidden;
+	font-size: 1.1em;
 }
 
-.weeksDiv {
-	border: 1px solid #ccc;
+.period-button {
+	background-image: linear-gradient(to bottom, #0a5472, #9fb1c6);
+	box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+	height: 7vh;
+	border-radius: 5px;
+	padding: 1.5vh 3vw;
+}
+
+.periods-button-text {
+	font-weight: bold;
+	text-transform: capitalize;
+	font-size: 1.15em;
+}
+
+.periodsDiv {
 	width: 100vw;
-	height: 69vh;
+	height: 60vh;
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+	align-items: center;
+}
+
+.flexDiv {
+	display: flex;
+	flex-direction: row;
+	justify-content: flex-start;
+}
+
+.small-button {
+	box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+	border-radius: 5px;
+	background-color: #9fb1c6;
+}
+
+.periods-list {
+	list-style-type: none;
+	padding: 0;
+}
+
+.periods-thumbnail {
+	display: flex;
+	text-align: left;
+	font-weight: 400;
+	width: 85vw;
+	cursor: pointer;
+	margin: 1vh 0;
+	justify-content: space-between;
+	background-image: linear-gradient(to bottom, #0a5472, #9fb1c6);
+	box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+	height: 5vh;
 }
 
 .margin {

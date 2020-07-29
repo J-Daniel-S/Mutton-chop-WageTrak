@@ -5,10 +5,10 @@ import UserContext from '../../context/userContext';
 import './addShift.css';
 
 const addShift = (props) => {
-	const [ userState, updateUser, jobState ] = useContext(UserContext);
+	const [userState, updateUser, jobState] = useContext(UserContext);
 
 	const nameClicked = () => {
-		props.history.push("/wagetrak/job/weeks");
+		props.history.push("/wagetrak/job/periods");
 	}
 
 	const shiftAdded = () => {
@@ -43,14 +43,14 @@ const addShift = (props) => {
 		const hoursWorked = Number.parseFloat(hours).toFixed(1);
 		const overWorked = Number.parseFloat(ot).toFixed(1);
 
-		console.log(JSON.stringify({
-					date: date,
-					hours: hoursWorked,
-					overtime: overWorked
-				}))
+		// console.log(JSON.stringify({
+		// 	date: date,
+		// 	hours: hoursWorked,
+		// 	overtime: overWorked
+		// }))
 		// console.log("http://localhost:8080/wageTrak/" + userState.id + "/" + jobState.name + "/" + props.currentPeriod.dateName);
 		fetch(
-			"http://localhost:8080/wageTrak/" + userState.id + "/" + jobState.name  + "/" + props.currentPeriod.dateName,
+			"http://localhost:8080/wageTrak/" + userState.id + "/" + jobState.name + "/" + props.currentPeriod.dateName,
 			{
 				method: 'POST',
 				headers: {
@@ -72,33 +72,35 @@ const addShift = (props) => {
 
 	return (
 		<React.Fragment>
-		<article className="add">
-			<header className="margin title">
-				<p>Add shift:</p>
-			</header>
-			<main>
-				<form id="addShiftForm" name="addShiftForm">
-					<section className="form-group">
-						<label className="margin" htmlFor="name">Enter start date</label>
-						<input type="date" id="name" name="name" defaultValue={props.currentPeriod.dateName.slice(0, 5)} className="form-control anInput" required></input>
-						<label className="margin" htmlFor="hours">Hours worked:</label>
-						<input type="number" id="hours" name="hours" defaultValue="0.0" className="form-control anInput" required></input>
-						<label className="margin" htmlFor="overtime">Overtime hours worked:</label>
-						<input type="number" id="ot" name="ot" defaultValue="0.0" className="form-control anInput"></input>
-						<p>Do not subtract overtime from hours worked</p>
-						<p>Overtime might make net pay calculations less accurate depending on policy and taxes</p>
-					</section>
-					<section className="submit-button" onClick={() => shiftAdded()
-					}>
-						<p>Submit</p>
-					</section>
-				</form>
-			</main>
-			<section className="footer" onClick={() => nameClicked()}>
-				<span className="name">Pay period: {props.currentPeriod.dateName}</span>
-			</section>
-		</article>
-		<div className="background" onClick={() => nameClicked()}></div>
+			<article className="add">
+				<header className="margin title">
+					<hr></hr>
+					<p>Add shift:</p>
+					<hr></hr>
+				</header>
+				<main>
+					<form id="addShiftForm" name="addShiftForm">
+						<section className="form-group">
+							<label className="margin" htmlFor="name">Enter start date</label>
+							<input type="date" id="name" name="name" defaultValue={props.currentPeriod.dateName.slice(0, 5)} className="form-control anInput" required></input>
+							<label className="margin" htmlFor="hours">Hours worked:</label>
+							<input type="number" id="hours" name="hours" defaultValue="0.0" className="form-control anInput" required></input>
+							<label className="margin" htmlFor="overtime">Overtime hours worked:</label>
+							<input type="number" id="ot" name="ot" defaultValue="0.0" className="form-control anInput"></input>
+							<p>Do not subtract overtime from hours worked</p>
+							<p>Overtime might make net pay calculations less accurate depending on policy and taxes</p>
+						</section>
+						<section className="submit-button" onClick={() => shiftAdded()
+						}>
+							<p>Submit</p>
+						</section>
+					</form>
+				</main>
+				<section className="footer" onClick={() => nameClicked()}>
+					<span className="name">Pay period: {props.currentPeriod.dateName}</span>
+				</section>
+			</article>
+			<div className="background" onClick={() => nameClicked()}></div>
 		</React.Fragment>
 	);
 }

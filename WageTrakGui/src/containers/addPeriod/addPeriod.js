@@ -5,6 +5,7 @@ import UserContext from '../../context/userContext';
 import './addPeriod.css';
 
 const addPeriod = (props) => {
+	// eslint-disable-next-line
 	const [userState, updateUser, jobState] = useContext(UserContext);
 
 	const nameClicked = () => {
@@ -12,26 +13,17 @@ const addPeriod = (props) => {
 	}
 
 	const periodAdded = (name) => {
-
-		if (name.value === '') {
-			alert('Start date cannot be blank')
-		} else {
-			let date1 = "0" + name.value.substring(6, 11);
-			let date2 = name.value.substring(0, 4);
-			const date = date1 + "-" + date2;
-			postPeriod(date);
-		}
-
-
-
+		let date1 = "0" + name.value.substring(6, 11);
+		let date2 = name.value.substring(0, 4);
+		const date = date1 + "-" + date2;
+		postPeriod(date);
 	}
 
 	const postPeriod = (dateName) => {
 
-
-		console.log(JSON.stringify({
-			dateName: dateName,
-		}));
+		// console.log(JSON.stringify({
+		// 	dateName: dateName,
+		// }));
 		fetch(
 			"http://localhost:8080/wageTrak/" + userState.id + "/" + jobState.name,
 			{
@@ -49,16 +41,18 @@ const addPeriod = (props) => {
 			updateUser(res);
 			props.history.push('/wagetrak');
 		});
-
 	}
 
 	return (
 		<React.Fragment>
-			<article className="add">
+			<article className="add-period">
 				<header className="margin title">
-					<p>Start new pay period:</p>
+					<hr></hr>
+						<p>Start new pay period:</p>
+					<hr></hr>
 				</header>
 				<main>
+
 					<form>
 						<section className="form-group">
 							<label className="margin" htmlFor="name">Enter start date</label>

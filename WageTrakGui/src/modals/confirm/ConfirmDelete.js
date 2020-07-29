@@ -1,5 +1,5 @@
 import React from 'react';
-import { Modal, Button, ButtonGroup } from 'react-bootstrap';
+import { Modal, Button } from 'react-bootstrap';
 
 const confirmDelete = (props) => {
 
@@ -7,13 +7,11 @@ const confirmDelete = (props) => {
 		<React.Fragment>
 			<Modal.Dialog>
 				<Modal.Header>
-					<p>Really delete?</p>
+					<Modal.Title>Really delete?</Modal.Title>
 				</Modal.Header>
 				<Modal.Body>
-					<ButtonGroup className="mb-2">
-						<Button onClick={() => props.delete()}><i className="fa fa-thumbs-o-up" aria-hidden="true"></i></Button>
-						<Button onClick={() => props.closeModal()}><i className="fa fa-times" aria-hidden="true"></i></Button>
-					</ButtonGroup>
+					<Button block size="sm" variant="secondary" onClick={() => props.delete()}><i className="fa fa-thumbs-o-up" aria-hidden="true"></i></Button>{'  '}
+					<Button block size="sm" variant="secondary" onClick={() => props.closeModal()}><i className="fa fa-times" aria-hidden="true"></i></Button>
 				</Modal.Body>
 			</Modal.Dialog>
 		</React.Fragment>

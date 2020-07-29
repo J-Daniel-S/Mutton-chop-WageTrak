@@ -35,12 +35,9 @@ const user = (props) => {
 				<header className="margin flexDiv" onClick={() => clickedNameHandler()}>
 					<div className="userName capitalize">{userState.name}</div>
 					{window.location.pathname === "/wagetrak" &&
-						<div className="editDiv" onClick={() => toggleModal()}><i className="fa fa-pencil-square-o" aria-hidden="true"></i></div>}
+						<div className="editDiv" onClick={() => toggleModal()}><i className="fa fa-pencil-square-o fa-lg" aria-hidden="true"></i></div>}
 				</header>
-				{/* <section>
-					{!isNaN(userState.taxRate) && <p className="margin">Your tax rate: {userState.taxRate * 100}%</p>}
-				</section> */}
-				<section className="buttonDiv">
+				<section className="add-job-button">
 					<div onClick={() => addJobHandler()}>
 						Add Job
   					</div>

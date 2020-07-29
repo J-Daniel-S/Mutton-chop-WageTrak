@@ -1,29 +1,19 @@
 .add {
-	height: 65vh;
+	height: 85vh;
 	width: 100vw;
 	position: fixed;
 	z-index: 100;
-	background-color: #b3ffff;
+    background-image: linear-gradient(to RIGHT, #A3B4C8, #CFD8E2);
 }
 
 .background {
 	opacity: 0.1;
-	height: 50vh;
+	height: 15vh;
 	width: 100vw;
 	background-color: #ccc;
 	position: fixed;
 	z-index: 90;
 	bottom: 0;
-}
-
-.footer {
-	position: absolute;
-	bottom: 0;
-	background-color: #c3ffff;
-	border: 1px solid #ccc;
-	height: 7vh;
-	width: 100vw;
-	text-align: center
 }
 
 .capitalize {

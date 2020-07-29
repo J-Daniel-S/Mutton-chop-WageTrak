@@ -13,25 +13,25 @@ const payPeriod = (props) => {
 		shiftState, setShiftState] = useContext(UserContext);
 
 	const titleClicked = () => {
-		if (window.location.pathname === "/wagetrak/job/weeks/viewWeek/shift") {
-			props.history.push("/wagetrak/job/weeks/viewWeek");
-		} else if (window.location.pathname !== "/wagetrak/job/weeks/viewWeek") {
-			props.history.push("/wagetrak/job/weeks/week");
+		if (window.location.pathname === "/wagetrak/job/periods/viewPeriod/shift") {
+			props.history.push("/wagetrak/job/periods/viewPeriod");
+		} else if (window.location.pathname !== "/wagetrak/job/periods/viewPeriod") {
+			props.history.push("/wagetrak/job/periods/period");
 		}
 	}
 
 	const shiftClicked = (s) => {
 		setShiftState(s)
-		if (window.location.pathname === "/wagetrak/job/weeks/viewWeek") {
-			props.history.push("/wagetrak/job/weeks/viewWeek/shift");
+		if (window.location.pathname === "/wagetrak/job/periods/viewPeriod") {
+			props.history.push("/wagetrak/job/periods/viewPeriod/shift");
 		} else {
-			props.history.push("/wagetrak/job/weeks/week/shift");
+			props.history.push("/wagetrak/job/periods/period/shift");
 		}
 	}
 
 	const addShiftHandler = () => {
-		if (window.location.pathname === "/wagetrak/job/weeks/viewWeek") {
-			props.history.push("/wagetrak/view-week/add-shift");
+		if (window.location.pathname === "/wagetrak/job/periods/viewPeriod") {
+			props.history.push("/wagetrak/view-period/add-shift");
 		} else {
 			props.history.push("/wagetrak/add-shift");
 		}
@@ -50,41 +50,42 @@ const payPeriod = (props) => {
 	return (
 		<React.Fragment>
 			<article className="period">
-				<header className="flexDiv" onClick={() => titleClicked()}>
-					<div className="nameDiv">
-						<p className="margin">Pay period: {props.currentPeriod.dateName}</p>
+				<header className="flex-div a-button" onClick={() => titleClicked()}>
+					<div className="period-name-div">
+						<p className="period-button-text">Pay period: {props.currentPeriod.dateName}</p>
 					</div>
-					{(window.location.pathname === "/wagetrak/job/weeks/week" ||
-						window.location.pathname === "/wagetrak/job/weeks/viewWeek") &&
+					{(window.location.pathname === "/wagetrak/job/periods/period" ||
+						window.location.pathname === "/wagetrak/job/periods/viewPeriod") &&
 						<div className="editDiv" onClick={() => toggleModal()}>
 							<i className="fa fa-pencil-square-o" aria-hidden="true"></i>
 						</div>}
 				</header>
 				{showModal === false && <div>
 					<section>
-						<p className="margin">Pay this period</p>
 						<div className="margin">
-							<p>Gross pay: ${props.currentPeriod.grossPay.toFixed(2)}</p>
-							<p>Net pay: ${props.currentPeriod.netPay.toFixed(2)}</p>
+							<p>Total pay this pay period: ${props.currentPeriod.grossPay.toFixed(2)}</p>
+							<p>After taxes: ${props.currentPeriod.netPay.toFixed(2)}</p>
 							<p>Taxes taken: ${props.currentPeriod.taxes.toFixed(2)}</p>
 						</div>
 					</section>
-					<section onClick={() => addShiftHandler()} className="buttonDiv">
+					<section onClick={() => addShiftHandler()} className="a-button center-text">
 						<p>Add Shift</p>
 					</section>
 					<section>
 						<header className="shiftHeader">
-							<p>Shifts:</p>
+							<p>Shifts this pay period:</p>
 						</header>
-						<ul className="shift-list">
-							{props.currentPeriod && shifts.map(s => (
-								<li key={s.date} className="margin" onClick={() => shiftClicked(s)}>
-									<div>
-										{s.date}: ${s.netPay.toFixed(2)} {s.hours} hours
+						<div className="scrollable">
+							<ul className="shift-list">
+								{props.currentPeriod && shifts.map(s => (
+									<li key={s.date} className="shift-thumbnail" onClick={() => shiftClicked(s)}>
+										<div>
+											{s.date}: Net pay - ${s.netPay.toFixed(2)} - {s.hours} hours worked
 							</div>
-								</li>))
-							}
-						</ul>
+									</li>))
+								}
+							</ul>
+						</div>
 					</section>
 				</div>}
 				{showModal === true && <EditPeriod

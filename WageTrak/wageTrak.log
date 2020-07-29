@@ -1,0 +1,423 @@
+20-17-26  INFO 15260 --- [restartedMain] wageTrak.WageTrakApplication             : Starting WageTrakApplication on LAPTOP-EANVMH93 with PID 15260 (C:\Users\caitwarnberg\eclipse-workspace\WageTrak\target\classes started by caitwarnberg in C:\Users\caitwarnberg\eclipse-workspace\WageTrak)
+20-17-26 DEBUG 15260 --- [restartedMain] wageTrak.WageTrakApplication             : Running with Spring Boot v2.3.1.RELEASE, Spring v5.2.7.RELEASE
+20-17-26  INFO 15260 --- [restartedMain] wageTrak.WageTrakApplication             : No active profile set, falling back to default profiles: default
+20-17-26  INFO 15260 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data MongoDB repositories in DEFAULT mode.
+20-17-26  INFO 15260 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 14ms. Found 2 MongoDB repository interfaces.
+20-17-26  INFO 15260 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+20-17-26  INFO 15260 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 453 ms
+20-17-26  INFO 15260 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+20-17-26  INFO 15260 --- [restartedMain] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+20-17-26  INFO 15260 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+20-17-26  INFO 15260 --- [restartedMain] wageTrak.WageTrakApplication             : Started WageTrakApplication in 0.757 seconds (JVM running for 8993.936)
+20-17-26  INFO 15260 --- [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+20-22-26  INFO 15260 --- [Thread-1232] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+20-22-26  INFO 15260 --- [restartedMain] wageTrak.WageTrakApplication             : Starting WageTrakApplication on LAPTOP-EANVMH93 with PID 15260 (C:\Users\caitwarnberg\eclipse-workspace\WageTrak\target\classes started by caitwarnberg in C:\Users\caitwarnberg\eclipse-workspace\WageTrak)
+20-22-26 DEBUG 15260 --- [restartedMain] wageTrak.WageTrakApplication             : Running with Spring Boot v2.3.1.RELEASE, Spring v5.2.7.RELEASE
+20-22-26  INFO 15260 --- [restartedMain] wageTrak.WageTrakApplication             : No active profile set, falling back to default profiles: default
+20-22-26  INFO 15260 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data MongoDB repositories in DEFAULT mode.
+20-22-26  INFO 15260 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 21ms. Found 2 MongoDB repository interfaces.
+20-22-26  INFO 15260 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+20-22-26  INFO 15260 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 726 ms
+20-22-26  INFO 15260 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+20-22-26  INFO 15260 --- [restartedMain] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+20-22-26  INFO 15260 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+20-22-26  INFO 15260 --- [restartedMain] wageTrak.WageTrakApplication             : Started WageTrakApplication in 1.234 seconds (JVM running for 9271.18)
+20-22-26  INFO 15260 --- [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+20-22-26  INFO 15260 --- [Thread-1407] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+20-22-26  INFO 15260 --- [restartedMain] wageTrak.WageTrakApplication             : Starting WageTrakApplication on LAPTOP-EANVMH93 with PID 15260 (C:\Users\caitwarnberg\eclipse-workspace\WageTrak\target\classes started by caitwarnberg in C:\Users\caitwarnberg\eclipse-workspace\WageTrak)
+20-22-26 DEBUG 15260 --- [restartedMain] wageTrak.WageTrakApplication             : Running with Spring Boot v2.3.1.RELEASE, Spring v5.2.7.RELEASE
+20-22-26  INFO 15260 --- [restartedMain] wageTrak.WageTrakApplication             : No active profile set, falling back to default profiles: default
+20-22-26  INFO 15260 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data MongoDB repositories in DEFAULT mode.
+20-22-26  INFO 15260 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 13ms. Found 2 MongoDB repository interfaces.
+20-22-26  INFO 15260 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+20-22-26  INFO 15260 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 396 ms
+20-22-26  INFO 15260 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+20-22-26  INFO 15260 --- [restartedMain] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+20-22-26  INFO 15260 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+20-22-26  INFO 15260 --- [restartedMain] wageTrak.WageTrakApplication             : Started WageTrakApplication in 0.705 seconds (JVM running for 9300.804)
+20-22-26  INFO 15260 --- [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+20-23-26  INFO 15260 --- [Thread-1932] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+20-23-26  INFO 15260 --- [restartedMain] wageTrak.WageTrakApplication             : Starting WageTrakApplication on LAPTOP-EANVMH93 with PID 15260 (C:\Users\caitwarnberg\eclipse-workspace\WageTrak\target\classes started by caitwarnberg in C:\Users\caitwarnberg\eclipse-workspace\WageTrak)
+20-23-26 DEBUG 15260 --- [restartedMain] wageTrak.WageTrakApplication             : Running with Spring Boot v2.3.1.RELEASE, Spring v5.2.7.RELEASE
+20-23-26  INFO 15260 --- [restartedMain] wageTrak.WageTrakApplication             : No active profile set, falling back to default profiles: default
+20-23-26  INFO 15260 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data MongoDB repositories in DEFAULT mode.
+20-23-26  INFO 15260 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 14ms. Found 2 MongoDB repository interfaces.
+20-23-26  INFO 15260 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+20-23-26  INFO 15260 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 483 ms
+20-23-26  INFO 15260 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+20-23-26  INFO 15260 --- [restartedMain] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+20-23-26  INFO 15260 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+20-23-26  INFO 15260 --- [restartedMain] wageTrak.WageTrakApplication             : Started WageTrakApplication in 0.771 seconds (JVM running for 9337.647)
+20-23-26  INFO 15260 --- [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+20-27-26  INFO 15260 --- [Thread-2107] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+20-27-26  INFO 15260 --- [restartedMain] wageTrak.WageTrakApplication             : Starting WageTrakApplication on LAPTOP-EANVMH93 with PID 15260 (C:\Users\caitwarnberg\eclipse-workspace\WageTrak\target\classes started by caitwarnberg in C:\Users\caitwarnberg\eclipse-workspace\WageTrak)
+20-27-26 DEBUG 15260 --- [restartedMain] wageTrak.WageTrakApplication             : Running with Spring Boot v2.3.1.RELEASE, Spring v5.2.7.RELEASE
+20-27-26  INFO 15260 --- [restartedMain] wageTrak.WageTrakApplication             : No active profile set, falling back to default profiles: default
+20-27-26  INFO 15260 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data MongoDB repositories in DEFAULT mode.
+20-27-26  INFO 15260 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 14ms. Found 2 MongoDB repository interfaces.
+20-27-26  INFO 15260 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+20-27-26  INFO 15260 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 436 ms
+20-27-26  INFO 15260 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+20-27-26  INFO 15260 --- [restartedMain] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+20-27-26  INFO 15260 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+20-27-26  INFO 15260 --- [restartedMain] wageTrak.WageTrakApplication             : Started WageTrakApplication in 0.731 seconds (JVM running for 9625.794)
+20-27-26  INFO 15260 --- [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+20-28-26  INFO 15260 --- [Thread-2282] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+20-28-26  INFO 15260 --- [restartedMain] wageTrak.WageTrakApplication             : Starting WageTrakApplication on LAPTOP-EANVMH93 with PID 15260 (C:\Users\caitwarnberg\eclipse-workspace\WageTrak\target\classes started by caitwarnberg in C:\Users\caitwarnberg\eclipse-workspace\WageTrak)
+20-28-26 DEBUG 15260 --- [restartedMain] wageTrak.WageTrakApplication             : Running with Spring Boot v2.3.1.RELEASE, Spring v5.2.7.RELEASE
+20-28-26  INFO 15260 --- [restartedMain] wageTrak.WageTrakApplication             : No active profile set, falling back to default profiles: default
+20-28-26  INFO 15260 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data MongoDB repositories in DEFAULT mode.
+20-28-26  INFO 15260 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 13ms. Found 2 MongoDB repository interfaces.
+20-28-26  INFO 15260 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+20-28-26  INFO 15260 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 571 ms
+20-28-26  INFO 15260 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+20-28-26  INFO 15260 --- [restartedMain] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+20-28-26  INFO 15260 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+20-28-26  INFO 15260 --- [restartedMain] wageTrak.WageTrakApplication             : Started WageTrakApplication in 0.997 seconds (JVM running for 9653.432)
+20-28-26  INFO 15260 --- [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+20-30-26  INFO 15260 --- [Thread-2807] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+20-30-26  INFO 15260 --- [restartedMain] wageTrak.WageTrakApplication             : Starting WageTrakApplication on LAPTOP-EANVMH93 with PID 15260 (C:\Users\caitwarnberg\eclipse-workspace\WageTrak\target\classes started by caitwarnberg in C:\Users\caitwarnberg\eclipse-workspace\WageTrak)
+20-30-26 DEBUG 15260 --- [restartedMain] wageTrak.WageTrakApplication             : Running with Spring Boot v2.3.1.RELEASE, Spring v5.2.7.RELEASE
+20-30-26  INFO 15260 --- [restartedMain] wageTrak.WageTrakApplication             : No active profile set, falling back to default profiles: default
+20-30-26  INFO 15260 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data MongoDB repositories in DEFAULT mode.
+20-30-26  INFO 15260 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 14ms. Found 2 MongoDB repository interfaces.
+20-30-26  INFO 15260 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+20-30-26  INFO 15260 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 521 ms
+20-30-26  INFO 15260 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+20-30-26  INFO 15260 --- [restartedMain] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+20-30-26  INFO 15260 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+20-30-26  INFO 15260 --- [restartedMain] wageTrak.WageTrakApplication             : Started WageTrakApplication in 0.83 seconds (JVM running for 9771.472)
+20-30-26  INFO 15260 --- [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+20-30-26  INFO 15260 --- [Thread-3153] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+20-31-26  INFO 15260 --- [restartedMain] wageTrak.WageTrakApplication             : Starting WageTrakApplication on LAPTOP-EANVMH93 with PID 15260 (C:\Users\caitwarnberg\eclipse-workspace\WageTrak\target\classes started by caitwarnberg in C:\Users\caitwarnberg\eclipse-workspace\WageTrak)
+20-31-26 DEBUG 15260 --- [restartedMain] wageTrak.WageTrakApplication             : Running with Spring Boot v2.3.1.RELEASE, Spring v5.2.7.RELEASE
+20-31-26  INFO 15260 --- [restartedMain] wageTrak.WageTrakApplication             : No active profile set, falling back to default profiles: default
+20-31-26  INFO 15260 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data MongoDB repositories in DEFAULT mode.
+20-31-26  INFO 15260 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 14ms. Found 2 MongoDB repository interfaces.
+20-31-26  INFO 15260 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+20-31-26  INFO 15260 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 452 ms
+20-31-26  INFO 15260 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+20-31-26  INFO 15260 --- [restartedMain] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+20-31-26  INFO 15260 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+20-31-26  INFO 15260 --- [restartedMain] wageTrak.WageTrakApplication             : Started WageTrakApplication in 0.791 seconds (JVM running for 9815.407)
+20-31-26  INFO 15260 --- [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+20-39-26  INFO 15260 --- [Thread-4028] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+20-39-26  INFO 15260 --- [restartedMain] wageTrak.WageTrakApplication             : Starting WageTrakApplication on LAPTOP-EANVMH93 with PID 15260 (C:\Users\caitwarnberg\eclipse-workspace\WageTrak\target\classes started by caitwarnberg in C:\Users\caitwarnberg\eclipse-workspace\WageTrak)
+20-39-26 DEBUG 15260 --- [restartedMain] wageTrak.WageTrakApplication             : Running with Spring Boot v2.3.1.RELEASE, Spring v5.2.7.RELEASE
+20-39-26  INFO 15260 --- [restartedMain] wageTrak.WageTrakApplication             : No active profile set, falling back to default profiles: default
+20-39-26  INFO 15260 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data MongoDB repositories in DEFAULT mode.
+20-39-26  INFO 15260 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 19ms. Found 2 MongoDB repository interfaces.
+20-39-26  INFO 15260 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+20-39-26  INFO 15260 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 939 ms
+20-39-26  INFO 15260 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+20-39-26  INFO 15260 --- [restartedMain] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+20-39-26  INFO 15260 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+20-39-26  INFO 15260 --- [restartedMain] wageTrak.WageTrakApplication             : Started WageTrakApplication in 1.261 seconds (JVM running for 10300.709)
+20-39-26  INFO 15260 --- [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+20-39-26  INFO 15260 --- [Thread-4203] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+20-39-26  INFO 15260 --- [restartedMain] wageTrak.WageTrakApplication             : Starting WageTrakApplication on LAPTOP-EANVMH93 with PID 15260 (C:\Users\caitwarnberg\eclipse-workspace\WageTrak\target\classes started by caitwarnberg in C:\Users\caitwarnberg\eclipse-workspace\WageTrak)
+20-39-26 DEBUG 15260 --- [restartedMain] wageTrak.WageTrakApplication             : Running with Spring Boot v2.3.1.RELEASE, Spring v5.2.7.RELEASE
+20-39-26  INFO 15260 --- [restartedMain] wageTrak.WageTrakApplication             : No active profile set, falling back to default profiles: default
+20-39-26  INFO 15260 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data MongoDB repositories in DEFAULT mode.
+20-39-26  INFO 15260 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 17ms. Found 2 MongoDB repository interfaces.
+20-39-26  INFO 15260 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+20-39-26  INFO 15260 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 512 ms
+20-39-26  INFO 15260 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+20-39-26  INFO 15260 --- [restartedMain] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+20-39-26  INFO 15260 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+20-39-26  INFO 15260 --- [restartedMain] wageTrak.WageTrakApplication             : Started WageTrakApplication in 0.853 seconds (JVM running for 10326.77)
+20-39-26  INFO 15260 --- [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+20-39-26  INFO 15260 --- [Thread-4728] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+20-39-26  INFO 15260 --- [restartedMain] wageTrak.WageTrakApplication             : Starting WageTrakApplication on LAPTOP-EANVMH93 with PID 15260 (C:\Users\caitwarnberg\eclipse-workspace\WageTrak\target\classes started by caitwarnberg in C:\Users\caitwarnberg\eclipse-workspace\WageTrak)
+20-39-26 DEBUG 15260 --- [restartedMain] wageTrak.WageTrakApplication             : Running with Spring Boot v2.3.1.RELEASE, Spring v5.2.7.RELEASE
+20-39-26  INFO 15260 --- [restartedMain] wageTrak.WageTrakApplication             : No active profile set, falling back to default profiles: default
+20-39-26  INFO 15260 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data MongoDB repositories in DEFAULT mode.
+20-39-26  INFO 15260 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 21ms. Found 2 MongoDB repository interfaces.
+20-39-26  INFO 15260 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+20-39-26  INFO 15260 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 610 ms
+20-39-26  INFO 15260 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+20-39-26  INFO 15260 --- [restartedMain] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+20-39-26  INFO 15260 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+20-39-26  INFO 15260 --- [restartedMain] wageTrak.WageTrakApplication             : Started WageTrakApplication in 0.946 seconds (JVM running for 10333.989)
+20-39-26  INFO 15260 --- [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+20-39-26  INFO 15260 --- [Thread-4903] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+20-40-26  INFO 15260 --- [restartedMain] wageTrak.WageTrakApplication             : Starting WageTrakApplication on LAPTOP-EANVMH93 with PID 15260 (C:\Users\caitwarnberg\eclipse-workspace\WageTrak\target\classes started by caitwarnberg in C:\Users\caitwarnberg\eclipse-workspace\WageTrak)
+20-40-26 DEBUG 15260 --- [restartedMain] wageTrak.WageTrakApplication             : Running with Spring Boot v2.3.1.RELEASE, Spring v5.2.7.RELEASE
+20-40-26  INFO 15260 --- [restartedMain] wageTrak.WageTrakApplication             : No active profile set, falling back to default profiles: default
+20-40-26  INFO 15260 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data MongoDB repositories in DEFAULT mode.
+20-40-26  INFO 15260 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 12ms. Found 2 MongoDB repository interfaces.
+20-40-26  INFO 15260 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+20-40-26  INFO 15260 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 403 ms
+20-40-26  INFO 15260 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+20-40-26  INFO 15260 --- [restartedMain] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+20-40-26  INFO 15260 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+20-40-26  INFO 15260 --- [restartedMain] wageTrak.WageTrakApplication             : Started WageTrakApplication in 0.672 seconds (JVM running for 10350.385)
+20-40-26  INFO 15260 --- [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+20-06-26  INFO 15260 --- [Thread-5253] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+20-06-26  INFO 15260 --- [restartedMain] wageTrak.WageTrakApplication             : Starting WageTrakApplication on LAPTOP-EANVMH93 with PID 15260 (C:\Users\caitwarnberg\eclipse-workspace\WageTrak\target\classes started by caitwarnberg in C:\Users\caitwarnberg\eclipse-workspace\WageTrak)
+20-06-26 DEBUG 15260 --- [restartedMain] wageTrak.WageTrakApplication             : Running with Spring Boot v2.3.1.RELEASE, Spring v5.2.7.RELEASE
+20-06-26  INFO 15260 --- [restartedMain] wageTrak.WageTrakApplication             : No active profile set, falling back to default profiles: default
+20-06-26  INFO 15260 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data MongoDB repositories in DEFAULT mode.
+20-06-26  INFO 15260 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 13ms. Found 2 MongoDB repository interfaces.
+20-06-26  INFO 15260 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+20-06-26  INFO 15260 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 412 ms
+20-06-26  INFO 15260 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+20-06-26  INFO 15260 --- [restartedMain] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+20-06-26  INFO 15260 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+20-06-26  INFO 15260 --- [restartedMain] wageTrak.WageTrakApplication             : Started WageTrakApplication in 0.685 seconds (JVM running for 11963.576)
+20-06-26  INFO 15260 --- [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+20-09-26  INFO 15260 --- [Thread-5599] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+20-09-26  INFO 15260 --- [restartedMain] wageTrak.WageTrakApplication             : Starting WageTrakApplication on LAPTOP-EANVMH93 with PID 15260 (C:\Users\caitwarnberg\eclipse-workspace\WageTrak\target\classes started by caitwarnberg in C:\Users\caitwarnberg\eclipse-workspace\WageTrak)
+20-09-26 DEBUG 15260 --- [restartedMain] wageTrak.WageTrakApplication             : Running with Spring Boot v2.3.1.RELEASE, Spring v5.2.7.RELEASE
+20-09-26  INFO 15260 --- [restartedMain] wageTrak.WageTrakApplication             : No active profile set, falling back to default profiles: default
+20-09-26  INFO 15260 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data MongoDB repositories in DEFAULT mode.
+20-09-26  INFO 15260 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 14ms. Found 2 MongoDB repository interfaces.
+20-09-26  INFO 15260 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+20-09-26  INFO 15260 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 418 ms
+20-09-26  INFO 15260 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+20-09-26  INFO 15260 --- [restartedMain] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+20-09-26  INFO 15260 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+20-09-26  INFO 15260 --- [restartedMain] wageTrak.WageTrakApplication             : Started WageTrakApplication in 0.699 seconds (JVM running for 12144.814)
+20-09-26  INFO 15260 --- [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+20-13-26  INFO 15260 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+20-13-26  INFO 15260 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 9 ms
+20-13-26 DEBUG 15260 --- [http-nio-8080-exec-1] wageTrak.WageTrakApplication             : 
+--wageTrak.controllers.UserController.getUsers with args []--
+
+20-13-26 DEBUG 15260 --- [http-nio-8080-exec-1] wageTrak.WageTrakApplication             : 
+--wageTrak.services.UserService.findAll with args []--
+
+20-13-26 DEBUG 15260 --- [http-nio-8080-exec-1] wageTrak.WageTrakApplication             : 
+
+20-13-26 DEBUG 15260 --- [http-nio-8080-exec-1] wageTrak.WageTrakApplication             : 
+
+20-13-26 DEBUG 15260 --- [http-nio-8080-exec-4] wageTrak.WageTrakApplication             : 
+--wageTrak.controllers.JobController.addJob with args [5f1d3876aba88b644faeff0d, Job [name=shoe, rate=10.0, periods=[]]]--
+
+20-13-26 DEBUG 15260 --- [http-nio-8080-exec-4] wageTrak.WageTrakApplication             : 
+--wageTrak.services.UserService.findById with args [5f1d3876aba88b644faeff0d]--
+
+20-13-26 DEBUG 15260 --- [http-nio-8080-exec-4] wageTrak.WageTrakApplication             : 
+
+20-13-26 DEBUG 15260 --- [http-nio-8080-exec-4] wageTrak.WageTrakApplication             : 
+--wageTrak.services.UserService.update with args [User [id=5f1d3876aba88b644faeff0d, name=curly jefferson, userName=curly jefferson, password=$2y$10$EHm8KsP4lwholAstwXqbzObUgRK84gkivkUH.5Y7a5lxT28FQuIsi, taxRate=0.18, jobs=[Job [name=cheesegrater, rate=23.07, periods=[PayPeriod [dateName=07-04-2020, shifts=[Shift [date=07-06, hours=8.0, grossPay=184.56, netPay=151.34, taxes=33.22, overtime=0.0], Shift [date=07-07, hours=5.0, grossPay=115.35, netPay=94.56, taxes=20.76, overtime=0.0], Shift [date=07-08, hours=8.0, grossPay=184.56, netPay=151.34, taxes=33.22, overtime=0.0], Shift [date=07-10, hours=8.0, grossPay=184.56, netPay=151.34, taxes=33.22, overtime=0.0]], netPay=548.61, grossPay=669.04, taxes=120.43], PayPeriod [dateName=07-12-2020, shifts=[Shift [date=07-13, hours=8.0, grossPay=184.56, netPay=151.34, taxes=33.22, overtime=0.0], Shift [date=07-15, hours=5.0, grossPay=115.35, netPay=94.56, taxes=20.76, overtime=0.0], Shift [date=07-16, hours=8.0, grossPay=184.56, netPay=151.34, taxes=33.22, overtime=0.0], Shift [date=07-17, hours=8.0, grossPay=184.56, netPay=151.34, taxes=33.22, overtime=0.0]], netPay=548.61, grossPay=669.04, taxes=120.43]]], Job [name=tentstaker, rate=40.0, periods=[PayPeriod [dateName=07-04-2020, shifts=[Shift [date=07-06, hours=6.0, grossPay=240.0, netPay=151.34, taxes=33.22, overtime=0.0], Shift [date=07-07, hours=5.0, grossPay=200.0, netPay=94.56, taxes=20.76, overtime=0.0], Shift [date=07-10, hours=3.0, grossPay=120.0, netPay=151.34, taxes=33.22, overtime=0.0]], netPay=430.04, grossPay=600.0, taxes=94.4]]], Job [name=tacoer, rate=56.32, periods=[]], Job [name=shoe, rate=10.0, periods=[]]]]]--
+
+20-13-26 DEBUG 15260 --- [http-nio-8080-exec-4] wageTrak.WageTrakApplication             : 
+
+20-13-26 DEBUG 15260 --- [http-nio-8080-exec-4] wageTrak.WageTrakApplication             : 
+
+20-14-26 DEBUG 15260 --- [http-nio-8080-exec-6] wageTrak.WageTrakApplication             : 
+--wageTrak.controllers.JobController.deleteJob with args [5f1d3876aba88b644faeff0d, shoe]--
+
+20-14-26 DEBUG 15260 --- [http-nio-8080-exec-6] wageTrak.WageTrakApplication             : 
+--wageTrak.services.UserService.findById with args [5f1d3876aba88b644faeff0d]--
+
+20-14-26 DEBUG 15260 --- [http-nio-8080-exec-6] wageTrak.WageTrakApplication             : 
+
+20-14-26 DEBUG 15260 --- [http-nio-8080-exec-6] wageTrak.WageTrakApplication             : 
+--wageTrak.services.UserService.update with args [User [id=5f1d3876aba88b644faeff0d, name=curly jefferson, userName=curly jefferson, password=$2y$10$EHm8KsP4lwholAstwXqbzObUgRK84gkivkUH.5Y7a5lxT28FQuIsi, taxRate=0.18, jobs=[Job [name=cheesegrater, rate=23.07, periods=[PayPeriod [dateName=07-04-2020, shifts=[Shift [date=07-06, hours=8.0, grossPay=184.56, netPay=151.34, taxes=33.22, overtime=0.0], Shift [date=07-07, hours=5.0, grossPay=115.35, netPay=94.56, taxes=20.76, overtime=0.0], Shift [date=07-08, hours=8.0, grossPay=184.56, netPay=151.34, taxes=33.22, overtime=0.0], Shift [date=07-10, hours=8.0, grossPay=184.56, netPay=151.34, taxes=33.22, overtime=0.0]], netPay=548.61, grossPay=669.04, taxes=120.43], PayPeriod [dateName=07-12-2020, shifts=[Shift [date=07-13, hours=8.0, grossPay=184.56, netPay=151.34, taxes=33.22, overtime=0.0], Shift [date=07-15, hours=5.0, grossPay=115.35, netPay=94.56, taxes=20.76, overtime=0.0], Shift [date=07-16, hours=8.0, grossPay=184.56, netPay=151.34, taxes=33.22, overtime=0.0], Shift [date=07-17, hours=8.0, grossPay=184.56, netPay=151.34, taxes=33.22, overtime=0.0]], netPay=548.61, grossPay=669.04, taxes=120.43]]], Job [name=tentstaker, rate=40.0, periods=[PayPeriod [dateName=07-04-2020, shifts=[Shift [date=07-06, hours=6.0, grossPay=240.0, netPay=151.34, taxes=33.22, overtime=0.0], Shift [date=07-07, hours=5.0, grossPay=200.0, netPay=94.56, taxes=20.76, overtime=0.0], Shift [date=07-10, hours=3.0, grossPay=120.0, netPay=151.34, taxes=33.22, overtime=0.0]], netPay=430.04, grossPay=600.0, taxes=94.4]]], Job [name=tacoer, rate=56.32, periods=[]]]]]--
+
+20-14-26 DEBUG 15260 --- [http-nio-8080-exec-6] wageTrak.WageTrakApplication             : 
+
+20-14-26 DEBUG 15260 --- [http-nio-8080-exec-6] wageTrak.WageTrakApplication             : 
+
+20-14-26  INFO 15260 --- [Thread-5774] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+20-14-26  INFO 15260 --- [restartedMain] wageTrak.WageTrakApplication             : Starting WageTrakApplication on LAPTOP-EANVMH93 with PID 15260 (C:\Users\caitwarnberg\eclipse-workspace\WageTrak\target\classes started by caitwarnberg in C:\Users\caitwarnberg\eclipse-workspace\WageTrak)
+20-14-26 DEBUG 15260 --- [restartedMain] wageTrak.WageTrakApplication             : Running with Spring Boot v2.3.1.RELEASE, Spring v5.2.7.RELEASE
+20-14-26  INFO 15260 --- [restartedMain] wageTrak.WageTrakApplication             : No active profile set, falling back to default profiles: default
+20-14-26  INFO 15260 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data MongoDB repositories in DEFAULT mode.
+20-14-26  INFO 15260 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 12ms. Found 2 MongoDB repository interfaces.
+20-14-26  INFO 15260 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+20-14-26  INFO 15260 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 420 ms
+20-14-26  INFO 15260 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+20-14-26  INFO 15260 --- [restartedMain] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+20-14-26  INFO 15260 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+20-14-26  INFO 15260 --- [restartedMain] wageTrak.WageTrakApplication             : Started WageTrakApplication in 0.734 seconds (JVM running for 12420.297)
+20-14-26  INFO 15260 --- [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+20-14-26  INFO 15260 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+20-14-26  INFO 15260 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 7 ms
+20-14-26 DEBUG 15260 --- [http-nio-8080-exec-1] wageTrak.WageTrakApplication             : 
+--wageTrak.controllers.UserController.getUsers with args []--
+
+20-14-26 DEBUG 15260 --- [http-nio-8080-exec-1] wageTrak.WageTrakApplication             : 
+--wageTrak.services.UserService.findAll with args []--
+
+20-14-26 DEBUG 15260 --- [http-nio-8080-exec-1] wageTrak.WageTrakApplication             : 
+
+20-14-26 DEBUG 15260 --- [http-nio-8080-exec-1] wageTrak.WageTrakApplication             : 
+
+20-18-26 DEBUG 15260 --- [http-nio-8080-exec-3] wageTrak.WageTrakApplication             : 
+--wageTrak.controllers.UserController.getUsers with args []--
+
+20-18-26 DEBUG 15260 --- [http-nio-8080-exec-3] wageTrak.WageTrakApplication             : 
+--wageTrak.services.UserService.findAll with args []--
+
+20-18-26 DEBUG 15260 --- [http-nio-8080-exec-3] wageTrak.WageTrakApplication             : 
+
+20-18-26 DEBUG 15260 --- [http-nio-8080-exec-3] wageTrak.WageTrakApplication             : 
+
+20-21-26  INFO 15260 --- [Thread-5949] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+20-21-26  INFO 15260 --- [restartedMain] wageTrak.WageTrakApplication             : Starting WageTrakApplication on LAPTOP-EANVMH93 with PID 15260 (C:\Users\caitwarnberg\eclipse-workspace\WageTrak\target\classes started by caitwarnberg in C:\Users\caitwarnberg\eclipse-workspace\WageTrak)
+20-21-26 DEBUG 15260 --- [restartedMain] wageTrak.WageTrakApplication             : Running with Spring Boot v2.3.1.RELEASE, Spring v5.2.7.RELEASE
+20-21-26  INFO 15260 --- [restartedMain] wageTrak.WageTrakApplication             : No active profile set, falling back to default profiles: default
+20-21-26  INFO 15260 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data MongoDB repositories in DEFAULT mode.
+20-21-26  INFO 15260 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 19ms. Found 2 MongoDB repository interfaces.
+20-21-26  INFO 15260 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+20-21-26  INFO 15260 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 578 ms
+20-21-26  INFO 15260 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+20-21-26  INFO 15260 --- [restartedMain] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+20-21-26  INFO 15260 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+20-21-26  INFO 15260 --- [restartedMain] wageTrak.WageTrakApplication             : Started WageTrakApplication in 0.89 seconds (JVM running for 12866.625)
+20-21-26  INFO 15260 --- [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+20-23-26  INFO 15260 --- [Thread-6124] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+20-23-26  INFO 15260 --- [restartedMain] wageTrak.WageTrakApplication             : Starting WageTrakApplication on LAPTOP-EANVMH93 with PID 15260 (C:\Users\caitwarnberg\eclipse-workspace\WageTrak\target\classes started by caitwarnberg in C:\Users\caitwarnberg\eclipse-workspace\WageTrak)
+20-23-26 DEBUG 15260 --- [restartedMain] wageTrak.WageTrakApplication             : Running with Spring Boot v2.3.1.RELEASE, Spring v5.2.7.RELEASE
+20-23-26  INFO 15260 --- [restartedMain] wageTrak.WageTrakApplication             : No active profile set, falling back to default profiles: default
+20-23-26  INFO 15260 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data MongoDB repositories in DEFAULT mode.
+20-23-26  INFO 15260 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 15ms. Found 2 MongoDB repository interfaces.
+20-23-26  INFO 15260 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+20-23-26  INFO 15260 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 458 ms
+20-23-26  INFO 15260 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+20-23-26  INFO 15260 --- [restartedMain] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+20-23-26  INFO 15260 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+20-23-26  INFO 15260 --- [restartedMain] wageTrak.WageTrakApplication             : Started WageTrakApplication in 0.961 seconds (JVM running for 12942.543)
+20-23-26  INFO 15260 --- [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+20-23-26  INFO 15260 --- [Thread-6299] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+20-23-26  INFO 15260 --- [restartedMain] wageTrak.WageTrakApplication             : Starting WageTrakApplication on LAPTOP-EANVMH93 with PID 15260 (C:\Users\caitwarnberg\eclipse-workspace\WageTrak\target\classes started by caitwarnberg in C:\Users\caitwarnberg\eclipse-workspace\WageTrak)
+20-23-26 DEBUG 15260 --- [restartedMain] wageTrak.WageTrakApplication             : Running with Spring Boot v2.3.1.RELEASE, Spring v5.2.7.RELEASE
+20-23-26  INFO 15260 --- [restartedMain] wageTrak.WageTrakApplication             : No active profile set, falling back to default profiles: default
+20-23-26  INFO 15260 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data MongoDB repositories in DEFAULT mode.
+20-23-26  INFO 15260 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 17ms. Found 2 MongoDB repository interfaces.
+20-23-26  INFO 15260 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+20-23-26  INFO 15260 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 492 ms
+20-23-26  INFO 15260 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+20-23-26  INFO 15260 --- [restartedMain] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+20-23-26  INFO 15260 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+20-23-26  INFO 15260 --- [restartedMain] wageTrak.WageTrakApplication             : Started WageTrakApplication in 0.828 seconds (JVM running for 12981.293)
+20-23-26  INFO 15260 --- [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+20-23-26  INFO 15260 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+20-23-26  INFO 15260 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 6 ms
+20-23-26 DEBUG 15260 --- [http-nio-8080-exec-1] wageTrak.WageTrakApplication             : 
+--wageTrak.controllers.UserController.getUsers with args []--
+
+20-23-26 DEBUG 15260 --- [http-nio-8080-exec-1] wageTrak.WageTrakApplication             : 
+--wageTrak.services.UserService.findAll with args []--
+
+20-23-26 DEBUG 15260 --- [http-nio-8080-exec-1] wageTrak.WageTrakApplication             : 
+
+20-23-26 DEBUG 15260 --- [http-nio-8080-exec-1] wageTrak.WageTrakApplication             : 
+
+20-27-26  INFO 15260 --- [Thread-6824] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+20-27-26  INFO 15260 --- [restartedMain] wageTrak.WageTrakApplication             : Starting WageTrakApplication on LAPTOP-EANVMH93 with PID 15260 (C:\Users\caitwarnberg\eclipse-workspace\WageTrak\target\classes started by caitwarnberg in C:\Users\caitwarnberg\eclipse-workspace\WageTrak)
+20-27-26 DEBUG 15260 --- [restartedMain] wageTrak.WageTrakApplication             : Running with Spring Boot v2.3.1.RELEASE, Spring v5.2.7.RELEASE
+20-27-26  INFO 15260 --- [restartedMain] wageTrak.WageTrakApplication             : No active profile set, falling back to default profiles: default
+20-27-26  INFO 15260 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data MongoDB repositories in DEFAULT mode.
+20-27-26  INFO 15260 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 12ms. Found 2 MongoDB repository interfaces.
+20-27-26  INFO 15260 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+20-27-26  INFO 15260 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 441 ms
+20-27-26  INFO 15260 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+20-27-26  INFO 15260 --- [restartedMain] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+20-27-26  INFO 15260 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+20-27-26  INFO 15260 --- [restartedMain] wageTrak.WageTrakApplication             : Started WageTrakApplication in 0.716 seconds (JVM running for 13182.771)
+20-27-26  INFO 15260 --- [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+20-27-26  INFO 15260 --- [Thread-6999] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+20-27-26  INFO 15260 --- [restartedMain] wageTrak.WageTrakApplication             : Starting WageTrakApplication on LAPTOP-EANVMH93 with PID 15260 (C:\Users\caitwarnberg\eclipse-workspace\WageTrak\target\classes started by caitwarnberg in C:\Users\caitwarnberg\eclipse-workspace\WageTrak)
+20-27-26 DEBUG 15260 --- [restartedMain] wageTrak.WageTrakApplication             : Running with Spring Boot v2.3.1.RELEASE, Spring v5.2.7.RELEASE
+20-27-26  INFO 15260 --- [restartedMain] wageTrak.WageTrakApplication             : No active profile set, falling back to default profiles: default
+20-27-26  INFO 15260 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data MongoDB repositories in DEFAULT mode.
+20-27-26  INFO 15260 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 13ms. Found 2 MongoDB repository interfaces.
+20-27-26  INFO 15260 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+20-27-26  INFO 15260 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 453 ms
+20-27-26  INFO 15260 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+20-27-26  INFO 15260 --- [restartedMain] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+20-27-26  INFO 15260 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+20-27-26  INFO 15260 --- [restartedMain] wageTrak.WageTrakApplication             : Started WageTrakApplication in 0.746 seconds (JVM running for 13198.504)
+20-27-26  INFO 15260 --- [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+20-27-26  INFO 15260 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+20-27-26  INFO 15260 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 4 ms
+20-27-26 DEBUG 15260 --- [http-nio-8080-exec-1] wageTrak.WageTrakApplication             : 
+Before --wageTrak.controllers.UserController.getUsers with args []--
+
+20-27-26 DEBUG 15260 --- [http-nio-8080-exec-1] wageTrak.WageTrakApplication             : 
+Before --wageTrak.services.UserService.findAll with args []--
+
+20-27-26 DEBUG 15260 --- [http-nio-8080-exec-1] wageTrak.WageTrakApplication             : 
+After --wageTrak.services.UserService@6b308229
+20-27-26 DEBUG 15260 --- [http-nio-8080-exec-1] wageTrak.WageTrakApplication             : 
+After --wageTrak.controllers.UserController@75af36be
+20-28-26  INFO 15260 --- [Thread-7174] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+20-28-26  INFO 15260 --- [restartedMain] wageTrak.WageTrakApplication             : Starting WageTrakApplication on LAPTOP-EANVMH93 with PID 15260 (C:\Users\caitwarnberg\eclipse-workspace\WageTrak\target\classes started by caitwarnberg in C:\Users\caitwarnberg\eclipse-workspace\WageTrak)
+20-28-26 DEBUG 15260 --- [restartedMain] wageTrak.WageTrakApplication             : Running with Spring Boot v2.3.1.RELEASE, Spring v5.2.7.RELEASE
+20-28-26  INFO 15260 --- [restartedMain] wageTrak.WageTrakApplication             : No active profile set, falling back to default profiles: default
+20-28-26  INFO 15260 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data MongoDB repositories in DEFAULT mode.
+20-28-26  INFO 15260 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 13ms. Found 2 MongoDB repository interfaces.
+20-28-26  INFO 15260 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+20-28-26  INFO 15260 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 423 ms
+20-28-26  INFO 15260 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+20-28-26  INFO 15260 --- [restartedMain] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+20-28-26  INFO 15260 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+20-28-26  INFO 15260 --- [restartedMain] wageTrak.WageTrakApplication             : Started WageTrakApplication in 0.69 seconds (JVM running for 13260.56)
+20-28-26  INFO 15260 --- [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+20-28-26  INFO 15260 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+20-28-26  INFO 15260 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 3 ms
+20-28-26 DEBUG 15260 --- [http-nio-8080-exec-1] wageTrak.WageTrakApplication             : 
+Before --wageTrak.controllers.UserController.getUsers with args []--
+
+20-28-26 DEBUG 15260 --- [http-nio-8080-exec-1] wageTrak.WageTrakApplication             : 
+Before --wageTrak.services.UserService.findAll with args []--
+
+20-28-26 DEBUG 15260 --- [http-nio-8080-exec-1] wageTrak.WageTrakApplication             : 
+After --wageTrak.services.UserService@689e18d3
+20-28-26 DEBUG 15260 --- [http-nio-8080-exec-1] wageTrak.WageTrakApplication             : 
+After --wageTrak.controllers.UserController@1553e696
+20-28-26  INFO 15260 --- [Thread-7349] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+20-28-26  INFO 15260 --- [restartedMain] wageTrak.WageTrakApplication             : Starting WageTrakApplication on LAPTOP-EANVMH93 with PID 15260 (C:\Users\caitwarnberg\eclipse-workspace\WageTrak\target\classes started by caitwarnberg in C:\Users\caitwarnberg\eclipse-workspace\WageTrak)
+20-28-26 DEBUG 15260 --- [restartedMain] wageTrak.WageTrakApplication             : Running with Spring Boot v2.3.1.RELEASE, Spring v5.2.7.RELEASE
+20-28-26  INFO 15260 --- [restartedMain] wageTrak.WageTrakApplication             : No active profile set, falling back to default profiles: default
+20-28-26  INFO 15260 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data MongoDB repositories in DEFAULT mode.
+20-28-26  INFO 15260 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 12ms. Found 2 MongoDB repository interfaces.
+20-28-26  INFO 15260 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+20-28-26  INFO 15260 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 399 ms
+20-28-26  INFO 15260 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+20-28-26  INFO 15260 --- [restartedMain] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+20-28-26  INFO 15260 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+20-28-26  INFO 15260 --- [restartedMain] wageTrak.WageTrakApplication             : Started WageTrakApplication in 0.688 seconds (JVM running for 13284.274)
+20-28-26  INFO 15260 --- [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+20-29-26  INFO 15260 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+20-29-26  INFO 15260 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 4 ms
+20-29-26 DEBUG 15260 --- [http-nio-8080-exec-1] wageTrak.WageTrakApplication             : 
+Before --wageTrak.controllers.UserController.getUsers with args []--
+
+20-29-26 DEBUG 15260 --- [http-nio-8080-exec-1] wageTrak.WageTrakApplication             : 
+Before --wageTrak.services.UserService.findAll with args []--
+
+20-29-26 DEBUG 15260 --- [http-nio-8080-exec-1] wageTrak.WageTrakApplication             : 
+After --wageTrak.services.UserService
+20-29-26 DEBUG 15260 --- [http-nio-8080-exec-1] wageTrak.WageTrakApplication             : 
+After --wageTrak.controllers.UserController
+20-29-26  INFO 15260 --- [Thread-7524] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+20-29-26  INFO 15260 --- [restartedMain] wageTrak.WageTrakApplication             : Starting WageTrakApplication on LAPTOP-EANVMH93 with PID 15260 (C:\Users\caitwarnberg\eclipse-workspace\WageTrak\target\classes started by caitwarnberg in C:\Users\caitwarnberg\eclipse-workspace\WageTrak)
+20-29-26 DEBUG 15260 --- [restartedMain] wageTrak.WageTrakApplication             : Running with Spring Boot v2.3.1.RELEASE, Spring v5.2.7.RELEASE
+20-29-26  INFO 15260 --- [restartedMain] wageTrak.WageTrakApplication             : No active profile set, falling back to default profiles: default
+20-29-26  INFO 15260 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data MongoDB repositories in DEFAULT mode.
+20-29-26  INFO 15260 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 14ms. Found 2 MongoDB repository interfaces.
+20-29-26  INFO 15260 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+20-29-26  INFO 15260 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 428 ms
+20-29-26  INFO 15260 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+20-29-26  INFO 15260 --- [restartedMain] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+20-29-26  INFO 15260 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+20-29-26  INFO 15260 --- [restartedMain] wageTrak.WageTrakApplication             : Started WageTrakApplication in 0.702 seconds (JVM running for 13343.406)
+20-29-26  INFO 15260 --- [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+20-29-26  INFO 15260 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+20-29-26  INFO 15260 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 3 ms
+20-29-26 DEBUG 15260 --- [http-nio-8080-exec-1] wageTrak.WageTrakApplication             : 
+Before --wageTrak.controllers.UserController.getUsers with args []--
+
+20-29-26 DEBUG 15260 --- [http-nio-8080-exec-1] wageTrak.WageTrakApplication             : 
+Before --wageTrak.services.UserService.findAll with args []--
+
+20-29-26 DEBUG 15260 --- [http-nio-8080-exec-1] wageTrak.WageTrakApplication             : 
+After --wageTrak.services.UserService.findAll
+20-29-26 DEBUG 15260 --- [http-nio-8080-exec-1] wageTrak.WageTrakApplication             : 
+After --wageTrak.controllers.UserController.getUsers
+20-56-26  INFO 15260 --- [Thread-7699] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'

@@ -57,13 +57,13 @@ const navbar = (props) => {
 		<React.Fragment>
 			<section className="navbar sticky-top nav-extra">
 				<div>
-					<i onClick={() => goBack()} className="fa fa-chevron-left back-button" aria-hidden="true"></i>
+					<i onClick={() => goBack()} className="fa fa-chevron-left fa-2x back-button" aria-hidden="true"></i>
 				</div>
 				<div>
-					<i onClick={() => toggleNavMenu()} className="fa fa-bars" aria-hidden="true"></i>
+					<i onClick={() => toggleNavMenu()} className="fa fa-bars fa-2x nav-toggle" aria-hidden="true"></i>
 				</div>
 				<div>
-					<i onClick={() => toggleLogout()} className="fa fa-external-link-square logout-button" aria-hidden="true"></i>
+					<i onClick={() => toggleLogout()} className="fa fa-external-link-square fa-2x logout-button" aria-hidden="true"></i>
 				</div>
 			</section>
 			{logout && !navMenu && !report && <Logout />}

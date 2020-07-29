@@ -15,17 +15,17 @@ import UserContext from '../context/userContext';
 
 import './WageTrak.css';
 
-//code logout for navbar after security
+//css for root urls, adds, edits, and modals
 
-//force re-render on delete period - done for delete job.  Test for jobs, shifts
+//code logout for navbar after security
 
 //Spring Security
 
 //eliminate bugs that aren't due to reloading
 
-//code response to duplicate query into the front end
-
 //add tests to back end
+
+//replace forms with bootstrap forms
 
 //Log4j youtube movie
 
@@ -106,29 +106,29 @@ const wageTrak = (props) => {
 						render={() => <Job />}
 					/>
 					<Route
-						path="/wagetrak/job/weeks"
+						path="/wagetrak/job/periods"
 						render={() => <PayPeriods />}
 					/>
 					<Route
-						path="/wagetrak/job/weeks/week"
+						path="/wagetrak/job/periods/period"
 						render={() => <PayPeriod
 							currentPeriod={periodState}
 						/>}
 					/>
 					<Route
-						path="/wagetrak/job/weeks/viewWeek"
+						path="/wagetrak/job/periods/viewPeriod"
 						render={() => <PayPeriod
 							currentPeriod={viewPeriodState}
 						/>}
 					/>
 					<Route
-						path="/wagetrak/job/weeks/week/shift"
+						path="/wagetrak/job/periods/period/shift"
 						render={() => <Shift
 							currentPeriod={periodState}
 						/>}
 					/>
 					<Route
-						path="/wagetrak/job/weeks/viewWeek/shift"
+						path="/wagetrak/job/periods/viewPeriod/shift"
 						render={() => <Shift
 							currentPeriod={viewPeriodState}
 						/>}
@@ -148,7 +148,7 @@ const wageTrak = (props) => {
 						/>}
 					/>
 					<Route
-						path="/wagetrak/view-week/add-shift"
+						path="/wagetrak/view-period/add-shift"
 						render={() => <AddShift
 							currentPeriod={viewPeriodState}
 						/>}

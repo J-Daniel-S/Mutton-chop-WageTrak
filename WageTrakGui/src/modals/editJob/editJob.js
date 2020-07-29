@@ -1,6 +1,6 @@
 import React, { useState, useContext } from 'react';
 import { withRouter } from 'react-router-dom';
-import { Button } from 'react-bootstrap';
+import { Button, Form } from 'react-bootstrap';
 
 import ConfirmDelete from '../confirm/ConfirmDelete';
 import ConfirmEdit from '../confirm/ConfirmEdit';
@@ -11,7 +11,7 @@ const editJob = (props) => {
 	const [confirmDeleteState, setConfirmDeleteState] = useState({});
 	const [confirmEditState, setConfirmEditState] = useState({});
 	// eslint-disable-next-line
-	const [ userState, setUserState, jobState ] = useContext(UserContext);
+	const [userState, setUserState, jobState] = useContext(UserContext);
 
 	const toggleDeleteJob = () => {
 		if (confirmDeleteState === true) {
@@ -47,16 +47,19 @@ const editJob = (props) => {
 		}
 	}
 
-	const submitChange = () => {
+	const submitChange = (event) => {
+		const form = event.currentTarget;
+		event.preventDefault();
+		event.stopPropagation();
 
-		let name = document.forms["ediJobForm"]["nameEdit"].value;
-		let rate = document.forms["editJobForm"]["rateEdit"].value;
+		let name = form.formBasicName.value;
+		let rate = form.formBasicRate.value;
 
 		if (name === "" || name === " ") {
 			name = jobState.name
 		}
 
-		if (rate === "0" || rate === "" || !rate) {
+		if (rate === "0") {
 			rate = jobState.rate;
 		}
 
@@ -66,7 +69,6 @@ const editJob = (props) => {
 			alert('Name can\'t include ? or /');
 		} else {
 
-			console.log(name + ":" + rate);
 			// console.log(	"http://localhost:8080/wageTrak/" + userState.id);
 			fetch(
 				"http://localhost:8080/wageTrak/" + userState.id + "/" + jobState.name,
@@ -93,14 +95,20 @@ const editJob = (props) => {
 		<React.Fragment>
 			<article className="theModal">
 				<div>
-					<Button onClick={() => toggleDeleteJob()}>Delete Job</Button>
-				</div>
-				<div>
-					<form id="editJobForm" name="ediJobForm">
-						<Button onClick={() => editJob()} className="margin" htmlFor="nameEdit">Edit job</Button>
-						<input type="text" id="nameEdit" name="nameEdit" className="form-control anInput" defaultValue={jobState.name} />
-						<input type="number" id="rateEdit" name="rateEdit" className="form-control anInput" defaultValue={jobState.rate} />
-					</form>
+					<hr></hr>
+					<Form onSubmit={submitChange}>
+						<Form.Label>Edit job name:</Form.Label>
+						<Form.Group controlId="formBasicName">
+							<Form.Control type="text" defaultValue={jobState.name} required />
+						</Form.Group>
+						<Form.Label>Edit hourly pay:</Form.Label>
+						<Form.Group controlId="formBasicRate">
+							<Form.Control type="decimal" defaultValue={jobState.rate} required />
+						</Form.Group>
+						<Button block variant="secondary" type="submit">Submit change</Button>
+					</Form>
+					<hr></hr>
+					<Button block variant="secondary" onClick={() => toggleDeleteJob()}>Delete Job</Button>
 				</div>
 				{confirmDeleteState === true && <ConfirmDelete delete={() => deleteJob()} closeModal={() => toggleDeleteJob()} />}
 				{confirmEditState === true && <ConfirmEdit submitChange={() => submitChange()} closeModal={() => editJob()} />}

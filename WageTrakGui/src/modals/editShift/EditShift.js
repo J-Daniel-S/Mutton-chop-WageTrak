@@ -1,19 +1,17 @@
 import React, { useState, useContext } from 'react';
 import { withRouter } from 'react-router-dom';
-import { Button } from 'react-bootstrap';
+import { Button, Form } from 'react-bootstrap';
 
 import ConfirmDelete from '../confirm/ConfirmDelete';
-import ConfirmEdit from '../confirm/ConfirmEdit';
 import UserContext from '../../context/userContext';
 import './EditShift.css';
 
 const editShift = (props) => {
-	const [confirmDeleteState, setConfirmDeleteState] = useState({});
-	const [confirmEditState, setConfirmEditState] = useState({});
+	const [confirmDeleteState, setConfirmDeleteState] = useState(false);
 	// eslint-disable-next-line
-	const [ userState, updateUser, jobState, setJobState, periodState, setPeriodState, viewPeriodState, setViewPeriodState,
-			// eslint-disable-next-line
-						shiftState, setShiftState, jobsState, setJobsState ] = useContext(UserContext);
+	const [userState, updateUser, jobState, setJobState, periodState, setPeriodState, viewPeriodState, setViewPeriodState,
+		// eslint-disable-next-line
+		shiftState, setShiftState, jobsState, setJobsState] = useContext(UserContext);
 
 	const toggleDeleteShift = () => {
 		if (confirmDeleteState === true) {
@@ -41,19 +39,14 @@ const editShift = (props) => {
 		});
 	}
 
-	const editShift = () => {
-		if (confirmEditState === true) {
-			setConfirmEditState(false);
-		} else {
-			setConfirmEditState(true);
-		}
-	}
+	const submitChange = (event) => {
+		const form = event.currentTarget;
+		event.preventDefault();
+		event.stopPropagation();
 
-	const submitChange = () => {
-
-		let date = document.forms['editShiftform']['dateEdit'].value;
-		let hours = document.forms['editShiftform']['hoursEdit'].value;
-		let ot = document.forms['editShiftform']['otEdit'].value;
+		let date = form.formBasicDate.value;
+		let hours = form.formBasicHours.value;
+		let ot = form.formBasicOvertime.value;
 
 		date = date.replace("?", "").replace("/", "-");
 		date = date.replace("/", "-");
@@ -70,10 +63,6 @@ const editShift = (props) => {
 			alert('Hours cannot be negative');
 		} else if (hours.includes("-")) {
 			alert('Overtime cannot be negative');
-		} else if (date === '') {
-			alert('Shift date cannot be empty');
-		} else if (hours === '' || ot === '' || isNaN(hours)) {
-			alert('Fields cannot be blank or negative');
 		} else if (hours <= 0) {
 			alert('Hours must be greater than 0')
 		} else if (ot < 0) {
@@ -82,11 +71,11 @@ const editShift = (props) => {
 
 			date = "0" + date.substring(6, 11);
 
-			if (date === shiftState.date && hours === shiftState.hours) {
+			if (date === shiftState.date && hours === shiftState.hours && ot === shiftState.overtime) {
 				props.history.push("/wagetrak");
 			} else {
 
-				console.log("date: " + date + " hours: " + hours + " overtime: " + ot);
+				// console.log("date: " + date + " hours: " + hours + " overtime: " + ot);
 				// console.log("http://localhost:8080/wageTrak/" + userState.id + "/" + jobState.name + "/" + props.currentPeriod.dateName + "/" + shiftState.date);
 				fetch(
 					"http://localhost:8080/wageTrak/" + userState.id + "/" + jobState.name + "/" + props.currentPeriod.dateName + "/" + shiftState.date,
@@ -115,26 +104,25 @@ const editShift = (props) => {
 	return (
 		<React.Fragment>
 			<article className="theModal">
-				<div>
-					<Button onClick={() => toggleDeleteShift()}>Delete Shift</Button>
-				</div>
-				<div>
-					<form id="editShiftform" name="editShiftform">
-						<Button onClick={() => editShift()} className="margin" htmlFor="nameEdit">Submit Changes</Button>
-						<p className="margin">date</p>
-						<input type="date" id="dateEdit" name="dateEdit" className="form-control anInput" defaultValue={shiftState.date} />
-						<p className="margin">hours</p>
-						<input type="number" id="hoursEdit" name="hoursEdit" className="form-control anInput" defaultValue={shiftState.hours} />
-						<p className="margin">overtime</p>
-						<input type="number" id="otEdit" name="otEdit" className="form-control anInput" defaultValue={shiftState.overtime} />
-					</form>
-				</div>
+				{confirmDeleteState === false && <section>
+					<hr></hr>
+					<Form onSubmit={submitChange}>
+						<Form.Label>Edit Date:</Form.Label>
+						<Form.Group controlId="formBasicDate">
+							<Form.Control type="date" defaultValue={shiftState.date} required />
+						</Form.Group>
+						<Form.Group controlId="formBasicHours">
+							<Form.Control type="decimal" defaultValue={shiftState.hours} required />
+						</Form.Group>
+						<Form.Group controlId="formBasicOvertime">
+							<Form.Control type="decimal" defaultValue={shiftState.overtime} />
+						</Form.Group>
+						<Button block variant="secondary" type="submit">Submit change</Button>
+					</Form>
+					<hr></hr>
+					<Button block variant="secondary" onClick={() => toggleDeleteShift()}>Delete Shift</Button>
+				</section>}
 				{confirmDeleteState === true && <ConfirmDelete delete={() => deleteShift()} closeModal={() => toggleDeleteShift()} />}
-				{confirmEditState === true && <ConfirmEdit submitChange={() => submitChange(
-					document.getElementById('nameEdit'),
-					document.getElementById('hoursEdit'),
-					document.getElementById('otEdit')
-				)} closeModal={() => editShift()} />}
 			</article>
 		</React.Fragment>
 	);

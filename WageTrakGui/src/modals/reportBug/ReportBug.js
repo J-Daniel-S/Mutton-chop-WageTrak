@@ -1,16 +1,18 @@
 import React, { useContext } from 'react';
 import { withRouter } from 'react-router-dom';
-import { Modal, Button } from 'react-bootstrap';
+import { Modal, Button, Form } from 'react-bootstrap';
 
 import UserContext from '../../context/userContext';
-import './ReportBug.css';
 
 const ReportBug = (props) => {
 	const [userState] = useContext(UserContext);
 
-	const submit = () => {
+	const submit = (event) => {
+		const form = event.currentTarget;
+		event.preventDefault();
+		event.stopPropagation();
 
-		let text = document.forms["reportForm"]["reportText"].value;
+		let text = form.formBasicReport.value;
 
 		if (!text) {
 			props.toggleReport();
@@ -37,13 +39,15 @@ const ReportBug = (props) => {
 	}
 
 	return (
-		<Modal.Dialog className="nav-menu">
-			<Modal.Header>
-				<form id="reportForm" name="reportForm">
-					<input type="text" id="reportText" name="reportText" className="input" placeholder="tell us what's wrong"/>
-					<Button onClick={() => submit()} htmlFor="text">Submit</Button>
-				</form>
-			</Modal.Header>
+		<Modal.Dialog>
+			<Modal.Body>
+				<Form onSubmit={submit}>
+					<Form.Group controlId="formBasicReport">
+						<Form.Control type="text" placeholder="Tell us what's wrong" />
+					</Form.Group>
+					<Button block size="sm" variant="secondary" type="submit">Submit</Button>
+				</Form>
+			</Modal.Body>
 		</Modal.Dialog>
 	);
 }

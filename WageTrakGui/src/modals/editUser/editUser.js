@@ -71,15 +71,16 @@ const editUser = (props) => {
 	return (
 		<React.Fragment>
 			<Modal.Dialog>
-				<Modal.Header>
-					<Button onClick={() => toggleDeleteUser()}>Delete User</Button>
+				<Modal.Header closeButton onClick={() => props.closeModal()}>
+					<Modal.Title>Edit user?</Modal.Title>
 				</Modal.Header>
 				<Modal.Body>
 					<Form onSubmit={editUser}>
 						<Form.Group controlId="formBasicName">
-							<Form.Control type="text" placeholder="Edit name" required />
+							<Form.Control type="text" placeholder={userState.name} required />
 						</Form.Group>
-						<Button type="submit" variant="primary">Edit name</Button>
+						<Button size="sm" block type="submit" variant="secondary">Edit name</Button>
+						<Button size="sm" block variant="secondary" onClick={() => toggleDeleteUser()}>Delete User</Button>
 					</Form>
 				</Modal.Body>
 			</Modal.Dialog>

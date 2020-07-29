@@ -2,8 +2,6 @@ import React from 'react';
 import { withRouter } from 'react-router-dom';
 import { Modal, Button } from 'react-bootstrap';
 
-import './logout.css';
-
 const logout = (props) => {
 
 	const logout = () => {
@@ -13,9 +11,7 @@ const logout = (props) => {
 
 	return (
 		<Modal.Dialog>
-			<Modal.Header className="logout">
-				<Button onClick={() => logout()} className="margin" htmlFor="name">Logout</Button>
-			</Modal.Header>
+				<Button variant="secondary" size="sm" onClick={() => logout()} className="margin" htmlFor="name">Logout</Button>
 		</Modal.Dialog>
 	);
 }

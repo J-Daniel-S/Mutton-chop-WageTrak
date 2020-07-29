@@ -5,6 +5,7 @@ import UserContext from '../../context/userContext';
 import './addJob.css';
 
 const addJob = (props) => {
+	// eslint-disable-next-line
 	const [userState, updateUser] = useContext(UserContext);
 
 	const nameClicked = () => {
@@ -31,11 +32,10 @@ const addJob = (props) => {
 	}
 
 	const jobAddedHandler = (name, hourly) => {
-		name = name.replace("?", "");
-		console.log(JSON.stringify({
-			name: name.toLowerCase(),
-			rate: Number.parseFloat(hourly).toFixed(2)
-		}))
+		// console.log(JSON.stringify({
+		// 	name: name.toLowerCase(),
+		// 	rate: Number.parseFloat(hourly).toFixed(2)
+		// }))
 		fetch(
 			"http://localhost:8080/wageTrak/" + userState.id,
 			{
@@ -60,7 +60,9 @@ const addJob = (props) => {
 		<React.Fragment>
 			<article className="addJob">
 				<header className="margin title">
+					<hr></hr>
 					<p>Add new job:</p>
+					<hr></hr>
 				</header>
 				<main>
 					<form id="addJobForm" name="addJobForm" onSubmit={() => jobAdded()}>
@@ -71,8 +73,6 @@ const addJob = (props) => {
 							<input type="number" id="hourly" name="hourly" className="form-control anInput" placeholder="$##.##" />
 						</section>
 						<section className="submit-button" onClick={() => jobAdded(
-							document.getElementById('name'),
-							document.getElementById('hourly')
 						)}>
 							<p>Submit</p>
 						</section>

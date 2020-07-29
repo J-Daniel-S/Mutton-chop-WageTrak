@@ -9,16 +9,16 @@ const payPeriods = (props) => {
 	const [userState, setUserState, job, setJob, period, setPeriod, selectedPeriod, setSelectedPeriod] = useContext(UserContext);
 
 	const headerClicked = () => {
-		props.history.push("/wagetrak/job/weeks");
+		props.history.push("/wagetrak/job/periods");
 	}
 
 	const thisPeriodClicked = () => {
-		props.history.push("/wagetrak/job/weeks/week");
+		props.history.push("/wagetrak/job/periods/period");
 	}
 
 	const periodClicked = (period) => {
 		setSelectedPeriod(period);
-		props.history.push("/wagetrak/job/weeks/viewWeek");
+		props.history.push("/wagetrak/job/periods/viewPeriod");
 	}
 
 	let periods = [...job.payPeriods];
@@ -26,16 +26,16 @@ const payPeriods = (props) => {
 	let periodsArr = periods.sort((a, b) => Date.parse(a.dateName) < Date.parse(b.dateName) ? 1 : -1);
 
 	return (
-		<article className="weeks">
-			<header className="margin" onClick={() => headerClicked()} >
-				<p>Pay periods:</p>
+		<article className="periods">
+			<header className="period-button" onClick={() => headerClicked()} >
+				<p className="periods-button-text">Pay periods:</p>
 			</header>
 			<section className="margin" onClick={() => thisPeriodClicked()} >
-				<p>Current period: {period.dateName}</p>
+				<p>Current period: <span className="small-button">{period.dateName}</span></p>
 			</section>
-			<section className="weeksDiv" >
+			<section className="periodsDiv periods-list" >
 				{periodsArr.map(p => (
-					<p key={p.dateName} onClick={() => periodClicked(p)} className="margin">{p.dateName}</p>
+					<p key={p.dateName} onClick={() => periodClicked(p)} className="margin periods-thumbnail">{p.dateName}</p>
 				))}
 			</section>
 		</article>

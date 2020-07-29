@@ -1,92 +1,55 @@
 .addJob {
-	height: 80vh;
-	width: 100vw;
-	position: fixed;
-	z-index: 100;
-	background-color: #b3ffff;
+    height: 60vh;
+    width: 100vw;
+    position: fixed;
+    z-index: 100;
+	background-image: linear-gradient(to RIGHT, #A3B4C8, #CFD8E2);
+	color: #0a3557;
+	font-size: 1.1em;
 }
 
 .background {
-	opacity: 0.1;
-	height: 20vh;
-	width: 100vw;
-	background-color: #ccc;
-	position: fixed;
-	z-index: 90;
-	bottom: 0;
+    opacity: 0.1;
+    height: 20vh;
+    width: 100vw;
+    background-color: #ccc;
+    position: fixed;
+    z-index: 90;
+    bottom: 0;
 }
 
 .footer {
-	position: absolute;
-	bottom: 0;
-	background-color: #c3ffff;
-	border: 1px solid #ccc;
-	height: 7vh;
-	width: 100vw;
-	text-align: center
+    position: absolute;
+    bottom: 0;
+	text-align: center;
+	font-weight: bold;
+	background-image: linear-gradient(to bottom, #0a5472, #9fb1c6);
+	box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+	font-size: 1.7em;
+	min-height: 8vh;
+	padding: 0.5vh 0;
 }
 
 .margin {
-	margin: 1vh 2vw;
+    margin: 1vh 2vw;
 }
 
 .user-name {
-	margin: 3vh 0 0 0;
-	font-weight: bold;
-	text-transform: capitalize
+    margin: 3vh 0 0 0;
+    font-weight: bold;
+    text-transform: capitalize
 }
 
 .title {
-	font-weight: bold;
+    font-weight: bold;
 }
 
 .submit-button {
-	border: 1px solid #ccc;
-	height: 5vh;
-	width: 100vw;
-	text-align: center;
-	margin: .5vh 0;
-}
-
-.diffBox {
-	display: flex;
-	justify-content: flex-start;
-	flex-wrap: nowrap;
-	flex-flow: row;
-	align-items: baseline;
-}
-
-.diffDiv {
-	width: 33vw;
-	margin: 0;
-	order: 1;
-}
-
-.diffList {
-	width: 100vw;
-	height: 4vh;
-	margin: 1px 0;
-	order: 1;
-	list-style: none;
-}
-
-.add-button {
-	right: 0;
-	position: absolute;
-	border: 1px solid #ccc;
-	color: #5c7373;
-	border-radius: 10%;
-	padding: 3px;
-}
-
-.minus-button {
-	border: 1px solid #ccc;
-	color: #5c7373;
-	border-radius: 10%;
-	padding: 3px;
-	align-self: flex-start;
-}
-
-.diffInput {
-	width: 30vw;
+    width: 100vw;
+    text-align: center;
+    background-image: linear-gradient(to bottom, #0a5472, #9fb1c6);
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    min-height: 7vh;
+    border-radius: 5px;
+    padding: 1.5vh 3vw;
 }

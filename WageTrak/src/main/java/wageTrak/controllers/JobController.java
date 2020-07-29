@@ -27,7 +27,6 @@ public class JobController {
 	@Autowired
 	private UserService usRepo;
 
-	// works
 	@PostMapping
 	@ResponseBody
 	public User addJob(@PathVariable("id") String userId, @RequestBody Job job) {
@@ -43,7 +42,6 @@ public class JobController {
 
 	}
 
-	// works
 	@DeleteMapping("/{jobName}")
 	@ResponseBody
 	public User deleteJob(@PathVariable("id") String userId, @PathVariable String jobName) {
@@ -56,13 +54,11 @@ public class JobController {
 			usRepo.update(user);
 			return user;
 		} else {
-			// perhaps I must needs return something else here (ask about on stack overflow)
 			return usRepo.findById(user.getId());
 		}
 
 	}
 
-	// works
 	@PutMapping("/{jobName}")
 	@ResponseBody
 	public User editJob(@PathVariable("id") String userId, @PathVariable String jobName, @RequestBody Job update) {

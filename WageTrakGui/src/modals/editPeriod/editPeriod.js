@@ -1,6 +1,6 @@
 import React, { useState, useContext } from 'react';
 import { withRouter } from 'react-router-dom';
-import { Button } from 'react-bootstrap';
+import { Button, Form } from 'react-bootstrap';
 
 import ConfirmDelete from '../confirm/ConfirmDelete';
 import ConfirmEdit from '../confirm/ConfirmEdit';
@@ -10,7 +10,7 @@ import './editPeriod.css';
 const editPeriod = (props) => {
 	const [confirmDeleteState, setConfirmDeleteState] = useState({});
 	const [confirmEditState, setConfirmEditState] = useState({});
-	const [userState, updateUser, jobState ] = useContext(UserContext);
+	const [userState, updateUser, jobState] = useContext(UserContext);
 
 	const toggleDeletePeriod = () => {
 		if (confirmDeleteState === true) {
@@ -20,7 +20,6 @@ const editPeriod = (props) => {
 		}
 	}
 
-	//this does not properly rerender when a payperiod is deleted
 	const deletePeriod = () => {
 		// console.log("http://localhost:8080/wageTrak/" + userState.id + "/" + jobState.name + "/" + props.currentPeriod.dateName);
 		fetch(
@@ -48,13 +47,14 @@ const editPeriod = (props) => {
 		}
 	}
 
-	const submitChange = () => {
+	const submitChange = (event) => {
+		const form = event.currentTarget;
+		event.preventDefault();
+		event.stopPropagation();
 
-		let dateName = document.forms["editPeriodForm"]["nameEdit"].value;
+		let dateName = form.formBasicDateName.value;
 
-		if (dateName === '') {
-			alert('Date can\'t be blank');
-		} else if (dateName === props.currentPeriod.dateName) {
+		if (dateName === props.currentPeriod.dateName) {
 			props.history.push("/wagetrak");
 		} else {
 
@@ -63,7 +63,6 @@ const editPeriod = (props) => {
 
 			dateName = "0" + date2 + "-" + date1;
 
-			console.log("dateName: " + dateName);
 			// console.log("http://localhost:8080/wageTrak/" + userState.id + "/" + jobState.name + "/" + props.currentPeriod.dateName);
 			fetch(
 				"http://localhost:8080/wageTrak/" + userState.id + "/" + jobState.name + "/" + props.currentPeriod.dateName,
@@ -89,13 +88,16 @@ const editPeriod = (props) => {
 		<React.Fragment>
 			<article className="theModal">
 				<div>
-					<Button onClick={() => toggleDeletePeriod()}>Delete Pay Period</Button>
-				</div>
-				<div>
-					<form id="editPeriodForm" name="editPeriodForm">
-						<Button onClick={() => editPeriod()} className="margin" htmlFor="nameEdit">Edit Period</Button>
-						<input type="date" id="nameEdit" className="form-control anInput" placeholder={props.currentPeriod.dateName} />
-					</form>
+					<hr></hr>
+					<Form onSubmit={submitChange}>
+						<Form.Label>Edit Date:</Form.Label>
+						<Form.Group controlId="formBasicDateName">
+							<Form.Control type="date" defaultValue={props.currentPeriod.dateName} required />
+						</Form.Group>
+						<Button block variant="secondary" type="submit">Submit change</Button>
+					</Form>
+					<hr></hr>
+					<Button block variant="secondary" onClick={() => toggleDeletePeriod()}>Delete Pay Period</Button>
 				</div>
 				{confirmDeleteState === true && <ConfirmDelete delete={() => deletePeriod()} closeModal={() => toggleDeletePeriod()} />}
 				{confirmEditState === true && <ConfirmEdit submitChange={() => submitChange()} closeModal={() => editPeriod()} />}

@@ -19,11 +19,11 @@ const job = (props) => {
 	}
 
 	const periodsClicked = () => {
-		props.history.push("/wagetrak/job/weeks");
+		props.history.push("/wagetrak/job/periods");
 	}
 
 	const periodClicked = () => {
-		props.history.push("/wagetrak/job/weeks/week");
+		props.history.push("/wagetrak/job/periods/period");
 	}
 
 	const addPeriodHandler = () => {
@@ -90,39 +90,45 @@ const job = (props) => {
 		<React.Fragment>
 			<div className="job-backdrop" onClick={() => clickedUserNameHandler()}></div>
 			<article className="job" >
-				<header className="flexDiv">
-					<div className="nameDiv" onClick={() => clickedJobNameHandler()}>
-						<p className="capitalize margin bold" >{jobTitle}</p>
+				<header className="flexDiv top-button">
+					<div className="name-div" onClick={() => clickedJobNameHandler()}>
+						<p className="job-button-text margin" >{jobTitle}</p>
 					</div>
 					{window.location.pathname === "/wagetrak/job" &&
 						<div className="editDiv" onClick={() => toggleModal()}>
-							<i className="fa fa-pencil-square-o" aria-hidden="true"></i>
+							<i className="fa fa-pencil-square-o fa-lg" aria-hidden="true"></i>
 						</div>}
 				</header>
 				{!showModal && <div>
-					<section className="section">
+					<section>
 						<div className="margin">
-							<p>Total gross pay: ${totalGross.toFixed(2)}</p>
-							<p>Net: ${totalNet.toFixed(2)}</p>
-							<p>Taxes: ${totalTax.toFixed(2)}</p>
-							<p>Net pay this period: ${currentPeriodNet.toFixed(2)}</p>
+							<hr></hr>
+							<p>Total pay before taxes: ${totalGross.toFixed(2)}</p>
+							<hr></hr>
+							<p>Total pay after taxes: ${totalNet.toFixed(2)}</p>
+							<hr></hr>
+							<p>Estimated taxes taken out: ${totalTax.toFixed(2)}</p>
+							<hr></hr>
+							<p>Pay after taxes this period: ${currentPeriodNet.toFixed(2)}</p>
+							<hr></hr>
 							<p>Hourly pay: ${rate}</p>
+							<hr></hr>
 						</div>
 					</section>
-					<section className="section">
-						<header>
-							<p className="margin" onClick={() => periodsClicked()}>Pay periods section</p>
+					<section>
+						<header className="button-look">
+							<p className="job-button-text center-text" onClick={() => periodsClicked()}>View Pay Periods</p>
 						</header>
 						<div className="flexDiv">
-							<p className="margin nameDiv">
-								Current: {periodState && <span onClick={() => periodClicked()}>{periodState.dateName}</span>}
+							<p className="margin name-div">
+								Current pay period: {periodState && <span className="small-button" onClick={() => periodClicked()}>{periodState.dateName}</span>}
 							</p>
 							{periodState.dateName &&
-								<p className="editDiv">add shift <i className="fa fa-plus" aria-hidden="true" onClick={() => addShiftHandler()}></i></p>}
+								<p className="editDiv shadow margin">add shift <i className="fa fa-plus fa-lg" aria-hidden="true" onClick={() => addShiftHandler()}></i></p>}
 						</div>
 					</section>
-					<section onClick={() => addPeriodHandler()} className="buttonDiv section">
-						<p>Start new pay period</p>
+					<section className="bottom-button button-look" onClick={() => addPeriodHandler()} >
+						<p className="job-button-text center-text">Start new pay period</p>
 					</section>
 				</div>}
 				{showModal === true && <EditJob />}

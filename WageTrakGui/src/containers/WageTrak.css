@@ -1,9 +1,9 @@
 body {
 	font-family: 'Barlow', sans-serif;
-	color: #5c7373;
+	color: #0a3557;
 	height: 92vh;
-	width: 92vw;
+	width: 100vw;
 	margin: 0;
 	padding: 0;
-	background-color: #e6ffff;
+	background-image: linear-gradient(to RIGHT, #cfd8e2, #dfe5ec);
 }

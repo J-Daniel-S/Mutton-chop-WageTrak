@@ -2,12 +2,13 @@
 	text-align: left;
 	border: 1px solid #ccc;
 	width: 100vw;
-	height: 87vh;
+	height: 83vh;
 	z-index: 50;
 	position: fixed;
-	margin: 5vh 0 0 0;
-	background-color: #b3ffff;
+	margin: 10vh 0 0 0;
+	background-image: linear-gradient(to RIGHT, #A3B4C8, #CFD8E2);
 	overflow-y: hidden;
+	font-size: 1.05em;
 }
 
 .job-backdrop {
@@ -18,23 +19,30 @@
 	opacity: 0.0;
 }
 
-.job-thumbnail {
-	text-align: left;
-	font-weight: 400;
-	border: 1px solid black;
-	width: 80vw;
-	margin: 1vh;
-	padding: 5px;
-	cursor: pointer;
-}
-
 .flexDiv {
 	display: flex;
 	flex-direction: row;
 	justify-content: flex-start;
+
 }
 
-.nameDiv {
+.top-button {
+	background-image: linear-gradient(to bottom, #0a5472, #9fb1c6);
+	box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+	height: 7vh;
+	border-radius: 5px;
+	padding: .8vh 0;
+}
+
+.button-look {
+	background-image: linear-gradient(to bottom, #0a5472, #9fb1c6);
+	box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+	height: 7vh;
+	border-radius: 5px;
+	padding: 1.8vh 0;
+}
+
+.name-div {
 	flex-grow: 3;
 }
 
@@ -56,13 +64,29 @@
 	font-weight: 700;
 }
 
-.section {
-	border: 1px solid #ccc;
+.job-button-text {
+	font-weight: bold;
+	font-size: 1.15em;
+	text-transform: capitalize;
 }
 
-.buttonDiv {
+.small-button {
+	box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+	border-radius: 5px;
+	font-size: 1.1em;
+	background-color: #9fb1c6;
+}
+
+.bottom-button {
+	margin: 3vh 0;
+}
+
+.shadow {
+	box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+	border-radius: 5px;
+	background-color: #9fb1c6;
+}
+
+.center-text {
 	text-align: center;
-	font-weight: bold;
-	margin: 1vh 0;
-	height: 5vh;
 }

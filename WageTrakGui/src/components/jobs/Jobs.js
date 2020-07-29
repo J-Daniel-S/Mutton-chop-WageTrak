@@ -50,24 +50,33 @@ const jobs = (props) => {
 
 	return (
 		<React.Fragment>
-			<div className="jobs">
+			{showModal === false && <article className="jobs">
 				<ul className="jobs-list">
 					{userState.jobs && jobs.map(j => (
-						<li className="capitalize" key={j.name}>
-							<div className="job-thumbnail">
-								<div className="job-name" onClick={() =>
+						<li key={j.name}>
+							<section className="job-thumbnail">
+								<div className="job-name capitalize" onClick={() =>
 									jobClickedHandler(j)
 								}>{j.name}</div>
 								<div onClick={() => toggleModal(j)}>
-									<i className="fa fa-times delete-button" aria-hidden="true"></i>
+									<i className="fa fa-times delete-button fa-2x" aria-hidden="true"></i>
 								</div>
-							</div>
+							</section>
 						</li>
 					)
 					)}
 				</ul>
-			</div>
-			{showModal && <ConfirmDelete delete={() => deleteJob()} closeModal={() => toggleModal()} />}
+			</article>}
+			{showModal && <section>
+				<ul className="jobs-list">
+					<li>
+						<hr></hr>
+						<p className="job-name capitalize">{job.name}</p>
+						<hr></hr>
+					</li>
+				</ul>
+				<ConfirmDelete delete={() => deleteJob()} closeModal={() => toggleModal()} />
+			</section>}
 		</React.Fragment>
 	);
 }

@@ -8,9 +8,6 @@ public class Job {
 
 	private String name;
 	private double rate;
-//	private double eveningDifferential;
-//	private double nightDifferential;
-//	private double weekendDifferential;
 	private List<PayPeriod> periods;
 
 	public Job(String name, double rate, List<PayPeriod> periods) {
@@ -47,14 +44,6 @@ public class Job {
 		this.rate = rate;
 	}
 
-//	public boolean getNight() {
-//		return night;
-//	}
-//
-//	void setNight(boolean night) {
-//		this.night = night;
-//	}
-
 	public List<PayPeriod> getPayPeriods() {
 		return periods;
 	}
@@ -64,24 +53,21 @@ public class Job {
 	}
 
 	public void deletePayPeriod(String dateName) {
-		List<PayPeriod> updatePeriods = periods.stream().filter(w -> !w.getDateName().equalsIgnoreCase(dateName))
+		List<PayPeriod> updatePeriods = periods.stream().filter(w -> !w.getDateName().equals(dateName))
 				.collect(Collectors.toList());
 		periods = updatePeriods;
 	}
 
 	public void updatePayPeriod(PayPeriod period) {
-		List<PayPeriod> updatePeriods = periods.stream()
-				.filter(p -> !p.getDateName().equalsIgnoreCase(period.getDateName())).collect(Collectors.toList());
+		List<PayPeriod> updatePeriods = periods.stream().filter(p -> !p.getDateName().equals(period.getDateName()))
+				.collect(Collectors.toList());
 		updatePeriods.add(period);
 		periods = updatePeriods;
 	}
 
-	// this should not need a null check. It cannot be accessed unless it is visible
-	// on the front end
 	public void updatePayPeriod(PayPeriod period, String oldDateName) {
-		PayPeriod oldPeriod = periods.stream().filter(p -> p.getDateName().equalsIgnoreCase(oldDateName)).findAny()
-				.get();
-		List<PayPeriod> updatePeriods = periods.stream().filter(p -> !p.getDateName().equalsIgnoreCase(oldDateName))
+		PayPeriod oldPeriod = periods.stream().filter(p -> p.getDateName().equals(oldDateName)).findAny().get();
+		List<PayPeriod> updatePeriods = periods.stream().filter(p -> !p.getDateName().equals(oldDateName))
 				.collect(Collectors.toList());
 		oldPeriod.setDateName(period.getDateName());
 		updatePeriods.add(oldPeriod);
@@ -90,12 +76,12 @@ public class Job {
 
 	public boolean payPeriodExists(PayPeriod period) {
 		List<String> periodNames = periods.stream().map(p -> p.getDateName()).collect(Collectors.toList());
-		return periodNames.stream().anyMatch(p -> p.equalsIgnoreCase(period.getDateName()));
+		return periodNames.stream().anyMatch(p -> p.equals(period.getDateName()));
 	}
 
 	public boolean payPeriodExists(String dateName) {
 		List<String> periodNames = periods.stream().map(p -> p.getDateName()).collect(Collectors.toList());
-		return periodNames.stream().anyMatch(p -> p.equalsIgnoreCase(dateName));
+		return periodNames.stream().anyMatch(p -> p.equals(dateName));
 	}
 
 	public void setPayPeriods(List<PayPeriod> periods) {
