@@ -2,7 +2,7 @@
  
 This is still very much a work in progress.
 
-This is a Spring MVC application with a React front end intended for mobile that estimates total net pay for hourly employees given a tax rate.  It still requires logging and security.  There is not yet a way to add users and this will remain the case until security is implemented.
+This is a Spring MVC application with a React front end intended for mobile that estimates total net pay for hourly employees given a tax rate.  It still requires logging and security.  There is not yet a way to add users and this will remain the case until security is implemented.  It requires that you have MongoDB and is not currently set up to use embedded Mongo.
 
 JSON for test pojos below
 
