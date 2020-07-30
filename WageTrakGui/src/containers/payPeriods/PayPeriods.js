@@ -2,7 +2,8 @@ import React, { useContext } from 'react';
 import { withRouter } from 'react-router-dom';
 
 import UserContext from '../../context/userContext';
-import './PayPeriods.css';
+
+import { PeriodsArticle, RoundedButton, LeftButtonText, PaySection, ListSection, ShadowButton, SmallThumbnail } from '../../styles/styledComponents';
 
 const payPeriods = (props) => {
 	// eslint-disable-next-line
@@ -26,19 +27,19 @@ const payPeriods = (props) => {
 	let periodsArr = periods.sort((a, b) => Date.parse(a.dateName) < Date.parse(b.dateName) ? 1 : -1);
 
 	return (
-		<article className="periods">
-			<header className="period-button" onClick={() => headerClicked()} >
-				<p className="periods-button-text">Pay periods:</p>
-			</header>
-			<section className="margin" onClick={() => thisPeriodClicked()} >
-				<p>Current period: <span className="small-button">{period.dateName}</span></p>
-			</section>
-			<section className="periodsDiv periods-list" >
+		<PeriodsArticle>
+			<RoundedButton onClick={() => headerClicked()} >
+				<LeftButtonText>Pay periods:</LeftButtonText>
+			</RoundedButton>
+			<PaySection onClick={() => thisPeriodClicked()} >
+				<p>Current period: <ShadowButton >{period.dateName}</ShadowButton></p>
+			</PaySection>
+			<ListSection>
 				{periodsArr.map(p => (
-					<p key={p.dateName} onClick={() => periodClicked(p)} className="margin periods-thumbnail">{p.dateName}</p>
+					<SmallThumbnail key={p.dateName} onClick={() => periodClicked(p)}>{p.dateName}</SmallThumbnail>
 				))}
-			</section>
-		</article>
+			</ListSection>
+		</PeriodsArticle>
 	);
 }
 

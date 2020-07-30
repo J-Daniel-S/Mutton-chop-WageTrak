@@ -1,6 +1,6 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
-import { Modal, Button } from 'react-bootstrap';
+import { Modal, Button, Fade } from 'react-bootstrap';
 
 const logout = (props) => {
 
@@ -10,9 +10,11 @@ const logout = (props) => {
 	}
 
 	return (
-		<Modal.Dialog>
+		<Fade appear in>
+			<Modal.Dialog>
 				<Button variant="secondary" size="sm" onClick={() => logout()} className="margin" htmlFor="name">Logout</Button>
-		</Modal.Dialog>
+			</Modal.Dialog>
+		</Fade>
 	);
 }
 

@@ -1,10 +1,11 @@
 import React, { useState, useContext } from 'react';
 import { withRouter } from 'react-router-dom';
-import { Button, Form } from 'react-bootstrap';
+import { Button, Form, Fade } from 'react-bootstrap';
 
 import ConfirmDelete from '../confirm/ConfirmDelete';
 import UserContext from '../../context/userContext';
-import './EditShift.css';
+
+import { EditModal, Hr } from '../../styles/styledComponents';
 
 const editShift = (props) => {
 	const [confirmDeleteState, setConfirmDeleteState] = useState(false);
@@ -103,27 +104,29 @@ const editShift = (props) => {
 
 	return (
 		<React.Fragment>
-			<article className="theModal">
-				{confirmDeleteState === false && <section>
-					<hr></hr>
-					<Form onSubmit={submitChange}>
-						<Form.Label>Edit Date:</Form.Label>
-						<Form.Group controlId="formBasicDate">
-							<Form.Control type="date" defaultValue={shiftState.date} required />
-						</Form.Group>
-						<Form.Group controlId="formBasicHours">
-							<Form.Control type="decimal" defaultValue={shiftState.hours} required />
-						</Form.Group>
-						<Form.Group controlId="formBasicOvertime">
-							<Form.Control type="decimal" defaultValue={shiftState.overtime} />
-						</Form.Group>
-						<Button block variant="secondary" type="submit">Submit change</Button>
-					</Form>
-					<hr></hr>
-					<Button block variant="secondary" onClick={() => toggleDeleteShift()}>Delete Shift</Button>
-				</section>}
-				{confirmDeleteState === true && <ConfirmDelete delete={() => deleteShift()} closeModal={() => toggleDeleteShift()} />}
-			</article>
+			<Fade appear in>
+				<EditModal>
+					{confirmDeleteState === false && <section>
+						<Hr></Hr>
+						<Form onSubmit={submitChange}>
+							<Form.Label>Edit Date:</Form.Label>
+							<Form.Group controlId="formBasicDate">
+								<Form.Control type="date" defaultValue={shiftState.date} required />
+							</Form.Group>
+							<Form.Group controlId="formBasicHours">
+								<Form.Control type="decimal" defaultValue={shiftState.hours} required />
+							</Form.Group>
+							<Form.Group controlId="formBasicOvertime">
+								<Form.Control type="decimal" defaultValue={shiftState.overtime} />
+							</Form.Group>
+							<Button block variant="secondary" type="submit">Submit change</Button>
+						</Form>
+						<Hr></Hr>
+						<Button block variant="secondary" onClick={() => toggleDeleteShift()}>Delete Shift</Button>
+					</section>}
+					{confirmDeleteState === true && <ConfirmDelete delete={() => deleteShift()} closeModal={() => toggleDeleteShift()} />}
+				</EditModal>
+			</Fade>
 		</React.Fragment>
 	);
 }

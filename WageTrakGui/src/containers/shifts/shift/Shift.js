@@ -2,7 +2,8 @@ import React, { useState, useContext } from 'react';
 
 import EditShift from '../../../modals/editShift/EditShift';
 import UserContext from '../../../context/userContext';
-import './Shift.css';
+
+import { ShiftArticle, Hr, RoundedButton, Flex3, IconButtonDiv, LeftButtonText, PaySection } from '../../../styles/styledComponents';
 
 const shift = (props) => {
 	const [showModal, setModal] = useState(false);
@@ -20,35 +21,35 @@ const shift = (props) => {
 	}
 
 	return (
-		<article className="shift">
-			<header className="shift-flex-div">
-				<div className="nameDiv">
-					<p className="shift-button-text">Shift: {shiftState.date} - ${shiftState.netPay.toFixed(2)}</p>
-				</div>
-				<div className="editDiv" onClick={() => toggleModal()} >
-					<i className="fa fa-pencil-square-o" aria-hidden="true"></i>
-				</div>
-			</header>
-			{showModal === false && <section className="margin">
-				<hr></hr>
+		<ShiftArticle>
+			<RoundedButton>
+				<Flex3>
+					<LeftButtonText>Shift: {shiftState.date} - ${shiftState.netPay.toFixed(2)}</LeftButtonText>
+				</Flex3>
+				<IconButtonDiv onClick={() => toggleModal()} >
+					<i className="fa fa-pencil-square-o fa-lg" aria-hidden="true"></i>
+				</IconButtonDiv>
+			</RoundedButton>
+			{showModal === false && <PaySection>
+				<Hr></Hr>
 				<p>Hours worked: {shiftState.hours}</p>
 				{shiftState.overtime > 0 && <div>
-					<hr></hr>
+					<Hr></Hr>
 					<p>Overtime worked: {shiftState.overtime}</p>
 				</div>}
-				<hr></hr>
+				<Hr></Hr>
 				<p>Gross pay: ${shiftState.grossPay.toFixed(2)}</p>
-				<hr></hr>
+				<Hr></Hr>
 				<p>Net pay: ${shiftState.netPay.toFixed(2)}</p>
-				<hr></hr>
+				<Hr></Hr>
 				<p>Taxes taken: ${shiftState.taxes.toFixed(2)}</p>
-				<hr></hr>
-			</section>}
+				<Hr></Hr>
+			</PaySection>}
 			{showModal === true && <EditShift
 				currentPeriod={props.currentPeriod}
 				closeModal={() => toggleModal()}
 			/>}
-		</article>
+		</ShiftArticle>
 	);
 }
 

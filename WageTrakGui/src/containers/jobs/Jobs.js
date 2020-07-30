@@ -3,7 +3,8 @@ import { withRouter } from 'react-router-dom';
 
 import UserContext from '../../context/userContext';
 import ConfirmDelete from '../../modals/confirm/ConfirmDelete';
-import './Jobs.css';
+
+import { LargeListArticle, LargeUl, LargeThumbnail, LargeTitleMargin, IconButtonDiv } from '../../styles/styledComponents';
 
 const jobs = (props) => {
 	const [showModal, setModal] = useState(false);
@@ -50,31 +51,33 @@ const jobs = (props) => {
 
 	return (
 		<React.Fragment>
-			{showModal === false && <article className="jobs">
-				<ul className="jobs-list">
+			{showModal === false && <LargeListArticle>
+				<LargeUl>
 					{userState.jobs && jobs.map(j => (
 						<li key={j.name}>
-							<section className="job-thumbnail">
-								<div className="job-name capitalize" onClick={() =>
+							<LargeThumbnail>
+								<LargeTitleMargin onClick={() =>
 									jobClickedHandler(j)
-								}>{j.name}</div>
-								<div onClick={() => toggleModal(j)}>
-									<i className="fa fa-times delete-button fa-2x" aria-hidden="true"></i>
-								</div>
-							</section>
+								}>{j.name}</LargeTitleMargin>
+								<IconButtonDiv onClick={() => toggleModal(j)}>
+									<i className="fa fa-times fa-2x" aria-hidden="true"></i>
+								</IconButtonDiv>
+							</LargeThumbnail>
 						</li>
 					)
 					)}
-				</ul>
-			</article>}
+				</LargeUl>
+			</LargeListArticle>}
 			{showModal && <section>
-				<ul className="jobs-list">
+				<LargeUl>
 					<li>
 						<hr></hr>
-						<p className="job-name capitalize">{job.name}</p>
+						<LargeTitleMargin>
+							<p>{job.name}</p>
+						</LargeTitleMargin>
 						<hr></hr>
 					</li>
-				</ul>
+				</LargeUl>
 				<ConfirmDelete delete={() => deleteJob()} closeModal={() => toggleModal()} />
 			</section>}
 		</React.Fragment>

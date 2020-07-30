@@ -1,11 +1,12 @@
 import React, { useState, useContext } from 'react';
 import { withRouter } from 'react-router-dom';
-import { Button, Form } from 'react-bootstrap';
+import { Button, Form, Fade } from 'react-bootstrap';
 
 import ConfirmDelete from '../confirm/ConfirmDelete';
 import ConfirmEdit from '../confirm/ConfirmEdit';
 import UserContext from '../../context/userContext';
-import './editPeriod.css';
+
+import { EditModal, Hr } from '../../styles/styledComponents';
 
 const editPeriod = (props) => {
 	const [confirmDeleteState, setConfirmDeleteState] = useState({});
@@ -86,22 +87,24 @@ const editPeriod = (props) => {
 
 	return (
 		<React.Fragment>
-			<article className="theModal">
-				<div>
-					<hr></hr>
-					<Form onSubmit={submitChange}>
-						<Form.Label>Edit Date:</Form.Label>
-						<Form.Group controlId="formBasicDateName">
-							<Form.Control type="date" defaultValue={props.currentPeriod.dateName} required />
-						</Form.Group>
-						<Button block variant="secondary" type="submit">Submit change</Button>
-					</Form>
-					<hr></hr>
-					<Button block variant="secondary" onClick={() => toggleDeletePeriod()}>Delete Pay Period</Button>
-				</div>
-				{confirmDeleteState === true && <ConfirmDelete delete={() => deletePeriod()} closeModal={() => toggleDeletePeriod()} />}
-				{confirmEditState === true && <ConfirmEdit submitChange={() => submitChange()} closeModal={() => editPeriod()} />}
-			</article>
+			<Fade appear in>
+				<EditModal>
+					<div>
+						<Hr></Hr>
+						<Form onSubmit={submitChange}>
+							<Form.Label>Edit Date:</Form.Label>
+							<Form.Group controlId="formBasicDateName">
+								<Form.Control type="date" defaultValue={props.currentPeriod.dateName} required />
+							</Form.Group>
+							<Button block variant="secondary" type="submit">Submit change</Button>
+						</Form>
+						<Hr></Hr>
+						<Button block variant="secondary" onClick={() => toggleDeletePeriod()}>Delete Pay Period</Button>
+					</div>
+					{confirmDeleteState === true && <ConfirmDelete delete={() => deletePeriod()} closeModal={() => toggleDeletePeriod()} />}
+					{confirmEditState === true && <ConfirmEdit submitChange={() => submitChange()} closeModal={() => editPeriod()} />}
+				</EditModal>
+			</Fade>
 		</React.Fragment>
 	);
 }

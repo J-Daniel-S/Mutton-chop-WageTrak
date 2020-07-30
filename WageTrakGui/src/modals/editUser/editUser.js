@@ -1,10 +1,9 @@
 import React, { useState, useContext } from 'react';
 import { withRouter } from 'react-router-dom';
-import { Modal, Button, Form } from 'react-bootstrap';
+import { Modal, Button, Form, Fade } from 'react-bootstrap';
 
 import ConfirmDelete from '../confirm/ConfirmDelete';
 import UserContext from '../../context/userContext';
-import './editUser.css';
 
 const editUser = (props) => {
 	const [confirmDeleteState, setConfirmDeleteState] = useState({});
@@ -70,20 +69,22 @@ const editUser = (props) => {
 
 	return (
 		<React.Fragment>
-			<Modal.Dialog>
-				<Modal.Header closeButton onClick={() => props.closeModal()}>
-					<Modal.Title>Edit user?</Modal.Title>
-				</Modal.Header>
-				<Modal.Body>
-					<Form onSubmit={editUser}>
-						<Form.Group controlId="formBasicName">
-							<Form.Control type="text" placeholder={userState.name} required />
-						</Form.Group>
-						<Button size="sm" block type="submit" variant="secondary">Edit name</Button>
-						<Button size="sm" block variant="secondary" onClick={() => toggleDeleteUser()}>Delete User</Button>
-					</Form>
-				</Modal.Body>
-			</Modal.Dialog>
+			<Fade appear in>
+				<Modal.Dialog>
+					<Modal.Header closeButton onClick={() => props.closeModal()}>
+						<Modal.Title>Edit user?</Modal.Title>
+					</Modal.Header>
+					<Modal.Body>
+						<Form onSubmit={editUser}>
+							<Form.Group controlId="formBasicName">
+								<Form.Control type="text" placeholder={userState.name} required />
+							</Form.Group>
+							<Button size="sm" block type="submit" variant="secondary">Edit name</Button>
+							<Button size="sm" block variant="secondary" onClick={() => toggleDeleteUser()}>Delete User</Button>
+						</Form>
+					</Modal.Body>
+				</Modal.Dialog>
+			</Fade>
 			{confirmDeleteState === true && <ConfirmDelete deleteUser={() => deleteUser()} closeModal={() => toggleDeleteUser()} />}
 		</React.Fragment>
 	);

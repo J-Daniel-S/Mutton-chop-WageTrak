@@ -3,7 +3,11 @@ import { withRouter } from 'react-router-dom';
 
 import EditJob from '../../../modals/editJob/editJob';
 import UserContext from '../../../context/userContext';
-import './Job.css';
+
+import {
+	Backdrop, JobArticle, Hr, RoundedButton, Flex3, Flex0, LeftButtonText, PaySection, IconButtonDiv, RoundedButtonCentered,
+	CenterButtonText, FlexDiv, FlexText, ShadowButton
+} from '../../../styles/styledComponents';
 
 const job = (props) => {
 	const [showModal, setModal] = useState(false);
@@ -11,7 +15,7 @@ const job = (props) => {
 	const [userState, setUserState, jobState, setJobState, periodState, setPeriodState] = useContext(UserContext);
 
 	const clickedUserNameHandler = () => {
-		props.history.push("/wagetrak");
+		setTimeout(props.history.push("/wagetrak"), 501);
 	}
 
 	const clickedJobNameHandler = () => {
@@ -88,51 +92,56 @@ const job = (props) => {
 
 	return (
 		<React.Fragment>
-			<div className="job-backdrop" onClick={() => clickedUserNameHandler()}></div>
-			<article className="job" >
-				<header className="flexDiv top-button">
-					<div className="name-div" onClick={() => clickedJobNameHandler()}>
-						<p className="job-button-text margin" >{jobTitle}</p>
-					</div>
+			<Backdrop onClick={() => clickedUserNameHandler()}></Backdrop>
+			<JobArticle>
+				<RoundedButton>
+					<Flex3 onClick={() => clickedJobNameHandler()}>
+						<LeftButtonText>{jobTitle}</LeftButtonText>
+					</Flex3>
 					{window.location.pathname === "/wagetrak/job" &&
-						<div className="editDiv" onClick={() => toggleModal()}>
+						<IconButtonDiv onClick={() => toggleModal()}>
 							<i className="fa fa-pencil-square-o fa-lg" aria-hidden="true"></i>
-						</div>}
-				</header>
+						</IconButtonDiv>}
+				</RoundedButton>
 				{!showModal && <div>
+					<PaySection>
+						<Hr></Hr>
+						<p>Total pay before taxes: ${totalGross.toFixed(2)}</p>
+						<Hr></Hr>
+						<p>Total pay after taxes: ${totalNet.toFixed(2)}</p>
+						<Hr></Hr>
+						<p>Estimated taxes taken out: ${totalTax.toFixed(2)}</p>
+						<Hr></Hr>
+						<p>Pay after taxes this period: ${currentPeriodNet.toFixed(2)}</p>
+						<Hr></Hr>
+						<p>Hourly pay: ${rate}</p>
+						<Hr></Hr>
+					</PaySection>
 					<section>
-						<div className="margin">
-							<hr></hr>
-							<p>Total pay before taxes: ${totalGross.toFixed(2)}</p>
-							<hr></hr>
-							<p>Total pay after taxes: ${totalNet.toFixed(2)}</p>
-							<hr></hr>
-							<p>Estimated taxes taken out: ${totalTax.toFixed(2)}</p>
-							<hr></hr>
-							<p>Pay after taxes this period: ${currentPeriodNet.toFixed(2)}</p>
-							<hr></hr>
-							<p>Hourly pay: ${rate}</p>
-							<hr></hr>
-						</div>
-					</section>
-					<section>
-						<header className="button-look">
-							<p className="job-button-text center-text" onClick={() => periodsClicked()}>View Pay Periods</p>
-						</header>
-						<div className="flexDiv">
-							<p className="margin name-div">
-								Current pay period: {periodState && <span className="small-button" onClick={() => periodClicked()}>{periodState.dateName}</span>}
-							</p>
+						<RoundedButtonCentered>
+							<CenterButtonText onClick={() => periodsClicked()}>View Pay Periods</CenterButtonText>
+						</RoundedButtonCentered>
+						<FlexDiv>
+							<Flex3>
+								<FlexText>
+									Current pay period: {periodState && <ShadowButton onClick={() => periodClicked()}>{periodState.dateName}</ShadowButton>}
+								</FlexText>
+							</Flex3>
 							{periodState.dateName &&
-								<p className="editDiv shadow margin">add shift <i className="fa fa-plus fa-lg" aria-hidden="true" onClick={() => addShiftHandler()}></i></p>}
-						</div>
+								<Flex0>
+									<FlexText>
+										<ShadowButton>add shift <i className="fa fa-plus fa-lg" aria-hidden="true" onClick={() => addShiftHandler()}></i>
+										</ShadowButton>
+									</FlexText>
+								</Flex0>}
+						</FlexDiv>
 					</section>
-					<section className="bottom-button button-look" onClick={() => addPeriodHandler()} >
-						<p className="job-button-text center-text">Start new pay period</p>
-					</section>
+					<RoundedButtonCentered onClick={() => addPeriodHandler()} >
+						<CenterButtonText >Start new pay period</CenterButtonText>
+					</RoundedButtonCentered>
 				</div>}
 				{showModal === true && <EditJob />}
-			</article>
+			</JobArticle>
 		</React.Fragment>
 	);
 }

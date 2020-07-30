@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import { withRouter } from 'react-router-dom';
-import { Modal, Button, Form } from 'react-bootstrap';
+import { Modal, Button, Form, Fade } from 'react-bootstrap';
 
 import UserContext from '../../context/userContext';
 
@@ -40,17 +40,19 @@ const navMenu = (props) => {
 	let placeholder = userState.taxRate * 100 + '% tax';
 
 	return (
-		<Modal.Dialog>
-			<Modal.Body>
-				<Form onSubmit={editUser}>
-					<Form.Group controlId="formBasicTaxRate">
-						<Form.Control type="number" placeholder={placeholder} required max="100" />
-					</Form.Group>
-					<Button block size="sm" variant="secondary" type="submit">Edit tax rate</Button>
-					<Button block size="sm" variant="secondary" onClick={() => props.toggleReport()}>Report bug</Button>
-				</Form>
-			</Modal.Body>
-		</Modal.Dialog>
+		<Fade appear in>
+			<Modal.Dialog>
+				<Modal.Body>
+					<Form onSubmit={editUser}>
+						<Form.Group controlId="formBasicTaxRate">
+							<Form.Control type="number" placeholder={placeholder} required max="100" />
+						</Form.Group>
+						<Button block size="sm" variant="secondary" type="submit">Edit tax rate</Button>
+						<Button block size="sm" variant="secondary" onClick={() => props.toggleReport()}>Report bug</Button>
+					</Form>
+				</Modal.Body>
+			</Modal.Dialog>
+		</Fade>
 	);
 }
 

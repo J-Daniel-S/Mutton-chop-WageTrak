@@ -1,11 +1,12 @@
 import React, { useState, useContext } from 'react';
 import { withRouter } from 'react-router-dom';
-import { Button, Form } from 'react-bootstrap';
+import { Button, Form, Fade } from 'react-bootstrap';
 
 import ConfirmDelete from '../confirm/ConfirmDelete';
 import ConfirmEdit from '../confirm/ConfirmEdit';
 import UserContext from '../../context/userContext';
-import './editJob.css';
+
+import { EditModal, Hr } from '../../styles/styledComponents';
 
 const editJob = (props) => {
 	const [confirmDeleteState, setConfirmDeleteState] = useState({});
@@ -93,9 +94,10 @@ const editJob = (props) => {
 
 	return (
 		<React.Fragment>
-			<article className="theModal">
+			<EditModal>
+				<Fade appear in>
 				<div>
-					<hr></hr>
+					<Hr></Hr>
 					<Form onSubmit={submitChange}>
 						<Form.Label>Edit job name:</Form.Label>
 						<Form.Group controlId="formBasicName">
@@ -107,12 +109,13 @@ const editJob = (props) => {
 						</Form.Group>
 						<Button block variant="secondary" type="submit">Submit change</Button>
 					</Form>
-					<hr></hr>
+					<Hr></Hr>
 					<Button block variant="secondary" onClick={() => toggleDeleteJob()}>Delete Job</Button>
 				</div>
+				</Fade>
 				{confirmDeleteState === true && <ConfirmDelete delete={() => deleteJob()} closeModal={() => toggleDeleteJob()} />}
 				{confirmEditState === true && <ConfirmEdit submitChange={() => submitChange()} closeModal={() => editJob()} />}
-			</article>
+			</EditModal>
 		</React.Fragment>
 	);
 }

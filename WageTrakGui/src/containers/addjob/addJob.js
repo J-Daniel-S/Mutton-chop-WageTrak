@@ -2,7 +2,9 @@ import React, { useContext } from 'react';
 import { withRouter } from 'react-router-dom';
 
 import UserContext from '../../context/userContext';
-import './addJob.css';
+
+import { AddJobArticle, Hr, RoundedButtonCentered, CenterButtonText, FooterButton, AddBackdrop, FormLabel, FormInput, PaySection,
+		Title } from '../../styles/styledComponents';
 
 const addJob = (props) => {
 	// eslint-disable-next-line
@@ -58,31 +60,30 @@ const addJob = (props) => {
 
 	return (
 		<React.Fragment>
-			<article className="addJob">
-				<header className="margin title">
-					<hr></hr>
-					<p>Add new job:</p>
-					<hr></hr>
-				</header>
+			<AddJobArticle>
+				<PaySection>
+					<Hr></Hr>
+					<Title>Add new job:</Title>
+					<Hr></Hr>
+				</PaySection>
 				<main>
 					<form id="addJobForm" name="addJobForm" onSubmit={() => jobAdded()}>
-						<section className="form-group">
-							<label className="margin" htmlFor="name">Job name</label>
-							<input type="text" id="name" name="name" className="form-control anInput" placeholder="Enter job title" />
-							<label className="margin" htmlFor="hourly">Hourly rate</label>
-							<input type="number" id="hourly" name="hourly" className="form-control anInput" placeholder="$##.##" />
-						</section>
-						<section className="submit-button" onClick={() => jobAdded(
+							<FormLabel htmlFor="name">Job name</FormLabel>
+							<FormInput className="form-control" type="text" id="name" name="name" placeholder="Enter job title" />
+							<FormLabel htmlFor="hourly">Hourly rate</FormLabel>
+							<FormInput className="form-control" type="number" id="hourly" name="hourly" placeholder="$##.##" />
+							<Hr></Hr>
+						<RoundedButtonCentered onClick={() => jobAdded(
 						)}>
-							<p>Submit</p>
-						</section>
+							<CenterButtonText>Submit</CenterButtonText>
+						</RoundedButtonCentered>
 					</form>
 				</main>
-				<section className="footer" onClick={() => nameClicked()}>
-					<span className="user-name">{userState.name}</span>
-				</section>
-			</article>
-			<div onClick={() => nameClicked()} className="background"></div>
+				<FooterButton onClick={() => nameClicked()}>
+					<CenterButtonText>{userState.name}</CenterButtonText>
+				</FooterButton>
+			</AddJobArticle>
+			<AddBackdrop onClick={() => nameClicked()}></AddBackdrop>
 		</React.Fragment>
 	);
 }

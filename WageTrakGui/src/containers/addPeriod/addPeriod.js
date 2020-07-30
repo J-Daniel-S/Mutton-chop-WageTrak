@@ -2,7 +2,8 @@ import React, { useContext } from 'react';
 import { withRouter } from 'react-router-dom';
 
 import UserContext from '../../context/userContext';
-import './addPeriod.css';
+
+import { Title, Hr, AddJobArticle, AddBackdrop, FooterButton, CenterButtonText, FormInput, FormLabel, RoundedButtonCentered } from '../../styles/styledComponents';
 
 const addPeriod = (props) => {
 	// eslint-disable-next-line
@@ -45,32 +46,32 @@ const addPeriod = (props) => {
 
 	return (
 		<React.Fragment>
-			<article className="add-period">
-				<header className="margin title">
-					<hr></hr>
-						<p>Start new pay period:</p>
-					<hr></hr>
+			<AddJobArticle>
+				<header>
+					<Hr></Hr>
+						<Title>Start new pay period:</Title>
+					<Hr></Hr>
 				</header>
 				<main>
-
 					<form>
 						<section className="form-group">
-							<label className="margin" htmlFor="name">Enter start date</label>
-							<input type="date" id="name" placeholder="Select start date" className="form-control anInput" required></input>
+							<FormLabel htmlFor="name">Enter start date</FormLabel>
+							<FormInput type="date" id="name" placeholder="Select start date" className="form-control" required></FormInput>
 						</section>
-						<section className="submit-button" onClick={() => periodAdded(
+						<RoundedButtonCentered onClick={() => periodAdded(
 							document.getElementById('name')
 						)
 						}>
-							<p>Submit</p>
-						</section>
+							<CenterButtonText>Submit</CenterButtonText>
+						</RoundedButtonCentered>
 					</form>
+					<hr></hr>
 				</main>
-				<section className="footer" onClick={() => nameClicked()}>
-					<span className="user-name">{jobState.name}</span>
-				</section>
-			</article>
-			<div className="background" onClick={() => nameClicked()}></div>
+				<FooterButton onClick={() => nameClicked()}>
+					<CenterButtonText>{jobState.name}</CenterButtonText>
+				</FooterButton>
+			</AddJobArticle>
+			<AddBackdrop onClick={() => nameClicked()}></AddBackdrop>
 		</React.Fragment>
 	);
 }

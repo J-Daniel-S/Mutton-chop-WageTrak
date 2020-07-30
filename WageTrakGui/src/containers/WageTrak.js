@@ -2,11 +2,11 @@ import React, { useEffect, useState } from 'react';
 import { BrowserRouter, Route, Redirect } from 'react-router-dom';
 
 import User from './user/User';
-import Job from '../components/jobs/job/Job';
+import Job from './jobs/job/Job';
 import Navbar from '../navigation/Navbar';
-import PayPeriods from '../components/payPeriods/PayPeriods';
-import PayPeriod from '../components/payPeriods/payPeriod/PayPeriod';
-import Shift from '../components/shifts/shift/Shift';
+import PayPeriods from './payPeriods/PayPeriods';
+import PayPeriod from './payPeriods/payPeriod/PayPeriod';
+import Shift from './shifts/shift/Shift';
 import AddUser from '../containers/addUser/addUser';
 import AddJob from './addjob/addJob';
 import AddPeriod from './addPeriod/addPeriod';
@@ -15,19 +15,11 @@ import UserContext from '../context/userContext';
 
 import './WageTrak.css';
 
-//css for root urls, adds, edits, and modals
-
 //code logout for navbar after security
 
 //Spring Security
 
-//eliminate bugs that aren't due to reloading
-
 //add tests to back end
-
-//replace forms with bootstrap forms
-
-//Log4j youtube movie
 
 //add login logic to login page
 

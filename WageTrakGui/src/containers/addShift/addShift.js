@@ -2,7 +2,8 @@ import React, { useContext } from 'react';
 import { withRouter } from 'react-router-dom';
 
 import UserContext from '../../context/userContext';
-import './addShift.css';
+
+import { AddShiftArticle, AddBackdrop, Hr, Title, FormLabel, FormInput, RoundedButtonCentered, CenterButtonText, FooterButton } from '../../styles/styledComponents';
 
 const addShift = (props) => {
 	const [userState, updateUser, jobState] = useContext(UserContext);
@@ -72,35 +73,35 @@ const addShift = (props) => {
 
 	return (
 		<React.Fragment>
-			<article className="add">
-				<header className="margin title">
-					<hr></hr>
-					<p>Add shift:</p>
-					<hr></hr>
+			<AddShiftArticle>
+				<header>
+					<Hr></Hr>
+					<Title>Add shift:</Title>
+					<Hr></Hr>
 				</header>
 				<main>
 					<form id="addShiftForm" name="addShiftForm">
 						<section className="form-group">
-							<label className="margin" htmlFor="name">Enter start date</label>
-							<input type="date" id="name" name="name" defaultValue={props.currentPeriod.dateName.slice(0, 5)} className="form-control anInput" required></input>
-							<label className="margin" htmlFor="hours">Hours worked:</label>
-							<input type="number" id="hours" name="hours" defaultValue="0.0" className="form-control anInput" required></input>
-							<label className="margin" htmlFor="overtime">Overtime hours worked:</label>
-							<input type="number" id="ot" name="ot" defaultValue="0.0" className="form-control anInput"></input>
+							<FormLabel htmlFor="name">Enter start date</FormLabel>
+							<FormInput type="date" id="name" name="name" defaultValue={props.currentPeriod.dateName.slice(0, 5)} className="form-control" required></FormInput>
+							<FormLabel htmlFor="hours">Hours worked:</FormLabel>
+							<FormInput type="number" id="hours" name="hours" defaultValue="0.0" className="form-control" required></FormInput>
+							<FormLabel htmlFor="overtime">Overtime hours worked:</FormLabel>
+							<FormInput type="number" id="ot" name="ot" defaultValue="0.0" className="form-control"></FormInput>
 							<p>Do not subtract overtime from hours worked</p>
 							<p>Overtime might make net pay calculations less accurate depending on policy and taxes</p>
 						</section>
-						<section className="submit-button" onClick={() => shiftAdded()
+						<RoundedButtonCentered onClick={() => shiftAdded()
 						}>
-							<p>Submit</p>
-						</section>
+							<CenterButtonText>Submit</CenterButtonText>
+						</RoundedButtonCentered>
 					</form>
 				</main>
-				<section className="footer" onClick={() => nameClicked()}>
-					<span className="name">Pay period: {props.currentPeriod.dateName}</span>
-				</section>
-			</article>
-			<div className="background" onClick={() => nameClicked()}></div>
+				<FooterButton onClick={() => nameClicked()}>
+					<CenterButtonText>Pay period: {props.currentPeriod.dateName}</CenterButtonText>
+				</FooterButton>
+			</AddShiftArticle>
+			<AddBackdrop onClick={() => nameClicked()}></AddBackdrop>
 		</React.Fragment>
 	);
 }

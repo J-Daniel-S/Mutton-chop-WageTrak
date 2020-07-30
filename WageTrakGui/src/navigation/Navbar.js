@@ -3,7 +3,8 @@ import React, { useState } from 'react';
 import Logout from '../modals/logout/logout';
 import NavMenu from '../modals/menu/NavMenu';
 import ReportBug from '../modals/reportBug/ReportBug';
-import './Navbar.css';
+
+import { Navbar, BackButton, LogoutButton } from '../styles/styledComponents';
 
 const navbar = (props) => {
 	const [logout, setLogout] = useState(false);
@@ -55,17 +56,17 @@ const navbar = (props) => {
 
 	return (
 		<React.Fragment>
-			<section className="navbar sticky-top nav-extra">
+			<Navbar className="navbar sticky-top">
 				<div>
-					<i onClick={() => goBack()} className="fa fa-chevron-left fa-2x back-button" aria-hidden="true"></i>
+					<BackButton onClick={() => goBack()} className="fa fa-chevron-left fa-2x" aria-hidden="true"></BackButton>
 				</div>
 				<div>
-					<i onClick={() => toggleNavMenu()} className="fa fa-bars fa-2x nav-toggle" aria-hidden="true"></i>
+					<i onClick={() => toggleNavMenu()} className="fa fa-bars fa-2x" aria-hidden="true"></i>
 				</div>
 				<div>
-					<i onClick={() => toggleLogout()} className="fa fa-external-link-square fa-2x logout-button" aria-hidden="true"></i>
+					<LogoutButton onClick={() => toggleLogout()} className="fa fa-external-link-square fa-2x" aria-hidden="true"></LogoutButton>
 				</div>
-			</section>
+			</Navbar>
 			{logout && !navMenu && !report && <Logout />}
 			{navMenu && !logout && !report && <NavMenu toggleMenu={() => toggleNavMenu()} toggleReport={() => toggleReport()} />}
 			{report && !navMenu && !logout && <ReportBug toggleReport={() => toggleReport()} /> }
