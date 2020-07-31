@@ -27,7 +27,6 @@ public class ShiftController {
 	@Autowired
 	private UserService usRepo;
 
-	// works
 	@PostMapping
 	@ResponseBody
 	public User addShift(@PathVariable String id, @PathVariable String jobName, @PathVariable String dateName,
@@ -37,7 +36,6 @@ public class ShiftController {
 
 		PayPeriod period = job.getPayPeriods().stream().filter(w -> w.getDateName().equals(dateName)).findAny().get();
 		if (period.shiftExists(shift)) {
-			// must add taxRate to user
 			shift.calcPay(job.getRate(), user.getTaxRate());
 			period.addShift(shift);
 			period.updatePay();
@@ -50,8 +48,6 @@ public class ShiftController {
 		}
 	}
 
-	// works
-	// look into findAny v findFirst
 	@DeleteMapping("/{date}")
 	@ResponseBody
 	public User deleteShift(@PathVariable String id, @PathVariable String jobName, @PathVariable String dateName,
@@ -72,7 +68,6 @@ public class ShiftController {
 		}
 	}
 
-	// works
 	@PutMapping("/{oldDate}")
 	@ResponseBody
 	public User editShift(@PathVariable String id, @PathVariable String jobName, @PathVariable String dateName,
@@ -83,7 +78,6 @@ public class ShiftController {
 				.filter(p -> p.getDateName().equalsIgnoreCase(dateName)).findAny();
 		if (maybePeriod.isPresent()) {
 			PayPeriod period = maybePeriod.get();
-			// must add taxrate here
 			shift.updatePay(job.getRate(), user.getTaxRate());
 			period.editShift(shift, oldDate);
 			job.updatePayPeriod(period);

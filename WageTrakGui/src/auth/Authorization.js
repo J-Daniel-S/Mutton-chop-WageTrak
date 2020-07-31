@@ -6,7 +6,14 @@ import { AuthContext } from './authContext';
 const authorization = (props) => {
 	const authContext = useContext(AuthContext);
 
-	const login = () => {
+	const login = (event) => {
+		const form = event.currentTarget;
+		event.preventDefault();
+		event.stopPropagation();
+
+		console.log(form);
+
+		//code for validation here
 		authContext.login();
 	}
 
@@ -15,14 +22,14 @@ const authorization = (props) => {
 			<header>
 				<p>Wagetrak Login</p>
 			</header>
-			<Form>
+			<Form onSubmit={login}>
 				<Form.Group controlId="formBasicUsername">
 					<Form.Control type="text" placeholder="User name"></Form.Control>
 				</Form.Group>
 				<Form.Group controlId="formBasicPassword">
 					<Form.Control type="password" placeholder="Password" />
 				</Form.Group>
-				<Button variant="primary" type="submit" onClick={() => login()}>
+				<Button variant="primary" type="submit">
 					Login
 				</Button>
 			</Form>

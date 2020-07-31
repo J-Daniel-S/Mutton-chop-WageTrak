@@ -39,11 +39,12 @@ public class User {
 	public User(String name) {
 		super();
 		this.name = name;
-		jobs = new ArrayList<Job>();
+		this.userName = name;
+		this.jobs = new ArrayList<Job>();
 	}
 
 	public User() {
-		jobs = new ArrayList<Job>();
+		this.jobs = new ArrayList<Job>();
 	}
 
 	public String getId() {
@@ -94,11 +95,15 @@ public class User {
 		this.taxRate = taxRate;
 	}
 
+	// this method checks the database for the existence of the job within the user
+	// based on job name
 	public boolean jobExists(Job job) {
 		List<String> jobNames = jobs.stream().map(j -> j.getName()).collect(Collectors.toList());
 		return jobNames.stream().anyMatch(name -> name.equalsIgnoreCase(job.getName()));
 	}
 
+	// gets the job from the front end, deletes the old version, and inserts the new
+	// one
 	public void updateJob(Job job) {
 		List<Job> toUpdate = jobs.stream().filter(j -> !j.getName().equalsIgnoreCase(job.getName()))
 				.collect(Collectors.toList());

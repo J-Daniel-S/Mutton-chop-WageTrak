@@ -2,49 +2,45 @@ import React, { useEffect, useState } from 'react';
 import { BrowserRouter, Route, Redirect } from 'react-router-dom';
 
 import User from './user/User';
-import Job from '../components/jobs/job/Job';
+import Job from './jobs/job/Job';
 import Navbar from '../navigation/Navbar';
-import PayPeriods from '../components/payPeriods/PayPeriods';
-import PayPeriod from '../components/payPeriods/payPeriod/PayPeriod';
-import Shift from '../components/shifts/shift/Shift';
+import PayPeriods from './payPeriods/PayPeriods';
+import PayPeriod from './payPeriods/payPeriod/PayPeriod';
+import Shift from './shifts/shift/Shift';
+import AddUser from '../containers/addUser/addUser';
 import AddJob from './addjob/addJob';
 import AddPeriod from './addPeriod/addPeriod';
 import AddShift from './addShift/addShift';
+import UserContext from '../context/userContext';
 
 import './WageTrak.css';
 
-//I must needs ask regarding why the updates aren't working how I want them to
-
-//must add signup page
-
-//Proper function to front end login page after spring security is added
-
-//create a util on the back end that does the tasks preventing the different objects from being pojos
-
-//standardize variable names in props drills
-
-//must add logging on the back end
-
-//useContext to undo props drilling?
+//code logout for navbar after security
 
 //Spring Security
 
-//eliminate bugs that aren't due to reloading
+//add tests to back end
 
-//add error handling
+//add login logic to login page
+
+//remove hard coded user id from WageTrak.js
+
+//code signup for back end
 
 const wageTrak = (props) => {
-	const [ userState, setUserState ] = useState({});
-	const [ jobState, setJobState ] = useState({});
-	const [ periodState, setPeriodState ] = useState({});
-	const [ viewPeriodState, setViewPeriodNow ] = useState({});
-	const [ shiftState, setShiftState ] = useState({});
-	// eslint-disable-next-line
-	const [ jobsState, setJobsState ] = useState({});
+	const [userState, setUserState] = useState({});
+	const [jobState, setJobState] = useState({});
+	const [periodState, setPeriodState] = useState({});
+	const [viewPeriodState, setViewPeriodState] = useState({});
+	const [shiftState, setShiftState] = useState({});
+	const [jobsState, setJobsState] = useState({});
 
-	let userId = "5f0698a40555da4001e17b84";
+	const contextArr = [userState, setUserState, jobState, setJobState, periodState, setPeriodState, viewPeriodState, setViewPeriodState,
+		shiftState, setShiftState, jobsState, setJobsState];
 
-	//initial user retrieval
+	//check here if you're not loading a user on render
+	let userId = "5f1d3876aba88b644faeff0d";
+
 	useEffect(() => {
 		getUser();
 	}, []);
@@ -57,130 +53,100 @@ const wageTrak = (props) => {
 			}
 		).then(res => res.json())
 			.then(res => {
-				//this is not a good solution for the long term
-				/*
-				eventually I'll have to add loading animations, possibly clear the state, then update it again
-				*/
-				if(res.name === "noSuchUser") {
+				if (res.name === "noSuchUser") {
 					getUser();
 				} else {
 					setUserState(res);
 					setJobsState(res.jobs);
 				}
 			}
-			).catch(res =>
+			).catch(res => {
 				console.log('err' + res.data)
-		);
+				if (res.name === "noSuchUser") {
+					getUser();
+				} else {
+					setUserState(res);
+					setJobsState(res.jobs);
+				}
+			});
 		setUserState(userState);
 	}
+
 
 	let userData = "Loading...";
 
 	if (userState) {
-		userData = <User 
-						currentUser={userState} 
-						setJob={setJobState} 
-						updateUser={setUserState} 
-					/>
+		userData = <User />
 	}
 
 	return (
 		<React.Fragment>
-			<Navbar />
-			<BrowserRouter>
-				{window.location.pathname === "/" || window.location.pathname === "/wagetrak/wagetrak/job" ? <Redirect to="/wagetrak" /> : null}
-				<Route
-					path="/wagetrak/"
-					render={() => userData }
-				/>
-				<Route
-					path="/wagetrak/job"
-					render={() => <Job 
-									currentJob={jobState} 
-									currentPeriod={periodState} 
-									setPeriod={setPeriodState} 
-									currentUser={userState}
-									updateUser={setUserState}
-					/> }
-				/>
-				<Route
-					path="/wagetrak/job/weeks"
-					render={() => <PayPeriods 
-									currentJob={jobState} 
-									setPeriod={setViewPeriodNow} 
-									currentPeriod={periodState}/> }
-				/>
-				<Route
-					path="/wagetrak/job/weeks/week"
-					render={() => <PayPeriod 
-									currentPeriod={periodState} 
-									setShift={setShiftState} 
-									updateUser={setUserState}
-									currentUser={userState}
-									currentJob={jobState} 
-								/> }
-				/>
-				<Route
-					path="/wagetrak/job/weeks/viewWeek"
-					render={() => <PayPeriod 
-									currentPeriod={viewPeriodState} 
-									setShift={setShiftState} 
-									updateUser={setUserState}
-									currentUser={userState}
-									currentJob={jobState} 
-								/> }
-				/>
-				<Route
-					path="/wagetrak/job/weeks/week/shift"
-					render={() => <Shift
-									currentUser={userState} 
-									currentJob={jobState} 
-									currentShift={shiftState}
-									currentPeriod={periodState} 
-									updateUser={setUserState} /> }
-				/>
-				<Route
-					path="/wagetrak/job/weeks/viewWeek/shift"
-					render={() => <Shift 
-									currentUser={userState}
-									currentJob={jobState} 
-									currentShift={shiftState}
-									currentPeriod={viewPeriodState}  
-									updateUser={setUserState} />}
-				/>
-				<Route
-					path="/wagetrak/add-job"
-					render={() => <AddJob 
-									currentUser={userState} 
-									updateUser={setUserState}/> }
-				/>
-				<Route
-					path="/wagetrak/add-period"
-					render={() => <AddPeriod 
-									currentJob={jobState} 
-									updateUser={setUserState} 
-									currentUser={userState}
-								/> }
-				/>
-				<Route
-					path="/wagetrak/add-shift"
-					render={() => <AddShift 
-									jobData={jobState} 
-									periodData={periodState}
-									updateUser={setUserState} 
-									currentUser={userState}
-								/> }
-				/>
-				<Route
-					path="/wagetrak/view-week/add-shift"
-					render={() => <AddShift
-									jobData={jobState} 
-									periodData={viewPeriodState}
-									updateUser={setUserState} 
-									currentUser={userState}
-								/> }
-				/>
-			</BrowserRouter>
+			<UserContext.Provider value={[...contextArr]}>
+				<BrowserRouter>
+					<Navbar />
+					{window.location.pathname === "/" || window.location.pathname === "/wagetrak/wagetrak/job" ? <Redirect to="/wagetrak" /> : null}
+					<Route
+						path="/wagetrak-signup"
+						render={() => <AddUser />}
+					/>
+					<Route
+						path="/wagetrak/"
+						render={() => userData}
+					/>
+					<Route
+						path="/wagetrak/job"
+						render={() => <Job />}
+					/>
+					<Route
+						path="/wagetrak/job/periods"
+						render={() => <PayPeriods />}
+					/>
+					<Route
+						path="/wagetrak/job/periods/period"
+						render={() => <PayPeriod
+							currentPeriod={periodState}
+						/>}
+					/>
+					<Route
+						path="/wagetrak/job/periods/viewPeriod"
+						render={() => <PayPeriod
+							currentPeriod={viewPeriodState}
+						/>}
+					/>
+					<Route
+						path="/wagetrak/job/periods/period/shift"
+						render={() => <Shift
+							currentPeriod={periodState}
+						/>}
+					/>
+					<Route
+						path="/wagetrak/job/periods/viewPeriod/shift"
+						render={() => <Shift
+							currentPeriod={viewPeriodState}
+						/>}
+					/>
+					<Route
+						path="/wagetrak/add-job"
+						render={() => <AddJob />}
+					/>
+					<Route
+						path="/wagetrak/add-period"
+						render={() => <AddPeriod />}
+					/>
+					<Route
+						path="/wagetrak/add-shift"
+						render={() => <AddShift
+							currentPeriod={periodState}
+						/>}
+					/>
+					<Route
+						path="/wagetrak/view-period/add-shift"
+						render={() => <AddShift
+							currentPeriod={viewPeriodState}
+						/>}
+					/>
+				</BrowserRouter>
+			</UserContext.Provider>
 		</React.Fragment>
 	);
 }

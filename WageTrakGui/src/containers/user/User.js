@@ -1,13 +1,15 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { withRouter } from 'react-router-dom';
 
-import Jobs from '../../components/jobs/Jobs';
+import Jobs from '../jobs/Jobs';
 import EditUser from '../../modals/editUser/editUser';
+import UserContext from '../../context/userContext';
 
-import './User.css';
+import { UserMain, BlockButton, LargeTitleLeft, FlexHeader, IconButtonDiv } from '../../styles/styledComponents';
 
 const user = (props) => {
-	const [ showModal, setShowModal ] = useState({});
+	const [showModal, setShowModal] = useState({});
+	const [userState] = useContext(UserContext);
 
 	const clickedNameHandler = () => {
 		props.history.push("/wagetrak");
@@ -25,27 +27,26 @@ const user = (props) => {
 		}
 	}
 
+	// console.log(userState);
+
 	return (
 		<React.Fragment>
-			<main className="user">
-				<header className="margin flexDiv" onClick={() => clickedNameHandler()}>
-					<div className="userName capitalize">{props.currentUser.name}</div>
-					{window.location.pathname === "/wagetrak" && 
-						<div className="editDiv" onClick={() => toggleModal()}><i className="fa fa-pencil-square-o" aria-hidden="true"></i></div>}
-				</header>
-				<section>
-					<p className="margin">Your tax rate: {props.currentUser.taxRate * 100}%</p>
-				</section>
-				<section className="buttonDiv">
+			<UserMain>
+				<FlexHeader onClick={() => clickedNameHandler()}>
+					<LargeTitleLeft>{userState.name}</LargeTitleLeft>
+					{window.location.pathname === "/wagetrak" &&
+						<IconButtonDiv onClick={() => toggleModal()}><i className="fa fa-pencil-square-o fa-lg" aria-hidden="true"></i></IconButtonDiv>}
+				</FlexHeader>
+				<BlockButton>
 					<div onClick={() => addJobHandler()}>
 						Add Job
   					</div>
-				</section>
+				</BlockButton>
 				<section>
-					<Jobs userJobs={props.currentUser.jobs} setJob={props.setJob} currentUser={props.currentUser} jobChange={props.updateUser} />
+					<Jobs />
 				</section>
-			</main>
-			{showModal === true && <EditUser updateUser={props.updateUser} user={props.currentUser} closeModal={() => toggleModal()}/>}
+			</UserMain>
+			{showModal === true && <EditUser closeModal={() => toggleModal()} />}
 		</React.Fragment>
 	);
 }

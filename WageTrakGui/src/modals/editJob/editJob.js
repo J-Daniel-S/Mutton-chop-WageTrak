@@ -1,14 +1,18 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { withRouter } from 'react-router-dom';
-import { Button } from 'react-bootstrap';
+import { Button, Form, Fade } from 'react-bootstrap';
 
 import ConfirmDelete from '../confirm/ConfirmDelete';
 import ConfirmEdit from '../confirm/ConfirmEdit';
-import './editJob.css';
+import UserContext from '../../context/userContext';
+
+import { EditModal, Hr } from '../../styles/styledComponents';
 
 const editJob = (props) => {
 	const [confirmDeleteState, setConfirmDeleteState] = useState({});
 	const [confirmEditState, setConfirmEditState] = useState({});
+	// eslint-disable-next-line
+	const [userState, setUserState, jobState] = useContext(UserContext);
 
 	const toggleDeleteJob = () => {
 		if (confirmDeleteState === true) {
@@ -19,9 +23,9 @@ const editJob = (props) => {
 	}
 
 	const deleteJob = () => {
-		// console.log("http://localhost:8080/wageTrak/" + props.currentUser.id + "/" + props.currentJob.name)
+		// console.log("http://localhost:8080/wageTrak/" + userState.id + "/" + jobState.name)
 		fetch(
-			"http://localhost:8080/wageTrak/" + props.currentUser.id + "/" + props.currentJob.name,
+			"http://localhost:8080/wageTrak/" + userState.id + "/" + jobState.name,
 			{
 				method: 'DELETE',
 				headers: {
@@ -31,7 +35,7 @@ const editJob = (props) => {
 				}
 			}
 		).then(res => res.json()).then(res => {
-			props.updateUser(res);
+			setUserState(res);
 			props.history.push("/wagetrak");
 		});
 	}
@@ -44,17 +48,20 @@ const editJob = (props) => {
 		}
 	}
 
-	const submitChange = () => {
+	const submitChange = (event) => {
+		const form = event.currentTarget;
+		event.preventDefault();
+		event.stopPropagation();
 
-		let name = document.forms["ediJobForm"]["nameEdit"].value;
-		let rate = document.forms["editJobForm"]["rateEdit"].value;
+		let name = form.formBasicName.value;
+		let rate = form.formBasicRate.value;
 
 		if (name === "" || name === " ") {
-			name = props.currentJob.name
+			name = jobState.name
 		}
 
-		if (rate === "0" || rate === "" || !rate) {
-			rate = props.currentJob.rate;
+		if (rate === "0") {
+			rate = jobState.rate;
 		}
 
 		if (rate <= 0) {
@@ -63,10 +70,9 @@ const editJob = (props) => {
 			alert('Name can\'t include ? or /');
 		} else {
 
-			console.log(name + ":" + rate);
-			// console.log(	"http://localhost:8080/wageTrak/" + props.currentUser.id);
+			// console.log(	"http://localhost:8080/wageTrak/" + userState.id);
 			fetch(
-				"http://localhost:8080/wageTrak/" + props.currentUser.id + "/" + props.currentJob.name,
+				"http://localhost:8080/wageTrak/" + userState.id + "/" + jobState.name,
 				{
 					method: 'PUT',
 					headers: {
@@ -80,7 +86,7 @@ const editJob = (props) => {
 					})
 				}
 			).then(res => res.json()).then(res => {
-				props.updateUser(res);
+				setUserState(res);
 				props.history.push("/wagetrak");
 			});
 		}
@@ -88,20 +94,28 @@ const editJob = (props) => {
 
 	return (
 		<React.Fragment>
-			<article className="theModal">
+			<EditModal>
+				<Fade appear in>
 				<div>
-					<Button onClick={() => toggleDeleteJob()}>Delete Job</Button>
+					<Hr></Hr>
+					<Form onSubmit={submitChange}>
+						<Form.Label>Edit job name:</Form.Label>
+						<Form.Group controlId="formBasicName">
+							<Form.Control type="text" defaultValue={jobState.name} required />
+						</Form.Group>
+						<Form.Label>Edit hourly pay:</Form.Label>
+						<Form.Group controlId="formBasicRate">
+							<Form.Control type="decimal" defaultValue={jobState.rate} required />
+						</Form.Group>
+						<Button block variant="secondary" type="submit">Submit change</Button>
+					</Form>
+					<Hr></Hr>
+					<Button block variant="secondary" onClick={() => toggleDeleteJob()}>Delete Job</Button>
 				</div>
-				<div>
-					<form id="editJobForm" name="ediJobForm">
-						<Button onClick={() => editJob()} className="margin" htmlFor="nameEdit">Edit job</Button>
-						<input type="text" id="nameEdit" name="nameEdit" className="form-control anInput" defaultValue={props.currentJob.name} />
-						<input type="number" id="rateEdit" name="rateEdit" className="form-control anInput" defaultValue={props.currentJob.rate} />
-					</form>
-				</div>
+				</Fade>
 				{confirmDeleteState === true && <ConfirmDelete delete={() => deleteJob()} closeModal={() => toggleDeleteJob()} />}
 				{confirmEditState === true && <ConfirmEdit submitChange={() => submitChange()} closeModal={() => editJob()} />}
-			</article>
+			</EditModal>
 		</React.Fragment>
 	);
 }

@@ -39,21 +39,23 @@ public class PayPeriod {
 		shifts.add(shift);
 	}
 
+	// removes the old shift and replaces it with the updated version
 	public void editShift(Shift shift, String oldDate) {
-		List<Shift> updateShifts = shifts.stream().filter(s -> !s.getDate().equalsIgnoreCase(oldDate))
+		List<Shift> updateShifts = shifts.stream().filter(s -> !s.getDate().equals(oldDate))
 				.collect(Collectors.toList());
 		updateShifts.add(shift);
 		shifts = updateShifts;
 	}
 
+	// checks for the existence of the shift given the shift
 	public boolean shiftExists(Shift shift) {
 		List<String> dates = shifts.stream().map(s -> s.getDate()).collect(Collectors.toList());
 		return dates.stream().noneMatch(str -> str.equals(shift.getDate()));
 	}
 
+	// deletes the shift given the date (MM/DD)
 	public void deleteShift(String date) {
-		List<Shift> updateShifts = shifts.stream().filter(s -> !s.getDate().equalsIgnoreCase(date))
-				.collect(Collectors.toList());
+		List<Shift> updateShifts = shifts.stream().filter(s -> !s.getDate().equals(date)).collect(Collectors.toList());
 		shifts = updateShifts;
 	}
 
@@ -81,6 +83,8 @@ public class PayPeriod {
 		this.taxes = taxes;
 	}
 
+	// updates the total pay for the week whenever a new shift is added or a shift
+	// is edited
 	public void updatePay() {
 		this.grossPay = this.shifts.stream().mapToDouble(s -> s.getGrossPay()).sum();
 		this.netPay = this.shifts.stream().mapToDouble(s -> s.getNetPay()).sum();

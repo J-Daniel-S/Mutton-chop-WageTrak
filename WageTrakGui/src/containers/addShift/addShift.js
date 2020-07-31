@@ -1,12 +1,15 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { withRouter } from 'react-router-dom';
 
-import './addShift.css';
+import UserContext from '../../context/userContext';
+
+import { AddShiftArticle, AddBackdrop, Hr, Title, FormLabel, FormInput, RoundedButtonCentered, CenterButtonText, FooterButton } from '../../styles/styledComponents';
 
 const addShift = (props) => {
+	const [userState, updateUser, jobState] = useContext(UserContext);
 
 	const nameClicked = () => {
-		props.history.push("/wagetrak/job/weeks");
+		props.history.push("/wagetrak/job/periods");
 	}
 
 	const shiftAdded = () => {
@@ -17,7 +20,7 @@ const addShift = (props) => {
 
 		if (hours > 24) {
 			alert('Are you sure you worked that many hours?')
-		} else if (Date.parse(name) < Date.parse(props.periodData.dateName) - 43200000) {
+		} else if (Date.parse(name) < Date.parse(props.currentPeriod.dateName) - 43200000) {
 			alert('Shift date cannot be before start of pay period');
 		} else if (Number.parseFloat(ot) > Number.parseFloat(hours)) {
 			alert('Overtime can\'t exceed hours worked');
@@ -41,14 +44,14 @@ const addShift = (props) => {
 		const hoursWorked = Number.parseFloat(hours).toFixed(1);
 		const overWorked = Number.parseFloat(ot).toFixed(1);
 
-		console.log(JSON.stringify({
-					date: date,
-					hours: hoursWorked,
-					overtime: overWorked
-				}))
-		// console.log("http://localhost:8080/wageTrak/" + props.currentUser.id + "/" + props.jobData.name + "/" + props.periodData.dateName);
+		// console.log(JSON.stringify({
+		// 	date: date,
+		// 	hours: hoursWorked,
+		// 	overtime: overWorked
+		// }))
+		// console.log("http://localhost:8080/wageTrak/" + userState.id + "/" + jobState.name + "/" + props.currentPeriod.dateName);
 		fetch(
-			"http://localhost:8080/wageTrak/" + props.currentUser.id + "/" + props.jobData.name  + "/" + props.periodData.dateName,
+			"http://localhost:8080/wageTrak/" + userState.id + "/" + jobState.name + "/" + props.currentPeriod.dateName,
 			{
 				method: 'POST',
 				headers: {
@@ -63,40 +66,42 @@ const addShift = (props) => {
 				})
 			}
 		).then(res => res.json()).then(res => {
-			props.updateUser(res);
+			updateUser(res);
 			props.history.push('/wagetrak');
 		});
 	}
 
 	return (
 		<React.Fragment>
-		<article className="add">
-			<header className="margin title">
-				<p>Add shift:</p>
-			</header>
-			<main>
-				<form id="addShiftForm" name="addShiftForm">
-					<section className="form-group">
-						<label className="margin" htmlFor="name">Enter start date</label>
-						<input type="date" id="name" name="name" defaultValue={props.periodData.dateName.slice(0, 5)} className="form-control anInput" required></input>
-						<label className="margin" htmlFor="hours">Hours worked:</label>
-						<input type="number" id="hours" name="hours" defaultValue="0.0" className="form-control anInput" required></input>
-						<label className="margin" htmlFor="overtime">Overtime hours worked:</label>
-						<input type="number" id="ot" name="ot" defaultValue="0.0" className="form-control anInput"></input>
-						<p>Do not subtract overtime from hours worked</p>
-						<p>Overtime might make net pay calculations less accurate depending on policy and taxes</p>
-					</section>
-					<section className="submit-button" onClick={() => shiftAdded()
-					}>
-						<p>Submit</p>
-					</section>
-				</form>
-			</main>
-			<section className="footer" onClick={() => nameClicked()}>
-				<span className="name">Pay period: {props.periodData.dateName}</span>
-			</section>
-		</article>
-		<div className="background" onClick={() => nameClicked()}></div>
+			<AddShiftArticle>
+				<header>
+					<Hr></Hr>
+					<Title>Add shift:</Title>
+					<Hr></Hr>
+				</header>
+				<main>
+					<form id="addShiftForm" name="addShiftForm">
+						<section className="form-group">
+							<FormLabel htmlFor="name">Enter start date</FormLabel>
+							<FormInput type="date" id="name" name="name" defaultValue={props.currentPeriod.dateName.slice(0, 5)} className="form-control" required></FormInput>
+							<FormLabel htmlFor="hours">Hours worked:</FormLabel>
+							<FormInput type="number" id="hours" name="hours" defaultValue="0.0" className="form-control" required></FormInput>
+							<FormLabel htmlFor="overtime">Overtime hours worked:</FormLabel>
+							<FormInput type="number" id="ot" name="ot" defaultValue="0.0" className="form-control"></FormInput>
+							<p>Do not subtract overtime from hours worked</p>
+							<p>Overtime might make net pay calculations less accurate depending on policy and taxes</p>
+						</section>
+						<RoundedButtonCentered onClick={() => shiftAdded()
+						}>
+							<CenterButtonText>Submit</CenterButtonText>
+						</RoundedButtonCentered>
+					</form>
+				</main>
+				<FooterButton onClick={() => nameClicked()}>
+					<CenterButtonText>Pay period: {props.currentPeriod.dateName}</CenterButtonText>
+				</FooterButton>
+			</AddShiftArticle>
+			<AddBackdrop onClick={() => nameClicked()}></AddBackdrop>
 		</React.Fragment>
 	);
 }

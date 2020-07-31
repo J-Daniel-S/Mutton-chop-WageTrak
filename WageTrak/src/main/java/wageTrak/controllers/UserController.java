@@ -28,7 +28,6 @@ public class UserController {
 	@Autowired
 	private UserService usRepo;
 
-	// works
 	@PostMapping
 	public User addUser(@RequestBody User newUser) {
 		String id = newUser.getId();
@@ -42,38 +41,27 @@ public class UserController {
 
 	}
 
-	// works
 	@GetMapping("/{id}")
 	@ResponseBody
 	public User getUser(@PathVariable String id) {
 		return usRepo.findById(id);
 	}
 
-//	@GetMapping("/name/{name}")
-//	@ResponseBody
-//	public User getTheUser(@PathVariable String userName) {
-//		return usRepo.findByUserName(userName);
-//	}
-
-	// works
 	@GetMapping
 	public List<User> getUsers() {
 		return usRepo.findAll();
 	}
 
-	// works
 	@PutMapping
 	public User updateUser(@RequestBody User user) {
 		String id = user.getId();
-		boolean updated = usRepo.update(user);
-		if (updated) {
-			return user;
-		} else {
-			return usRepo.findById(id);
-		}
+		User newUser = usRepo.findById(id);
+		newUser.setName(user.getName());
+		newUser.setTaxRate(user.getTaxRate());
+		usRepo.update(newUser);
+		return usRepo.findById(id);
 	}
 
-	// works
 	@DeleteMapping("{id}")
 	public HttpStatus deleteUser(@PathVariable String id) {
 		boolean status = usRepo.delete(id);

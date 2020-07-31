@@ -24,7 +24,6 @@ public class PayPeriodController {
 	@Autowired
 	private UserService usRepo;
 
-	// works
 	@PostMapping
 	@ResponseBody
 	public User addPeriod(@PathVariable String id, @PathVariable String jobName, @RequestBody PayPeriod period) {
@@ -42,24 +41,18 @@ public class PayPeriodController {
 
 	}
 
-	// works
 	@DeleteMapping("/{dateName}")
 	@ResponseBody
-	public User deletePeriod(@PathVariable String id, @PathVariable String jobName, @PathVariable String dateName) {
+	public User deletePeriod(@PathVariable String id, @PathVariable String jobName, @PathVariable String dateName)
+			throws InterruptedException {
 		User user = usRepo.findById(id);
 		Job job = user.getJobs().stream().filter(j -> j.getName().equalsIgnoreCase(jobName)).findAny().get();
-		if (job.payPeriodExists(dateName)) {
-			job.deletePayPeriod(dateName);
-			user.updateJob(job);
-			usRepo.update(user);
-			return user;
-		} else {
-			return usRepo.findById(user.getId());
-		}
-
+		job.deletePayPeriod(dateName);
+		user.updateJob(job);
+		usRepo.update(user);
+		return usRepo.findById(user.getId());
 	}
 
-	// works
 	@PutMapping("/{oldDateName}")
 	@ResponseBody
 	public User updatePeriod(@PathVariable String id, @PathVariable String jobName, @RequestBody PayPeriod payPeriod,

@@ -38,6 +38,7 @@ public class Shift {
 
 	}
 
+	// this method calculates the pay whenever a shift is posted to shift controller
 	public void calcPay(double rate, double taxRate) {
 		this.grossPay = Math.round((rate * this.hours) * 100.0) / 100.0;
 		this.grossPay += Math.round((this.overtime * (rate * 0.5)) * 100.0) / 100.0;
@@ -77,7 +78,7 @@ public class Shift {
 		this.taxes = taxes;
 	}
 
-	// must implement taxRate here
+	// this method calculates the pay whenever a shift is put to shift controller
 	public void updatePay(double rate, double taxRate) {
 		this.grossPay = Math.round((this.hours * rate) * 100.0) / 100.0;
 		this.grossPay += Math.round((this.overtime * (rate * 0.5)) * 100.0) / 100.0;

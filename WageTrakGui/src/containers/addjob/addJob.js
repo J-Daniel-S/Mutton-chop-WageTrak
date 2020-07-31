@@ -1,9 +1,14 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { withRouter } from 'react-router-dom';
 
-import './addJob.css';
+import UserContext from '../../context/userContext';
+
+import { AddJobArticle, Hr, RoundedButtonCentered, CenterButtonText, FooterButton, AddBackdrop, FormLabel, FormInput, PaySection,
+		Title } from '../../styles/styledComponents';
 
 const addJob = (props) => {
+	// eslint-disable-next-line
+	const [userState, updateUser] = useContext(UserContext);
 
 	const nameClicked = () => {
 		props.history.push("/wagetrak");
@@ -25,17 +30,16 @@ const addJob = (props) => {
 		} else {
 			jobAddedHandler(fName, fHourly);
 		}
-		
+
 	}
 
 	const jobAddedHandler = (name, hourly) => {
-		name = name.replace("?", "");
-		console.log(JSON.stringify({
-			name: name.toLowerCase(),
-			rate: Number.parseFloat(hourly).toFixed(2)
-		}))
+		// console.log(JSON.stringify({
+		// 	name: name.toLowerCase(),
+		// 	rate: Number.parseFloat(hourly).toFixed(2)
+		// }))
 		fetch(
-			"http://localhost:8080/wageTrak/" + props.currentUser.id,
+			"http://localhost:8080/wageTrak/" + userState.id,
 			{
 				method: 'POST',
 				headers: {
@@ -49,38 +53,37 @@ const addJob = (props) => {
 				})
 			}
 		).then(res => res.json()).then(res => {
-			props.updateUser(res);
+			updateUser(res);
 			props.history.push("/wagetrak");
 		});
 	}
 
 	return (
 		<React.Fragment>
-			<article className="addJob">
-				<header className="margin title">
-					<p>Add new job:</p>
-				</header>
+			<AddJobArticle>
+				<PaySection>
+					<Hr></Hr>
+					<Title>Add new job:</Title>
+					<Hr></Hr>
+				</PaySection>
 				<main>
 					<form id="addJobForm" name="addJobForm" onSubmit={() => jobAdded()}>
-						<section className="form-group">
-							<label className="margin" htmlFor="name">Job name</label>
-							<input type="text" id="name" name="name" className="form-control anInput" placeholder="Enter job title" />
-							<label className="margin" htmlFor="hourly">Hourly rate</label>
-							<input type="number" id="hourly" name="hourly" className="form-control anInput" placeholder="$##.##" />
-						</section>
-						<section className="submit-button" onClick={() => jobAdded(
-							document.getElementById('name'),
-							document.getElementById('hourly')
-						) }>
-							<p>Submit</p>
-						</section>
+							<FormLabel htmlFor="name">Job name</FormLabel>
+							<FormInput className="form-control" type="text" id="name" name="name" placeholder="Enter job title" />
+							<FormLabel htmlFor="hourly">Hourly rate</FormLabel>
+							<FormInput className="form-control" type="number" id="hourly" name="hourly" placeholder="$##.##" />
+							<Hr></Hr>
+						<RoundedButtonCentered onClick={() => jobAdded(
+						)}>
+							<CenterButtonText>Submit</CenterButtonText>
+						</RoundedButtonCentered>
 					</form>
 				</main>
-				<section className="footer" onClick={() => nameClicked()}>
-					<span className="user-name">{props.currentUser.name}</span>
-				</section>
-			</article>
-			<div onClick={() => nameClicked()} className="background"></div>
+				<FooterButton onClick={() => nameClicked()}>
+					<CenterButtonText>{userState.name}</CenterButtonText>
+				</FooterButton>
+			</AddJobArticle>
+			<AddBackdrop onClick={() => nameClicked()}></AddBackdrop>
 		</React.Fragment>
 	);
 }

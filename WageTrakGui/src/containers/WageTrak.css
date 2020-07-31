@@ -1,9 +1,66 @@
 body {
-	font-family: 'Barlow', sans-serif;
-	color: #5c7373;
-	height: 92vh;
-	width: 92vw;
-	margin: 0;
-	padding: 0;
-	background-color: #e6ffff;
+    height: 92vh;
+    width: 100vw;
+    margin: 0;
+    padding: 0;
+    background-image: linear-gradient(to RIGHT, #cfd8e2, #dfe5ec);
+    font-size: 1.1em;
+
+    animation: fadeIn ease .5s;
+    -webkit-animation: fadeIn ease .5s;
+    -moz-animation: fadeIn ease .5s;
+    -o-animation: fadeIn ease .5s;
+
+    @keyframes fadeIn {
+        0% {
+            opacity: 0;
+        }
+
+        100% {
+            opacity: 1;
+        }
+    }
+
+    @-moz-keyframes fadeIn {
+        0% {
+            opacity: 0;
+        }
+
+        100% {
+            opacity: 1;
+        }
+    }
+
+    @-webkit-keyframes fadeIn {
+        0% {
+            opacity: 0;
+        }
+
+        100% {
+            opacity: 1;
+        }
+    }
+
+    @-o-keyframes fadeIn {
+        0% {
+            opacity: 0;
+        }
+
+        100% {
+            opacity: 1;
+        }
+    }
+
+}
+
+@media (min-width: 700) {
+    body {
+        font-size: 1.8em;
+    }
+}
+
+@media (min-width: 900) {
+    body {
+        font-size: 2.5em;
+    }
 }

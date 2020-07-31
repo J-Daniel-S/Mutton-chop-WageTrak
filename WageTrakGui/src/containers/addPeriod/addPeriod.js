@@ -1,35 +1,32 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { withRouter } from 'react-router-dom';
 
-import './addPeriod.css';
+import UserContext from '../../context/userContext';
+
+import { Title, Hr, AddJobArticle, AddBackdrop, FooterButton, CenterButtonText, FormInput, FormLabel, RoundedButtonCentered } from '../../styles/styledComponents';
 
 const addPeriod = (props) => {
+	// eslint-disable-next-line
+	const [userState, updateUser, jobState] = useContext(UserContext);
 
 	const nameClicked = () => {
 		props.history.push("/wagetrak/job");
 	}
 
 	const periodAdded = (name) => {
-
-		if (name.value === '') {
-			alert('Start date cannot be blank')
-		} else {
-			let date1 = "0" + name.value.substring(6, 11);
-			let date2 = name.value.substring(0, 4);
-			const date = date1 + "-" + date2;
-			postPeriod(date);
-		}
-
-
-
+		let date1 = "0" + name.value.substring(6, 11);
+		let date2 = name.value.substring(0, 4);
+		const date = date1 + "-" + date2;
+		postPeriod(date);
 	}
 
 	const postPeriod = (dateName) => {
-		console.log(JSON.stringify({
-			dateName: dateName,
-		}))
+
+		// console.log(JSON.stringify({
+		// 	dateName: dateName,
+		// }));
 		fetch(
-			"http://localhost:8080/wageTrak/" + props.currentUser.id + "/" + props.currentJob.name,
+			"http://localhost:8080/wageTrak/" + userState.id + "/" + jobState.name,
 			{
 				method: 'POST',
 				headers: {
@@ -42,37 +39,39 @@ const addPeriod = (props) => {
 				})
 			}
 		).then(res => res.json()).then(res => {
-			props.updateUser(res);
+			updateUser(res);
 			props.history.push('/wagetrak');
 		});
-
 	}
 
 	return (
 		<React.Fragment>
-			<article className="add">
-				<header className="margin title">
-					<p>Start new pay period:</p>
+			<AddJobArticle>
+				<header>
+					<Hr></Hr>
+						<Title>Start new pay period:</Title>
+					<Hr></Hr>
 				</header>
 				<main>
 					<form>
 						<section className="form-group">
-							<label className="margin" htmlFor="name">Enter start date</label>
-							<input type="date" id="name" placeholder="Select start date" className="form-control anInput" required></input>
+							<FormLabel htmlFor="name">Enter start date</FormLabel>
+							<FormInput type="date" id="name" placeholder="Select start date" className="form-control" required></FormInput>
 						</section>
-						<section className="submit-button" onClick={() => periodAdded(
+						<RoundedButtonCentered onClick={() => periodAdded(
 							document.getElementById('name')
 						)
 						}>
-							<p>Submit</p>
-						</section>
+							<CenterButtonText>Submit</CenterButtonText>
+						</RoundedButtonCentered>
 					</form>
+					<hr></hr>
 				</main>
-				<section className="footer" onClick={() => nameClicked()}>
-					<span className="user-name">{props.currentJob.name}</span>
-				</section>
-			</article>
-			<div className="background" onClick={() => nameClicked()}></div>
+				<FooterButton onClick={() => nameClicked()}>
+					<CenterButtonText>{jobState.name}</CenterButtonText>
+				</FooterButton>
+			</AddJobArticle>
+			<AddBackdrop onClick={() => nameClicked()}></AddBackdrop>
 		</React.Fragment>
 	);
 }
