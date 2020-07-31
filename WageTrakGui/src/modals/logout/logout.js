@@ -2,11 +2,14 @@ import React from 'react';
 import { withRouter } from 'react-router-dom';
 import { Modal, Button, Fade } from 'react-bootstrap';
 
+import { useAuth } from '../../context/authContext'; 
+
 const logout = (props) => {
+	const { setAuthTokens } = useAuth();
 
 	const logout = () => {
-		// props.history.push("/wagetrak-login");
-		console.log("Logout");
+		setAuthTokens("");
+		window.location.reload();
 	}
 
 	return (

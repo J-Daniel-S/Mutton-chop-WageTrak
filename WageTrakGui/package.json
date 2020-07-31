@@ -13,6 +13,7 @@
   "author": "CodeMix",
   "license": "ISC",
   "dependencies": {
+    "auth0": "^2.27.1",
     "bootstrap": "^4.5.0",
     "react": "^16.2.0",
     "react-bootstrap": "^1.1.1",

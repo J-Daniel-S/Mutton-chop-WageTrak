@@ -1,79 +1,499 @@
-20-51-30  INFO 11480 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data MongoDB repositories in DEFAULT mode.
-20-51-30  INFO 11480 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 14ms. Found 2 MongoDB repository interfaces.
-20-51-30  INFO 11480 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
-20-51-30  INFO 11480 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 431 ms
-20-51-30  INFO 11480 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
-20-51-30  INFO 11480 --- [restartedMain] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
-20-51-30  INFO 11480 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
-20-51-30  INFO 11480 --- [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
-20-14-30  INFO 15996 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data MongoDB repositories in DEFAULT mode.
-20-14-30  INFO 15996 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 93ms. Found 2 MongoDB repository interfaces.
-20-14-30  INFO 15996 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 0 (http)
-20-14-30  INFO 15996 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 3168 ms
-20-14-30  INFO 15996 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
-20-14-30  INFO 15996 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 64174 (http) with context path ''
-20-14-30  INFO 15996 --- [SpringContextShutdownHook] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
-20-14-30  INFO 1036 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data MongoDB repositories in DEFAULT mode.
-20-14-30  INFO 1036 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 122ms. Found 2 MongoDB repository interfaces.
-20-14-30  INFO 1036 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 0 (http)
-20-14-30  INFO 1036 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 3693 ms
-20-14-30  INFO 1036 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
-20-14-30  INFO 1036 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 64192 (http) with context path ''
-20-14-30  INFO 1036 --- [http-nio-auto-1-exec-2] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
-20-14-30  INFO 1036 --- [http-nio-auto-1-exec-2] o.s.web.servlet.DispatcherServlet        : Completed initialization in 76 ms
-20-14-30  INFO 1036 --- [SpringContextShutdownHook] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
-20-16-30  INFO 16752 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data MongoDB repositories in DEFAULT mode.
-20-16-30  INFO 16752 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 106ms. Found 2 MongoDB repository interfaces.
-20-16-30  INFO 16752 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 0 (http)
-20-16-30  INFO 16752 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 2842 ms
-20-16-30  INFO 16752 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
-20-16-30  INFO 16752 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 64357 (http) with context path ''
-20-16-30  INFO 16752 --- [http-nio-auto-1-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
-20-16-30  INFO 16752 --- [http-nio-auto-1-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 48 ms
-20-16-30  INFO 16752 --- [SpringContextShutdownHook] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
-20-36-30  INFO 11480 --- [Thread-1447] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
-20-37-30  INFO 11480 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data MongoDB repositories in DEFAULT mode.
-20-37-30  INFO 11480 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 21ms. Found 2 MongoDB repository interfaces.
-20-37-30  INFO 11480 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
-20-37-30  INFO 11480 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 694 ms
-20-37-30  INFO 11480 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
-20-37-30  INFO 11480 --- [restartedMain] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
-20-37-30  INFO 11480 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
-20-37-30  INFO 11480 --- [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
-20-23-30  INFO 11480 --- [Thread-1987] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
-20-23-30  INFO 11480 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data MongoDB repositories in DEFAULT mode.
-20-23-30  INFO 11480 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 18ms. Found 2 MongoDB repository interfaces.
-20-23-30  INFO 11480 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
-20-23-30  INFO 11480 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 523 ms
-20-23-30  INFO 11480 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
-20-23-30  INFO 11480 --- [restartedMain] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
-20-23-30  INFO 11480 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
-20-23-30  INFO 11480 --- [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
-20-45-30  INFO 11480 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
-20-45-30  INFO 11480 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 8 ms
-20-48-30  INFO 3852 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data MongoDB repositories in DEFAULT mode.
-20-48-30  INFO 3852 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 163ms. Found 2 MongoDB repository interfaces.
-20-48-30  INFO 3852 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 0 (http)
-20-48-30  INFO 3852 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 4057 ms
-20-48-30  INFO 3852 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
-20-48-30  INFO 3852 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 61796 (http) with context path ''
-20-48-30  INFO 3852 --- [http-nio-auto-1-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
-20-48-30  INFO 3852 --- [http-nio-auto-1-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 66 ms
-20-48-30  INFO 3852 --- [SpringContextShutdownHook] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
-20-25-30  INFO 224 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
-20-25-30  INFO 224 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
-20-25-30  INFO 224 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data MongoDB repositories in DEFAULT mode.
-20-25-30  INFO 224 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 67ms. Found 2 MongoDB repository interfaces.
-20-25-30  INFO 224 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
-20-25-30  INFO 224 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 2051 ms
-20-25-30  WARN 224 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : Unable to start LiveReload server
-20-25-30  INFO 224 --- [restartedMain] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
-20-25-30  WARN 224 --- [restartedMain] ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.context.ApplicationContextException: Failed to start bean 'webServerStartStop'; nested exception is org.springframework.boot.web.server.PortInUseException: Port 8080 is already in use
-20-25-30  INFO 224 --- [restartedMain] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
-20-25-30  INFO 224 --- [restartedMain] ConditionEvaluationReportLoggingListener : 
+20-23-31  INFO 16116 --- [Thread-174] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+20-23-31  INFO 16116 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data MongoDB repositories in DEFAULT mode.
+20-23-31  INFO 16116 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 23ms. Found 2 MongoDB repository interfaces.
+20-23-31  INFO 16116 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+20-23-31  INFO 16116 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 771 ms
+20-23-31  INFO 16116 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+20-23-31  INFO 16116 --- [restartedMain] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+20-23-31  INFO 16116 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+20-23-31  INFO 16116 --- [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+20-23-31  INFO 16116 --- [Thread-180] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+20-23-31  INFO 16116 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data MongoDB repositories in DEFAULT mode.
+20-23-31  INFO 16116 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 23ms. Found 2 MongoDB repository interfaces.
+20-23-31  INFO 16116 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+20-23-31  INFO 16116 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 706 ms
+20-23-31  INFO 16116 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+20-23-31  INFO 16116 --- [restartedMain] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+20-23-31  INFO 16116 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+20-23-31  INFO 16116 --- [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+20-45-31  INFO 16116 --- [Thread-355] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+20-45-31  INFO 16116 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data MongoDB repositories in DEFAULT mode.
+20-45-31  INFO 16116 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 30ms. Found 2 MongoDB repository interfaces.
+20-45-31  INFO 16116 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+20-45-31  INFO 16116 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1150 ms
+20-45-31  INFO 16116 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+20-45-31  INFO 16116 --- [restartedMain] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+20-45-31  INFO 16116 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+20-45-31  INFO 16116 --- [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+20-45-31  INFO 16116 --- [Thread-530] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+20-47-31  INFO 16116 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data MongoDB repositories in DEFAULT mode.
+20-47-31  INFO 16116 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 19ms. Found 2 MongoDB repository interfaces.
+20-47-31  INFO 16116 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+20-47-31  INFO 16116 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 585 ms
+20-47-31  INFO 16116 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+20-47-31  INFO 16116 --- [restartedMain] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+20-47-31  INFO 16116 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+20-47-31  INFO 16116 --- [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+20-47-31  INFO 16116 --- [Thread-1055] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+20-47-31  INFO 16116 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data MongoDB repositories in DEFAULT mode.
+20-47-31  INFO 16116 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 29ms. Found 2 MongoDB repository interfaces.
+20-47-31  INFO 16116 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+20-47-31  INFO 16116 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 836 ms
+20-47-31  INFO 16116 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+20-47-31  INFO 16116 --- [restartedMain] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+20-47-31  INFO 16116 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+20-47-31  INFO 16116 --- [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+20-48-31  INFO 16116 --- [Thread-1580] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+20-48-31  INFO 16116 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data MongoDB repositories in DEFAULT mode.
+20-48-31  INFO 16116 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 14ms. Found 2 MongoDB repository interfaces.
+20-48-31  INFO 16116 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+20-48-31  INFO 16116 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 447 ms
+20-48-31  INFO 16116 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+20-48-31  INFO 16116 --- [restartedMain] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+20-48-31  INFO 16116 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+20-48-31  INFO 16116 --- [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+20-49-31  INFO 16116 --- [Thread-1755] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+20-49-31  INFO 16116 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data MongoDB repositories in DEFAULT mode.
+20-49-31  INFO 16116 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 15ms. Found 2 MongoDB repository interfaces.
+20-49-31  INFO 16116 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+20-49-31  INFO 16116 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 544 ms
+20-49-31  INFO 16116 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+20-49-31  INFO 16116 --- [restartedMain] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+20-49-31  INFO 16116 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+20-49-31  INFO 16116 --- [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+20-57-31  INFO 16116 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+20-57-31  INFO 16116 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 8 ms
+20-02-31  INFO 16116 --- [Thread-1930] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+20-02-31  INFO 16116 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data MongoDB repositories in DEFAULT mode.
+20-02-31  INFO 16116 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 14ms. Found 2 MongoDB repository interfaces.
+20-02-31  INFO 16116 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+20-02-31  INFO 16116 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 448 ms
+20-02-31  INFO 16116 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+20-02-31  INFO 16116 --- [restartedMain] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+20-02-31  INFO 16116 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+20-02-31  INFO 16116 --- [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+20-05-31  INFO 16116 --- [Thread-2105] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+20-05-31  INFO 16116 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data MongoDB repositories in DEFAULT mode.
+20-05-31  INFO 16116 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 15ms. Found 2 MongoDB repository interfaces.
+20-05-31  INFO 16116 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+20-05-31  INFO 16116 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 453 ms
+20-05-31  INFO 16116 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+20-05-31  INFO 16116 --- [restartedMain] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+20-05-31  INFO 16116 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+20-05-31  INFO 16116 --- [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+20-05-31  INFO 16116 --- [Thread-2280] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+20-05-31  INFO 16116 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data MongoDB repositories in DEFAULT mode.
+20-05-31  INFO 16116 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 15ms. Found 2 MongoDB repository interfaces.
+20-05-31  INFO 16116 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+20-05-31  INFO 16116 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 409 ms
+20-05-31  INFO 16116 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+20-05-31  INFO 16116 --- [restartedMain] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+20-05-31  INFO 16116 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+20-05-31  INFO 16116 --- [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+20-15-31  INFO 16116 --- [Thread-2455] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+20-15-31  INFO 16116 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data MongoDB repositories in DEFAULT mode.
+20-15-31  INFO 16116 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 15ms. Found 2 MongoDB repository interfaces.
+20-15-31  INFO 16116 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+20-15-31  INFO 16116 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 463 ms
+20-15-31  INFO 16116 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+20-15-31  INFO 16116 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+20-15-31  INFO 16116 --- [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation delta:
+
+
+==========================
+CONDITION EVALUATION DELTA
+==========================
+
+
+Positive matches:
+-----------------
+
+    None
+
+
+Negative matches:
+-----------------
+
+   WebMvcAutoConfiguration:
+      Did not match:
+         - @ConditionalOnMissingBean (types: org.springframework.web.servlet.config.annotation.WebMvcConfigurationSupport; SearchStrategy: all) found beans of type 'org.springframework.web.servlet.config.annotation.WebMvcConfigurationSupport' org.springframework.web.servlet.config.annotation.DelegatingWebMvcConfiguration (OnBeanCondition)
+      Matched:
+         - @ConditionalOnClass found required classes 'javax.servlet.Servlet', 'org.springframework.web.servlet.DispatcherServlet', 'org.springframework.web.servlet.config.annotation.WebMvcConfigurer' (OnClassCondition)
+         - found 'session' scope (OnWebApplicationCondition)
+
+
+Exclusions:
+-----------
+
+    None
+
+
+Unconditional classes:
+----------------------
+
+    None
+
+
+
+20-15-31  INFO 16116 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data MongoDB repositories in DEFAULT mode.
+20-15-31  INFO 16116 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 14ms. Found 2 MongoDB repository interfaces.
+20-15-31  INFO 16116 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+20-15-31  INFO 16116 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 431 ms
+20-15-31  INFO 16116 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+20-15-31  INFO 16116 --- [restartedMain] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+20-15-31  INFO 16116 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+20-15-31  INFO 16116 --- [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation delta:
+
+
+==========================
+CONDITION EVALUATION DELTA
+==========================
+
+
+Positive matches:
+-----------------
+
+   WebMvcAutoConfiguration matched:
+      - @ConditionalOnClass found required classes 'javax.servlet.Servlet', 'org.springframework.web.servlet.DispatcherServlet', 'org.springframework.web.servlet.config.annotation.WebMvcConfigurer' (OnClassCondition)
+      - found 'session' scope (OnWebApplicationCondition)
+      - @ConditionalOnMissingBean (types: org.springframework.web.servlet.config.annotation.WebMvcConfigurationSupport; SearchStrategy: all) did not find any beans (OnBeanCondition)
+
+   WebMvcAutoConfiguration#formContentFilter matched:
+      - @ConditionalOnProperty (spring.mvc.formcontent.filter.enabled) matched (OnPropertyCondition)
+      - @ConditionalOnMissingBean (types: org.springframework.web.filter.FormContentFilter; SearchStrategy: all) did not find any beans (OnBeanCondition)
+
+   WebMvcAutoConfiguration.WebMvcAutoConfigurationAdapter#defaultViewResolver matched:
+      - @ConditionalOnMissingBean (types: org.springframework.web.servlet.view.InternalResourceViewResolver; SearchStrategy: all) did not find any beans (OnBeanCondition)
+
+   WebMvcAutoConfiguration.WebMvcAutoConfigurationAdapter#requestContextFilter matched:
+      - @ConditionalOnMissingBean (types: org.springframework.web.context.request.RequestContextListener,org.springframework.web.filter.RequestContextFilter; SearchStrategy: all) did not find any beans (OnBeanCondition)
+
+   WebMvcAutoConfiguration.WebMvcAutoConfigurationAdapter#viewResolver matched:
+      - @ConditionalOnBean (types: org.springframework.web.servlet.ViewResolver; SearchStrategy: all) found beans 'defaultViewResolver', 'beanNameViewResolver', 'mvcViewResolver'; @ConditionalOnMissingBean (names: viewResolver types: org.springframework.web.servlet.view.ContentNegotiatingViewResolver; SearchStrategy: all) did not find any beans (OnBeanCondition)
+
+
+Negative matches:
+-----------------
+
+   WebMvcAutoConfiguration#hiddenHttpMethodFilter:
+      Did not match:
+         - @ConditionalOnProperty (spring.mvc.hiddenmethod.filter.enabled) did not find property 'enabled' (OnPropertyCondition)
+
+   WebMvcAutoConfiguration.WebMvcAutoConfigurationAdapter#beanNameViewResolver:
+      Did not match:
+         - @ConditionalOnMissingBean (types: org.springframework.web.servlet.view.BeanNameViewResolver; SearchStrategy: all) found beans of type 'org.springframework.web.servlet.view.BeanNameViewResolver' beanNameViewResolver (OnBeanCondition)
+
+   WebMvcAutoConfiguration.WebMvcAutoConfigurationAdapter#localeResolver:
+      Did not match:
+         - @ConditionalOnProperty (spring.mvc.locale) did not find property 'locale' (OnPropertyCondition)
+
+
+Exclusions:
+-----------
+
+    None
+
+
+Unconditional classes:
+----------------------
+
+    None
+
+
+
+20-16-31  INFO 16116 --- [Thread-2805] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+20-16-31  INFO 16116 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data MongoDB repositories in DEFAULT mode.
+20-16-31  INFO 16116 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 17ms. Found 2 MongoDB repository interfaces.
+20-16-31  INFO 16116 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+20-16-31  INFO 16116 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 516 ms
+20-16-31  INFO 16116 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+20-16-31  INFO 16116 --- [restartedMain] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+20-16-31  INFO 16116 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+20-16-31  INFO 16116 --- [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+20-23-31  INFO 16116 --- [Thread-2980] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+20-24-31  INFO 3800 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+20-24-31  INFO 3800 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+20-24-31  INFO 3800 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data MongoDB repositories in DEFAULT mode.
+20-24-31  INFO 3800 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 56ms. Found 2 MongoDB repository interfaces.
+20-24-31  INFO 3800 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+20-24-31  INFO 3800 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1884 ms
+20-24-31  INFO 3800 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+20-24-31  INFO 3800 --- [restartedMain] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+20-24-31  INFO 3800 --- [restartedMain] .s.s.UserDetailsServiceAutoConfiguration : 
+
+Using generated security password: 00b045ed-46c6-4cf6-9603-9654d1ba9733
+
+20-24-31  INFO 3800 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Creating filter chain: any request, [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@485962db, org.springframework.security.web.context.SecurityContextPersistenceFilter@6f81578f, org.springframework.security.web.header.HeaderWriterFilter@7d49bbaa, org.springframework.security.web.csrf.CsrfFilter@64a1ff9, org.springframework.security.web.authentication.logout.LogoutFilter@6ea16a8b, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@3c8f5fbd, org.springframework.security.web.authentication.ui.DefaultLoginPageGeneratingFilter@73cf5f41, org.springframework.security.web.authentication.ui.DefaultLogoutPageGeneratingFilter@506932d4, org.springframework.security.web.authentication.www.BasicAuthenticationFilter@2f10d5b4, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@22ed32f7, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@18b8c8ea, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@52a19a9c, org.springframework.security.web.session.SessionManagementFilter@2cff5dab, org.springframework.security.web.access.ExceptionTranslationFilter@5f6e7591, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@75033af3]
+20-24-31  INFO 3800 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+20-25-31  INFO 3800 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+20-25-31  INFO 3800 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 23 ms
+20-26-31  INFO 3800 --- [Thread-194] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+20-26-31  INFO 3800 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data MongoDB repositories in DEFAULT mode.
+20-26-31  INFO 3800 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 16ms. Found 2 MongoDB repository interfaces.
+20-26-31  INFO 3800 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+20-26-31  INFO 3800 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 556 ms
+20-26-31  INFO 3800 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+20-26-31  INFO 3800 --- [restartedMain] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+20-26-31  INFO 3800 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Creating filter chain: any request, [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@2eef7a1b, org.springframework.security.web.context.SecurityContextPersistenceFilter@313e8ad3, org.springframework.security.web.header.HeaderWriterFilter@3f2dc10, org.springframework.security.web.csrf.CsrfFilter@63b05914, org.springframework.security.web.authentication.logout.LogoutFilter@7b821b35, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@48baee18, org.springframework.security.web.authentication.ui.DefaultLoginPageGeneratingFilter@6289d5c3, org.springframework.security.web.authentication.ui.DefaultLogoutPageGeneratingFilter@52f8c5bb, org.springframework.security.web.authentication.www.BasicAuthenticationFilter@3e46096e, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@1f486654, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@a4f2bf1, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@4dad3bd2, org.springframework.security.web.session.SessionManagementFilter@50a7012a, org.springframework.security.web.access.ExceptionTranslationFilter@4f4c3282, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@4d6621bc]
+20-26-31  INFO 3800 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+20-26-31  INFO 3800 --- [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+20-26-31  INFO 3800 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+20-26-31  INFO 3800 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 6 ms
+20-37-31  INFO 3800 --- [Thread-200] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+20-37-31  INFO 3800 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data MongoDB repositories in DEFAULT mode.
+20-37-31  INFO 3800 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 16ms. Found 2 MongoDB repository interfaces.
+20-37-31  INFO 3800 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+20-37-31  INFO 3800 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 514 ms
+20-37-31  INFO 3800 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+20-37-31  INFO 3800 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Creating filter chain: any request, [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@1344dca8, org.springframework.security.web.context.SecurityContextPersistenceFilter@48eb2450, org.springframework.security.web.header.HeaderWriterFilter@ea5c76f, org.springframework.security.web.authentication.logout.LogoutFilter@1aba9560, org.springframework.security.web.authentication.www.BasicAuthenticationFilter@31a4340b, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@5231a96c, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@720f92fa, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@7547ca91, org.springframework.security.web.session.SessionManagementFilter@169df132, org.springframework.security.web.access.ExceptionTranslationFilter@523fc75, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@2159ffab]
+20-37-31  INFO 3800 --- [restartedMain] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+20-37-31  INFO 3800 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+20-37-31  INFO 3800 --- [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation delta:
+
+
+==========================
+CONDITION EVALUATION DELTA
+==========================
+
+
+Positive matches:
+-----------------
+
+    None
+
+
+Negative matches:
+-----------------
+
+   SpringBootWebSecurityConfiguration:
+      Did not match:
+         - @ConditionalOnMissingBean (types: org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter; SearchStrategy: all) found beans of type 'org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter' securityConfiguation (OnBeanCondition)
+      Matched:
+         - @ConditionalOnClass found required class 'org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter' (OnClassCondition)
+         - found 'session' scope (OnWebApplicationCondition)
+
+   WebSecurityEnablerConfiguration:
+      Did not match:
+         - @ConditionalOnMissingBean (names: springSecurityFilterChain; SearchStrategy: all) found beans named springSecurityFilterChain (OnBeanCondition)
+      Matched:
+         - found 'session' scope (OnWebApplicationCondition)
+
+
+Exclusions:
+-----------
+
+    None
+
+
+Unconditional classes:
+----------------------
+
+    None
+
+
+
+20-37-31  INFO 3800 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+20-37-31  INFO 3800 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 4 ms
+20-45-31  INFO 3800 --- [Thread-395] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+20-45-31  INFO 3800 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data MongoDB repositories in DEFAULT mode.
+20-45-31  INFO 3800 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 16ms. Found 2 MongoDB repository interfaces.
+20-45-31  INFO 3800 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+20-45-31  INFO 3800 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 514 ms
+20-46-31  INFO 3800 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+20-46-31  INFO 3800 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Creating filter chain: any request, [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@76fa965b, org.springframework.security.web.context.SecurityContextPersistenceFilter@59bf7b80, org.springframework.security.web.header.HeaderWriterFilter@3791b8f2, org.springframework.security.web.authentication.logout.LogoutFilter@294a0388, org.springframework.security.web.authentication.www.BasicAuthenticationFilter@75935b14, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@25c4f1cf, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@1fa89bad, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@74b090af, org.springframework.security.web.session.SessionManagementFilter@725cdd7f, org.springframework.security.web.access.ExceptionTranslationFilter@5b34f67e, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@679bd330]
+20-46-31  INFO 3800 --- [restartedMain] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+20-46-31  INFO 3800 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+20-46-31  INFO 3800 --- [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+20-49-31  INFO 3800 --- [Thread-586] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+20-49-31  INFO 3800 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data MongoDB repositories in DEFAULT mode.
+20-49-31  INFO 3800 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 16ms. Found 2 MongoDB repository interfaces.
+20-49-31  INFO 3800 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+20-49-31  INFO 3800 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 515 ms
+20-49-31  INFO 3800 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+20-49-31  WARN 3800 --- [restartedMain] ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'testAuthController': Lookup method resolution failed; nested exception is java.lang.IllegalStateException: Failed to introspect Class [wageTrak.security.TestAuthController] from ClassLoader [org.springframework.boot.devtools.restart.classloader.RestartClassLoader@d882570]
+20-49-31  INFO 3800 --- [restartedMain] ConditionEvaluationReportLoggingListener : 
 
 Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
-20-25-30 ERROR 224 --- [restartedMain] o.s.b.d.LoggingFailureAnalysisReporter   : 
+20-49-31 ERROR 3800 --- [restartedMain] o.s.boot.SpringApplication               : Application run failed
+
+org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'testAuthController': Lookup method resolution failed; nested exception is java.lang.IllegalStateException: Failed to introspect Class [wageTrak.security.TestAuthController] from ClassLoader [org.springframework.boot.devtools.restart.classloader.RestartClassLoader@d882570]
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.determineCandidateConstructors(AutowiredAnnotationBeanPostProcessor.java:289) ~[spring-beans-5.2.7.RELEASE.jar:5.2.7.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.determineConstructorsFromBeanPostProcessors(AbstractAutowireCapableBeanFactory.java:1286) ~[spring-beans-5.2.7.RELEASE.jar:5.2.7.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1201) ~[spring-beans-5.2.7.RELEASE.jar:5.2.7.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:557) ~[spring-beans-5.2.7.RELEASE.jar:5.2.7.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:517) ~[spring-beans-5.2.7.RELEASE.jar:5.2.7.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:323) ~[spring-beans-5.2.7.RELEASE.jar:5.2.7.RELEASE]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:226) ~[spring-beans-5.2.7.RELEASE.jar:5.2.7.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:321) ~[spring-beans-5.2.7.RELEASE.jar:5.2.7.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:202) ~[spring-beans-5.2.7.RELEASE.jar:5.2.7.RELEASE]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:893) ~[spring-beans-5.2.7.RELEASE.jar:5.2.7.RELEASE]
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:879) ~[spring-context-5.2.7.RELEASE.jar:5.2.7.RELEASE]
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:551) ~[spring-context-5.2.7.RELEASE.jar:5.2.7.RELEASE]
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:143) ~[spring-boot-2.3.1.RELEASE.jar:2.3.1.RELEASE]
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:758) [spring-boot-2.3.1.RELEASE.jar:2.3.1.RELEASE]
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:750) [spring-boot-2.3.1.RELEASE.jar:2.3.1.RELEASE]
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:397) [spring-boot-2.3.1.RELEASE.jar:2.3.1.RELEASE]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:315) [spring-boot-2.3.1.RELEASE.jar:2.3.1.RELEASE]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1237) [spring-boot-2.3.1.RELEASE.jar:2.3.1.RELEASE]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1226) [spring-boot-2.3.1.RELEASE.jar:2.3.1.RELEASE]
+	at wageTrak.WageTrakApplication.main(WageTrakApplication.java:10) [classes/:na]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:1.8.0_251]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source) ~[na:1.8.0_251]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source) ~[na:1.8.0_251]
+	at java.lang.reflect.Method.invoke(Unknown Source) ~[na:1.8.0_251]
+	at org.springframework.boot.devtools.restart.RestartLauncher.run(RestartLauncher.java:49) [spring-boot-devtools-2.3.1.RELEASE.jar:2.3.1.RELEASE]
+Caused by: java.lang.IllegalStateException: Failed to introspect Class [wageTrak.security.TestAuthController] from ClassLoader [org.springframework.boot.devtools.restart.classloader.RestartClassLoader@d882570]
+	at org.springframework.util.ReflectionUtils.getDeclaredMethods(ReflectionUtils.java:481) ~[spring-core-5.2.7.RELEASE.jar:5.2.7.RELEASE]
+	at org.springframework.util.ReflectionUtils.doWithLocalMethods(ReflectionUtils.java:321) ~[spring-core-5.2.7.RELEASE.jar:5.2.7.RELEASE]
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.determineCandidateConstructors(AutowiredAnnotationBeanPostProcessor.java:267) ~[spring-beans-5.2.7.RELEASE.jar:5.2.7.RELEASE]
+	... 24 common frames omitted
+Caused by: java.lang.NoClassDefFoundError: AuthenticationBean
+	at java.lang.Class.getDeclaredMethods0(Native Method) ~[na:1.8.0_251]
+	at java.lang.Class.privateGetDeclaredMethods(Unknown Source) ~[na:1.8.0_251]
+	at java.lang.Class.getDeclaredMethods(Unknown Source) ~[na:1.8.0_251]
+	at org.springframework.util.ReflectionUtils.getDeclaredMethods(ReflectionUtils.java:463) ~[spring-core-5.2.7.RELEASE.jar:5.2.7.RELEASE]
+	... 26 common frames omitted
+Caused by: java.lang.ClassNotFoundException: AuthenticationBean
+	at java.net.URLClassLoader.findClass(Unknown Source) ~[na:1.8.0_251]
+	at java.lang.ClassLoader.loadClass(Unknown Source) ~[na:1.8.0_251]
+	at sun.misc.Launcher$AppClassLoader.loadClass(Unknown Source) ~[na:1.8.0_251]
+	at java.lang.ClassLoader.loadClass(Unknown Source) ~[na:1.8.0_251]
+	at java.lang.Class.forName0(Native Method) ~[na:1.8.0_251]
+	at java.lang.Class.forName(Unknown Source) ~[na:1.8.0_251]
+	at org.springframework.boot.devtools.restart.classloader.RestartClassLoader.loadClass(RestartClassLoader.java:144) ~[spring-boot-devtools-2.3.1.RELEASE.jar:2.3.1.RELEASE]
+	at java.lang.ClassLoader.loadClass(Unknown Source) ~[na:1.8.0_251]
+	... 30 common frames omitted
+
+20-49-31  INFO 3800 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data MongoDB repositories in DEFAULT mode.
+20-49-31  INFO 3800 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 16ms. Found 2 MongoDB repository interfaces.
+20-49-31  INFO 3800 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+20-49-31  INFO 3800 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 511 ms
+20-49-31  INFO 3800 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+20-49-31  INFO 3800 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Creating filter chain: any request, [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@7c8c768a, org.springframework.security.web.context.SecurityContextPersistenceFilter@5503acf1, org.springframework.security.web.header.HeaderWriterFilter@3661a494, org.springframework.security.web.authentication.logout.LogoutFilter@611b684f, org.springframework.security.web.authentication.www.BasicAuthenticationFilter@77723323, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@2c931434, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@17ed4036, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@57c355ed, org.springframework.security.web.session.SessionManagementFilter@653b7bfc, org.springframework.security.web.access.ExceptionTranslationFilter@78303b2e, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@38953004]
+20-49-31  INFO 3800 --- [restartedMain] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+20-49-31  INFO 3800 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+20-49-31  INFO 3800 --- [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+20-50-31  INFO 3800 --- [Thread-777] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+20-50-31  INFO 3800 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data MongoDB repositories in DEFAULT mode.
+20-50-31  INFO 3800 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 17ms. Found 2 MongoDB repository interfaces.
+20-50-31  INFO 3800 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+20-50-31  INFO 3800 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 474 ms
+20-50-31  INFO 3800 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+20-50-31  INFO 3800 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Creating filter chain: any request, [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@73ca5c2, org.springframework.security.web.context.SecurityContextPersistenceFilter@6c9eab72, org.springframework.security.web.header.HeaderWriterFilter@6ac58570, org.springframework.security.web.authentication.logout.LogoutFilter@63d30d22, org.springframework.security.web.authentication.www.BasicAuthenticationFilter@1bfd2fbf, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@35a2a43b, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@730a49fa, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@6d9408cc, org.springframework.security.web.session.SessionManagementFilter@db08796, org.springframework.security.web.access.ExceptionTranslationFilter@1d188fbd, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@58faca08]
+20-50-31  INFO 3800 --- [restartedMain] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+20-50-31  INFO 3800 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+20-50-31  INFO 3800 --- [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+20-55-31  INFO 3800 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+20-55-31  INFO 3800 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 5 ms
+20-11-31  INFO 3800 --- [Thread-1155] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+20-11-31  INFO 3800 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data MongoDB repositories in DEFAULT mode.
+20-11-31  INFO 3800 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 17ms. Found 2 MongoDB repository interfaces.
+20-11-31  INFO 3800 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+20-11-31  INFO 3800 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1016 ms
+20-11-31  INFO 3800 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+20-11-31  INFO 3800 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Creating filter chain: any request, [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@7ccdf955, org.springframework.security.web.context.SecurityContextPersistenceFilter@7e27f995, org.springframework.security.web.header.HeaderWriterFilter@7bed4d34, org.springframework.security.web.authentication.logout.LogoutFilter@7be4da37, org.springframework.security.web.authentication.www.BasicAuthenticationFilter@44fb4072, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@9ea9631, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@187ffed5, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@5bbec369, org.springframework.security.web.session.SessionManagementFilter@6418d179, org.springframework.security.web.access.ExceptionTranslationFilter@fef0aba, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@670d1a3b]
+20-11-31  INFO 3800 --- [restartedMain] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+20-11-31  INFO 3800 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+20-11-31  INFO 3800 --- [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+20-12-31  INFO 3800 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+20-12-31  INFO 3800 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 3 ms
+20-13-31  INFO 3800 --- [Thread-1346] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+20-13-31  WARN 3800 --- [restartedMain] ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanDefinitionStoreException: Failed to read candidate component class: file [C:\Users\caitwarnberg\eclipse-workspace\WageTrak\target\classes\wageTrak\security\TestAuthController.class]; nested exception is java.lang.IllegalArgumentException
+20-13-31 ERROR 3800 --- [restartedMain] o.s.boot.SpringApplication               : Application run failed
+
+org.springframework.beans.factory.BeanDefinitionStoreException: Failed to read candidate component class: file [C:\Users\caitwarnberg\eclipse-workspace\WageTrak\target\classes\wageTrak\security\TestAuthController.class]; nested exception is java.lang.IllegalArgumentException
+	at org.springframework.context.annotation.ClassPathScanningCandidateComponentProvider.scanCandidateComponents(ClassPathScanningCandidateComponentProvider.java:452) ~[spring-context-5.2.7.RELEASE.jar:5.2.7.RELEASE]
+	at org.springframework.context.annotation.ClassPathScanningCandidateComponentProvider.findCandidateComponents(ClassPathScanningCandidateComponentProvider.java:315) ~[spring-context-5.2.7.RELEASE.jar:5.2.7.RELEASE]
+	at org.springframework.context.annotation.ClassPathBeanDefinitionScanner.doScan(ClassPathBeanDefinitionScanner.java:276) ~[spring-context-5.2.7.RELEASE.jar:5.2.7.RELEASE]
+	at org.springframework.context.annotation.ComponentScanAnnotationParser.parse(ComponentScanAnnotationParser.java:132) ~[spring-context-5.2.7.RELEASE.jar:5.2.7.RELEASE]
+	at org.springframework.context.annotation.ConfigurationClassParser.doProcessConfigurationClass(ConfigurationClassParser.java:295) ~[spring-context-5.2.7.RELEASE.jar:5.2.7.RELEASE]
+	at org.springframework.context.annotation.ConfigurationClassParser.processConfigurationClass(ConfigurationClassParser.java:249) ~[spring-context-5.2.7.RELEASE.jar:5.2.7.RELEASE]
+	at org.springframework.context.annotation.ConfigurationClassParser.parse(ConfigurationClassParser.java:206) ~[spring-context-5.2.7.RELEASE.jar:5.2.7.RELEASE]
+	at org.springframework.context.annotation.ConfigurationClassParser.parse(ConfigurationClassParser.java:174) ~[spring-context-5.2.7.RELEASE.jar:5.2.7.RELEASE]
+	at org.springframework.context.annotation.ConfigurationClassPostProcessor.processConfigBeanDefinitions(ConfigurationClassPostProcessor.java:319) ~[spring-context-5.2.7.RELEASE.jar:5.2.7.RELEASE]
+	at org.springframework.context.annotation.ConfigurationClassPostProcessor.postProcessBeanDefinitionRegistry(ConfigurationClassPostProcessor.java:236) ~[spring-context-5.2.7.RELEASE.jar:5.2.7.RELEASE]
+	at org.springframework.context.support.PostProcessorRegistrationDelegate.invokeBeanDefinitionRegistryPostProcessors(PostProcessorRegistrationDelegate.java:280) ~[spring-context-5.2.7.RELEASE.jar:5.2.7.RELEASE]
+	at org.springframework.context.support.PostProcessorRegistrationDelegate.invokeBeanFactoryPostProcessors(PostProcessorRegistrationDelegate.java:96) ~[spring-context-5.2.7.RELEASE.jar:5.2.7.RELEASE]
+	at org.springframework.context.support.AbstractApplicationContext.invokeBeanFactoryPostProcessors(AbstractApplicationContext.java:707) ~[spring-context-5.2.7.RELEASE.jar:5.2.7.RELEASE]
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:533) ~[spring-context-5.2.7.RELEASE.jar:5.2.7.RELEASE]
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:143) ~[spring-boot-2.3.1.RELEASE.jar:2.3.1.RELEASE]
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:758) [spring-boot-2.3.1.RELEASE.jar:2.3.1.RELEASE]
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:750) [spring-boot-2.3.1.RELEASE.jar:2.3.1.RELEASE]
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:397) [spring-boot-2.3.1.RELEASE.jar:2.3.1.RELEASE]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:315) [spring-boot-2.3.1.RELEASE.jar:2.3.1.RELEASE]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1237) [spring-boot-2.3.1.RELEASE.jar:2.3.1.RELEASE]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1226) [spring-boot-2.3.1.RELEASE.jar:2.3.1.RELEASE]
+	at wageTrak.WageTrakApplication.main(WageTrakApplication.java:10) [classes/:na]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:1.8.0_251]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source) ~[na:1.8.0_251]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source) ~[na:1.8.0_251]
+	at java.lang.reflect.Method.invoke(Unknown Source) ~[na:1.8.0_251]
+	at org.springframework.boot.devtools.restart.RestartLauncher.run(RestartLauncher.java:49) [spring-boot-devtools-2.3.1.RELEASE.jar:2.3.1.RELEASE]
+Caused by: java.lang.IllegalArgumentException: null
+	at org.springframework.asm.ClassReader.readElementValue(ClassReader.java:3164) ~[spring-core-5.2.7.RELEASE.jar:5.2.7.RELEASE]
+	at org.springframework.asm.ClassReader.readElementValues(ClassReader.java:2975) ~[spring-core-5.2.7.RELEASE.jar:5.2.7.RELEASE]
+	at org.springframework.asm.ClassReader.accept(ClassReader.java:582) ~[spring-core-5.2.7.RELEASE.jar:5.2.7.RELEASE]
+	at org.springframework.asm.ClassReader.accept(ClassReader.java:401) ~[spring-core-5.2.7.RELEASE.jar:5.2.7.RELEASE]
+	at org.springframework.core.type.classreading.SimpleMetadataReader.<init>(SimpleMetadataReader.java:49) ~[spring-core-5.2.7.RELEASE.jar:5.2.7.RELEASE]
+	at org.springframework.core.type.classreading.SimpleMetadataReaderFactory.getMetadataReader(SimpleMetadataReaderFactory.java:103) ~[spring-core-5.2.7.RELEASE.jar:5.2.7.RELEASE]
+	at org.springframework.core.type.classreading.CachingMetadataReaderFactory.getMetadataReader(CachingMetadataReaderFactory.java:123) ~[spring-core-5.2.7.RELEASE.jar:5.2.7.RELEASE]
+	at org.springframework.context.annotation.ClassPathScanningCandidateComponentProvider.scanCandidateComponents(ClassPathScanningCandidateComponentProvider.java:429) ~[spring-context-5.2.7.RELEASE.jar:5.2.7.RELEASE]
+	... 26 common frames omitted
+
+20-13-31  INFO 3800 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data MongoDB repositories in DEFAULT mode.
+20-13-31  INFO 3800 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 15ms. Found 2 MongoDB repository interfaces.
+20-13-31  INFO 3800 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+20-13-31  INFO 3800 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 515 ms
+20-13-31  INFO 3800 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+20-13-31  INFO 3800 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Creating filter chain: any request, [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@26d8dee2, org.springframework.security.web.context.SecurityContextPersistenceFilter@5d92b45b, org.springframework.security.web.header.HeaderWriterFilter@6ff69a80, org.springframework.security.web.authentication.logout.LogoutFilter@47f59f5b, org.springframework.security.web.authentication.www.BasicAuthenticationFilter@2a2ec26a, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@45a9a2d8, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@1ed01277, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@63f3993a, org.springframework.security.web.session.SessionManagementFilter@3e75f73f, org.springframework.security.web.access.ExceptionTranslationFilter@2217569f, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@64cf673]
+20-13-31  INFO 3800 --- [restartedMain] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+20-13-31  INFO 3800 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+20-13-31  INFO 3800 --- [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+20-13-31  INFO 3800 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+20-13-31  INFO 3800 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 7 ms
+20-17-31  INFO 3800 --- [Thread-1537] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+20-17-31  INFO 3800 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data MongoDB repositories in DEFAULT mode.
+20-17-31  INFO 3800 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 17ms. Found 2 MongoDB repository interfaces.
+20-17-31  INFO 3800 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+20-17-31  INFO 3800 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 525 ms
+20-17-31  INFO 3800 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+20-17-31  INFO 3800 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Creating filter chain: any request, [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@4444c8c3, org.springframework.security.web.context.SecurityContextPersistenceFilter@567cc62d, org.springframework.security.web.header.HeaderWriterFilter@7124542b, org.springframework.security.web.authentication.logout.LogoutFilter@4c9ee8a0, org.springframework.security.web.authentication.www.BasicAuthenticationFilter@56ea6075, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@4f086543, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@1c5ef585, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@6c65a5eb, org.springframework.security.web.session.SessionManagementFilter@4ea5df0e, org.springframework.security.web.access.ExceptionTranslationFilter@4a8a6ce5, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@316e141a]
+20-17-31  INFO 3800 --- [restartedMain] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+20-17-31  INFO 3800 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+20-17-31  INFO 3800 --- [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+20-17-31  INFO 3800 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+20-17-31  INFO 3800 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 5 ms
+20-21-31  INFO 3800 --- [Thread-1730] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+20-21-31  INFO 3800 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data MongoDB repositories in DEFAULT mode.
+20-21-31  INFO 3800 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 37ms. Found 2 MongoDB repository interfaces.
+20-21-31  INFO 3800 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+20-21-31  INFO 3800 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 715 ms
+20-21-31  INFO 3800 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+20-21-31  INFO 3800 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Creating filter chain: any request, [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@3458404b, org.springframework.security.web.context.SecurityContextPersistenceFilter@2831e2ad, org.springframework.security.web.header.HeaderWriterFilter@533971f6, org.springframework.security.web.authentication.logout.LogoutFilter@345eb02c, org.springframework.security.web.authentication.www.BasicAuthenticationFilter@7b51d618, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@5a6cc5e8, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@42c2b992, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@4a25d9c1, org.springframework.security.web.session.SessionManagementFilter@50103bc9, org.springframework.security.web.access.ExceptionTranslationFilter@59c57d4e, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@6607ff53]
+20-21-31  INFO 3800 --- [restartedMain] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+20-21-31  INFO 3800 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+20-21-31  INFO 3800 --- [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+20-22-31  INFO 3800 --- [Thread-1921] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+20-22-31  INFO 3800 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data MongoDB repositories in DEFAULT mode.
+20-22-31  INFO 3800 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 25ms. Found 2 MongoDB repository interfaces.
+20-22-31  INFO 3800 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+20-22-31  INFO 3800 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 654 ms
+20-22-31  INFO 3800 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+20-22-31  INFO 3800 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Creating filter chain: any request, [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@57c88926, org.springframework.security.web.context.SecurityContextPersistenceFilter@21bd57aa, org.springframework.security.web.header.HeaderWriterFilter@3c47bff9, org.springframework.security.web.authentication.logout.LogoutFilter@2006c890, org.springframework.security.web.authentication.www.BasicAuthenticationFilter@59240fa1, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@4ad7f430, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@4bee22e4, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@6f7a2928, org.springframework.security.web.session.SessionManagementFilter@129642a7, org.springframework.security.web.access.ExceptionTranslationFilter@40757e8b, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@7408a74]
+20-22-31  INFO 3800 --- [restartedMain] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+20-22-31  INFO 3800 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+20-22-31  INFO 3800 --- [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+20-24-31  INFO 3800 --- [Thread-2112] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+20-24-31  INFO 3800 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data MongoDB repositories in DEFAULT mode.
+20-24-31  INFO 3800 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 19ms. Found 2 MongoDB repository interfaces.
+20-24-31  INFO 3800 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+20-24-31  INFO 3800 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 557 ms
+20-24-31  INFO 3800 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+20-24-31  WARN 3800 --- [restartedMain] ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'mongoUserDetailsService': Unsatisfied dependency expressed through field 'encoder'; nested exception is org.springframework.beans.factory.NoSuchBeanDefinitionException: No qualifying bean of type 'org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder' available: expected at least 1 bean which qualifies as autowire candidate. Dependency annotations: {@org.springframework.beans.factory.annotation.Autowired(required=true)}
+20-24-31  INFO 3800 --- [restartedMain] ConditionEvaluationReportLoggingListener : 
+
+Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
+20-24-31 ERROR 3800 --- [restartedMain] o.s.b.d.LoggingFailureAnalysisReporter   : 
 
 ***************************
 APPLICATION FAILED TO START
@@ -81,51 +501,58 @@ APPLICATION FAILED TO START
 
 Description:
 
-Web server failed to start. Port 8080 was already in use.
+Field encoder in wageTrak.services.MongoUserDetailsService required a bean of type 'org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder' that could not be found.
+
+The injection point has the following annotations:
+	- @org.springframework.beans.factory.annotation.Autowired(required=true)
+
 
 Action:
 
-Identify and stop the process that's listening on port 8080 or configure this application to listen on another port.
+Consider defining a bean of type 'org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder' in your configuration.
 
-20-27-30  INFO 14716 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
-20-27-30  INFO 14716 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
-20-27-30  INFO 14716 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data MongoDB repositories in DEFAULT mode.
-20-27-30  INFO 14716 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 70ms. Found 2 MongoDB repository interfaces.
-20-27-30  INFO 14716 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
-20-27-30  INFO 14716 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 2042 ms
-20-27-30  WARN 14716 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : Unable to start LiveReload server
-20-27-30  INFO 14716 --- [restartedMain] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
-20-27-30  WARN 14716 --- [restartedMain] ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.context.ApplicationContextException: Failed to start bean 'webServerStartStop'; nested exception is org.springframework.boot.web.server.PortInUseException: Port 8080 is already in use
-20-27-30  INFO 14716 --- [restartedMain] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
-20-27-30  INFO 14716 --- [restartedMain] ConditionEvaluationReportLoggingListener : 
-
-Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
-20-27-30 ERROR 14716 --- [restartedMain] o.s.b.d.LoggingFailureAnalysisReporter   : 
-
-***************************
-APPLICATION FAILED TO START
-***************************
-
-Description:
-
-Web server failed to start. Port 8080 was already in use.
-
-Action:
-
-Identify and stop the process that's listening on port 8080 or configure this application to listen on another port.
-
-20-28-30  INFO 11480 --- [RMI TCP Connection(471)-127.0.0.1] inMXBeanRegistrar$SpringApplicationAdmin : Application shutdown requested.
-20-28-30  INFO 11480 --- [RMI TCP Connection(471)-127.0.0.1] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
-20-29-30  INFO 12612 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
-20-29-30  INFO 12612 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
-20-29-30  INFO 12612 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data MongoDB repositories in DEFAULT mode.
-20-29-30  INFO 12612 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 70ms. Found 2 MongoDB repository interfaces.
-20-29-30  INFO 12612 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
-20-29-30  INFO 12612 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 2001 ms
-20-29-30  INFO 12612 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
-20-29-30  INFO 12612 --- [restartedMain] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
-20-29-30  INFO 12612 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
-20-30-30  INFO 12612 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
-20-30-30  INFO 12612 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 96 ms
-20-42-30  INFO 12612 --- [RMI TCP Connection(19)-127.0.0.1] inMXBeanRegistrar$SpringApplicationAdmin : Application shutdown requested.
-20-42-30  INFO 12612 --- [RMI TCP Connection(19)-127.0.0.1] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+20-25-31  INFO 3800 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data MongoDB repositories in DEFAULT mode.
+20-25-31  INFO 3800 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 19ms. Found 2 MongoDB repository interfaces.
+20-25-31  INFO 3800 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+20-25-31  INFO 3800 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 575 ms
+20-25-31  INFO 3800 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+20-25-31  INFO 3800 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Creating filter chain: any request, [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@1a3b38f5, org.springframework.security.web.context.SecurityContextPersistenceFilter@3921a102, org.springframework.security.web.header.HeaderWriterFilter@529ee801, org.springframework.security.web.authentication.logout.LogoutFilter@6ca98067, org.springframework.security.web.authentication.www.BasicAuthenticationFilter@4741b51e, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@7dce92b3, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@5835b3eb, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@37454df7, org.springframework.security.web.session.SessionManagementFilter@28951295, org.springframework.security.web.access.ExceptionTranslationFilter@7e574f8a, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@735eb130]
+20-25-31  INFO 3800 --- [restartedMain] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+20-25-31  INFO 3800 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+20-25-31  INFO 3800 --- [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+20-25-31  INFO 3800 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+20-25-31  INFO 3800 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 6 ms
+20-27-31  INFO 3800 --- [Thread-2303] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+20-27-31  INFO 3800 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data MongoDB repositories in DEFAULT mode.
+20-27-31  INFO 3800 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 20ms. Found 2 MongoDB repository interfaces.
+20-27-31  INFO 3800 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+20-27-31  INFO 3800 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 558 ms
+20-27-31  INFO 3800 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+20-27-31  INFO 3800 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Creating filter chain: any request, [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@4c961c18, org.springframework.security.web.context.SecurityContextPersistenceFilter@1f8a62fc, org.springframework.security.web.header.HeaderWriterFilter@7584a6ee, org.springframework.security.web.authentication.logout.LogoutFilter@463479c7, org.springframework.security.web.authentication.www.BasicAuthenticationFilter@4c9880e0, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@1b92a7df, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@4b71c195, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@546f2133, org.springframework.security.web.session.SessionManagementFilter@53024af4, org.springframework.security.web.access.ExceptionTranslationFilter@60cc9a08, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@35b4345e]
+20-27-31  INFO 3800 --- [restartedMain] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+20-27-31  INFO 3800 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+20-27-31  INFO 3800 --- [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+20-34-31  INFO 3800 --- [Thread-2681] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+20-34-31  INFO 3800 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data MongoDB repositories in DEFAULT mode.
+20-34-31  INFO 3800 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 20ms. Found 2 MongoDB repository interfaces.
+20-34-31  INFO 3800 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+20-34-31  INFO 3800 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 541 ms
+20-34-31  INFO 3800 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+20-34-31  INFO 3800 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Creating filter chain: any request, [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@16f05263, org.springframework.security.web.context.SecurityContextPersistenceFilter@158e6953, org.springframework.security.web.header.HeaderWriterFilter@504a468b, org.springframework.security.web.authentication.logout.LogoutFilter@6f5ba15, org.springframework.security.web.authentication.www.BasicAuthenticationFilter@71fcd3a3, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@6db6325, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@427136b, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@60009b5d, org.springframework.security.web.session.SessionManagementFilter@55363446, org.springframework.security.web.access.ExceptionTranslationFilter@7f29699, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@7799b4e1]
+20-34-31  INFO 3800 --- [restartedMain] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+20-34-31  INFO 3800 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+20-34-31  INFO 3800 --- [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+20-50-31  INFO 3800 --- [RMI TCP Connection(260)-127.0.0.1] inMXBeanRegistrar$SpringApplicationAdmin : Application shutdown requested.
+20-50-31  INFO 3800 --- [RMI TCP Connection(260)-127.0.0.1] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+20-53-31  INFO 11996 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+20-53-31  INFO 11996 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+20-53-31  INFO 11996 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data MongoDB repositories in DEFAULT mode.
+20-53-31  INFO 11996 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 120ms. Found 2 MongoDB repository interfaces.
+20-53-31  INFO 11996 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+20-53-31  INFO 11996 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 3139 ms
+20-53-31  INFO 11996 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+20-53-31  INFO 11996 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Creating filter chain: any request, [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@1e0f4fb1, org.springframework.security.web.context.SecurityContextPersistenceFilter@74978f89, org.springframework.security.web.header.HeaderWriterFilter@54a6cc0c, org.springframework.security.web.authentication.logout.LogoutFilter@194cd88e, org.springframework.security.web.authentication.www.BasicAuthenticationFilter@51023320, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@22d06228, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@6e6b66af, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@33a2095a, org.springframework.security.web.session.SessionManagementFilter@237324e6, org.springframework.security.web.access.ExceptionTranslationFilter@62cb8ced, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@4c7ba1fc]
+20-53-31  INFO 11996 --- [restartedMain] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+20-53-31  INFO 11996 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+20-03-31  INFO 11996 --- [RMI TCP Connection(16)-127.0.0.1] inMXBeanRegistrar$SpringApplicationAdmin : Application shutdown requested.
+20-03-31  INFO 11996 --- [RMI TCP Connection(16)-127.0.0.1] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'

@@ -49,6 +49,11 @@ const navMenu = (props) => {
 						</Form.Group>
 						<Button block size="sm" variant="secondary" type="submit">Edit tax rate</Button>
 						<Button block size="sm" variant="secondary" onClick={() => props.toggleReport()}>Report bug</Button>
+						<Button block size="sm" variant="secondary" onClick={() => {
+							props.getUser();
+							window.location.reload();
+						}
+						}>Reload user data</Button>
 					</Form>
 				</Modal.Body>
 			</Modal.Dialog>

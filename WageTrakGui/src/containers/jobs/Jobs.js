@@ -2,6 +2,7 @@ import React, { useState, useContext } from 'react';
 import { withRouter } from 'react-router-dom';
 
 import UserContext from '../../context/userContext';
+import { useAuth } from '../../context/authContext';
 import ConfirmDelete from '../../modals/confirm/ConfirmDelete';
 
 import { LargeListArticle, LargeUl, LargeThumbnail, LargeTitleMargin, IconButtonDiv } from '../../styles/styledComponents';
@@ -9,6 +10,7 @@ import { LargeListArticle, LargeUl, LargeThumbnail, LargeTitleMargin, IconButton
 const jobs = (props) => {
 	const [showModal, setModal] = useState(false);
 	const [userState, setUserState, job, selectJob] = useContext(UserContext);
+	const { authTokens } = useAuth();
 
 	const jobClickedHandler = (j) => {
 		selectJob(j);
@@ -34,7 +36,9 @@ const jobs = (props) => {
 				headers: {
 					'Content-type': 'application/json',
 					'Access-Control-Allow-Origin': 'localhost:3000/',
-					'Access-Control-Allow-Methods': 'DELETE'
+					'Access-Control-Allow-Methods': 'DELETE',
+					Accept: 'application/json, text/plain, */*',
+					authorization: authTokens
 				},
 			}
 		).then(res => res.json()).then(res => {

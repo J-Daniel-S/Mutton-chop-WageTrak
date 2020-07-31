@@ -4,10 +4,12 @@ import { Modal, Button, Form, Fade } from 'react-bootstrap';
 
 import ConfirmDelete from '../confirm/ConfirmDelete';
 import UserContext from '../../context/userContext';
+import { useAuth } from '../../context/authContext';
 
 const editUser = (props) => {
 	const [confirmDeleteState, setConfirmDeleteState] = useState({});
 	const [userState, setUserState] = useContext(UserContext);
+	const { authTokens } = useAuth();
 
 	const toggleDeleteUser = () => {
 		if (confirmDeleteState === true) {
@@ -25,7 +27,9 @@ const editUser = (props) => {
 				headers: {
 					'Content-type': 'application/json',
 					'Origins': 'http://localhost:3000',
-					'Access-Control-Allow-Methods': 'DELETE'
+					'Access-Control-Allow-Methods': 'DELETE',
+					Accept: 'application/json, text/plain, */*',
+					authorization: authTokens
 				}
 			}
 		).then(res => {
@@ -50,7 +54,9 @@ const editUser = (props) => {
 					method: 'PUT',
 					headers: {
 						'Content-Type': 'application/json',
-						'Access-Control-Allow-Origin': 'http://localhost:3000'
+						'Access-Control-Allow-Origin': 'http://localhost:3000',
+						Accept: 'application/json, text/plain, */*',
+						authorization: authTokens
 					},
 					mode: 'cors',
 					body: JSON.stringify({

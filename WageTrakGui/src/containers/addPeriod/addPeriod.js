@@ -2,12 +2,14 @@ import React, { useContext } from 'react';
 import { withRouter } from 'react-router-dom';
 
 import UserContext from '../../context/userContext';
+import { useAuth } from '../../context/authContext';
 
 import { Title, Hr, AddJobArticle, AddBackdrop, FooterButton, CenterButtonText, FormInput, FormLabel, RoundedButtonCentered } from '../../styles/styledComponents';
 
 const addPeriod = (props) => {
 	// eslint-disable-next-line
 	const [userState, updateUser, jobState] = useContext(UserContext);
+	const { authTokens } = useAuth();
 
 	const nameClicked = () => {
 		props.history.push("/wagetrak/job");
@@ -32,7 +34,9 @@ const addPeriod = (props) => {
 				headers: {
 					'Content-type': 'application/json',
 					'Access-Control-Allow-Origin': 'localhost:3000/',
-					'Access-Control-Allow-Methods': 'POST'
+					'Access-Control-Allow-Methods': 'POST',
+					Accept: 'application/json, text/plain, */*',
+					authorization: authTokens
 				},
 				body: JSON.stringify({
 					dateName: dateName,

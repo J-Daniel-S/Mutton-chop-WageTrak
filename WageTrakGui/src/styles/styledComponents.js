@@ -69,6 +69,30 @@ export const LargeUl = styled.ul`
 	padding: 0;
 `;
 
+export const AppTitle = styled.section`
+	display: flex;
+	text-align: left;
+	font-weight: 700;
+	font-size: 2em;
+	width: 100vw;
+	justify-content: center;
+	align-items: center;
+	background-image: linear-gradient(to bottom, #0a5472, #9fb1c6);
+	box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+	height: 8.5vh;
+		
+	@keyframes fadeIn {
+		0% {
+			opacity: 0;
+		}
+		100% {
+			opacity: 1;
+		}
+	}
+
+	animation: .5s ease 0s 1 fadeIn;
+`;
+
 export const LargeThumbnail = styled.section`
 	display: flex;
 	text-align: left;
@@ -390,4 +414,80 @@ export const LogoutButton = styled.i`
 	align-self: flex-end;
 	color: #022E51;
 	cursor: pointer;
+`;
+
+export const LoginPage = styled.main`
+	height: 100vh;
+    width: 100vw;
+    margin: 0;
+    padding: 0;
+    background-image: linear-gradient(to RIGHT, #cfd8e2, #dfe5ec);
+    font-size: 1.1em;
+
+    animation: fadeIn ease .5s;
+    -webkit-animation: fadeIn ease .5s;
+    -moz-animation: fadeIn ease .5s;
+    -o-animation: fadeIn ease .5s;
+
+    @keyframes fadeIn {
+        0% {
+            opacity: 0;
+        }
+
+        100% {
+            opacity: 1;
+        }
+    }
+
+    @-moz-keyframes fadeIn {
+        0% {
+            opacity: 0;
+        }
+
+        100% {
+            opacity: 1;
+        }
+    }
+
+    @-webkit-keyframes fadeIn {
+        0% {
+            opacity: 0;
+        }
+
+        100% {
+            opacity: 1;
+        }
+    }
+
+    @-o-keyframes fadeIn {
+        0% {
+            opacity: 0;
+        }
+
+        100% {
+            opacity: 1;
+        }
+    }
+
+}
+
+@media (min-width: 700) {
+    body {
+        font-size: 1.8em;
+    }
+}
+
+@media (min-width: 900) {
+    body {
+        font-size: 2.5em;
+    }
+}
+`;
+
+export const LoginButtonContainer = styled.div`
+	margin: 0 0 1vh 2vw;
+	@media only screen and (max-width: 600) {
+		margin: 0 0 2vh 5vw;
+	}
+	
 `;

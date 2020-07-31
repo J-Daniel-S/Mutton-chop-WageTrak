@@ -7,9 +7,12 @@ import java.util.stream.Collectors;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import wageTrak.branches.Job;
 
 @Document(collection = "users")
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class User {
 
 	@Id

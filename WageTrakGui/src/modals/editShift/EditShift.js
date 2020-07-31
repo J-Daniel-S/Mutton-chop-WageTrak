@@ -4,6 +4,7 @@ import { Button, Form, Fade } from 'react-bootstrap';
 
 import ConfirmDelete from '../confirm/ConfirmDelete';
 import UserContext from '../../context/userContext';
+import { useAuth } from '../../context/authContext';
 
 import { EditModal, Hr } from '../../styles/styledComponents';
 
@@ -13,6 +14,7 @@ const editShift = (props) => {
 	const [userState, updateUser, jobState, setJobState, periodState, setPeriodState, viewPeriodState, setViewPeriodState,
 		// eslint-disable-next-line
 		shiftState, setShiftState, jobsState, setJobsState] = useContext(UserContext);
+	const { authTokens } = useAuth();
 
 	const toggleDeleteShift = () => {
 		if (confirmDeleteState === true) {
@@ -31,7 +33,9 @@ const editShift = (props) => {
 				headers: {
 					'Content-type': 'application/json',
 					'Access-Control-Allow-Origin': 'localhost:3000/',
-					'Access-Control-Allow-Methods': 'DELETE'
+					'Access-Control-Allow-Methods': 'DELETE',
+					Accept: 'application/json, text/plain, */*',
+					authorization: authTokens
 				}
 			}
 		).then(res => res.json()).then(res => {
@@ -85,7 +89,9 @@ const editShift = (props) => {
 						headers: {
 							'Content-type': 'application/json',
 							'Access-Control-Allow-Origin': 'localhost:3000/',
-							'Access-Control-Allow-Methods': 'PUT'
+							'Access-Control-Allow-Methods': 'PUT',
+							Accept: 'application/json, text/plain, */*',
+							authorization: authTokens
 						},
 						body: JSON.stringify({
 							date: date,

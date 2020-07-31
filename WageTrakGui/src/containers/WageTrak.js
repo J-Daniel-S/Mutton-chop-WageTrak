@@ -11,7 +11,9 @@ import AddUser from '../containers/addUser/addUser';
 import AddJob from './addjob/addJob';
 import AddPeriod from './addPeriod/addPeriod';
 import AddShift from './addShift/addShift';
+import Loading from '../styles/Loading';
 import UserContext from '../context/userContext';
+import { useAuth } from '../context/authContext';
 
 import './WageTrak.css';
 
@@ -27,6 +29,8 @@ import './WageTrak.css';
 
 //code signup for back end
 
+//test signup after security is coded
+
 const wageTrak = (props) => {
 	const [userState, setUserState] = useState({});
 	const [jobState, setJobState] = useState({});
@@ -34,6 +38,7 @@ const wageTrak = (props) => {
 	const [viewPeriodState, setViewPeriodState] = useState({});
 	const [shiftState, setShiftState] = useState({});
 	const [jobsState, setJobsState] = useState({});
+	const { authTokens } = useAuth();
 
 	const contextArr = [userState, setUserState, jobState, setJobState, periodState, setPeriodState, viewPeriodState, setViewPeriodState,
 		shiftState, setShiftState, jobsState, setJobsState];
@@ -49,7 +54,11 @@ const wageTrak = (props) => {
 		fetch(
 			"http://localhost:8080/wageTrak/users/" + userId,
 			{
-				method: 'GET'
+				method: 'GET',
+				headers: {
+					Accept: 'application/json, text/plain, */*',
+					authorization: authTokens
+				}
 			}
 		).then(res => res.json())
 			.then(res => {
@@ -57,6 +66,7 @@ const wageTrak = (props) => {
 					getUser();
 				} else {
 					setUserState(res);
+					//this exists simply to force a re-render when jobs is changed
 					setJobsState(res.jobs);
 				}
 			}
@@ -66,14 +76,15 @@ const wageTrak = (props) => {
 					getUser();
 				} else {
 					setUserState(res);
+					//this exists simply to force a re-render when jobs is changed
 					setJobsState(res.jobs);
 				}
 			});
 		setUserState(userState);
 	}
 
-
-	let userData = "Loading...";
+	//spinner
+	let userData = <Loading />;
 
 	if (userState) {
 		userData = <User />
@@ -83,7 +94,7 @@ const wageTrak = (props) => {
 		<React.Fragment>
 			<UserContext.Provider value={[...contextArr]}>
 				<BrowserRouter>
-					<Navbar />
+					<Navbar getUser={() => getUser()}/>
 					{window.location.pathname === "/" || window.location.pathname === "/wagetrak/wagetrak/job" ? <Redirect to="/wagetrak" /> : null}
 					<Route
 						path="/wagetrak-signup"

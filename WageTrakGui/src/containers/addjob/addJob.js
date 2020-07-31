@@ -2,6 +2,7 @@ import React, { useContext } from 'react';
 import { withRouter } from 'react-router-dom';
 
 import UserContext from '../../context/userContext';
+import { useAuth } from '../../context/authContext';
 
 import { AddJobArticle, Hr, RoundedButtonCentered, CenterButtonText, FooterButton, AddBackdrop, FormLabel, FormInput, PaySection,
 		Title } from '../../styles/styledComponents';
@@ -9,6 +10,7 @@ import { AddJobArticle, Hr, RoundedButtonCentered, CenterButtonText, FooterButto
 const addJob = (props) => {
 	// eslint-disable-next-line
 	const [userState, updateUser] = useContext(UserContext);
+	const { authTokens } = useAuth();
 
 	const nameClicked = () => {
 		props.history.push("/wagetrak");
@@ -45,7 +47,9 @@ const addJob = (props) => {
 				headers: {
 					'Content-type': 'application/json',
 					'Access-Control-Allow-Origin': 'localhost:3000/',
-					'Access-Control-Allow-Methods': 'POST'
+					'Access-Control-Allow-Methods': 'POST',
+					Accept: 'application/json, text/plain, */*',
+					authorization: authTokens
 				},
 				body: JSON.stringify({
 					name: name.toLowerCase(),

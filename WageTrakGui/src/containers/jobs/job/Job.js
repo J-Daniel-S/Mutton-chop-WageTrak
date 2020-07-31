@@ -45,10 +45,12 @@ const job = (props) => {
 	let totalTax = 0;
 	let currentPeriodNum = 0;
 	let currentPeriodNet = 0;
+	
 
 	if (jobState) {
 		jobTitle = jobState.name;
 		rate = jobState.rate.toFixed(2);
+		setPeriodState(null);
 
 		for (let period of jobState.payPeriods) {
 			totalGross += period.grossPay;
@@ -73,7 +75,7 @@ const job = (props) => {
 		currentPeriodNum = Math.max.apply(Math, payPeriods);
 
 		for (let period of jobState.payPeriods) {
-			if (Date.parse(period.dateName) === currentPeriodNum) {
+			if (Date.parse(period.dateName) === currentPeriodNum && payPeriods.length !== 0) {
 				setPeriodState(period);
 				currentPeriodNet = period.netPay;
 			}
@@ -124,10 +126,11 @@ const job = (props) => {
 						<FlexDiv>
 							<Flex3>
 								<FlexText>
-									Current pay period: {periodState && <ShadowButton onClick={() => periodClicked()}>{periodState.dateName}</ShadowButton>}
+									Current pay period: {periodState !== null &&
+										<ShadowButton onClick={() => periodClicked()}>{periodState.dateName}</ShadowButton>}
 								</FlexText>
 							</Flex3>
-							{periodState.dateName &&
+							{periodState !== null &&
 								<Flex0>
 									<FlexText>
 										<ShadowButton>add shift <i className="fa fa-plus fa-lg" aria-hidden="true" onClick={() => addShiftHandler()}></i>

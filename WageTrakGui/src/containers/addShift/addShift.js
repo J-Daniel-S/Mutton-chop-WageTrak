@@ -2,11 +2,13 @@ import React, { useContext } from 'react';
 import { withRouter } from 'react-router-dom';
 
 import UserContext from '../../context/userContext';
+import { useAuth } from '../../context/authContext';
 
 import { AddShiftArticle, AddBackdrop, Hr, Title, FormLabel, FormInput, RoundedButtonCentered, CenterButtonText, FooterButton } from '../../styles/styledComponents';
 
 const addShift = (props) => {
 	const [userState, updateUser, jobState] = useContext(UserContext);
+	const { authTokens } = useAuth();
 
 	const nameClicked = () => {
 		props.history.push("/wagetrak/job/periods");
@@ -57,7 +59,9 @@ const addShift = (props) => {
 				headers: {
 					'Content-type': 'application/json',
 					'Access-Control-Allow-Origin': 'http://localhost:3000/',
-					'Access-Control-Allow-Methods': 'POST'
+					'Access-Control-Allow-Methods': 'POST',
+					Accept: 'application/json, text/plain, */*',
+					authorization: authTokens
 				},
 				body: JSON.stringify({
 					date: date,

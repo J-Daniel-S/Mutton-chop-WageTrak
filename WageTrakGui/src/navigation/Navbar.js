@@ -68,7 +68,7 @@ const navbar = (props) => {
 				</div>
 			</Navbar>
 			{logout && !navMenu && !report && <Logout />}
-			{navMenu && !logout && !report && <NavMenu toggleMenu={() => toggleNavMenu()} toggleReport={() => toggleReport()} />}
+			{navMenu && !logout && !report && <NavMenu getUser={() => props.getUser()} toggleMenu={() => toggleNavMenu()} toggleReport={() => toggleReport()} />}
 			{report && !navMenu && !logout && <ReportBug toggleReport={() => toggleReport()} /> }
 		</React.Fragment>
 	);

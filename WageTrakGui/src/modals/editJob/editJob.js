@@ -5,6 +5,7 @@ import { Button, Form, Fade } from 'react-bootstrap';
 import ConfirmDelete from '../confirm/ConfirmDelete';
 import ConfirmEdit from '../confirm/ConfirmEdit';
 import UserContext from '../../context/userContext';
+import { useAuth } from '../../context/authContext';
 
 import { EditModal, Hr } from '../../styles/styledComponents';
 
@@ -13,6 +14,7 @@ const editJob = (props) => {
 	const [confirmEditState, setConfirmEditState] = useState({});
 	// eslint-disable-next-line
 	const [userState, setUserState, jobState] = useContext(UserContext);
+	const { authTokens } = useAuth();
 
 	const toggleDeleteJob = () => {
 		if (confirmDeleteState === true) {
@@ -31,7 +33,9 @@ const editJob = (props) => {
 				headers: {
 					'Content-type': 'application/json',
 					'Access-Control-Allow-Origin': 'localhost:3000/',
-					'Access-Control-Allow-Methods': 'DELETE'
+					'Access-Control-Allow-Methods': 'DELETE',
+					Accept: 'application/json, text/plain, */*',
+					authorization: authTokens
 				}
 			}
 		).then(res => res.json()).then(res => {
@@ -78,7 +82,9 @@ const editJob = (props) => {
 					headers: {
 						'Content-type': 'application/json',
 						'Access-Control-Allow-Origin': 'http://localhost:3000',
-						'Access-Control-Allow-Methods': 'PUT'
+						'Access-Control-Allow-Methods': 'PUT',
+					Accept: 'application/json, text/plain, */*',
+					authorization: authTokens
 					},
 					body: JSON.stringify({
 						name: name.toLowerCase(),
