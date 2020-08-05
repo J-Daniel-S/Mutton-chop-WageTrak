@@ -27,8 +27,6 @@ const user = (props) => {
 		}
 	}
 
-	// console.log(userState);
-
 	return (
 		<React.Fragment>
 			<UserMain>

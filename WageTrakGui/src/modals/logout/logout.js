@@ -2,12 +2,13 @@ import React from 'react';
 import { withRouter } from 'react-router-dom';
 import { Modal, Button, Fade } from 'react-bootstrap';
 
-import { useAuth } from '../../context/authContext'; 
+import { useAuth } from '../../context/authContext';
 
 const logout = (props) => {
 	const { setAuthTokens } = useAuth();
 
 	const logout = () => {
+		localStorage.setItem("tokens", "");
 		setAuthTokens("");
 		window.location.reload();
 	}
@@ -15,7 +16,9 @@ const logout = (props) => {
 	return (
 		<Fade appear in>
 			<Modal.Dialog>
-				<Button variant="secondary" size="sm" onClick={() => logout()} className="margin" htmlFor="name">Logout</Button>
+				<Modal.Body>
+					<Button block variant="secondary" onClick={() => logout()}>Logout</Button>
+				</Modal.Body>
 			</Modal.Dialog>
 		</Fade>
 	);

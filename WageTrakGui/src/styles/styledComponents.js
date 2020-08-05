@@ -204,7 +204,7 @@ export const PeriodsArticle = styled.article`
 			transform: translateY(0);
 		}
 	}
-	animation: .5s ease-out 0s 1 slideFromBottom;
+	animation: .49s ease-out 0s 1 slideFromBottom;
 
 	@media(max-width: 600) {
 		height: 65vh;

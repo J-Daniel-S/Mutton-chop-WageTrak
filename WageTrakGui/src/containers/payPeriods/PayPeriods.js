@@ -32,7 +32,7 @@ const payPeriods = (props) => {
 				<LeftButtonText>Pay periods:</LeftButtonText>
 			</RoundedButton>
 			<PaySection onClick={() => thisPeriodClicked()} >
-				<p>Current period: <ShadowButton >{period.dateName}</ShadowButton></p>
+				<p>Current period start date: <ShadowButton >{period.dateName}</ShadowButton></p>
 			</PaySection>
 			<ListSection>
 				{periodsArr.map(p => (

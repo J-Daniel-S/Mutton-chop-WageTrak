@@ -1,4 +1,4 @@
-package wageTrak.branches;
+package wageTrak.documents.branches;
 
 import java.util.ArrayList;
 import java.util.List;

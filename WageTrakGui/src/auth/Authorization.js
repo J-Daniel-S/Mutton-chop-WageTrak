@@ -2,7 +2,6 @@ import React from 'react';
 import { Button, Form, Card } from 'react-bootstrap';
 
 import { useAuth } from '../context/authContext';
-import UserContext from '../context/userContext';
 
 import { LoginPage, AppTitle, LoginButtonContainer } from '../styles/styledComponents';
 
@@ -10,8 +9,6 @@ const authorization = (props) => {
 	const [loggedIn, setLoggedIn] = React.useState(false);
 	const [isError, setIsError] = React.useState(false);
 	const { setAuthTokens } = useAuth();
-	// eslint-disable-next-line
-	const { userState, updateUser } = React.useContext(UserContext);
 
 	const login = (event) => {
 		const form = event.currentTarget;
@@ -21,31 +18,42 @@ const authorization = (props) => {
 		let user = form.formBasicUsername.value;
 		let password = form.formBasicPassword.value;
 
-		const token = 'Basic ' + window.btoa(user + ":" + password);
-
-		console.log(JSON.stringify({
-			userName: user,
-			password: password
-		}));
+		const token = 'Basic ' + window.btoa(user.toLowerCase() + ":" + password);
 
 		fetch(
-			"http://localhost:8080/wageTrak-test-login",
+			"http://localhost:8080/wageTrak-login/",
 			{
-				method: 'GET',
+				method: 'POST',
 				headers: {
 					Accept: 'application/json, text/plain, */*',
-					authorization: token
-				}
+					Authorization: token
+				},
+				body: {}
 			}).then(res => {
 				if (res.status === 200) {
-					setAuthTokens(token);
-					setLoggedIn(true);
-				} 
-			}).catch(e => setIsError(true));
+					res.json()
+					.then(res => {
+					setAuthTokens(res.token)
+					props.setUserId(res.UserId);
+					setLoggedIn(true)
+					});
+				} else if (res.status === 404){
+					alert("User with that username does not exist");
+				} else if (res.status === 204) {
+					alert("Password is incorrect");
+				} else {
+					setIsError(true);
+					setLoggedIn(false)
+				}
+			}).catch(e => {
+				setIsError(true);
+				setLoggedIn(false)
+				console.log(e);
+			});
 
 	}
 
-	if (loggedIn) {
+	if (loggedIn === true) {
 		props.setAuthorized(true);
 	}
 

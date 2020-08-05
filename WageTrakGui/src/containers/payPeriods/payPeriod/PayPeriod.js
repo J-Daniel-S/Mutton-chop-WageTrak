@@ -55,7 +55,7 @@ const payPeriod = (props) => {
 		<PeriodArticle>
 			<RoundedButton onClick={() => titleClicked()} ref={(el) => topElement = el}>
 				<Flex3>
-					<LeftButtonText>Pay period: {props.currentPeriod.dateName}</LeftButtonText>
+					<LeftButtonText>Pay period start date: {props.currentPeriod.dateName}</LeftButtonText>
 				</Flex3>
 				{(window.location.pathname === "/wagetrak/job/periods/period" ||
 					window.location.pathname === "/wagetrak/job/periods/viewPeriod") &&

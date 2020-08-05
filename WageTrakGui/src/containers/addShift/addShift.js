@@ -40,18 +40,10 @@ const addShift = (props) => {
 		}
 	}
 
-
-	//will need to include differentials here
 	const postShift = (date, hours, ot) => {
 		const hoursWorked = Number.parseFloat(hours).toFixed(1);
 		const overWorked = Number.parseFloat(ot).toFixed(1);
 
-		// console.log(JSON.stringify({
-		// 	date: date,
-		// 	hours: hoursWorked,
-		// 	overtime: overWorked
-		// }))
-		// console.log("http://localhost:8080/wageTrak/" + userState.id + "/" + jobState.name + "/" + props.currentPeriod.dateName);
 		fetch(
 			"http://localhost:8080/wageTrak/" + userState.id + "/" + jobState.name + "/" + props.currentPeriod.dateName,
 			{

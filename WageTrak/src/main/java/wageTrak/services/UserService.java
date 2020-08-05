@@ -19,32 +19,19 @@ public class UserService {
 		return usRepo.findAll();
 	}
 
-	public User findById(String id) {
+	public Optional<User> findById(String id) {
 		Optional<User> foundUser = usRepo.findById(id);
-		if (foundUser.isPresent()) {
-			return foundUser.get();
-		} else {
-			return new User("noSuchUser");
-		}
-
+		return foundUser;
 	}
 
-	public User login(String username, String password) {
+	public Optional<User> login(String username, String password) {
 		Optional<User> foundUser = usRepo.login(username, password);
-		if (foundUser.isPresent()) {
-			return foundUser.get();
-		} else {
-			return new User("failedLogin");
-		}
+		return foundUser;
 	}
 
-	public User findByUserName(String userName) {
-		Optional<User> foundUser = usRepo.findByUserName(userName);
-		if (foundUser.isPresent()) {
-			return foundUser.get();
-		} else {
-			return new User("noSuchuser");
-		}
+	public Optional<User> findByUserName(String username) {
+		Optional<User> foundUser = usRepo.findByUserName(username);
+		return foundUser;
 	}
 
 	public boolean save(User user) {
@@ -63,7 +50,6 @@ public class UserService {
 			usRepo.deleteById(user.getId());
 			usRepo.insert(user);
 			return true;
-
 		} else {
 			return false;
 		}

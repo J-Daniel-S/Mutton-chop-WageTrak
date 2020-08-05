@@ -7,7 +7,6 @@ import Navbar from '../navigation/Navbar';
 import PayPeriods from './payPeriods/PayPeriods';
 import PayPeriod from './payPeriods/payPeriod/PayPeriod';
 import Shift from './shifts/shift/Shift';
-import AddUser from '../containers/addUser/addUser';
 import AddJob from './addjob/addJob';
 import AddPeriod from './addPeriod/addPeriod';
 import AddShift from './addShift/addShift';
@@ -15,21 +14,11 @@ import Loading from '../styles/Loading';
 import UserContext from '../context/userContext';
 import { useAuth } from '../context/authContext';
 
+import Logout from '../modals/logout/logout';
+import NavMenu from '../modals/menu/NavMenu';
+import ReportBug from '../modals/reportBug/ReportBug';
+
 import './WageTrak.css';
-
-//code logout for navbar after security
-
-//Spring Security
-
-//add tests to back end
-
-//add login logic to login page
-
-//remove hard coded user id from WageTrak.js
-
-//code signup for back end
-
-//test signup after security is coded
 
 const wageTrak = (props) => {
 	const [userState, setUserState] = useState({});
@@ -40,11 +29,12 @@ const wageTrak = (props) => {
 	const [jobsState, setJobsState] = useState({});
 	const { authTokens } = useAuth();
 
+	const [logout, setLogout] = useState(false);
+	const [navMenu, setNavMenu] = useState(false);
+	const [report, setReport] = useState(false);
+
 	const contextArr = [userState, setUserState, jobState, setJobState, periodState, setPeriodState, viewPeriodState, setViewPeriodState,
 		shiftState, setShiftState, jobsState, setJobsState];
-
-	//check here if you're not loading a user on render
-	let userId = "5f1d3876aba88b644faeff0d";
 
 	useEffect(() => {
 		getUser();
@@ -52,35 +42,72 @@ const wageTrak = (props) => {
 
 	const getUser = () => {
 		fetch(
-			"http://localhost:8080/wageTrak/users/" + userId,
+			"http://localhost:8080/wageTrak/users/" + props.userId,
 			{
 				method: 'GET',
 				headers: {
 					Accept: 'application/json, text/plain, */*',
-					authorization: authTokens
+					Authorization: authTokens
 				}
 			}
 		).then(res => res.json())
 			.then(res => {
-				if (res.name === "noSuchUser") {
-					getUser();
-				} else {
+					setUserState(res);
+					//this exists simply to force a re-render when jobs is changed
+					setJobsState(res.jobs);
+			}).catch(res => {
+				console.log('err: ' + res.data)
 					setUserState(res);
 					//this exists simply to force a re-render when jobs is changed
 					setJobsState(res.jobs);
 				}
-			}
-			).catch(res => {
-				console.log('err' + res.data)
-				if (res.name === "noSuchUser") {
-					getUser();
-				} else {
-					setUserState(res);
-					//this exists simply to force a re-render when jobs is changed
-					setJobsState(res.jobs);
-				}
-			});
+			);
 		setUserState(userState);
+	}
+
+	const toggleLogout = () => {
+		if (!logout) {
+			if (navMenu) {
+				setNavMenu(false);
+			}
+			setLogout(true);
+		} else {
+			setLogout(false);
+		}
+	}
+
+	const toggleMenu = () => {
+		if (!navMenu && report) {
+			if (logout) {
+				setLogout(false);
+			}
+			setReport(false);
+			setNavMenu(false);
+		} else if (!navMenu) {
+			if (logout) {
+				setLogout(false);
+			}
+			setNavMenu(true);
+		} else {
+			setNavMenu(false);
+		}
+	}
+
+	const toggleReport = () => {
+		if (!report) {
+			setNavMenu(false);
+			setReport(true);
+		} else {
+			setReport(false);
+		}
+	}
+
+	const goBack = () => {
+		if (window.location.pathname !== "/wagetrak") {
+			window.history.back();
+		} else if (window.location.pathname === "/wagetrak") {
+			toggleLogout();
+		}
 	}
 
 	//spinner
@@ -94,12 +121,8 @@ const wageTrak = (props) => {
 		<React.Fragment>
 			<UserContext.Provider value={[...contextArr]}>
 				<BrowserRouter>
-					<Navbar getUser={() => getUser()}/>
+					<Navbar getUser={() => getUser()} toggleLogout={toggleLogout} toggleMenu={toggleMenu} toggleReportBug={toggleReport} goBack={goBack} />
 					{window.location.pathname === "/" || window.location.pathname === "/wagetrak/wagetrak/job" ? <Redirect to="/wagetrak" /> : null}
-					<Route
-						path="/wagetrak-signup"
-						render={() => <AddUser />}
-					/>
 					<Route
 						path="/wagetrak/"
 						render={() => userData}
@@ -156,6 +179,9 @@ const wageTrak = (props) => {
 							currentPeriod={viewPeriodState}
 						/>}
 					/>
+					{logout && !navMenu && !report && <Logout />}
+					{navMenu && !logout && !report && <NavMenu getUser={() => getUser()} toggleMenu={() => toggleMenu()} toggleReport={() => toggleReport()} />}
+					{report && !navMenu && !logout && <ReportBug toggleReport={() => toggleReport()} />}
 				</BrowserRouter>
 			</UserContext.Provider>
 		</React.Fragment>

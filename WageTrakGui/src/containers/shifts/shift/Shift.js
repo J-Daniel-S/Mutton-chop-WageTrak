@@ -24,7 +24,7 @@ const shift = (props) => {
 		<ShiftArticle>
 			<RoundedButton>
 				<Flex3>
-					<LeftButtonText>Shift: {shiftState.date} - ${shiftState.netPay.toFixed(2)}</LeftButtonText>
+					<LeftButtonText>Shift date: {shiftState.date} - ${shiftState.netPay.toFixed(2)}</LeftButtonText>
 				</Flex3>
 				<IconButtonDiv onClick={() => toggleModal()} >
 					<i className="fa fa-pencil-square-o fa-lg" aria-hidden="true"></i>

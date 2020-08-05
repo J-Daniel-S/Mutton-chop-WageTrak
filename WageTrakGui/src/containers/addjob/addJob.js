@@ -8,7 +8,6 @@ import { AddJobArticle, Hr, RoundedButtonCentered, CenterButtonText, FooterButto
 		Title } from '../../styles/styledComponents';
 
 const addJob = (props) => {
-	// eslint-disable-next-line
 	const [userState, updateUser] = useContext(UserContext);
 	const { authTokens } = useAuth();
 
@@ -36,10 +35,6 @@ const addJob = (props) => {
 	}
 
 	const jobAddedHandler = (name, hourly) => {
-		// console.log(JSON.stringify({
-		// 	name: name.toLowerCase(),
-		// 	rate: Number.parseFloat(hourly).toFixed(2)
-		// }))
 		fetch(
 			"http://localhost:8080/wageTrak/" + userState.id,
 			{

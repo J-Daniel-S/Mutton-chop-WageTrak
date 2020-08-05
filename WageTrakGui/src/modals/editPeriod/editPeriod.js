@@ -25,17 +25,6 @@ const editPeriod = (props) => {
 	}
 
 	const deletePeriod = () => {
-
-		// const periods = [];
-
-		// for (let period of jobState.payPeriods) {
-		// 	if (period.dateName !== props.currentPeriod.dateName) {
-		// 		periods.push(period);
-		// 	}
-		// }
-
-		// console.log(periods);
-		console.log("http://localhost:8080/wageTrak/" + userState.id + "/" + jobState.name + "/" + props.currentPeriod.dateName);
 		fetch(
 			"http://localhost:8080/wageTrak/" + userState.id + "/" + jobState.name + "/" + props.currentPeriod.dateName,
 			{
@@ -72,13 +61,10 @@ const editPeriod = (props) => {
 		if (dateName === props.currentPeriod.dateName) {
 			props.history.push("/wagetrak");
 		} else {
-
 			let date1 = dateName.substring(0, 4);
 			let date2 = dateName.substring(6, 10);
-
 			dateName = "0" + date2 + "-" + date1;
 
-			// console.log("http://localhost:8080/wageTrak/" + userState.id + "/" + jobState.name + "/" + props.currentPeriod.dateName);
 			fetch(
 				"http://localhost:8080/wageTrak/" + userState.id + "/" + jobState.name + "/" + props.currentPeriod.dateName,
 				{
@@ -97,7 +83,7 @@ const editPeriod = (props) => {
 			).then(res => res.json()).then(res => {
 				updateUser(res);
 				props.history.push("/wagetrak");
-			}).catch(e => console.log(e));
+			}).catch(e => alert("There was an error: " + e));
 		}
 	}
 

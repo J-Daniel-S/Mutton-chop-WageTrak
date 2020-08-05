@@ -2,7 +2,6 @@ import React, { useState, useContext } from 'react';
 import { withRouter } from 'react-router-dom';
 import { Modal, Button, Form, Fade } from 'react-bootstrap';
 
-import ConfirmDelete from '../confirm/ConfirmDelete';
 import UserContext from '../../context/userContext';
 import { useAuth } from '../../context/authContext';
 
@@ -19,31 +18,12 @@ const editUser = (props) => {
 		}
 	}
 
-	const deleteUser = () => {
-		fetch(
-			"http://localhost:8080/wageTrak/users/" + userState.id,
-			{
-				method: 'DELETE',
-				headers: {
-					'Content-type': 'application/json',
-					'Origins': 'http://localhost:3000',
-					'Access-Control-Allow-Methods': 'DELETE',
-					Accept: 'application/json, text/plain, */*',
-					authorization: authTokens
-				}
-			}
-		).then(res => {
-			//return to login here
-			console.log(res);
-		});
-	}
-
 	const editUser = (event) => {
 		const form = event.currentTarget;
 		event.preventDefault();
 		event.stopPropagation();
 
-		const name = form.formBasicName.value;
+		const name = form.formBasicName.value.substring(0, 20);
 
 		if (!name) {
 			alert("Name cannot be blank!");
@@ -83,15 +63,14 @@ const editUser = (props) => {
 					<Modal.Body>
 						<Form onSubmit={editUser}>
 							<Form.Group controlId="formBasicName">
-								<Form.Control type="text" placeholder={userState.name} required />
+								<Form.Control type="text" placeholder="Does not change the username you log in with" required />
 							</Form.Group>
-							<Button size="sm" block type="submit" variant="secondary">Edit name</Button>
+							<Button size="sm" block type="submit" variant="secondary">Edit display name</Button>
 							<Button size="sm" block variant="secondary" onClick={() => toggleDeleteUser()}>Delete User</Button>
 						</Form>
 					</Modal.Body>
 				</Modal.Dialog>
 			</Fade>
-			{confirmDeleteState === true && <ConfirmDelete deleteUser={() => deleteUser()} closeModal={() => toggleDeleteUser()} />}
 		</React.Fragment>
 	);
 }

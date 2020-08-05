@@ -1,4 +1,4 @@
-package wageTrak.branches;
+package wageTrak.documents.branches;
 
 import wageTrak.documents.User;
 

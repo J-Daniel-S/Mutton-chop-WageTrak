@@ -11,9 +11,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import wageTrak.branches.Job;
-import wageTrak.branches.PayPeriod;
 import wageTrak.documents.User;
+import wageTrak.documents.branches.Job;
+import wageTrak.documents.branches.PayPeriod;
 import wageTrak.services.UserService;
 
 @RestController
@@ -26,8 +26,9 @@ public class PayPeriodController {
 
 	@PostMapping
 	@ResponseBody
-	public User addPeriod(@PathVariable String id, @PathVariable String jobName, @RequestBody PayPeriod period) {
-		User user = usRepo.findById(id);
+	public User addPeriod(@PathVariable final String id, @PathVariable final String jobName,
+			@RequestBody PayPeriod period) {
+		User user = usRepo.findById(id).get();
 		Job job = user.getJobs().stream().filter(j -> j.getName().equalsIgnoreCase(jobName)).findAny().get();
 		if (!job.payPeriodExists(period)) {
 			job.addPayPeriod(period);
@@ -36,28 +37,28 @@ public class PayPeriodController {
 			return user;
 		} else {
 			// perhaps I must needs return something else here (ask about on stack overflow)
-			return usRepo.findById(user.getId());
+			return usRepo.findById(user.getId()).get();
 		}
 
 	}
 
 	@DeleteMapping("/{dateName}")
 	@ResponseBody
-	public User deletePeriod(@PathVariable String id, @PathVariable String jobName, @PathVariable String dateName)
-			throws InterruptedException {
-		User user = usRepo.findById(id);
+	public User deletePeriod(@PathVariable final String id, @PathVariable final String jobName,
+			@PathVariable final String dateName) throws InterruptedException {
+		User user = usRepo.findById(id).get();
 		Job job = user.getJobs().stream().filter(j -> j.getName().equalsIgnoreCase(jobName)).findAny().get();
 		job.deletePayPeriod(dateName);
 		user.updateJob(job);
 		usRepo.update(user);
-		return usRepo.findById(user.getId());
+		return usRepo.findById(user.getId()).get();
 	}
 
 	@PutMapping("/{oldDateName}")
 	@ResponseBody
-	public User updatePeriod(@PathVariable String id, @PathVariable String jobName, @RequestBody PayPeriod payPeriod,
-			@PathVariable String oldDateName) {
-		User user = usRepo.findById(id);
+	public User updatePeriod(@PathVariable final String id, @PathVariable final String jobName,
+			@RequestBody PayPeriod payPeriod, @PathVariable String oldDateName) {
+		User user = usRepo.findById(id).get();
 		Job job = user.getJobs().stream().filter(j -> j.getName().equalsIgnoreCase(jobName)).findAny().get();
 		if (job.payPeriodExists(oldDateName)) {
 			job.updatePayPeriod(payPeriod, oldDateName);
@@ -65,7 +66,7 @@ public class PayPeriodController {
 			usRepo.update(user);
 			return user;
 		} else {
-			return usRepo.findById(user.getId());
+			return usRepo.findById(user.getId()).get();
 		}
 	}
 

@@ -1,9 +1,12 @@
 package wageTrak.controllers;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -29,46 +32,63 @@ public class UserController {
 	private UserService usRepo;
 
 	@PostMapping
+	// this method is for testing. If you want to use it add the test user from the
+	// readme using advanced rest client or something similar
 	public User addUser(@RequestBody User newUser) {
-		String id = newUser.getId();
 		User user = newUser;
 		boolean saved = usRepo.save(user);
 		if (saved) {
-			return user; // change to JSON
+			return user;
 		} else {
-			return usRepo.findById(id);
+			throw new RuntimeException("Cannot Add User");
 		}
 
 	}
 
 	@GetMapping("/{id}")
 	@ResponseBody
-	public User getUser(@PathVariable String id) {
-		return usRepo.findById(id);
+	public User getUser(@PathVariable final String id) {
+		Optional<User> user = usRepo.findById(id);
+		if (user.isPresent()) {
+			return user.get();
+		} else {
+			throw new RuntimeException("Cannot find user by given ID");
+		}
+
 	}
 
 	@GetMapping
+	// Admin only
 	public List<User> getUsers() {
 		return usRepo.findAll();
 	}
 
 	@PutMapping
-	public User updateUser(@RequestBody User user) {
+	public Optional<User> updateUser(@RequestBody User user) {
 		String id = user.getId();
-		User newUser = usRepo.findById(id);
-		newUser.setName(user.getName());
-		newUser.setTaxRate(user.getTaxRate());
-		usRepo.update(newUser);
-		return usRepo.findById(id);
+		Optional<User> theUser = usRepo.findById(id);
+		if (theUser.isPresent()) {
+			User newUser = theUser.get();
+			newUser.setName(user.getName());
+			newUser.setTaxRate(user.getTaxRate());
+			usRepo.update(newUser);
+			return usRepo.findById(id);
+		} else {
+			throw new RuntimeException("Cannot find user by given ID");
+		}
+
 	}
 
+	@SuppressWarnings("rawtypes")
 	@DeleteMapping("{id}")
-	public HttpStatus deleteUser(@PathVariable String id) {
+	public ResponseEntity deleteUser(@PathVariable final String id) {
 		boolean status = usRepo.delete(id);
 		if (status) {
-			return HttpStatus.ACCEPTED;
+			Map<Object, Object> model = new HashMap<>();
+			model.put("message", "User successfully deleted");
+			return ResponseEntity.ok(model);
 		} else {
-			return HttpStatus.NO_CONTENT;
+			throw new RuntimeException("Cannot find user by given ID");
 		}
 	}
 

@@ -25,7 +25,6 @@ const editJob = (props) => {
 	}
 
 	const deleteJob = () => {
-		// console.log("http://localhost:8080/wageTrak/" + userState.id + "/" + jobState.name)
 		fetch(
 			"http://localhost:8080/wageTrak/" + userState.id + "/" + jobState.name,
 			{
@@ -73,8 +72,6 @@ const editJob = (props) => {
 		} else if (name.includes("?") || name.includes("/")) {
 			alert('Name can\'t include ? or /');
 		} else {
-
-			// console.log(	"http://localhost:8080/wageTrak/" + userState.id);
 			fetch(
 				"http://localhost:8080/wageTrak/" + userState.id + "/" + jobState.name,
 				{

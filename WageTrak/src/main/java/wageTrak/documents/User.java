@@ -9,7 +9,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
-import wageTrak.branches.Job;
+import wageTrak.documents.branches.Job;
 
 @Document(collection = "users")
 @JsonIgnoreProperties(ignoreUnknown = true)
@@ -31,12 +31,20 @@ public class User {
 		this.jobs = jobs;
 	}
 
-	public User(String name, String password, List<Job> jobs) {
+	public User(String userName, String password, List<Job> jobs) {
 		super();
-		this.name = name;
-		this.userName = name;
+		this.name = userName;
+		this.userName = userName;
 		this.password = password;
 		this.jobs = jobs;
+	}
+
+	public User(String userName, double taxRate, String password) {
+		super();
+		this.name = userName;
+		this.userName = userName;
+		this.taxRate = taxRate;
+		this.password = password;
 	}
 
 	public User(String name) {

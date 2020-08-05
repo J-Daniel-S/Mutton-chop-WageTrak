@@ -7,7 +7,6 @@ import { useAuth } from '../../context/authContext';
 import { Title, Hr, AddJobArticle, AddBackdrop, FooterButton, CenterButtonText, FormInput, FormLabel, RoundedButtonCentered } from '../../styles/styledComponents';
 
 const addPeriod = (props) => {
-	// eslint-disable-next-line
 	const [userState, updateUser, jobState] = useContext(UserContext);
 	const { authTokens } = useAuth();
 
@@ -23,10 +22,6 @@ const addPeriod = (props) => {
 	}
 
 	const postPeriod = (dateName) => {
-
-		// console.log(JSON.stringify({
-		// 	dateName: dateName,
-		// }));
 		fetch(
 			"http://localhost:8080/wageTrak/" + userState.id + "/" + jobState.name,
 			{

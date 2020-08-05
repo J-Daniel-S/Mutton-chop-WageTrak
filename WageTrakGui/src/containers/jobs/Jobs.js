@@ -19,7 +19,6 @@ const jobs = (props) => {
 
 	const toggleModal = (j) => {
 		selectJob(j);
-		// console.log('delete ' + name + "from " + userState.id);
 		if (!showModal) {
 			setModal(true);
 		} else {

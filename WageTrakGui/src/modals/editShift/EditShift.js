@@ -25,7 +25,6 @@ const editShift = (props) => {
 	}
 
 	const deleteShift = () => {
-		// console.log("http://localhost:8080/wageTrak/" + userState.id + "/" + jobState.name + "/" + props.currentPeriod.dateName + "/" + shiftState.date);
 		fetch(
 			"http://localhost:8080/wageTrak/" + userState.id + "/" + jobState.name + "/" + props.currentPeriod.dateName + "/" + shiftState.date,
 			{
@@ -79,9 +78,6 @@ const editShift = (props) => {
 			if (date === shiftState.date && hours === shiftState.hours && ot === shiftState.overtime) {
 				props.history.push("/wagetrak");
 			} else {
-
-				// console.log("date: " + date + " hours: " + hours + " overtime: " + ot);
-				// console.log("http://localhost:8080/wageTrak/" + userState.id + "/" + jobState.name + "/" + props.currentPeriod.dateName + "/" + shiftState.date);
 				fetch(
 					"http://localhost:8080/wageTrak/" + userState.id + "/" + jobState.name + "/" + props.currentPeriod.dateName + "/" + shiftState.date,
 					{

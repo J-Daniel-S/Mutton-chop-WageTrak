@@ -15,8 +15,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import wageTrak.branches.Job;
 import wageTrak.documents.User;
+import wageTrak.documents.branches.Job;
 import wageTrak.services.UserService;
 
 @RestController
@@ -29,23 +29,23 @@ public class JobController {
 
 	@PostMapping
 	@ResponseBody
-	public User addJob(@PathVariable("id") String userId, @RequestBody Job job) {
-		User user = usRepo.findById(userId);
+	public User addJob(@PathVariable("id") final String userId, @RequestBody Job job) {
+		User user = usRepo.findById(userId).get();
 		if (!user.jobExists(job)) {
 			user.addJob(job);
 			usRepo.update(user);
 			return user;
 		} else {
 			// perhaps I must needs return something else here (ask about on stack overflow)
-			return usRepo.findById(user.getId());
+			return usRepo.findById(user.getId()).get();
 		}
 
 	}
 
 	@DeleteMapping("/{jobName}")
 	@ResponseBody
-	public User deleteJob(@PathVariable("id") String userId, @PathVariable String jobName) {
-		User user = usRepo.findById(userId);
+	public User deleteJob(@PathVariable("id") final String userId, @PathVariable final String jobName) {
+		User user = usRepo.findById(userId).get();
 		Optional<Job> maybeJob = user.getJobs().stream().filter(j -> j.getName().equalsIgnoreCase(jobName)).findAny();
 		if (maybeJob.isPresent()) {
 			List<Job> jobs = user.getJobs().stream().filter(j -> !j.getName().equalsIgnoreCase(jobName))
@@ -54,15 +54,16 @@ public class JobController {
 			usRepo.update(user);
 			return user;
 		} else {
-			return usRepo.findById(user.getId());
+			return usRepo.findById(user.getId()).get();
 		}
 
 	}
 
 	@PutMapping("/{jobName}")
 	@ResponseBody
-	public User editJob(@PathVariable("id") String userId, @PathVariable String jobName, @RequestBody Job update) {
-		User user = usRepo.findById(userId);
+	public User editJob(@PathVariable("id") final String userId, @PathVariable final String jobName,
+			@RequestBody Job update) {
+		User user = usRepo.findById(userId).get();
 		Optional<Job> maybeJob = user.getJobs().stream().filter(j -> j.getName().equalsIgnoreCase(jobName)).findAny();
 		if (maybeJob.isPresent()) {
 			Job job = maybeJob.get();
@@ -73,7 +74,7 @@ public class JobController {
 			return user;
 		} else {
 			// perhaps I must needs return something else here (ask about on stack overflow)
-			return usRepo.findById(user.getId());
+			return usRepo.findById(user.getId()).get();
 		}
 	}
 
