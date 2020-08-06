@@ -2,7 +2,9 @@
 
 This is a Spring MVC application with a React front end intended for mobile that estimates total net pay for hourly employees given a tax rate.  It still requires security, registration, and login.  There is not yet a way to add users and this will remain the case until security is implemented.  It requires that you have MongoDB and is not currently set up to use embedded Mongo.
 
-It doesn't matter yet but when it's implemented the password for curly jefferson is "pass"
+It still needs a full test suite written, as well as error handling in the event that the front end cannot reach the api.
+
+The password for curly jefferson is "pass"
 
 JSON for test pojos below
 
