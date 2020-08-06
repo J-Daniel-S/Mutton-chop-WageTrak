@@ -1,13 +1,6 @@
 # Mutton-chop-WageTrak
 
-This is a Spring MVC application with a React front end intended for mobile that estimates total net pay for hourly employees given a tax rate.  Currently working
-on security.  It includes html basic and has the username and password hard-coded on the back end for now.  Working on JWT for the back end next.
-There is not yet a way to add users and this will remain the case until security is implemented.  It requires that you have MongoDB and is not currently 
-set up to use embedded Mongo.
-
-It still needs a full test suite written, as well as error handling in the event that the front end cannot reach the api.
-
-The password for curly jefferson is "pass"
+This is a Spring MVC application with a React front end intended for mobile that estimates total net pay for hourly employees given a tax rate.  It requires that you have MongoDB and is not currently set up to use embedded Mongo.
 
 JSON for test pojos below
 
@@ -17,7 +10,7 @@ Test user:
   "id": "5f1d3876aba88b644faeff0d",
   "name": "curly jefferson",
   "userName": "curly jefferson",
-  "password": "$2y$10$EHm8KsP4lwholAstwXqbzObUgRK84gkivkUH.5Y7a5lxT28FQuIsi",
+  "password": "$2y$10$EHm8KsP4lwholAstwXqbzObUgRK84gkivkUH.5Y7a5lxT28FQuIsi", //password is "pass"
   "taxRate": "0.18",
   "jobs": [
     {
