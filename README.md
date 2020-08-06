@@ -2,12 +2,11 @@
 
 This is a Spring MVC application with a React front end intended for mobile that estimates total net pay for hourly employees given a tax rate.  It requires that you have MongoDB and is not currently set up to use embedded Mongo.
 
-JSON for test pojos below
+JSON for test pojos below.  the UserController.addUser() method is left unsecured for the posting of the user below.
 
 Test user:
 
 {
-  "id": "5f1d3876aba88b644faeff0d",
   "name": "curly jefferson",
   "userName": "curly jefferson",
   "password": "$2y$10$EHm8KsP4lwholAstwXqbzObUgRK84gkivkUH.5Y7a5lxT28FQuIsi", //password is "pass"
