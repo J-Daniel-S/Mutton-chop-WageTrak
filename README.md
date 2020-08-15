@@ -2,8 +2,6 @@
 
 This is a Spring MVC application with a React front end intended for mobile that estimates total net pay for hourly employees given a tax rate.  It requires that you have MongoDB and is not currently set up to use embedded Mongo.
 
-It still needs a full test suite written, as well as error handling in the event that the front end cannot reach the api.
-
 JSON for test pojos below.  the UserController.addUser() method is left unsecured for the posting of the user below.
 
 Test user:
