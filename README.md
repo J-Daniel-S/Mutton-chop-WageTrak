@@ -1,6 +1,6 @@
 # Mutton-chop-WageTrak
 
-This is a Spring MVC application with a React front end intended for mobile that estimates total net pay for hourly employees given a tax rate.  It requires that you have MongoDB and is not currently set up to use embedded Mongo.
+This is a Spring MVC application with a React front end intended for mobile that estimates total net pay for hourly employees given a tax rate.
 
 To run pull this repo and run WageTrak as a Spring Boot application and WageTrakGui as an npm application in your terminal (run npm install first if necessary).  It does require a local MongoDB to function.
 
