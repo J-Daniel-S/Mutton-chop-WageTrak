@@ -30,6 +30,12 @@ public class Shift {
 		this.date = date;
 	}
 
+	public Shift(String dateString, double hoursWorked, double overtime) {
+		this.date = dateString;
+		this.hours = hoursWorked;
+		this.overtime = overtime;
+	}
+
 	public Shift(String dateString) {
 		this.date = dateString;
 	}
@@ -76,14 +82,6 @@ public class Shift {
 
 	public void setTaxes(double taxes) {
 		this.taxes = taxes;
-	}
-
-	// this method calculates the pay whenever a shift is put to shift controller
-	public void updatePay(double rate, double taxRate) {
-		this.grossPay = Math.round((this.hours * rate) * 100.0) / 100.0;
-		this.grossPay += Math.round((this.overtime * (rate * 0.5)) * 100.0) / 100.0;
-		this.netPay = Math.round((this.grossPay * (1 - taxRate)) * 100.0) / 100.0;
-		this.taxes = Math.round((this.grossPay * taxRate) * 100.0) / 100.0;
 	}
 
 	public double getOvertime() {

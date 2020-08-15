@@ -14,7 +14,7 @@ const editJob = (props) => {
 	const [confirmEditState, setConfirmEditState] = useState({});
 	// eslint-disable-next-line
 	const [userState, setUserState, jobState] = useContext(UserContext);
-	const { authTokens } = useAuth();
+	const { authTokens, setAuthTokens } = useAuth();
 
 	const toggleDeleteJob = () => {
 		if (confirmDeleteState === true) {
@@ -40,6 +40,11 @@ const editJob = (props) => {
 		).then(res => res.json()).then(res => {
 			setUserState(res);
 			props.history.push("/wagetrak");
+		}).catch(e => {
+			alert("Something went wrong attempting to contact the server.  Please try again later.  Logging you out.");
+			localStorage.setItem("tokens", "");
+			setAuthTokens("");
+			window.location.reload();
 		});
 	}
 
@@ -80,8 +85,8 @@ const editJob = (props) => {
 						'Content-type': 'application/json',
 						'Access-Control-Allow-Origin': 'http://localhost:3000',
 						'Access-Control-Allow-Methods': 'PUT',
-					Accept: 'application/json, text/plain, */*',
-					authorization: authTokens
+						Accept: 'application/json, text/plain, */*',
+						authorization: authTokens
 					},
 					body: JSON.stringify({
 						name: name.toLowerCase(),
@@ -91,6 +96,11 @@ const editJob = (props) => {
 			).then(res => res.json()).then(res => {
 				setUserState(res);
 				props.history.push("/wagetrak");
+			}).catch(e => {
+				alert("Something went wrong attempting to contact the server.  Please try again later.  Logging you out.");
+				localStorage.setItem("tokens", "");
+				setAuthTokens("");
+				window.location.reload();
 			});
 		}
 	}
@@ -99,22 +109,22 @@ const editJob = (props) => {
 		<React.Fragment>
 			<EditModal>
 				<Fade appear in>
-				<div>
-					<Hr></Hr>
-					<Form onSubmit={submitChange}>
-						<Form.Label>Edit job name:</Form.Label>
-						<Form.Group controlId="formBasicName">
-							<Form.Control type="text" defaultValue={jobState.name} required />
-						</Form.Group>
-						<Form.Label>Edit hourly pay:</Form.Label>
-						<Form.Group controlId="formBasicRate">
-							<Form.Control type="decimal" defaultValue={jobState.rate} required />
-						</Form.Group>
-						<Button block variant="secondary" type="submit">Submit change</Button>
-					</Form>
-					<Hr></Hr>
-					<Button block variant="secondary" onClick={() => toggleDeleteJob()}>Delete Job</Button>
-				</div>
+					<div>
+						<Hr></Hr>
+						<Form onSubmit={submitChange}>
+							<Form.Label>Edit job name:</Form.Label>
+							<Form.Group controlId="formBasicName">
+								<Form.Control type="text" defaultValue={jobState.name} required />
+							</Form.Group>
+							<Form.Label>Edit hourly pay:</Form.Label>
+							<Form.Group controlId="formBasicRate">
+								<Form.Control type="decimal" defaultValue={jobState.rate} required />
+							</Form.Group>
+							<Button block variant="secondary" type="submit">Submit change</Button>
+						</Form>
+						<Hr></Hr>
+						<Button block variant="secondary" onClick={() => toggleDeleteJob()}>Delete Job</Button>
+					</div>
 				</Fade>
 				{confirmDeleteState === true && <ConfirmDelete delete={() => deleteJob()} closeModal={() => toggleDeleteJob()} />}
 				{confirmEditState === true && <ConfirmEdit submitChange={() => submitChange()} closeModal={() => editJob()} />}

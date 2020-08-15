@@ -14,7 +14,7 @@ const editPeriod = (props) => {
 	const [confirmEditState, setConfirmEditState] = useState({});
 	// eslint-disable-next-line
 	const [userState, updateUser, jobState, setJobState, periodState, setPeriodState] = useContext(UserContext);
-	const { authTokens } = useAuth();
+	const { authTokens, setAuthTokens } = useAuth();
 
 	const toggleDeletePeriod = () => {
 		if (confirmDeleteState === true) {
@@ -40,7 +40,12 @@ const editPeriod = (props) => {
 		).then(res => res.json()).then(res => {
 			updateUser(res);
 		}).then(props.history.push("/wagetrak")
-		).catch(e => console.log(e));
+		).catch(e => {
+			alert("Something went wrong attempting to contact the server.  Please try again later.  Logging you out.");
+			localStorage.setItem("tokens", "");
+			setAuthTokens("");
+			window.location.reload();
+		});
 	}
 
 	const editPeriod = () => {

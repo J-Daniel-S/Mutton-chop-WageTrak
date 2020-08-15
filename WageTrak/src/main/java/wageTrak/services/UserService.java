@@ -15,17 +15,16 @@ public class UserService {
 	@Autowired
 	private UserRepository usRepo;
 
+	public UserService(UserRepository usRepo) {
+		this.usRepo = usRepo;
+	}
+
 	public List<User> findAll() {
 		return usRepo.findAll();
 	}
 
 	public Optional<User> findById(String id) {
 		Optional<User> foundUser = usRepo.findById(id);
-		return foundUser;
-	}
-
-	public Optional<User> login(String username, String password) {
-		Optional<User> foundUser = usRepo.login(username, password);
 		return foundUser;
 	}
 

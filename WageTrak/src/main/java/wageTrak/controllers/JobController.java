@@ -27,17 +27,23 @@ public class JobController {
 	@Autowired
 	private UserService usRepo;
 
+	// for testing
+	public JobController(UserService usRepo) {
+		this.usRepo = usRepo;
+	}
+
 	@PostMapping
 	@ResponseBody
 	public User addJob(@PathVariable("id") final String userId, @RequestBody Job job) {
-		User user = usRepo.findById(userId).get();
+		Optional<User> foundUser = usRepo.findById(userId);
+		User user = foundUser.get();
 		if (!user.jobExists(job)) {
 			user.addJob(job);
 			usRepo.update(user);
 			return user;
 		} else {
 			// perhaps I must needs return something else here (ask about on stack overflow)
-			return usRepo.findById(user.getId()).get();
+			return foundUser.get();
 		}
 
 	}
@@ -45,7 +51,8 @@ public class JobController {
 	@DeleteMapping("/{jobName}")
 	@ResponseBody
 	public User deleteJob(@PathVariable("id") final String userId, @PathVariable final String jobName) {
-		User user = usRepo.findById(userId).get();
+		Optional<User> foundUser = usRepo.findById(userId);
+		User user = foundUser.get();
 		Optional<Job> maybeJob = user.getJobs().stream().filter(j -> j.getName().equalsIgnoreCase(jobName)).findAny();
 		if (maybeJob.isPresent()) {
 			List<Job> jobs = user.getJobs().stream().filter(j -> !j.getName().equalsIgnoreCase(jobName))
@@ -54,7 +61,7 @@ public class JobController {
 			usRepo.update(user);
 			return user;
 		} else {
-			return usRepo.findById(user.getId()).get();
+			return foundUser.get();
 		}
 
 	}
@@ -63,13 +70,13 @@ public class JobController {
 	@ResponseBody
 	public User editJob(@PathVariable("id") final String userId, @PathVariable final String jobName,
 			@RequestBody Job update) {
-		User user = usRepo.findById(userId).get();
+		Optional<User> foundUser = usRepo.findById(userId);
+		User user = foundUser.get();
 		Optional<Job> maybeJob = user.getJobs().stream().filter(j -> j.getName().equalsIgnoreCase(jobName)).findAny();
 		if (maybeJob.isPresent()) {
 			Job job = maybeJob.get();
 			job.setName(update.getName());
 			job.setRate(update.getRate());
-			user.updateJob(job);
 			usRepo.update(user);
 			return user;
 		} else {

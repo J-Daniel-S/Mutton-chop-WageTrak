@@ -23,6 +23,11 @@ public class PayPeriod {
 		this.taxes = taxes;
 	}
 
+	public PayPeriod(String date) {
+		this.dateName = date;
+		this.shifts = new ArrayList<>();
+	}
+
 	public PayPeriod() {
 		shifts = new ArrayList<>();
 	}
@@ -48,7 +53,7 @@ public class PayPeriod {
 	}
 
 	// checks for the existence of the shift given the shift
-	public boolean shiftExists(Shift shift) {
+	public boolean shiftNotExist(Shift shift) {
 		List<String> dates = shifts.stream().map(s -> s.getDate()).collect(Collectors.toList());
 		return dates.stream().noneMatch(str -> str.equals(shift.getDate()));
 	}

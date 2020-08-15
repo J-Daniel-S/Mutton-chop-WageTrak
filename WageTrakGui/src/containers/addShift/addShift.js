@@ -8,7 +8,7 @@ import { AddShiftArticle, AddBackdrop, Hr, Title, FormLabel, FormInput, RoundedB
 
 const addShift = (props) => {
 	const [userState, updateUser, jobState] = useContext(UserContext);
-	const { authTokens } = useAuth();
+	const { authTokens, setAuthTokens } = useAuth();
 
 	const nameClicked = () => {
 		props.history.push("/wagetrak/job/periods");
@@ -64,6 +64,11 @@ const addShift = (props) => {
 		).then(res => res.json()).then(res => {
 			updateUser(res);
 			props.history.push('/wagetrak');
+		}).catch(e => {
+			alert("Something went wrong attempting to contact the server.  Please try again later.  Logging you out.");
+			localStorage.setItem("tokens", "");
+			setAuthTokens("");
+			window.location.reload();
 		});
 	}
 
@@ -78,7 +83,7 @@ const addShift = (props) => {
 				<main>
 					<form id="addShiftForm" name="addShiftForm">
 						<section className="form-group">
-							<FormLabel htmlFor="name">Enter start date</FormLabel>
+							<FormLabel htmlFor="name">Enter shift date</FormLabel>
 							<FormInput type="date" id="name" name="name" defaultValue={props.currentPeriod.dateName.slice(0, 5)} className="form-control" required></FormInput>
 							<FormLabel htmlFor="hours">Hours worked:</FormLabel>
 							<FormInput type="number" id="hours" name="hours" defaultValue="0.0" className="form-control" required></FormInput>

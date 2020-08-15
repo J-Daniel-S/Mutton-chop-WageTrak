@@ -46,9 +46,8 @@ const authorization = (props) => {
 					setLoggedIn(false)
 				}
 			}).catch(e => {
-				setIsError(true);
+				alert("Failed to reach the server.  Please try again later");
 				setLoggedIn(false)
-				console.log(e);
 			});
 
 	}
@@ -58,7 +57,7 @@ const authorization = (props) => {
 	}
 
 	if(isError) {
-		alert("incorrect username or password");
+		alert("Something went wrong.  Try again later.  If the problem persists please contact us");
 	}
 
 	return (

@@ -27,24 +27,29 @@ public class ShiftController {
 	@Autowired
 	private UserService usRepo;
 
+	// for testing
+	public ShiftController(UserService usRepo) {
+		this.usRepo = usRepo;
+	}
+
 	@PostMapping
 	@ResponseBody
 	public User addShift(@PathVariable final String id, @PathVariable final String jobName,
 			@PathVariable final String dateName, @RequestBody Shift shift) {
-		User user = usRepo.findById(id).get();
+		Optional<User> foundUser = usRepo.findById(id);
+		User user = foundUser.get();
 		Job job = user.getJobs().stream().filter(j -> j.getName().equalsIgnoreCase(jobName)).findAny().get();
 
 		PayPeriod period = job.getPayPeriods().stream().filter(w -> w.getDateName().equals(dateName)).findAny().get();
-		if (period.shiftExists(shift)) {
+		if (period.shiftNotExist(shift)) {
 			shift.calcPay(job.getRate(), user.getTaxRate());
 			period.addShift(shift);
 			period.updatePay();
 			job.updatePayPeriod(period);
-			user.updateJob(job);
 			usRepo.update(user);
 			return user;
 		} else {
-			return usRepo.findById(user.getId()).get();
+			return foundUser.get();
 		}
 	}
 
@@ -52,19 +57,20 @@ public class ShiftController {
 	@ResponseBody
 	public User deleteShift(@PathVariable final String id, @PathVariable final String jobName,
 			@PathVariable final String dateName, @PathVariable String date) {
-		User user = usRepo.findById(id).get();
+		Optional<User> foundUser = usRepo.findById(id);
+		User user = foundUser.get();
 		Job job = user.getJobs().stream().filter(j -> j.getName().equalsIgnoreCase(jobName)).findAny().get();
 		Optional<PayPeriod> maybePeriod = job.getPayPeriods().stream()
 				.filter(w -> w.getDateName().equalsIgnoreCase(dateName)).findAny();
 		if (maybePeriod.isPresent()) {
 			PayPeriod period = maybePeriod.get();
 			period.deleteShift(date);
+			period.updatePay();
 			job.updatePayPeriod(period);
-			user.updateJob(job);
 			usRepo.update(user);
 			return user;
 		} else {
-			return usRepo.findById(user.getId()).get();
+			return foundUser.get();
 		}
 	}
 
@@ -72,20 +78,21 @@ public class ShiftController {
 	@ResponseBody
 	public User editShift(@PathVariable final String id, @PathVariable final String jobName,
 			@PathVariable final String dateName, @RequestBody Shift shift, @PathVariable String oldDate) {
-		User user = usRepo.findById(id).get();
+		Optional<User> foundUser = usRepo.findById(id);
+		User user = foundUser.get();
 		Job job = user.getJobs().stream().filter(j -> j.getName().equalsIgnoreCase(jobName)).findAny().get();
 		Optional<PayPeriod> maybePeriod = job.getPayPeriods().stream()
 				.filter(p -> p.getDateName().equalsIgnoreCase(dateName)).findAny();
 		if (maybePeriod.isPresent()) {
 			PayPeriod period = maybePeriod.get();
-			shift.updatePay(job.getRate(), user.getTaxRate());
+			shift.calcPay(job.getRate(), user.getTaxRate());
 			period.editShift(shift, oldDate);
+			period.updatePay();
 			job.updatePayPeriod(period);
-			user.updateJob(job);
 			usRepo.update(user);
 			return user;
 		} else {
-			return usRepo.findById(user.getId()).get();
+			return foundUser.get();
 		}
 	}
 

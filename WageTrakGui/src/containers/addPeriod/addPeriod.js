@@ -8,7 +8,7 @@ import { Title, Hr, AddJobArticle, AddBackdrop, FooterButton, CenterButtonText, 
 
 const addPeriod = (props) => {
 	const [userState, updateUser, jobState] = useContext(UserContext);
-	const { authTokens } = useAuth();
+	const { authTokens, setAuthTokens } = useAuth();
 
 	const nameClicked = () => {
 		props.history.push("/wagetrak/job");
@@ -40,6 +40,11 @@ const addPeriod = (props) => {
 		).then(res => res.json()).then(res => {
 			updateUser(res);
 			props.history.push('/wagetrak');
+		}).catch(e => {
+			alert("Something went wrong attempting to contact the server.  Please try again later.  Logging you out.");
+			localStorage.setItem("tokens", "");
+			setAuthTokens("");
+			window.location.reload();
 		});
 	}
 
@@ -48,7 +53,7 @@ const addPeriod = (props) => {
 			<AddJobArticle>
 				<header>
 					<Hr></Hr>
-						<Title>Start new pay period:</Title>
+					<Title>Start new pay period:</Title>
 					<Hr></Hr>
 				</header>
 				<main>

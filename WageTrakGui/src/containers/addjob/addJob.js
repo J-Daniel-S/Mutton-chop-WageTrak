@@ -4,12 +4,14 @@ import { withRouter } from 'react-router-dom';
 import UserContext from '../../context/userContext';
 import { useAuth } from '../../context/authContext';
 
-import { AddJobArticle, Hr, RoundedButtonCentered, CenterButtonText, FooterButton, AddBackdrop, FormLabel, FormInput, PaySection,
-		Title } from '../../styles/styledComponents';
+import {
+	AddJobArticle, Hr, RoundedButtonCentered, CenterButtonText, FooterButton, AddBackdrop, FormLabel, FormInput, PaySection,
+	Title
+} from '../../styles/styledComponents';
 
 const addJob = (props) => {
 	const [userState, updateUser] = useContext(UserContext);
-	const { authTokens } = useAuth();
+	const { authTokens, setAuthTokens } = useAuth();
 
 	const nameClicked = () => {
 		props.history.push("/wagetrak");
@@ -54,6 +56,11 @@ const addJob = (props) => {
 		).then(res => res.json()).then(res => {
 			updateUser(res);
 			props.history.push("/wagetrak");
+		}).catch(e => {
+			alert("Something went wrong attempting to contact the server.  Please try again later.  Logging you out.");
+			localStorage.setItem("tokens", "");
+			setAuthTokens("");
+			window.location.reload();
 		});
 	}
 
@@ -67,11 +74,11 @@ const addJob = (props) => {
 				</PaySection>
 				<main>
 					<form id="addJobForm" name="addJobForm" onSubmit={() => jobAdded()}>
-							<FormLabel htmlFor="name">Job name</FormLabel>
-							<FormInput className="form-control" type="text" id="name" name="name" placeholder="Enter job title" />
-							<FormLabel htmlFor="hourly">Hourly rate</FormLabel>
-							<FormInput className="form-control" type="number" id="hourly" name="hourly" placeholder="$##.##" />
-							<Hr></Hr>
+						<FormLabel htmlFor="name">Job name</FormLabel>
+						<FormInput className="form-control" type="text" id="name" name="name" placeholder="Enter job title" />
+						<FormLabel htmlFor="hourly">Hourly rate</FormLabel>
+						<FormInput className="form-control" type="number" id="hourly" name="hourly" placeholder="$##.##" />
+						<Hr></Hr>
 						<RoundedButtonCentered onClick={() => jobAdded(
 						)}>
 							<CenterButtonText>Submit</CenterButtonText>

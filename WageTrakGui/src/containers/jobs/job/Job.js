@@ -23,7 +23,12 @@ const job = (props) => {
 	}
 
 	const periodsClicked = () => {
-		props.history.push("/wagetrak/job/periods");
+		if (periodState !== null) {
+			props.history.push("/wagetrak/job/periods");
+		} else {
+			props.history.push("/wagetrak/add-period");
+		}
+		
 	}
 
 	const periodClicked = () => {
@@ -133,7 +138,7 @@ const job = (props) => {
 							{periodState !== null &&
 								<Flex0>
 									<FlexText>
-										<ShadowButton>add shift <i className="fa fa-plus fa-lg" aria-hidden="true" onClick={() => addShiftHandler()}></i>
+										<ShadowButton onClick={() => addShiftHandler()}>add shift <i className="fa fa-plus fa-lg" aria-hidden="true" ></i>
 										</ShadowButton>
 									</FlexText>
 								</Flex0>}

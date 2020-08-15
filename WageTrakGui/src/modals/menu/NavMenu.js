@@ -3,6 +3,7 @@ import { withRouter } from 'react-router-dom';
 import { Modal, Button, Form, Fade } from 'react-bootstrap';
 
 import UserContext from '../../context/userContext';
+import ToggleContext from '../../context/toggleContext';
 import ConfirmDelete from '../confirm/ConfirmDelete';
 import { useAuth } from '../../context/authContext';
 
@@ -10,6 +11,8 @@ import Loading from '../../styles/Loading';
 
 const navMenu = (props) => {
 	const [userState, updateUser] = useContext(UserContext);
+	// eslint-disable-next-line
+	const [ setLogout, setNavMenu ] = useContext(ToggleContext);
 	const [confirm, setConfirm] = useState(false);
 	const [loading, setLoading] = useState(false);
 	const { authTokens, setAuthTokens } = useAuth();
@@ -42,6 +45,11 @@ const navMenu = (props) => {
 		).then(res => res.json()).then(res => {
 			updateUser(res);
 			props.toggleMenu();
+		}).catch(e => {
+			alert("Something went wrong attempting to contact the server.  Please try again later.  Logging you out.");
+			localStorage.setItem("tokens", "");
+			setAuthTokens("");
+			window.location.reload();
 		});
 	}
 
@@ -74,6 +82,11 @@ const navMenu = (props) => {
 			} else {
 				alert("There was an error");
 			}
+		}).catch(e => {
+			alert("Something went wrong attempting to contact the server.  Please try again later.  Logging you out.");
+			localStorage.setItem("tokens", "");
+			setAuthTokens("");
+			window.location.reload();
 		});
 	}
 
@@ -90,6 +103,8 @@ const navMenu = (props) => {
 		<React.Fragment>
 			{confirm === false && loading === false && <Fade appear in>
 				<Modal.Dialog>
+					<Modal.Header closeButton onClick={() => setNavMenu(false)}>Menu
+					</Modal.Header>
 					<Modal.Body>
 						<Form onSubmit={editUser}>
 							<Form.Group controlId="formBasicTaxRate">

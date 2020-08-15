@@ -8,7 +8,7 @@ import { useAuth } from '../../context/authContext';
 const editUser = (props) => {
 	const [confirmDeleteState, setConfirmDeleteState] = useState({});
 	const [userState, setUserState] = useContext(UserContext);
-	const { authTokens } = useAuth();
+	const { authTokens, setAuthTokens } = useAuth();
 
 	const toggleDeleteUser = () => {
 		if (confirmDeleteState === true) {
@@ -48,6 +48,11 @@ const editUser = (props) => {
 			).then(res => res.json()).then(res => {
 				setUserState(res);
 				props.closeModal();
+			}).catch(e => {
+				alert("Something went wrong attempting to contact the server.  Please try again later.  Logging you out.");
+				localStorage.setItem("tokens", "");
+				setAuthTokens("");
+				window.location.reload();
 			});
 		}
 

@@ -30,6 +30,14 @@ import wageTrak.services.UserService;
 @RequestMapping("/wageTrak-login")
 public class SecurityController {
 
+	// for tests
+	public SecurityController(AuthenticationManager manager, JwtTokenProvider provider, UserService usRepo,
+			CustomUserDetailsService service) {
+		this.manager = manager;
+		this.provider = provider;
+		this.usRepo = usRepo;
+	}
+
 	@Autowired
 	AuthenticationManager manager;
 

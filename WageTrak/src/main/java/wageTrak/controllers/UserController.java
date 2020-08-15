@@ -31,6 +31,11 @@ public class UserController {
 	@Autowired
 	private UserService usRepo;
 
+	// for unit testing
+	public UserController(UserService usRepo) {
+		this.usRepo = usRepo;
+	}
+
 	@PostMapping
 	// this method is for testing. If you want to use it add the test user from the
 	// readme using advanced rest client or something similar
@@ -64,7 +69,7 @@ public class UserController {
 	}
 
 	@PutMapping
-	public Optional<User> updateUser(@RequestBody User user) {
+	public User updateUser(@RequestBody User user) {
 		String id = user.getId();
 		Optional<User> theUser = usRepo.findById(id);
 		if (theUser.isPresent()) {
@@ -72,7 +77,8 @@ public class UserController {
 			newUser.setName(user.getName());
 			newUser.setTaxRate(user.getTaxRate());
 			usRepo.update(newUser);
-			return usRepo.findById(id);
+			User returnUser = usRepo.findById(id).get();
+			return returnUser;
 		} else {
 			throw new RuntimeException("Cannot find user by given ID");
 		}

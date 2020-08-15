@@ -14,7 +14,7 @@ const editShift = (props) => {
 	const [userState, updateUser, jobState, setJobState, periodState, setPeriodState, viewPeriodState, setViewPeriodState,
 		// eslint-disable-next-line
 		shiftState, setShiftState, jobsState, setJobsState] = useContext(UserContext);
-	const { authTokens } = useAuth();
+	const { authTokens, setAuthTokens } = useAuth();
 
 	const toggleDeleteShift = () => {
 		if (confirmDeleteState === true) {
@@ -40,6 +40,11 @@ const editShift = (props) => {
 		).then(res => res.json()).then(res => {
 			updateUser(res);
 			props.history.push("/wagetrak");
+		}).catch(e => {
+			alert("Something went wrong attempting to contact the server.  Please try again later.  Logging you out.");
+			localStorage.setItem("tokens", "");
+			setAuthTokens("");
+			window.location.reload();
 		});
 	}
 
@@ -98,6 +103,11 @@ const editShift = (props) => {
 				).then(res => res.json()).then(res => {
 					updateUser(res);
 					props.history.push("/wagetrak");
+				}).catch(e => {
+					alert("Something went wrong attempting to contact the server.  Please try again later.  Logging you out.");
+					localStorage.setItem("tokens", "");
+					setAuthTokens("");
+					window.location.reload();
 				});
 			}
 		}
@@ -113,7 +123,7 @@ const editShift = (props) => {
 						<Form onSubmit={submitChange}>
 							<Form.Label>Edit Date:</Form.Label>
 							<Form.Group controlId="formBasicDate">
-								<Form.Control type="date" defaultValue={shiftState.date} required />
+								<Form.Control type="date" required/>
 							</Form.Group>
 							<Form.Group controlId="formBasicHours">
 								<Form.Control type="decimal" defaultValue={shiftState.hours} required />

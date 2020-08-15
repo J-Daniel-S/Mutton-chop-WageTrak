@@ -113,15 +113,6 @@ public class User {
 		return jobNames.stream().anyMatch(name -> name.equalsIgnoreCase(job.getName()));
 	}
 
-	// gets the job from the front end, deletes the old version, and inserts the new
-	// one
-	public void updateJob(Job job) {
-		List<Job> toUpdate = jobs.stream().filter(j -> !j.getName().equalsIgnoreCase(job.getName()))
-				.collect(Collectors.toList());
-		toUpdate.add(job);
-		jobs = toUpdate;
-	}
-
 	public void setJobs(List<Job> jobs) {
 		this.jobs = jobs;
 	}

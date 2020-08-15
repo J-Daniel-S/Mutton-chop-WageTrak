@@ -3,13 +3,16 @@ import { withRouter } from 'react-router-dom';
 import { Modal, Button, Form } from 'react-bootstrap';
 
 import UserContext from '../../context/userContext';
+import ToggleContext from '../../context/toggleContext';
 import { useAuth } from '../../context/authContext';
 
 import Loading from '../../styles/Loading';
 
 const ReportBug = (props) => {
 	const [userState] = useContext(UserContext);
-	const { authTokens } = useAuth();
+	// eslint-disable-next-line
+	const [ setLogout, setNavMenu, toggleReport ] = useContext(ToggleContext);
+	const { authTokens, setAuthTokens } = useAuth();
 	const [ reportState, setReport ] = useState(false);
 
 	const submit = (event) => {
@@ -49,12 +52,18 @@ const ReportBug = (props) => {
 					alert("Error submitting bug report");
 				}
 				
-			})
+			}).catch(e => {
+			alert("Something went wrong attempting to contact the server.  Please try again later.  Logging you out.");
+			localStorage.setItem("tokens", "");
+			setAuthTokens("");
+			window.location.reload();
+		})
 		}
 	}
 
 	return (
 		<Modal.Dialog>
+			<Modal.Header closeButton onClick={() => toggleReport(false)}>Bug report</Modal.Header>
 			<Modal.Body>
 				{!reportState && <Form onSubmit={submit}>
 					<Form.Group controlId="formBasicReport">

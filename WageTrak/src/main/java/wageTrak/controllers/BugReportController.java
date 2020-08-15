@@ -17,6 +17,11 @@ import wageTrak.services.BugService;
 @RequestMapping("/wageTrak/bugs")
 public class BugReportController {
 
+	// for testing
+	public BugReportController(BugService bugRepo) {
+		this.bugRepo = bugRepo;
+	}
+
 	@Autowired
 	private BugService bugRepo;
 

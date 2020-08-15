@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { BrowserRouter, Route, Redirect } from 'react-router-dom';
+import { withRouter, Route, Redirect } from 'react-router-dom';
 
 import User from './user/User';
 import Job from './jobs/job/Job';
@@ -12,6 +12,7 @@ import AddPeriod from './addPeriod/addPeriod';
 import AddShift from './addShift/addShift';
 import Loading from '../styles/Loading';
 import UserContext from '../context/userContext';
+import ToggleContext from '../context/toggleContext';
 import { useAuth } from '../context/authContext';
 
 import Logout from '../modals/logout/logout';
@@ -27,7 +28,7 @@ const wageTrak = (props) => {
 	const [viewPeriodState, setViewPeriodState] = useState({});
 	const [shiftState, setShiftState] = useState({});
 	const [jobsState, setJobsState] = useState({});
-	const { authTokens } = useAuth();
+	const { authTokens, setAuthTokens } = useAuth();
 
 	const [logout, setLogout] = useState(false);
 	const [navMenu, setNavMenu] = useState(false);
@@ -35,6 +36,8 @@ const wageTrak = (props) => {
 
 	const contextArr = [userState, setUserState, jobState, setJobState, periodState, setPeriodState, viewPeriodState, setViewPeriodState,
 		shiftState, setShiftState, jobsState, setJobsState];
+
+	const toggleArr = [ setLogout, setNavMenu, setReport ];
 
 	useEffect(() => {
 		getUser();
@@ -52,20 +55,22 @@ const wageTrak = (props) => {
 			}
 		).then(res => res.json())
 			.then(res => {
-					setUserState(res);
-					//this exists simply to force a re-render when jobs is changed
-					setJobsState(res.jobs);
-			}).catch(res => {
-				console.log('err: ' + res.data)
-					setUserState(res);
-					//this exists simply to force a re-render when jobs is changed
-					setJobsState(res.jobs);
-				}
-			);
+				setUserState(res);
+				//this exists simply to force a re-render when jobs is changed
+				setJobsState(res.jobs);
+			}).catch(e => {
+				alert("Something went wrong attempting to contact the server.  Please try again later.  Logging you out.");
+				localStorage.setItem("tokens", "");
+				setAuthTokens("");
+				window.location.reload();
+			});
 		setUserState(userState);
 	}
 
 	const toggleLogout = () => {
+		if (window.location.pathname !== "/wagetrak") {
+			props.history.push("/wagetrak");
+		}
 		if (!logout) {
 			if (navMenu) {
 				setNavMenu(false);
@@ -77,6 +82,9 @@ const wageTrak = (props) => {
 	}
 
 	const toggleMenu = () => {
+		if (window.location.pathname !== "/wagetrak") {
+			props.history.push("/wagetrak");
+		}
 		if (!navMenu && report) {
 			if (logout) {
 				setLogout(false);
@@ -94,6 +102,9 @@ const wageTrak = (props) => {
 	}
 
 	const toggleReport = () => {
+		if (window.location.pathname !== "/wagetrak") {
+			props.history.push("/wagetrak");
+		}
 		if (!report) {
 			setNavMenu(false);
 			setReport(true);
@@ -103,6 +114,9 @@ const wageTrak = (props) => {
 	}
 
 	const goBack = () => {
+		if (window.location.pathname !== "/wagetrak") {
+			props.history.push("/wagetrak");
+		}
 		if (window.location.pathname !== "/wagetrak") {
 			window.history.back();
 		} else if (window.location.pathname === "/wagetrak") {
@@ -119,8 +133,8 @@ const wageTrak = (props) => {
 
 	return (
 		<React.Fragment>
-			<UserContext.Provider value={[...contextArr]}>
-				<BrowserRouter>
+			<ToggleContext.Provider value={[...toggleArr]}>
+				<UserContext.Provider value={[...contextArr]}>
 					<Navbar getUser={() => getUser()} toggleLogout={toggleLogout} toggleMenu={toggleMenu} toggleReportBug={toggleReport} goBack={goBack} />
 					{window.location.pathname === "/" || window.location.pathname === "/wagetrak/wagetrak/job" ? <Redirect to="/wagetrak" /> : null}
 					<Route
@@ -180,12 +194,12 @@ const wageTrak = (props) => {
 						/>}
 					/>
 					{logout && !navMenu && !report && <Logout />}
-					{navMenu && !logout && !report && <NavMenu getUser={() => getUser()} toggleMenu={() => toggleMenu()} toggleReport={() => toggleReport()} />}
+					{navMenu && !logout && !report && <NavMenu getUser={() => getUser()} toggleMenu={() => toggleMenu()} toggleReport={() => toggleReport()} toggleLogout={() => toggleLogout()}/>}
 					{report && !navMenu && !logout && <ReportBug toggleReport={() => toggleReport()} />}
-				</BrowserRouter>
-			</UserContext.Provider>
+				</UserContext.Provider>
+			</ToggleContext.Provider>
 		</React.Fragment>
 	);
 }
 
-export default wageTrak;
+export default withRouter(wageTrak);
